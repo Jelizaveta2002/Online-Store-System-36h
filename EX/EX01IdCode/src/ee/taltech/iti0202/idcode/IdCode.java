@@ -45,6 +45,7 @@ public class IdCode {
      * @return enum describing person's gender
      */
     public Gender getGender() {
+        System.out.println(idCodeValue.charAt(1));
         if (idCodeValue.charAt(0) % 2 == 0) {
             return Gender.FEMALE;
         }else {
@@ -67,7 +68,23 @@ public class IdCode {
      * @return int with person's birth year.
      */
     public int getFullYear() {
-        return 0;
+        char year_num1 = idCodeValue.charAt(1);
+        String str1 = Character.toString(year_num1);
+        char year_num2 = idCodeValue.charAt(2);
+        String str2 = Character.toString(year_num2);
+        String full_year = str1 + str2;
+        System.out.println(full_year);
+        int number = 0;
+        if (idCodeValue.charAt(0) == '1' || idCodeValue.charAt(0) == '2') {
+            String str = "18" + full_year;
+            number = Integer.parseInt(str);
+        }else if (idCodeValue.charAt(0) == '3' || idCodeValue.charAt(0) == '4') {
+            String str = "19" + full_year;
+            number = Integer.parseInt(str);
+        }else if (idCodeValue.charAt(0) == '5' || idCodeValue.charAt(0) == '6') {
+            String str = "20" + full_year;
+            number = Integer.parseInt(str);
+        }return number;
     }
 
     /**

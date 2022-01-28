@@ -93,11 +93,7 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        if (idCodeValue.charAt(0) >= '1' && idCodeValue.charAt(0) <= '6'){
-            return true;
-        }else {
-            return false;
-        }
+        return idCodeValue.charAt(0) >= '1' && idCodeValue.charAt(0) <= '6';
     }
 
     /**
@@ -106,7 +102,8 @@ public class IdCode {
      * @return boolean describing whether the year number is correct.
      */
     private boolean isYearNumberCorrect() {
-        return false;
+        int year = getFullYear();
+        return (year >= 1800 && year <= 2099);
     }
 
     /**
@@ -151,7 +148,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("87605030299");
+        IdCode validMaleIdCode = new IdCode("37605030299");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());

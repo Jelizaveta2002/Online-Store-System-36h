@@ -118,9 +118,9 @@ public class IdCode {
      */
     private boolean isMonthNumberCorrect() {
         int month = 0;
-        char month_1 = idCodeValue.charAt(5);
+        char month_1 = idCodeValue.charAt(3);
         String str1 = Character.toString(month_1);
-        char month_2 = idCodeValue.charAt(6);
+        char month_2 = idCodeValue.charAt(4);
         String str2 = Character.toString(month_2);
         String full_year = str1 + str2;
         month = Integer.parseInt(full_year);
@@ -134,14 +134,43 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
-//        int[] thirty_days = new int[]{4, 6, 9, 11};
-//        int[] thirty_one_days = new int[]{1, 3, 5, 7, 8, 10, 12};
-//        int full_year = getFullYear();
-//        boolean gen = isGenderNumberCorrect();
-//        if (full_year <= 2099 && full_year >= 1800 && gen){
-//            ;
-//        }
-        return false;
+        int day = 0;
+        char day_1 = idCodeValue.charAt(5);
+        String str12 = Character.toString(day_1);
+        char day_2 = idCodeValue.charAt(6);
+        String str13 = Character.toString(day_2);
+        String full_day = str12 + str13;
+        day = Integer.parseInt(full_day);
+        int month = 0;
+        char month_1 = idCodeValue.charAt(3);
+        String str1 = Character.toString(month_1);
+        char month_2 = idCodeValue.charAt(4);
+        String str2 = Character.toString(month_2);
+        String full_month = str1 + str2;
+        month = Integer.parseInt(full_month);
+        int[] thirty_days = new int[]{4, 6, 9, 11};
+        int[] thirty_one_days = new int[]{1, 3, 5, 7, 8, 10, 12};
+        int full_year = getFullYear();
+        boolean gen = isGenderNumberCorrect();
+        if (full_year <= 2099 && full_year >= 1800 && gen){
+            for (int element: thirty_days){
+                if (element == month){
+                    return 1 <= day && 30 >= day;
+                }
+            }for (int element: thirty_one_days){
+                if (element == month){
+                    return 1 <= day && 31 >= day;
+                }
+            }if(isLeapYear(full_year) && month == 2){
+                return 1 <= day && 29 >= day;
+            }else if (month == 2){
+                return 1 <= day && 28 >= day;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -160,14 +189,14 @@ public class IdCode {
      * @return boolean describing whether the given year is a leap year.
      */
     private boolean isLeapYear(int fullYear) {
-        int number = 0;
-        char year_num1 = idCodeValue.charAt(1);
-        String str1 = Character.toString(year_num1);
-        char year_num2 = idCodeValue.charAt(2);
-        String str2 = Character.toString(year_num2);
-        String full_year = str1 + str2;
-        number = Integer.parseInt(full_year);
-        return number % 4 == 0 && number % 100 != 0 || number % 400 == 0;
+//        int number = 0;
+//        char year_num1 = idCodeValue.charAt(1);
+//        String str1 = Character.toString(year_num1);
+//        char year_num2 = idCodeValue.charAt(2);
+//        String str2 = Character.toString(year_num2);
+//        String full_year = str1 + str2;
+//        number = Integer.parseInt(full_year);
+        return fullYear % 4 == 0 && fullYear % 100 != 0 || fullYear % 400 == 0;
     }
 
     /**

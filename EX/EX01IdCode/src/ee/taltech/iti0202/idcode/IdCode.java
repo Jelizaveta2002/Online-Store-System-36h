@@ -1,4 +1,3 @@
-
 package ee.taltech.iti0202.idcode;
 
 import java.util.ArrayList;
@@ -21,11 +20,8 @@ public class IdCode {
         return idCodeValue;
     }
 
-    public IdCode(String value) {
-        this.idCodeValue = value;
-        if (! isCorrect()){
-            throw new IllegalArgumentException();
-        }
+    public IdCode(String idCodeValue) {
+        this.idCodeValue = idCodeValue;
     }
 
     /**
@@ -322,7 +318,7 @@ public class IdCode {
      */
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("60204686230304");
+        IdCode validMaleIdCode = new IdCode("37605036515");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());

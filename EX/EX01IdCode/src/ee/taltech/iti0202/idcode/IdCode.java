@@ -21,9 +21,9 @@ public class IdCode {
         return idCodeValue;
     }
 
-    public IdCode(String idCodeValue) {
-        this.idCodeValue = isCorrect(idCodeValue) ? idCodeValue:null;
-        if (this.idCodeValue == null){
+    public IdCode(String value) {
+        this.idCodeValue = value;
+        if (! isCorrect()){
             throw new IllegalArgumentException();
         }
     }
@@ -33,7 +33,7 @@ public class IdCode {
      *
      * @return boolean describing whether or not the id code was correct.
      */
-    public static boolean isCorrect(String idCodeValue) {
+    public boolean isCorrect() {
         boolean test = idCodeValue.length() == 11;
         boolean test2 = idCodeValue.matches("^[0-9]*$");
 //        boolean first = isControlNumberCorrect();
@@ -323,8 +323,8 @@ public class IdCode {
      */
 
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("602042303798989704");
-        System.out.println(isCorrect(validMaleIdCode.idCodeValue));
+        IdCode validMaleIdCode = new IdCode("60204686230304");
+        System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
         System.out.println(validMaleIdCode.getBirthPlace());

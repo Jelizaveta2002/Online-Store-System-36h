@@ -243,14 +243,14 @@ public class IdCode {
             sum += u;
         }System.out.println(sum);
         if (sum % 11 == 10){
-            int e = -1;
+            i = -1;
+            y = -1;
             for (int element: result){
                 int intElement = Character.getNumericValue(element);
-                int my_el = 0;
                 i += 1;
                 y += 1;
-                int num = first_balance[y];
-                my_el = intElement * num;
+                int num = second_balance[y];
+                int my_el = intElement * num;
                 one_element[i] = my_el;
             }int sum2 = 0;
             for (Integer u : one_element){

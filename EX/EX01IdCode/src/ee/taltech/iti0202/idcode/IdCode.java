@@ -93,8 +93,8 @@ public class IdCode {
         }else if (651 <= number && number <= 710){
             return "Võru";
         }else if (0 == number && number >= 711){
-            return "Paide";
-        }return null;
+            return "unknown";
+        }return "unknown";
     }
 
     /**

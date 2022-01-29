@@ -74,7 +74,7 @@ public class IdCode {
             return "Kuressaare";
         }else if (11 <= number && number <= 20 || 271 <= number && number <= 370){
             return "Tartu";
-        }else if (21 <= number && number <= 220 || 471 <= number && number <= 710){
+        }else if (21 <= number && number <= 220 || 471 <= number && number <= 490){
             return "Tallinn";
         }else if (221 <= number && number <= 270){
             return "Kohtla-Järve";
@@ -82,8 +82,18 @@ public class IdCode {
             return "Narva";
         }else if (421 <= number && number <= 470){
             return "Pärnu";
-        }else if (711 <= number && number <= 999){
-            return "undefined";
+        }else if (491 <= number && number <= 520){
+            return "Paide";
+        }else if (521 <= number && number <= 570){
+            return "Rakvere";
+        }else if (571 <= number && number <= 600){
+            return "Valga";
+        }else if (601 <= number && number <= 650){
+            return "Viljandi";
+        }else if (651 <= number && number <= 710){
+            return "Võru";
+        }else if (0 == number && number >= 711){
+            return "Paide";
         }return null;
     }
 

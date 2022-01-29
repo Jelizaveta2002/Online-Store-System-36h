@@ -1,6 +1,10 @@
 
 package ee.taltech.iti0202.idcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class IdCode {
 
     private final String idCodeValue;
@@ -27,7 +31,12 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        return false;
+        boolean first = isControlNumberCorrect();
+        boolean second = isGenderNumberCorrect();
+        boolean third = isDayNumberCorrect();
+        boolean forth = isMonthNumberCorrect();
+        boolean five = isYearNumberCorrect();
+        return first && second && third && forth && five;
     }
 
     /**
@@ -66,6 +75,14 @@ public class IdCode {
      *
      * @return int with person's birth year.
      */
+
+    public String removeLastChar(String s) {
+        return (s == null || s.length() == 0)
+                ? null
+                : (s.substring(0, s.length() - 1));
+    }
+
+
     public int getFullYear() {
         char year_num1 = idCodeValue.charAt(1);
         String str1 = Character.toString(year_num1);
@@ -164,8 +181,7 @@ public class IdCode {
             }if(isLeapYear(full_year) && month == 2){
                 return 1 <= day && 29 >= day;
             }else if (month == 2){
-                return 1 <= day && 28 >= day;
-            }else{
+                return 1 <= day && 28 >= day;            }else{
                 return false;
             }
         }else{
@@ -179,7 +195,51 @@ public class IdCode {
      * @return boolean describing whether the control number is correct.
      */
     private boolean isControlNumberCorrect() {
-        return false;
+        String new_id = removeLastChar(idCodeValue);
+        System.out.println(new_id);
+        int[] first_balance = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
+        int[] second_balance = new int[]{3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
+        int[] new_element = new int[10];
+        int[] one_element = new int[10];
+        char[] result = new_id.toCharArray();
+        int i = -1;
+        int y = -1;
+        System.out.println(result[0]);
+        for (char element: result) {
+            int intElement = Character.getNumericValue(element);
+            int my_el = 0;
+            i += 1;
+            y += 1;
+            int num = first_balance[y];
+            my_el = intElement * num;
+            new_element[i] = my_el;
+        }int sum = 0;
+        for (Integer u : new_element){
+            sum += u;
+        }System.out.println(sum);
+        if (sum % 11 == 10){
+            int e = -1;
+            for (int element: result){
+                int intElement = Character.getNumericValue(element);
+                int my_el = 0;
+                i += 1;
+                y += 1;
+                int num = first_balance[y];
+                my_el = intElement * num;
+                one_element[i] = my_el;
+            }int sum2 = 0;
+            for (Integer u : one_element){
+                sum2 += u;
+            }if (sum2 % 11 == 10){
+                return Character.getNumericValue(idCodeValue.charAt(10)) == 0;
+            }else{
+                return Character.getNumericValue(idCodeValue.charAt(10)) == sum2 % 11;
+            }
+        }else{
+            int val = Character.getNumericValue(idCodeValue.charAt(10));
+            int val2 = sum % 11;
+            return val == val2;
+        }
     }
 
     /**
@@ -204,7 +264,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("37605030299");
+        IdCode validMaleIdCode = new IdCode("60204230304");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());

@@ -47,7 +47,7 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return null;
+        return "This is a " + getGender() + " " + "born on" + " " + getDay() + "." + getMonth() + "." + getFullYear() + " " + "in" + " " + getBirthPlace() + ".";
     }
 
     /**
@@ -69,7 +69,22 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
-        return null;
+        int number = getNumber();
+        if (1 <= number && number <= 10){
+            return "Kuressaare";
+        }else if (11 <= number && number <= 20 || 271 <= number && number <= 370){
+            return "Tartu";
+        }else if (21 <= number && number <= 220 || 471 <= number && number <= 710){
+            return "Tallinn";
+        }else if (221 <= number && number <= 270){
+            return "Kohtla-Järve";
+        }else if (371 <= number && number <= 420){
+            return "Narva";
+        }else if (421 <= number && number <= 470){
+            return "Pärnu";
+        }else if (711 <= number && number <= 999){
+            return "undefined";
+        }return null;
     }
 
     /**
@@ -126,7 +141,6 @@ public class IdCode {
         String str2 = Character.toString(year_num2);
         String full_year = str1 + str2;
         number = Integer.parseInt(full_year);
-        System.out.println(number);
         return 0 <= number && number <= 99;
     }
 
@@ -143,9 +157,9 @@ public class IdCode {
         String str2 = Character.toString(month_2);
         String full_year = str1 + str2;
         month = Integer.parseInt(full_year);
-        System.out.println(month);
         return 0 <= month && month <= 12;
     }
+
 
     /**
      * Check if the day number is correct.
@@ -261,12 +275,41 @@ public class IdCode {
         return fullYear % 4 == 0 && fullYear % 100 != 0 || fullYear % 400 == 0;
     }
 
+    public String getMonth() {
+        char month_1 = idCodeValue.charAt(3);
+        String str1 = Character.toString(month_1);
+        char month_2 = idCodeValue.charAt(4);
+        String str2 = Character.toString(month_2);
+        return str1 + str2;
+    }
+
+    public String getDay() {
+        char month_1 = idCodeValue.charAt(5);
+        String str1 = Character.toString(month_1);
+        char month_2 = idCodeValue.charAt(6);
+        String str2 = Character.toString(month_2);
+        return str1 + str2;
+    }
+
+    public int getNumber() {
+        int month = 0;
+        char month_1 = idCodeValue.charAt(7);
+        String str1 = Character.toString(month_1);
+        char month_2 = idCodeValue.charAt(8);
+        String str2 = Character.toString(month_2);
+        char month_3 = idCodeValue.charAt(9);
+        String str3 = Character.toString(month_3);
+        String full_month = str1 + str2 + str3;
+        month = Integer.parseInt(full_month);
+        return month;
+    }
     /**
      * Run tests.
      * @param args info.
      */
+
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("5010229023d");
+        IdCode validMaleIdCode = new IdCode("60204230304");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());

@@ -21,10 +21,22 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) {
-        this.idCodeValue = idCodeValue;
-        if (! isCorrect()){
+        this.idCodeValue = CorrectOrNo(idCodeValue) ? idCodeValue:null;
+        if (this.idCodeValue == null){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static boolean CorrectOrNo(String idCodeValue) {
+        boolean test = idCodeValue.length() == 11;
+        boolean test2 = idCodeValue.matches("^[0-9]*$");
+//        boolean first = isControlNumberCorrect();
+//        boolean second = isGenderNumberCorrect();
+//        boolean third = isDayNumberCorrect();
+//        boolean forth = isMonthNumberCorrect();
+//        boolean five = isYearNumberCorrect();
+//        return first && second && third && forth && five && test && test2;
+        return test && test2;
     }
 
     /**

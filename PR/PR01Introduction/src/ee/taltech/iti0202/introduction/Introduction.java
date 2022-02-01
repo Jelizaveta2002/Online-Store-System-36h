@@ -25,7 +25,7 @@ public class Introduction {
         boolean test3 = valueOne >= 5 || valueTwo >= 5;
         System.out.println(test3);
         if (test1 && test2) {
-            return "good";
+            return "bad";
         } if (test2 && test3) {
             return "good";
         } if (test1) {
@@ -202,7 +202,7 @@ public class Introduction {
 
         System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
 //        System.out.println(introduction.countTripleChars("aaa"));  // 1
-        System.out.println(introduction.countTripleChars("aaaa"));  // 0
+        System.out.println(introduction.countTripleChars("aaaabbb"));  // 0
         System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
     }
 }

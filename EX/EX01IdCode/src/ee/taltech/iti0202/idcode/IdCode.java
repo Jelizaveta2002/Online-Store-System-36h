@@ -64,9 +64,9 @@ public class IdCode {
 
 
     /**
-     * Method returns the id code.
+     * Get the year that the person was born in.
      *
-     * @return boolean.
+     * @return int with person's birth year.
      */
     public static boolean isCorrectOrNo(String idCodeValue) {
         boolean test = idCodeValue.length() == INT;
@@ -150,7 +150,6 @@ public class IdCode {
      *
      * @return int with person's birth year.
      */
-
     public String removeLastChar(String s) {
         return (s == null || s.length() == INT24)
                 ? null

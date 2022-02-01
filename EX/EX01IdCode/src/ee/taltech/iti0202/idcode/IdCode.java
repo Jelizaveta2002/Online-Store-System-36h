@@ -173,16 +173,13 @@ public class IdCode {
         if (idCodeValue.charAt(INT24) == '1' || idCodeValue.charAt(INT24) == '2') {
             String str = "18" + full_year;
             number = Integer.parseInt(str);
-        }
-        else if (idCodeValue.charAt(INT24) == '3' || idCodeValue.charAt(INT24) == '4') {
+        } else if (idCodeValue.charAt(INT24) == '3' || idCodeValue.charAt(INT24) == '4') {
             String str = "19" + full_year;
             number = Integer.parseInt(str);
-        }
-        else if (idCodeValue.charAt(INT24) == '5' || idCodeValue.charAt(INT24) == '6') {
+        } else if (idCodeValue.charAt(INT24) == '5' || idCodeValue.charAt(INT24) == '6') {
             String str = "20" + full_year;
             number = Integer.parseInt(str);
-        }
-        return number;
+        } return number;
     }
 
     /**
@@ -315,13 +312,13 @@ public class IdCode {
                 one_element[i] = my_el;
             }
             int sum2 = INT24;
-            for (Integer u : one_element){
+            for (Integer u : one_element) {
                 sum2 += u;
             }
-            if (sum2 % INT == INT34){
+            if (sum2 % INT == INT34) {
                 return Character.getNumericValue(idCodeValue.charAt(INT34)) == INT24;
             }
-            else{
+            else {
                 return Character.getNumericValue(idCodeValue.charAt(INT34)) == sum2 % INT;
             }
         }

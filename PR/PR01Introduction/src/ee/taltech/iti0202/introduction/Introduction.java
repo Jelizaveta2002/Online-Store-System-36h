@@ -27,7 +27,7 @@ public class Introduction {
         if (test1 && test2) {
             return "bad";
         } if (test2 && test3) {
-            return "good";
+            return "ok";
         } if (test1) {
             return "bad";
         } if (test2) {

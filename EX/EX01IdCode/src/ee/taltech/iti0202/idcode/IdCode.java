@@ -18,13 +18,14 @@ public class IdCode {
 
     public IdCode(String idCodeValue) {
         this.idCodeValue = CorrectOrNo(idCodeValue) ? idCodeValue : null;
-        if (this.idCodeValue == null){
+        if (this.idCodeValue == null) {
             throw new IllegalArgumentException();
         }
     }
 
     public static boolean CorrectOrNo(String idCodeValue) {
-        boolean test = idCodeValue.length() == 11;
+        int i = 11;
+        boolean test = idCodeValue.length() == i;
         boolean test2 = idCodeValue.matches("^[0-9]*$");
         return test && test2;
     }

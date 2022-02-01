@@ -135,7 +135,8 @@ public class IdCode {
             return "Viljandi";
         } else if (INT22 <= number && number <= INT23) {
             return "Võru";
-        } return "unknown";
+        }
+        return "unknown";
     }
 
     /**

@@ -66,7 +66,7 @@ public class IdCode {
     /**
      * Method returns the id code.
      *
-     * @return id code.
+     * @return boolean.
      */
     public static boolean isCorrectOrNo(String idCodeValue) {
         boolean test = idCodeValue.length() == INT;
@@ -353,8 +353,8 @@ public class IdCode {
         String str2 = Character.toString(month2);
         char month3 = idCodeValue.charAt(9);
         String str3 = Character.toString(month3);
-        String full_month = str1 + str2 + str3;
-        month = Integer.parseInt(full_month);
+        String fullMonth = str1 + str2 + str3;
+        month = Integer.parseInt(fullMonth);
         return month;
     }
     /**

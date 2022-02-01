@@ -101,8 +101,7 @@ public class IdCode {
     public Gender getGender() {
         if (idCodeValue.charAt(INT24) % INDEX == INT24) {
             return Gender.FEMALE;
-        }
-        else {
+        } else {
             return Gender.MALE;
         }
     }
@@ -116,38 +115,27 @@ public class IdCode {
         int number = getNumber();
         if (INT25 <= number && number <= INT34) {
             return "Kuressaare";
-        }
-        else if (INT <= number && number <= INT1 || INT2 <= number && number <= INT3) {
+        } else if (INT <= number && number <= INT1 || INT2 <= number && number <= INT3) {
             return "Tartu";
-        }
-        else if (INT5 <= number && number <= INT4 || INT6 <= number && number <= INT7) {
+        } else if (INT5 <= number && number <= INT4 || INT6 <= number && number <= INT7) {
             return "Tallinn";
-        }
-        else if (INT8 <= number && number <= INT9) {
+        } else if (INT8 <= number && number <= INT9) {
             return "Kohtla-Järve";
-        }
-        else if (INT10 <= number && number <= INT11) {
+        } else if (INT10 <= number && number <= INT11) {
             return "Narva";
-        }
-        else if (INT12 <= number && number <= INT13) {
+        } else if (INT12 <= number && number <= INT13) {
             return "Pärnu";
-        }
-        else if (INT14 <= number && number <= INT15) {
+        } else if (INT14 <= number && number <= INT15) {
             return "Paide";
-        }
-        else if (INT16 <= number && number <= INT17) {
+        } else if (INT16 <= number && number <= INT17) {
             return "Rakvere";
-        }
-        else if (INT18 <= number && number <= INT19) {
+        } else if (INT18 <= number && number <= INT19) {
             return "Valga";
-        }
-        else if (INT20 <= number && number <= INT21) {
+        } else if (INT20 <= number && number <= INT21) {
             return "Viljandi";
-        }
-        else if (INT22 <= number && number <= INT23) {
+        } else if (INT22 <= number && number <= INT23) {
             return "Võru";
-        }
-        return "unknown";
+        } return "unknown";
     }
 
     /**
@@ -253,20 +241,17 @@ public class IdCode {
                 if (element == month) {
                     return INT25 <= day && INT30 >= day;
                 }
-            }
-            for (int element: thirty_one_days) {
+            } for (int element: thirty_one_days) {
                 if (element == month){
                     return INT25 <= day && INT31 >= day;
                 }
-            }
-            if(isLeapYear(full_year) && month == INDEX) {
+            } if(isLeapYear(full_year) && month == INDEX) {
                 return INT25 <= day && INT32 >= day;
-            }
-            else if (month == INDEX){
+            } else if (month == INDEX){
                 return INT25 <= day && INT33 >= day;            }else{
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
@@ -295,7 +280,7 @@ public class IdCode {
             int num = first_balance[y];
             my_el = intElement * num;
             new_element[i] = my_el;
-        }int sum = INT24;
+        } int sum = INT24;
         for (Integer u : new_element) {
             sum += u;
         }
@@ -310,19 +295,15 @@ public class IdCode {
                 int num = second_balance[y];
                 int my_el = intElement * num;
                 one_element[i] = my_el;
-            }
-            int sum2 = INT24;
+            } int sum2 = INT24;
             for (Integer u : one_element) {
                 sum2 += u;
-            }
-            if (sum2 % INT == INT34) {
+            } if (sum2 % INT == INT34) {
                 return Character.getNumericValue(idCodeValue.charAt(INT34)) == INT24;
-            }
-            else {
+            } else {
                 return Character.getNumericValue(idCodeValue.charAt(INT34)) == sum2 % INT;
             }
-        }
-        else {
+        } else {
             int val = Character.getNumericValue(idCodeValue.charAt(INT34));
             int val2 = sum % INT;
             return val == val2;

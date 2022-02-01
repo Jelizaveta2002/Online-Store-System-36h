@@ -26,13 +26,17 @@ public class Introduction {
         System.out.println(test3);
         if (test1 && test2) {
             return "bad";
-        } if (test2 && test3) {
+        }
+        if (test2 && test3) {
             return "good";
-        } if (test1) {
+        }
+        if (test1) {
             return "bad";
-        } if (test2) {
+        }
+        if (test2) {
             return "good";
-        } if (test3) {
+        }
+        if (test3) {
             return "ok";
         }
         return null;

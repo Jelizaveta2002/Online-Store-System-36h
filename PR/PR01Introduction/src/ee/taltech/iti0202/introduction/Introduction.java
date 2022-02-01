@@ -27,7 +27,7 @@ public class Introduction {
         if (test1 && test2) {
             return "bad";
         } if (test2 && test3) {
-            return "ok";
+            return "good";
         } if (test1) {
             return "bad";
         } if (test2) {
@@ -132,6 +132,17 @@ public class Introduction {
         int wordLength = word.length();
         int last = wordLength - 1;
         int prelast = last - 1;
+        if (word.length() == 3) {
+            char symbol = word.charAt(0);
+            char right = word.charAt(1);
+            char check1 =  word.charAt(2);
+            if (symbol == right && symbol == check1) {
+                counter += 1;
+                return counter;
+            }
+        } if (word.length() < 3) {
+            return counter;
+        }
         for (int i = 0; i < word.length(); i++) {
             if (i != last && i != prelast && i != 0 && i != 1) {
                 char symbol = word.charAt(i);
@@ -184,7 +195,7 @@ public class Introduction {
      */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(1, 10)); // "bad"
+        System.out.println(introduction.howIsOutcome(3, 6)); // "bad"
 
         List<Integer> nums = new ArrayList<>(Arrays.asList(7, 5, 3, 6, 2, 5, 7, 8, 12));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
@@ -201,7 +212,7 @@ public class Introduction {
         System.out.println(introduction.findTheString("  ", "a"));  //  a  (with space in front)
 
         System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
-//        System.out.println(introduction.countTripleChars("aaa"));  // 1
+        System.out.println(introduction.countTripleChars("aaa"));  // 1
         System.out.println(introduction.countTripleChars("aaaabbb"));  // 0
         System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
     }

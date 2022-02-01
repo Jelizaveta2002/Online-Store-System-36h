@@ -1,4 +1,3 @@
-
 package ee.taltech.iti0202.idcode;
 
 public class IdCode {
@@ -63,6 +62,12 @@ public class IdCode {
         }
     }
 
+
+    /**
+     * Method returns the id code.
+     *
+     * @return id code.
+     */
     public static boolean CorrectOrNo(String idCodeValue) {
         boolean test = idCodeValue.length() == INT;
         boolean test2 = idCodeValue.matches("^[0-9]*$");

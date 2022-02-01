@@ -12,6 +12,12 @@ public class Introduction {
     public static final int I = 0;
     public static final int INT2 = 1;
     public static final int INT3 = 3;
+    public static final int VALUE_TWO = 6;
+    public static final int INT4 = 9;
+    public static final int INT5 = 24;
+    public static final int INT6 = 7;
+    public static final int INT7 = 8;
+    public static final int INT8 = 12;
 
     /**
      * Method gets two numbers as parameters.
@@ -206,12 +212,12 @@ public class Introduction {
      */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(INT3, 6)); // "bad"
+        System.out.println(introduction.howIsOutcome(INT3, VALUE_TWO)); // "bad"
 
-        List<Integer> nums = new ArrayList<>(Arrays.asList(7, INT, INT3, 6, INT1, INT, 7, 8, 12));
+        List<Integer> nums = new ArrayList<>(Arrays.asList(INT6, INT, INT3, VALUE_TWO, INT1, INT, INT6, INT7, INT8));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
 
-        int[] array = {9, I, 24, -6, INT3};
+        int[] array = {INT4, I, INT5, -VALUE_TWO, INT3};
         System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
 
         String result = introduction.findTheString("Good", "afternoon");

@@ -2,6 +2,7 @@ package ee.taltech.iti0202.idcode;
 
 public class IdCode {
 
+    public static final int INT = 11;
     private final String idCodeValue;
     enum Gender {
         MALE, FEMALE
@@ -24,8 +25,7 @@ public class IdCode {
     }
 
     public static boolean CorrectOrNo(String idCodeValue) {
-        int i = 11;
-        boolean test = idCodeValue.length() == i;
+        boolean test = idCodeValue.length() == INT;
         boolean test2 = idCodeValue.matches("^[0-9]*$");
         return test && test2;
     }

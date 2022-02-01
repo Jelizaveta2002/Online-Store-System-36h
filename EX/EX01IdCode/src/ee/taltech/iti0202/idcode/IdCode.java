@@ -56,7 +56,7 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) {
-        this.idCodeValue = CorrectOrNo(idCodeValue) ? idCodeValue : null;
+        this.idCodeValue = isCorrectOrNo(idCodeValue) ? idCodeValue : null;
         if (this.idCodeValue == null) {
             throw new IllegalArgumentException();
         }
@@ -68,7 +68,7 @@ public class IdCode {
      *
      * @return id code.
      */
-    public static boolean CorrectOrNo(String idCodeValue) {
+    public static boolean isCorrectOrNo(String idCodeValue) {
         boolean test = idCodeValue.length() == INT;
         boolean test2 = idCodeValue.matches("^[0-9]*$");
         return test && test2;

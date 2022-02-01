@@ -96,7 +96,7 @@ public class Introduction {
             }
         } System.out.println(evenNumberList);
         int[] result = new int[evenNumberList.size()];
-        for (int i = I; i <evenNumberList.size() ; i++) {
+        for (int i = I;i < evenNumberList.size();i++) {
             result[i] = evenNumberList.get(i);
         }
         return result;
@@ -157,7 +157,8 @@ public class Introduction {
                 counter += INT2;
                 return counter;
             }
-        } if (word.length() < INT3) {
+        }
+        if (word.length() < INT3) {
             return counter;
         }
         for (int i = I; i < word.length(); i++) {
@@ -170,7 +171,8 @@ public class Introduction {
                 if (symbol == right && symbol == left && symbol != check1 && symbol != check2) {
                     counter += INT2;
                 }
-            } if (i == I) {
+            }
+            if (i == I) {
                 char symbol = word.charAt(i);
                 char right = word.charAt(i + INT2);
                 char check1 =  word.charAt(i + INT1);
@@ -178,7 +180,8 @@ public class Introduction {
                 if (symbol == right && symbol == check1 && symbol != check2) {
                     counter += I;
                 }
-            } if (i == INT2) {
+            }
+            if (i == INT2) {
                 char symbol = word.charAt(i);
                 char right = word.charAt(i + INT2);
                 char check1 =  word.charAt(i - INT2);
@@ -186,7 +189,8 @@ public class Introduction {
                 if (symbol == right && symbol == check1 && symbol != check2) {
                     counter += INT2;
                 }
-            } if (i == last) {
+            }
+            if (i == last) {
                 char symbol = word.charAt(i);
                 char right = word.charAt(i - INT2);
                 char check1 =  word.charAt(i - INT1);
@@ -194,7 +198,8 @@ public class Introduction {
                 if (symbol == right && symbol == check1 && symbol != check2) {
                     counter += I;
                 }
-            } if (i == prelast) {
+            }
+            if (i == prelast) {
                 char symbol = word.charAt(i);
                 char right = word.charAt(i - INT2);
                 char check1 =  word.charAt(i + INT2);
@@ -203,7 +208,8 @@ public class Introduction {
                     counter += INT2;
                 }
             }
-        } return counter;
+        }
+        return counter;
     }
 
     /**

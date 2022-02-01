@@ -7,6 +7,12 @@ import java.util.Locale;
 public class Introduction {
 
 
+    public static final int INT = 5;
+    public static final int INT1 = 2;
+    public static final int I = 0;
+    public static final int INT2 = 1;
+    public static final int INT3 = 3;
+
     /**
      * Method gets two numbers as parameters.
      * Method must answer if the given pair gives bad, normal or good outcome.
@@ -20,9 +26,9 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
-        boolean test1 = valueOne < 5 || valueTwo < 5;
-        boolean test2 = valueTwo / valueOne == 2 || valueOne / valueTwo == 2;
-        boolean test3 = valueOne >= 5 && valueTwo >= 5;
+        boolean test1 = valueOne < INT || valueTwo < INT;
+        boolean test2 = valueTwo / valueOne == INT1 || valueOne / valueTwo == INT1;
+        boolean test3 = valueOne >= INT && valueTwo >= INT;
         System.out.println(test3);
         if (test1 && test2) {
             return "bad";
@@ -52,12 +58,13 @@ public class Introduction {
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
         List<Integer> evenNumberList = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i++) {
+        for (int i = I; i < numbers.size(); i++) {
             int a = numbers.get(i);
-            if (a % 2 == 0) {
+            if (a % INT1 == I) {
                 evenNumberList.add(a);
             }
-        }return evenNumberList;
+        }
+        return evenNumberList;
     }
 
     /**
@@ -73,17 +80,17 @@ public class Introduction {
     public int[] findEvenNumbersArray(int[] numbers) {
         List<Integer> evenNumberList = new ArrayList<>();
         List<Integer> allNumberList = new ArrayList<>();
-        for (int i: numbers) {
+        for (int i : numbers) {
             allNumberList.add(i);
-        }System.out.println(allNumberList);
-        for (int i = 0; i < allNumberList.size(); i++) {
+        } System.out.println(allNumberList);
+        for (int i = I; i < allNumberList.size(); i++) {
             int a = allNumberList.get(i);
-            if (a % 2 == 0) {
+            if (a % INT1 == I) {
                 evenNumberList.add(a);
             }
-        }System.out.println(evenNumberList);
+        } System.out.println(evenNumberList);
         int[] result = new int[evenNumberList.size()];
-        for (int i = 0; i <evenNumberList.size() ; i++) {
+        for (int i = I; i <evenNumberList.size() ; i++) {
             result[i] = evenNumberList.get(i);
         }
         return result;
@@ -109,14 +116,14 @@ public class Introduction {
             //int diff = first.length() - second.length();
             StringBuilder firstB = new StringBuilder(first);
             while (firstB.length() > second.length()) {
-                firstB.deleteCharAt(0);
+                firstB.deleteCharAt(I);
             } String myString = firstB.toString();
             String result = myString + second;
             return result.toLowerCase(Locale.ROOT);
         } else if (first.length() < second.length()) {
             StringBuilder secondB = new StringBuilder(second);
             while (secondB.length() > first.length()) {
-                secondB.deleteCharAt(0);
+                secondB.deleteCharAt(I);
             } String myString = secondB.toString();
             String result = first + myString;
             return result.toUpperCase(Locale.ROOT);
@@ -131,63 +138,63 @@ public class Introduction {
      * @param word String
      * @return The number of triples
      */
-    public int countTripleChars(String word){
-        int counter = 0;
+    public int countTripleChars(String word) {
+        int counter = I;
         int wordLength = word.length();
-        int last = wordLength - 1;
-        int prelast = last - 1;
-        if (word.length() == 3) {
-            char symbol = word.charAt(0);
-            char right = word.charAt(1);
-            char check1 =  word.charAt(2);
+        int last = wordLength - INT2;
+        int prelast = last - INT2;
+        if (word.length() == INT3) {
+            char symbol = word.charAt(I);
+            char right = word.charAt(INT2);
+            char check1 =  word.charAt(INT1);
             if (symbol == right && symbol == check1) {
-                counter += 1;
+                counter += INT2;
                 return counter;
             }
-        } if (word.length() < 3) {
+        } if (word.length() < INT3) {
             return counter;
         }
-        for (int i = 0; i < word.length(); i++) {
-            if (i != last && i != prelast && i != 0 && i != 1) {
+        for (int i = I; i < word.length(); i++) {
+            if (i != last && i != prelast && i != I && i != INT2) {
                 char symbol = word.charAt(i);
-                char right = word.charAt(i + 1);
-                char left =  word.charAt(i - 1);
-                char check1 =  word.charAt(i + 2);
-                char check2 =  word.charAt(i - 2);
+                char right = word.charAt(i + INT2);
+                char left =  word.charAt(i - INT2);
+                char check1 =  word.charAt(i + INT1);
+                char check2 =  word.charAt(i - INT1);
                 if (symbol == right && symbol == left && symbol != check1 && symbol != check2) {
-                    counter += 1;
+                    counter += INT2;
                 }
-            } if (i == 0) {
+            } if (i == I) {
                 char symbol = word.charAt(i);
-                char right = word.charAt(i + 1);
-                char check1 =  word.charAt(i + 2);
-                char check2 =  word.charAt(i + 3);
+                char right = word.charAt(i + INT2);
+                char check1 =  word.charAt(i + INT1);
+                char check2 =  word.charAt(i + INT3);
                 if (symbol == right && symbol == check1 && symbol != check2) {
-                    counter += 0;
+                    counter += I;
                 }
-            } if (i == 1) {
+            } if (i == INT2) {
                 char symbol = word.charAt(i);
-                char right = word.charAt(i + 1);
-                char check1 =  word.charAt(i - 1);
-                char check2 =  word.charAt(i + 2);
+                char right = word.charAt(i + INT2);
+                char check1 =  word.charAt(i - INT2);
+                char check2 =  word.charAt(i + INT1);
                 if (symbol == right && symbol == check1 && symbol != check2) {
-                    counter += 1;
+                    counter += INT2;
                 }
             } if (i == last) {
                 char symbol = word.charAt(i);
-                char right = word.charAt(i - 1);
-                char check1 =  word.charAt(i - 2);
-                char check2 =  word.charAt(i - 3);
+                char right = word.charAt(i - INT2);
+                char check1 =  word.charAt(i - INT1);
+                char check2 =  word.charAt(i - INT3);
                 if (symbol == right && symbol == check1 && symbol != check2) {
-                    counter += 0;
+                    counter += I;
                 }
             } if (i == prelast) {
                 char symbol = word.charAt(i);
-                char right = word.charAt(i - 1);
-                char check1 =  word.charAt(i + 1);
-                char check2 =  word.charAt(i - 2);
+                char right = word.charAt(i - INT2);
+                char check1 =  word.charAt(i + INT2);
+                char check2 =  word.charAt(i - INT1);
                 if (symbol == right && symbol == check1 && symbol != check2) {
-                    counter += 1;
+                    counter += INT2;
                 }
             }
         } return counter;
@@ -199,12 +206,12 @@ public class Introduction {
      */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(3, 6)); // "bad"
+        System.out.println(introduction.howIsOutcome(INT3, 6)); // "bad"
 
-        List<Integer> nums = new ArrayList<>(Arrays.asList(7, 5, 3, 6, 2, 5, 7, 8, 12));
+        List<Integer> nums = new ArrayList<>(Arrays.asList(7, INT, INT3, 6, INT1, INT, 7, 8, 12));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
 
-        int[] array = {9, 0, 24, -6, 3};
+        int[] array = {9, I, 24, -6, INT3};
         System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
 
         String result = introduction.findTheString("Good", "afternoon");

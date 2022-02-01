@@ -19,11 +19,24 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
+        boolean first = false;
+        boolean second = false;
+        boolean third = false;
         if (valueOne < 5 || valueTwo < 5){
-            return "bad";
-        } if (valueTwo / valueOne == 2) {
+            first = true;
+        } else if (valueTwo / valueOne == 2 || valueOne / valueTwo == 2) {
+            second = true;
+        } else if (valueOne >= 5 || valueTwo >= 5){
+            third = true;
+        } else if (first == true && second == true) {
             return "good";
-        } if (valueOne > 5 || valueTwo > 5){
+        } else if (third == true && second == true) {
+            return "good";
+        } else if (first == true) {
+            return "bad";
+        } else if (second == true) {
+            return "good";
+        } else if (third == true) {
             return "ok";
         }
         return null;
@@ -89,7 +102,7 @@ public class Introduction {
      */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(3, 6)); // "bad"
+        System.out.println(introduction.howIsOutcome(8, 9)); // "bad"
 
         List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]

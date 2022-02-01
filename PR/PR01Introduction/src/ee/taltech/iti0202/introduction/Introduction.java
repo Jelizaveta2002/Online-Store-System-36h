@@ -2,6 +2,7 @@ package ee.taltech.iti0202.introduction;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Introduction {
 
@@ -98,7 +99,25 @@ public class Introduction {
      * @return String based on the values of first and second
      */
     public String findTheString(String first, String second) {
-        return "";
+        if (first.length() == second.length()) {
+            return first + second;
+        } else if (first.length() > second.length()) {
+            //int diff = first.length() - second.length();
+            StringBuilder firstB = new StringBuilder(first);
+            while (firstB.length() > second.length()) {
+                firstB.deleteCharAt(0);
+            } String myString = firstB.toString();
+            String result = myString + second;
+            return result.toLowerCase(Locale.ROOT);
+        } else if (first.length() < second.length()) {
+            StringBuilder secondB = new StringBuilder(second);
+            while (secondB.length() > first.length()) {
+                secondB.deleteCharAt(0);
+            } String myString = secondB.toString();
+            String result = first + myString;
+            return result.toUpperCase(Locale.ROOT);
+        }
+        return null;
     }
 
     /**

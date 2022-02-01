@@ -46,7 +46,12 @@ public class Introduction {
      * @return list of even numbers.
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
-        return null;
+        List<Integer> evenNumberList = new ArrayList<>();
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i % 2 == 0) {
+                evenNumberList.add(i);
+            }
+        }return evenNumberList;
     }
 
     /**

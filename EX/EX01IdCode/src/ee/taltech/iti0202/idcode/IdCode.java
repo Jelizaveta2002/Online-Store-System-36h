@@ -96,7 +96,8 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + getGender() + " " + "born on" + " " + getDay() + "." + getMonth() + "." + getFullYear() + " " + "in" + " " + getBirthPlace();
+        return "This is a " + getGender() + " " + "born on" + " " + getDay() + "." + getMonth() + "." + getFullYear()
+                + " " + "in" + " " + getBirthPlace();
     }
 
     /**

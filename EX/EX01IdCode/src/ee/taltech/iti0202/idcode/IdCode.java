@@ -148,7 +148,7 @@ public class IdCode {
 
     /**
      * Get the year that the person was born in.
-     *@param
+     *@param s
      * @return int with person's birth year.
      */
     public String removeLastChar(String s) {

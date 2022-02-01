@@ -22,7 +22,7 @@ public class Introduction {
     public String howIsOutcome(int valueOne, int valueTwo) {
         boolean test1 = valueOne < 5 || valueTwo < 5;
         boolean test2 = valueTwo / valueOne == 2 || valueOne / valueTwo == 2;
-        boolean test3 = valueOne >= 5 || valueTwo >= 5;
+        boolean test3 = valueOne >= 5 && valueTwo >= 5;
         System.out.println(test3);
         if (test1 && test2) {
             return "bad";

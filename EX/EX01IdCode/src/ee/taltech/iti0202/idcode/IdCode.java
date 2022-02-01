@@ -106,9 +106,8 @@ public class IdCode {
             return "Viljandi";
         }else if (651 <= number && number <= 710){
             return "Võru";
-        }else if (0 == number && number >= 711){
-            return "unknown";
-        }return "unknown";
+        }
+        return "unknown";
     }
 
     /**

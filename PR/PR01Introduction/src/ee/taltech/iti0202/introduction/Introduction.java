@@ -96,7 +96,7 @@ public class Introduction {
             }
         } System.out.println(evenNumberList);
         int[] result = new int[evenNumberList.size()];
-        for (int i = I;i < evenNumberList.size();i++) {
+        for (int i = I ; i < evenNumberList.size() ; i++) {
             result[i] = evenNumberList.get(i);
         }
         return result;
@@ -105,7 +105,8 @@ public class Introduction {
     /**
      * Method gets two Strings as parameters.
      * If two words have the same length, just put them together. If the length is
-     * different, remove so many letters from the beginning of the longer word that the two words are the same length, and
+     * different, remove so many letters from the beginning of the longer word that the two words are the same
+     * length, and
      * then put them together.
      * If the first word was longer, return the answer in lower case. If the second word was longer,
      * return the answer in capital letters.

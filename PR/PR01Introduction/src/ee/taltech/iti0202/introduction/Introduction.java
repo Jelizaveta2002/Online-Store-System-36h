@@ -19,16 +19,20 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
-        if (valueOne < 5 || valueTwo < 5 && valueTwo / valueOne == 2 || valueOne / valueTwo == 2) {
+        boolean test1 = valueOne < 5 || valueTwo < 5;
+        boolean test2 = valueTwo / valueOne == 2 || valueOne / valueTwo == 2;
+        boolean test3 = valueOne >= 5 || valueTwo >= 5;
+        System.out.println(test3);
+        if (test1 && test2) {
             return "good";
-        } else if (valueTwo / valueOne == 2 || valueOne / valueTwo == 2 && valueOne >= 5 || valueTwo >= 5) {
+        } if (test2 && test3) {
             return "good";
-        } else if (valueOne >= 5 || valueTwo >= 5) {
-            return "ok";
-        } else if (valueTwo / valueOne == 2 || valueOne / valueTwo == 2) {
-            return "good";
-        } else if (valueOne < 5 || valueTwo < 5) {
+        } if (test1) {
             return "bad";
+        } if (test2) {
+            return "good";
+        } if (test3) {
+            return "ok";
         }
         return null;
     }
@@ -93,7 +97,7 @@ public class Introduction {
      */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(6, 12)); // "bad"
+        System.out.println(introduction.howIsOutcome(1, 10)); // "bad"
 
         List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]

@@ -96,7 +96,7 @@ public class Introduction {
             }
         } System.out.println(evenNumberList);
         int[] result = new int[evenNumberList.size()];
-        for (int i = I ; i < evenNumberList.size() ; i++) {
+        for (int i = I; i < evenNumberList.size(); i++) {
             result[i] = evenNumberList.get(i);
         }
         return result;

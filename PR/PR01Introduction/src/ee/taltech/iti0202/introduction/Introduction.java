@@ -66,7 +66,22 @@ public class Introduction {
      * @return array of even numbers.
      */
     public int[] findEvenNumbersArray(int[] numbers) {
-        return null;
+        List<Integer> evenNumberList = new ArrayList<>();
+        List<Integer> allNumberList = new ArrayList<>();
+        for (int i: numbers) {
+            allNumberList.add(i);
+        }System.out.println(allNumberList);
+        for (int i = 0; i < allNumberList.size(); i++) {
+            int a = allNumberList.get(i);
+            if (a % 2 == 0) {
+                evenNumberList.add(a);
+            }
+        }System.out.println(evenNumberList);
+        int[] result = new int[evenNumberList.size()];
+        for (int i = 0; i <evenNumberList.size() ; i++) {
+            result[i] = evenNumberList.get(i);
+        }
+        return result;
     }
 
     /**

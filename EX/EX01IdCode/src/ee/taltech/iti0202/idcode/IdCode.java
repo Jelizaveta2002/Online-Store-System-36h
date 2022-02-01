@@ -250,13 +250,14 @@ public class IdCode {
                     return INT25 <= day && INT30 >= day;
                 }
             } for (int element: thirtyOneDays) {
-                if (element == month){
+                if (element == month) {
                     return INT25 <= day && INT31 >= day;
                 }
-            } if(isLeapYear(fullYear) && month == INDEX) {
+            } if (isLeapYear(fullYear) && month == INDEX) {
                 return INT25 <= day && INT32 >= day;
-            } else if (month == INDEX){
-                return INT25 <= day && INT33 >= day;            } else {
+            } else if (month == INDEX) {
+                return INT25 <= day && INT33 >= day;
+            } else {
                 return false;
             }
         } else {

@@ -48,8 +48,9 @@ public class Introduction {
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
         List<Integer> evenNumberList = new ArrayList<>();
         for (int i = 0; i < numbers.size(); i++) {
-            if (i % 2 == 0) {
-                evenNumberList.add(i);
+            int a = numbers.get(i);
+            if (a % 2 == 0) {
+                evenNumberList.add(a);
             }
         }return evenNumberList;
     }
@@ -104,7 +105,7 @@ public class Introduction {
         Introduction introduction = new Introduction();
         System.out.println(introduction.howIsOutcome(1, 10)); // "bad"
 
-        List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
+        List<Integer> nums = new ArrayList<>(Arrays.asList(7, 5, 3, 6, 2, 5, 7, 8, 12));
         System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
 
         int[] array = {9, 0, 24, -6, 3};

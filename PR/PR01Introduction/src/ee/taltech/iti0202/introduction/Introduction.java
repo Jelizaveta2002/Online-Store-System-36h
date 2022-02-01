@@ -128,7 +128,54 @@ public class Introduction {
      * @return The number of triples
      */
     public int countTripleChars(String word){
-        return -1;
+        int counter = 0;
+        int wordLength = word.length();
+        int last = wordLength - 1;
+        int prelast = last - 1;
+        for (int i = 0; i < word.length(); i++) {
+            if (i != last && i != prelast && i != 0 && i != 1) {
+                char symbol = word.charAt(i);
+                char right = word.charAt(i + 1);
+                char left =  word.charAt(i - 1);
+                char check1 =  word.charAt(i + 2);
+                char check2 =  word.charAt(i - 2);
+                if (symbol == right && symbol == left && symbol != check1 && symbol != check2) {
+                    counter += 1;
+                }
+            } if (i == 0) {
+                char symbol = word.charAt(i);
+                char right = word.charAt(i + 1);
+                char check1 =  word.charAt(i + 2);
+                char check2 =  word.charAt(i + 3);
+                if (symbol == right && symbol == check1 && symbol != check2) {
+                    counter += 0;
+                }
+            } if (i == 1) {
+                char symbol = word.charAt(i);
+                char right = word.charAt(i + 1);
+                char check1 =  word.charAt(i - 1);
+                char check2 =  word.charAt(i + 2);
+                if (symbol == right && symbol == check1 && symbol != check2) {
+                    counter += 1;
+                }
+            } if (i == last) {
+                char symbol = word.charAt(i);
+                char right = word.charAt(i - 1);
+                char check1 =  word.charAt(i - 2);
+                char check2 =  word.charAt(i - 3);
+                if (symbol == right && symbol == check1 && symbol != check2) {
+                    counter += 0;
+                }
+            } if (i == prelast) {
+                char symbol = word.charAt(i);
+                char right = word.charAt(i - 1);
+                char check1 =  word.charAt(i + 1);
+                char check2 =  word.charAt(i - 2);
+                if (symbol == right && symbol == check1 && symbol != check2) {
+                    counter += 1;
+                }
+            }
+        } return counter;
     }
 
     /**
@@ -154,7 +201,7 @@ public class Introduction {
         System.out.println(introduction.findTheString("  ", "a"));  //  a  (with space in front)
 
         System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
-        System.out.println(introduction.countTripleChars("aaa"));  // 1
+//        System.out.println(introduction.countTripleChars("aaa"));  // 1
         System.out.println(introduction.countTripleChars("aaaa"));  // 0
         System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
     }

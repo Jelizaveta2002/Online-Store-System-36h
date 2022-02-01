@@ -1,9 +1,5 @@
 package ee.taltech.iti0202.idcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class IdCode {
 
     private final String idCodeValue;
@@ -21,7 +17,7 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) {
-        this.idCodeValue = CorrectOrNo(idCodeValue) ? idCodeValue:null;
+        this.idCodeValue = CorrectOrNo(idCodeValue) ? idCodeValue : null;
         if (this.idCodeValue == null){
             throw new IllegalArgumentException();
         }
@@ -30,12 +26,6 @@ public class IdCode {
     public static boolean CorrectOrNo(String idCodeValue) {
         boolean test = idCodeValue.length() == 11;
         boolean test2 = idCodeValue.matches("^[0-9]*$");
-//        boolean first = isControlNumberCorrect();
-//        boolean second = isGenderNumberCorrect();
-//        boolean third = isDayNumberCorrect();
-//        boolean forth = isMonthNumberCorrect();
-//        boolean five = isYearNumberCorrect();
-//        return first && second && third && forth && five && test && test2;
         return test && test2;
     }
 
@@ -72,7 +62,8 @@ public class IdCode {
     public Gender getGender() {
         if (idCodeValue.charAt(0) % 2 == 0) {
             return Gender.FEMALE;
-        }else {
+        }
+        else {
             return Gender.MALE;
         }
     }
@@ -84,27 +75,37 @@ public class IdCode {
      */
     public String getBirthPlace() {
         int number = getNumber();
-        if (1 <= number && number <= 10){
+        if (1 <= number && number <= 10) {
             return "Kuressaare";
-        }else if (11 <= number && number <= 20 || 271 <= number && number <= 370){
+        }
+        else if (11 <= number && number <= 20 || 271 <= number && number <= 370) {
             return "Tartu";
-        }else if (21 <= number && number <= 220 || 471 <= number && number <= 490){
+        }
+        else if (21 <= number && number <= 220 || 471 <= number && number <= 490) {
             return "Tallinn";
-        }else if (221 <= number && number <= 270){
+        }
+        else if (221 <= number && number <= 270) {
             return "Kohtla-Järve";
-        }else if (371 <= number && number <= 420){
+        }
+        else if (371 <= number && number <= 420) {
             return "Narva";
-        }else if (421 <= number && number <= 470){
+        }
+        else if (421 <= number && number <= 470) {
             return "Pärnu";
-        }else if (491 <= number && number <= 520){
+        }
+        else if (491 <= number && number <= 520) {
             return "Paide";
-        }else if (521 <= number && number <= 570){
+        }
+        else if (521 <= number && number <= 570) {
             return "Rakvere";
-        }else if (571 <= number && number <= 600){
+        }
+        else if (571 <= number && number <= 600) {
             return "Valga";
-        }else if (601 <= number && number <= 650){
+        }
+        else if (601 <= number && number <= 650) {
             return "Viljandi";
-        }else if (651 <= number && number <= 710){
+        }
+        else if (651 <= number && number <= 710) {
             return "Võru";
         }
         return "unknown";
@@ -133,13 +134,16 @@ public class IdCode {
         if (idCodeValue.charAt(0) == '1' || idCodeValue.charAt(0) == '2') {
             String str = "18" + full_year;
             number = Integer.parseInt(str);
-        }else if (idCodeValue.charAt(0) == '3' || idCodeValue.charAt(0) == '4') {
+        }
+        else if (idCodeValue.charAt(0) == '3' || idCodeValue.charAt(0) == '4') {
             String str = "19" + full_year;
             number = Integer.parseInt(str);
-        }else if (idCodeValue.charAt(0) == '5' || idCodeValue.charAt(0) == '6') {
+        }
+        else if (idCodeValue.charAt(0) == '5' || idCodeValue.charAt(0) == '6') {
             String str = "20" + full_year;
             number = Integer.parseInt(str);
-        }return number;
+        }
+        return number;
     }
 
     /**
@@ -208,18 +212,21 @@ public class IdCode {
         int[] thirty_one_days = new int[]{1, 3, 5, 7, 8, 10, 12};
         int full_year = getFullYear();
         boolean gen = isGenderNumberCorrect();
-        if (full_year <= 2099 && full_year >= 1800 && gen){
-            for (int element: thirty_days){
-                if (element == month){
+        if (full_year <= 2099 && full_year >= 1800 && gen) {
+            for (int element: thirty_days) {
+                if (element == month) {
                     return 1 <= day && 30 >= day;
                 }
-            }for (int element: thirty_one_days){
+            }
+            for (int element: thirty_one_days) {
                 if (element == month){
                     return 1 <= day && 31 >= day;
                 }
-            }if(isLeapYear(full_year) && month == 2){
+            }
+            if(isLeapYear(full_year) && month == 2) {
                 return 1 <= day && 29 >= day;
-            }else if (month == 2){
+            }
+            else if (month == 2){
                 return 1 <= day && 28 >= day;            }else{
                 return false;
             }
@@ -253,28 +260,33 @@ public class IdCode {
             my_el = intElement * num;
             new_element[i] = my_el;
         }int sum = 0;
-        for (Integer u : new_element){
+        for (Integer u : new_element) {
             sum += u;
-        }System.out.println(sum);
-        if (sum % 11 == 10){
+        }
+        System.out.println(sum);
+        if (sum % 11 == 10) {
             i = -1;
             y = -1;
-            for (int element: result){
+            for (int element: result) {
                 int intElement = Character.getNumericValue(element);
                 i += 1;
                 y += 1;
                 int num = second_balance[y];
                 int my_el = intElement * num;
                 one_element[i] = my_el;
-            }int sum2 = 0;
+            }
+            int sum2 = 0;
             for (Integer u : one_element){
                 sum2 += u;
-            }if (sum2 % 11 == 10){
+            }
+            if (sum2 % 11 == 10){
                 return Character.getNumericValue(idCodeValue.charAt(10)) == 0;
-            }else{
+            }
+            else{
                 return Character.getNumericValue(idCodeValue.charAt(10)) == sum2 % 11;
             }
-        }else{
+        }
+        else {
             int val = Character.getNumericValue(idCodeValue.charAt(10));
             int val2 = sum % 11;
             return val == val2;
@@ -288,40 +300,33 @@ public class IdCode {
      * @return boolean describing whether the given year is a leap year.
      */
     private boolean isLeapYear(int fullYear) {
-//        int number = 0;
-//        char year_num1 = idCodeValue.charAt(1);
-//        String str1 = Character.toString(year_num1);
-//        char year_num2 = idCodeValue.charAt(2);
-//        String str2 = Character.toString(year_num2);
-//        String full_year = str1 + str2;
-//        number = Integer.parseInt(full_year);
         return fullYear % 4 == 0 && fullYear % 100 != 0 || fullYear % 400 == 0;
     }
 
     public String getMonth() {
-        char month_1 = idCodeValue.charAt(3);
-        String str1 = Character.toString(month_1);
-        char month_2 = idCodeValue.charAt(4);
-        String str2 = Character.toString(month_2);
+        char month1 = idCodeValue.charAt(3);
+        String str1 = Character.toString(month1);
+        char month2 = idCodeValue.charAt(4);
+        String str2 = Character.toString(month2);
         return str1 + str2;
     }
 
     public String getDay() {
-        char month_1 = idCodeValue.charAt(5);
-        String str1 = Character.toString(month_1);
-        char month_2 = idCodeValue.charAt(6);
-        String str2 = Character.toString(month_2);
+        char month1 = idCodeValue.charAt(5);
+        String str1 = Character.toString(month1);
+        char month2 = idCodeValue.charAt(6);
+        String str2 = Character.toString(month2);
         return str1 + str2;
     }
 
     public int getNumber() {
         int month = 0;
-        char month_1 = idCodeValue.charAt(7);
-        String str1 = Character.toString(month_1);
-        char month_2 = idCodeValue.charAt(8);
-        String str2 = Character.toString(month_2);
-        char month_3 = idCodeValue.charAt(9);
-        String str3 = Character.toString(month_3);
+        char month1 = idCodeValue.charAt(7);
+        String str1 = Character.toString(month1);
+        char month2 = idCodeValue.charAt(8);
+        String str2 = Character.toString(month2);
+        char month3 = idCodeValue.charAt(9);
+        String str3 = Character.toString(month3);
         String full_month = str1 + str2 + str3;
         month = Integer.parseInt(full_month);
         return month;

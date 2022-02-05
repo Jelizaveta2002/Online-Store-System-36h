@@ -27,7 +27,17 @@ public class DataStructures {
      * @return the longest String from input
      */
     public static String findLongestWord(String sentence) {
-        return null;
+        String[] myArray = sentence.split(" ");
+        List<String> longestOne = new ArrayList<>();
+        int maxLength = 0;
+        String longest = null;
+        for (String a : myArray) {
+            if (a.length() > maxLength) {
+                maxLength = a.length();
+                longest = a;
+            }
+        }
+        return longest;
     }
 
     /**

@@ -36,8 +36,12 @@ public class DataStructures {
                 maxLength = a.length();
                 longest = a;
             }
-        }
-        return longest;
+        } for (String a : myArray) {
+            if (a.length() == maxLength) {
+                longestOne.add(a);
+            }
+        } java.util.Collections.sort(longestOne);
+        return longestOne.get(0);
     }
 
     /**
@@ -94,7 +98,7 @@ public class DataStructures {
      * @param args Commend line arguments.
      */
     public static void main(String[] args) {
-        System.out.println(findLongestWord("nimi on salastatud"));  // "salastatud"
+        System.out.println(findLongestWord("nimi on salastatud aaaaaaaaaa"));  // "salastatud"
         System.out.println(findLongestWord("aaa bbbbb"));  // "bbbbb"
         System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 

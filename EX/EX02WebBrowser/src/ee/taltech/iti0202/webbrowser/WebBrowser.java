@@ -9,6 +9,7 @@ public class WebBrowser {
     Stack<String> forward = new Stack<>();
     String currentPage;
     List<String> history = new ArrayList<>();
+    List<String> bookmark = new ArrayList<>();
 
     /**
      * Goes to homepage.
@@ -57,6 +58,12 @@ public class WebBrowser {
      */
     public void addAsBookmark() {
         //TODO: implement
+        String myPage = currentPage.toString();
+        for (String i : bookmark) {
+            if (i == myPage) {
+                return;
+            }
+        } bookmark.add(currentPage);
     }
 
     /**

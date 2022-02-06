@@ -25,7 +25,9 @@ public class WebBrowser {
      */
     public void back() {
         //TODO: implement
-        forward.push(currentPage);
+        if (currentPage != null) {
+            forward.push(currentPage);;
+        }
         currentPage = back.pop();
         addHistory();
     }
@@ -41,8 +43,12 @@ public class WebBrowser {
      */
     public void forward() {
         //TODO: implement
-        back.push(currentPage);
-        currentPage = forward.pop();
+        if (currentPage != null) {
+            back.push(currentPage);
+        }
+        if (! forward.isEmpty()) {
+            currentPage = forward.pop();
+        }
         addHistory();
     }
 
@@ -219,18 +225,19 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser browser = new WebBrowser();
-        browser.goTo("google.com");
-        browser.goTo("yahoo.com");
-        browser.goTo("facebook.com");
-        browser.goTo("ois.ee");
-        browser.goTo("jetbrains.com");
-        browser.goTo("taltech.com");
-        browser.goTo("solnet.net");
-        browser.goTo("instagram.com");
-        browser.goTo("google.com");
-        browser.goTo("facebook.com");
-        browser.goTo("ois.ee");
-        browser.goTo("google.com");
+//        browser.goTo("google.com");
+//        browser.goTo("yahoo.com");
+//        browser.goTo("facebook.com");
+//        browser.goTo("ois.ee");
+//        browser.goTo("jetbrains.com");
+//        browser.goTo("taltech.com");
+//        browser.goTo("solnet.net");
+//        browser.goTo("instagram.com");
+//        browser.goTo("google.com");
+//        browser.goTo("facebook.com");
+//        browser.goTo("ois.ee");
+//        browser.goTo("google.com");
+        browser.forward();
         System.out.println(browser.getTop3VisitedPages());
 
     }

@@ -100,12 +100,14 @@ public class WebBrowser {
                 map.put(a, 1);
             }
         } int maxVisits = 0;
+        String result = null;
         for (Integer i = 0; i < 3; i++ ) {
             for (String key : map.keySet()) {
                 int value = map.get(key);
                 if (value > maxVisits) {
                     maxVisits = value;
-                } mostVisited.add(key);
+                    result = key;
+                } mostVisited.add(result);
                 map.remove(key);
             }
         } StringBuilder myString = null;

@@ -50,7 +50,7 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        //history.add(currentPage);
+        history.add(currentPage);
     }
 
     /**

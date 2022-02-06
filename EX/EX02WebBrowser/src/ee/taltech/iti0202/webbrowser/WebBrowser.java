@@ -28,6 +28,8 @@ public class WebBrowser {
         //TODO: implement
         if (currentPage != null) {
             forward.push(currentPage);;
+        } if (! back.isEmpty()) {
+            currentPage = back.pop();
         } history.add(currentPage);
     }
 
@@ -50,9 +52,6 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         //TODO: implement
-        back.push(currentPage);
-        currentPage = url;
-        forward.clear();
         history.add(currentPage);
     }
 

@@ -31,6 +31,7 @@ public class WebBrowser {
         if (! back.isEmpty()) {
             currentPage = back.pop();
         }
+
         addHistory();
     }
 
@@ -60,9 +61,6 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-//        if (url == null) {
-//            return;
-//        }
         //TODO: implement
         back.push(currentPage);
         currentPage = url;

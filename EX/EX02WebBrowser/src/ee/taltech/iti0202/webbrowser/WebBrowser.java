@@ -5,7 +5,7 @@ public class WebBrowser {
     private static String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
-    String currentPage = homePage;
+    String currentPage;
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
 

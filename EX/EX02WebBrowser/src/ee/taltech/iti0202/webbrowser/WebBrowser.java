@@ -2,10 +2,10 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.*;
 
 public class WebBrowser {
-    private String homePage;
+    private static String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
-    String currentPage;
+    String currentPage = homePage;
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
 
@@ -18,7 +18,6 @@ public class WebBrowser {
     public void homePage() {
         //TODO: implement
         goTo(homePage);
-        history.add(homePage);
     }
 
     /**

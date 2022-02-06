@@ -95,13 +95,15 @@ public class DataStructures {
      * @param studentInfo String with a pattern (name:grade)
      */
     public void addStudent(String studentInfo) {
+        List<String> resultList = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
         String[] myArray = studentInfo.split(":");
         String grade = myArray[1];
         int finalGrade = Integer.parseInt(grade);
         if (finalGrade >= 0 && finalGrade <= 5) {
-            map.put(myArray[0], finalGrade);
-        }
+//            map.put(myArray[0], finalGrade);
+            resultList.add(studentInfo);
+        }System.out.println(map);
     }
 
     /**

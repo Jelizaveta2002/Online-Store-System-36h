@@ -28,9 +28,11 @@ public class WebBrowser {
         //TODO: implement
         if (currentPage != null) {
             forward.push(currentPage);;
-        } if (! back.isEmpty()) {
+        }
+        if (! back.isEmpty()) {
             currentPage = back.pop();
-        } history.add(currentPage);
+        }
+        history.add(currentPage);
     }
 
     /**
@@ -162,3 +164,4 @@ public class WebBrowser {
         return currentPage;
     }
 }
+

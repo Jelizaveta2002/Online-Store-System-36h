@@ -75,7 +75,16 @@ public class DataStructures {
      * @return list of strings matching criteria
      */
     public static List<String> onlyEvenWords(List<String> words) {
-        return null;
+        List<String> resultList = new ArrayList<>();
+        String[] strings = words.toArray(String[]::new);
+        Map map = wordCount(strings);
+        for (Object key : map.keySet()) {
+            int numericValue = (Integer) map.get(key);
+            if (numericValue % 2 == 0) {
+                String keyToBeAdded = (String) key;
+                resultList.add(keyToBeAdded);
+            }
+        } return resultList;
     }
 
     /**

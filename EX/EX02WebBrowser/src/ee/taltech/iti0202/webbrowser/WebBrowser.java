@@ -37,6 +37,7 @@ public class WebBrowser {
         //TODO: implement
         back.push(currentPage);
         currentPage = forward.pop();
+        history.add(currentPage);
     }
 
     /**
@@ -49,6 +50,7 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
+        //history.add(currentPage);
     }
 
     /**
@@ -92,14 +94,15 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         //TODO: implement
         HashMap<String, Integer> map = new HashMap<>();
-        List<String> mostVisited = new ArrayList<>();
-        for (String a : history) {
-            if (map.containsKey(a)) {
-                map.put(a, map.get(a) + 1);
+        HashMap<String, Integer> resultMap = new HashMap<>();
+        for (String url : history) {
+            if (map.containsKey(url)) {
+                map.put(url, map.get(url) + 1);
             } else {
-                map.put(a, 1);
+                map.put(url, 1);
             }
-        } int maxVisits = 0;
+        }
+        int maxVisits = 0;
         String result = null;
         for (String key : map.keySet()) {
             int value = map.get(key);
@@ -107,31 +110,32 @@ public class WebBrowser {
                 maxVisits = value;
                 result = key;
             }
-        } mostVisited.add(result);
+        } resultMap.put(result, maxVisits);
         map.remove(result);
+        System.out.println(map);
         int maxVisits1 = 0;
         String result1 = null;
         for (String key : map.keySet()) {
             int value = map.get(key);
-            if (value > maxVisits) {
-                maxVisits = value;
-                result = key;
+            if (value > maxVisits1) {
+                maxVisits1 = value;
+                result1 = key;
             }
-        } mostVisited.add(result);
-         map.remove(result);
+        } resultMap.put(result1, maxVisits1);
+         map.remove(result1);
         int maxVisits2 = 0;
         String result2 = null;
         for (String key : map.keySet()) {
             int value = map.get(key);
-            if (value > maxVisits) {
-                maxVisits = value;
-                result = key;
+            if (value > maxVisits2) {
+                maxVisits2 = value;
+                result2 = key;
             }
-        } mostVisited.add(result);
-        map.remove(result);
-        StringBuilder myString = null;
-        for (String a : mostVisited) {
-            myString.append(a + "\n");
+        } resultMap.put(result2, maxVisits2);
+        map.remove(result2);
+        StringBuilder myString = new StringBuilder();
+        for (String key : resultMap.keySet()) {
+            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
         } String finalResult = myString.toString();
         return finalResult;
     }
@@ -159,5 +163,23 @@ public class WebBrowser {
     public String getCurrentUrl() {
         //TODO: implement
         return currentPage;
+    }
+
+    public static void main(String[] args) {
+        WebBrowser browser = new WebBrowser();
+        browser.goTo("google.com");
+        browser.goTo("yahoo.com");
+        browser.goTo("facebook.com");
+        browser.goTo("ois.ee");
+        browser.goTo("jetbrains.com");
+        browser.goTo("taltech.com");
+        browser.goTo("solnet.net");
+        browser.goTo("instagram.com");
+        browser.goTo("google.com");
+        browser.goTo("facebook.com");
+        browser.goTo("ois.ee");
+        browser.goTo("google.com");
+        System.out.println(browser.getTop3VisitedPages());
+
     }
 }

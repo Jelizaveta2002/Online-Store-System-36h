@@ -18,6 +18,7 @@ public class WebBrowser {
     public void homePage() {
         //TODO: implement
         goTo(homePage);
+        history.add(homePage);
     }
 
     /**
@@ -148,58 +149,6 @@ public class WebBrowser {
         return myString.toString();
 
     }
-//    public String getTop3VisitedPages() {
-//        //TODO: implement
-//        HashMap<String, Integer> map = new HashMap<>();
-//        HashMap<String, Integer> resultMap = new HashMap<>();
-//        for (String url : history) {
-//            if (map.containsKey(url)) {
-//                map.put(url, map.get(url) + 1);
-//            } else {
-//                map.put(url, 1);
-//            }
-//        }
-//        if (map.size() == 1) {
-//            return helpFunction(map);
-//        }
-//        if (map.size() == 1)
-//        int maxVisits = 0;
-//        String result = null;
-//        for (String key : map.keySet()) {
-//            int value = map.get(key);
-//            if (value > maxVisits) {
-//                maxVisits = value;
-//                result = key;
-//            }
-//        } resultMap.put(result, maxVisits);
-//        map.remove(result);
-//        System.out.println(map);
-//        int maxVisits1 = 0;
-//        String result1 = null;
-//        for (String key : map.keySet()) {
-//            int value = map.get(key);
-//            if (value > maxVisits1) {
-//                maxVisits1 = value;
-//                result1 = key;
-//            }
-//        } resultMap.put(result1, maxVisits1);
-//         map.remove(result1);
-//        int maxVisits2 = 0;
-//        String result2 = null;
-//        for (String key : map.keySet()) {
-//            int value = map.get(key);
-//            if (value > maxVisits2) {
-//                maxVisits2 = value;
-//                result2 = key;
-//            }
-//        } resultMap.put(result2, maxVisits2);
-//        map.remove(result2);
-//        StringBuilder myString = new StringBuilder();
-//        for (String key : resultMap.keySet()) {
-//            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
-//        } String finalResult = myString.toString();
-//        return finalResult;
-//    }
 
     /**
      * Returns a list of all visited pages.

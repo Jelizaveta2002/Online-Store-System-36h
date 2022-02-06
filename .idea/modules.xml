@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EX/EX01IdCode/EX01IdCode.iml" filepath="$PROJECT_DIR$/EX/EX01IdCode/EX01IdCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EX/EX02WebBrowser/EX02WebBrowser.iml" filepath="$PROJECT_DIR$/EX/EX02WebBrowser/EX02WebBrowser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PR/PR01Introduction/PR01Introduction.iml" filepath="$PROJECT_DIR$/PR/PR01Introduction/PR01Introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PR/PR02DataStructures/PR02DataStructures.iml" filepath="$PROJECT_DIR$/PR/PR02DataStructures/PR02DataStructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/iti0202-2022.iml" filepath="$PROJECT_DIR$/.idea/iti0202-2022.iml" />
+    </modules>
+  </component>
+</project>

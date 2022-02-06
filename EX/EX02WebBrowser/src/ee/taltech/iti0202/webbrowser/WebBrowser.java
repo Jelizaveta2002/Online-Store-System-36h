@@ -64,7 +64,7 @@ public class WebBrowser {
             if (Objects.equals(i, myPage)) {
                 return;
             }
-        } bookmark.add(myPage);
+        } bookmark.add(currentPage);
     }
 
     /**
@@ -78,7 +78,7 @@ public class WebBrowser {
 
     public List<String> getBookmarks() {
         //TODO: implement
-        return null;
+        return bookmark;
     }
 
     public void setHomePage(String homePage) {

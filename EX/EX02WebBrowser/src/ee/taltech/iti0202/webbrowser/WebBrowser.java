@@ -27,7 +27,13 @@ public class WebBrowser {
         //TODO: implement
         forward.push(currentPage);
         currentPage = back.pop();
-        history.add(currentPage);
+        addHistory();
+    }
+
+    private void addHistory() {
+        if (currentPage != null) {
+            history.add(currentPage);
+        }
     }
 
     /**
@@ -37,7 +43,7 @@ public class WebBrowser {
         //TODO: implement
         back.push(currentPage);
         currentPage = forward.pop();
-        history.add(currentPage);
+        addHistory();
     }
 
     /**
@@ -50,7 +56,7 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        history.add(currentPage);
+        addHistory();
     }
 
     /**
@@ -86,13 +92,22 @@ public class WebBrowser {
     }
 
 
+    public String  helpFunction(HashMap<String, Integer>  resultMap) {
+        StringBuilder myString = new StringBuilder();
+        for (String key : resultMap.keySet()) {
+            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
+        }
+        return myString.toString();
+    }
+
+
+
     /**
      * Get top 3 visited pages.
      *
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        //TODO: implement
         HashMap<String, Integer> map = new HashMap<>();
         HashMap<String, Integer> resultMap = new HashMap<>();
         for (String url : history) {
@@ -102,43 +117,78 @@ public class WebBrowser {
                 map.put(url, 1);
             }
         }
-        int maxVisits = 0;
-        String result = null;
+        List<UrlVisits> result = new ArrayList<>();
         for (String key : map.keySet()) {
             int value = map.get(key);
-            if (value > maxVisits) {
-                maxVisits = value;
-                result = key;
-            }
-        } resultMap.put(result, maxVisits);
-        map.remove(result);
-        System.out.println(map);
-        int maxVisits1 = 0;
-        String result1 = null;
-        for (String key : map.keySet()) {
-            int value = map.get(key);
-            if (value > maxVisits1) {
-                maxVisits1 = value;
-                result1 = key;
-            }
-        } resultMap.put(result1, maxVisits1);
-         map.remove(result1);
-        int maxVisits2 = 0;
-        String result2 = null;
-        for (String key : map.keySet()) {
-            int value = map.get(key);
-            if (value > maxVisits2) {
-                maxVisits2 = value;
-                result2 = key;
-            }
-        } resultMap.put(result2, maxVisits2);
-        map.remove(result2);
+            result.add(new UrlVisits(key, value));
+
+        }
+        //System.out.println(result);
+        Collections.sort(result);
         StringBuilder myString = new StringBuilder();
-        for (String key : resultMap.keySet()) {
-            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
-        } String finalResult = myString.toString();
-        return finalResult;
+        int count = 0;
+        for (UrlVisits urlVisits : result) {
+            count += 1;
+            myString.append(urlVisits.url + " " +  "-" + " " + urlVisits.visits + " " + "visits" + "\n");
+            if (count == 3) {
+                break;
+            }
+        }
+        return myString.toString();
+
     }
+//    public String getTop3VisitedPages() {
+//        //TODO: implement
+//        HashMap<String, Integer> map = new HashMap<>();
+//        HashMap<String, Integer> resultMap = new HashMap<>();
+//        for (String url : history) {
+//            if (map.containsKey(url)) {
+//                map.put(url, map.get(url) + 1);
+//            } else {
+//                map.put(url, 1);
+//            }
+//        }
+//        if (map.size() == 1) {
+//            return helpFunction(map);
+//        }
+//        if (map.size() == 1)
+//        int maxVisits = 0;
+//        String result = null;
+//        for (String key : map.keySet()) {
+//            int value = map.get(key);
+//            if (value > maxVisits) {
+//                maxVisits = value;
+//                result = key;
+//            }
+//        } resultMap.put(result, maxVisits);
+//        map.remove(result);
+//        System.out.println(map);
+//        int maxVisits1 = 0;
+//        String result1 = null;
+//        for (String key : map.keySet()) {
+//            int value = map.get(key);
+//            if (value > maxVisits1) {
+//                maxVisits1 = value;
+//                result1 = key;
+//            }
+//        } resultMap.put(result1, maxVisits1);
+//         map.remove(result1);
+//        int maxVisits2 = 0;
+//        String result2 = null;
+//        for (String key : map.keySet()) {
+//            int value = map.get(key);
+//            if (value > maxVisits2) {
+//                maxVisits2 = value;
+//                result2 = key;
+//            }
+//        } resultMap.put(result2, maxVisits2);
+//        map.remove(result2);
+//        StringBuilder myString = new StringBuilder();
+//        for (String key : resultMap.keySet()) {
+//            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
+//        } String finalResult = myString.toString();
+//        return finalResult;
+//    }
 
     /**
      * Returns a list of all visited pages.
@@ -181,5 +231,24 @@ public class WebBrowser {
         browser.goTo("google.com");
         System.out.println(browser.getTop3VisitedPages());
 
+    }
+    public static class UrlVisits implements Comparable<UrlVisits>{
+        private String url;
+        private Integer visits;
+        UrlVisits(String url, Integer visits) {
+            this.url = url;
+            this.visits = visits;
+        }
+
+        @Override  public int compareTo(UrlVisits o) {
+            return o.visits.compareTo(visits);
+        }
+
+        @Override  public String toString() {
+            return "UrlVisits{" +
+                    "url='" + url + '\'' +
+                    ", visits=" + visits +
+                    '}';
+        }
     }
 }

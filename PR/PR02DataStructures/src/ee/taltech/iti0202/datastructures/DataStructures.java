@@ -87,6 +87,7 @@ public class DataStructures {
         } return resultList;
     }
 
+
     /**
      * Method to save student and student's grade(you should use a Map here).
      * Only add student if his/hers grade is in the range of 0-5.
@@ -94,7 +95,13 @@ public class DataStructures {
      * @param studentInfo String with a pattern (name:grade)
      */
     public void addStudent(String studentInfo) {
-
+        HashMap<String, Integer> map = new HashMap<>();
+        String[] myArray = studentInfo.split(":");
+        String grade = myArray[1];
+        int finalGrade = Integer.parseInt(grade);
+        if (finalGrade >= 0 && finalGrade <= 5) {
+            map.put(myArray[0], finalGrade);
+        }
     }
 
     /**

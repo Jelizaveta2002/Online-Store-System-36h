@@ -1,8 +1,5 @@
 package ee.taltech.iti0202.webbrowser;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class WebBrowser {
     private String homePage;
@@ -94,7 +91,28 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         //TODO: implement
-        return null;
+        HashMap<String, Integer> map = new HashMap<>();
+        List<String> mostVisited = new ArrayList<>();
+        for (String a : history) {
+            if (map.containsKey(a)) {
+                map.put(a, map.get(a) + 1);
+            } else {
+                map.put(a, 1);
+            }
+        } int maxVisits = 0;
+        for (Integer i = 0; i < 3; i++ ) {
+            for (String key : map.keySet()) {
+                int value = map.get(key);
+                if (value > maxVisits) {
+                    maxVisits = value;
+                } mostVisited.add(key);
+                map.remove(key);
+            }
+        } StringBuilder myString = null;
+        for (String a : mostVisited) {
+            myString.append(a + "\n");
+        } String finalResult = myString.toString();
+        return finalResult;
     }
 
     /**

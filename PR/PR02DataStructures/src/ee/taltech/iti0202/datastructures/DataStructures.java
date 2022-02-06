@@ -129,8 +129,7 @@ public class DataStructures {
         System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 
         System.out.println(wordCount(new String[]{})); // empty
-        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}))
-        ;// {bacon=2, eggs=2, SPAM=3}
+        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
 
         System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
         // any order

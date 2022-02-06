@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class DataStructures {
-
+    HashMap<String, Integer> studentsMap = new HashMap<>();
     /**
      * Given String is a sentence with some words.
      * There are only single whitespace between every word and no punctuation marks.
@@ -95,15 +95,13 @@ public class DataStructures {
      * @param studentInfo String with a pattern (name:grade)
      */
     public void addStudent(String studentInfo) {
-        List<String> resultList = new ArrayList<>();
-        HashMap<String, Integer> map = new HashMap<>();
+
         String[] myArray = studentInfo.split(":");
         String grade = myArray[1];
         int finalGrade = Integer.parseInt(grade);
         if (finalGrade >= 0 && finalGrade <= 5) {
-//            map.put(myArray[0], finalGrade);
-            resultList.add(studentInfo);
-        }System.out.println(map);
+            studentsMap.put(myArray[0], finalGrade);
+        } System.out.println(studentsMap);
     }
 
     /**
@@ -115,7 +113,8 @@ public class DataStructures {
      * @return int student's grade.
      */
     public int getStudentGrade(String name) {
-        return 0;
+        Integer grade = studentsMap.get(name);
+        return grade != null ? grade : -1;
     }
 
     /**
@@ -135,7 +134,6 @@ public class DataStructures {
         System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
 
         DataStructures dataStructures = new DataStructures();
-
         dataStructures.addStudent("Ago:5");
         dataStructures.addStudent("Martin:0");
         dataStructures.addStudent("Margo:3");

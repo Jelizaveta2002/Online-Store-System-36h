@@ -2,7 +2,7 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.*;
 
 public class WebBrowser {
-    private static String homePage="google.com";
+     String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
     String currentPage="google.com";
@@ -14,6 +14,7 @@ public class WebBrowser {
      */
     public WebBrowser() {
         homePage();
+        addHistory();
     }
     public void homePage() {
         //TODO: implement
@@ -28,11 +29,12 @@ public class WebBrowser {
         if (currentPage != null) {
             forward.push(currentPage);;
         }
-        if (! back.isEmpty()) {
+        if (!back.isEmpty()) {
             currentPage = back.pop();
+            addHistory();
         }
 
-        addHistory();
+
     }
 
     private void addHistory() {
@@ -49,10 +51,10 @@ public class WebBrowser {
         if (currentPage != null) {
             back.push(currentPage);
         }
-        if (! forward.isEmpty()) {
+        if (!forward.isEmpty()) {
             currentPage = forward.pop();
+            addHistory();
         }
-        addHistory();
     }
 
     /**
@@ -174,6 +176,7 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser browser = new WebBrowser();
+        browser.goTo("facebook.com");
 //        browser.goTo("google.com");
 //        browser.goTo("yahoo.com");
 //        browser.goTo("facebook.com");
@@ -187,7 +190,12 @@ public class WebBrowser {
 //        browser.goTo("ois.ee");
 //        browser.goTo("google.com");
         browser.forward();
-        System.out.println(browser.getTop3VisitedPages());
+        System.out.println(browser.getHistory());
+        browser.back();
+        browser.forward();
+
+        //System.out.println(browser.getTop3VisitedPages());
+        System.out.println(browser.getHistory());
 
     }
     public static class UrlVisits implements Comparable<UrlVisits>{

@@ -106,27 +106,30 @@ public class WebBrowser {
             if (value > maxVisits) {
                 maxVisits = value;
                 result = key;
-            } mostVisited.add(result);
-            map.remove(key);
-        } int maxVisits1 = 0;
+            }
+        } mostVisited.add(result);
+        map.remove(result);
+        int maxVisits1 = 0;
         String result1 = null;
         for (String key : map.keySet()) {
             int value = map.get(key);
             if (value > maxVisits) {
                 maxVisits = value;
                 result = key;
-            } mostVisited.add(result);
-            map.remove(key);
-        } int maxVisits2 = 0;
+            }
+        } mostVisited.add(result);
+         map.remove(result);
+        int maxVisits2 = 0;
         String result2 = null;
         for (String key : map.keySet()) {
             int value = map.get(key);
             if (value > maxVisits) {
                 maxVisits = value;
                 result = key;
-            } mostVisited.add(result);
-            map.remove(key);
-        } StringBuilder myString = null;
+            }
+        } mostVisited.add(result);
+        map.remove(result);
+        StringBuilder myString = null;
         for (String a : mostVisited) {
             myString.append(a + "\n");
         } String finalResult = myString.toString();

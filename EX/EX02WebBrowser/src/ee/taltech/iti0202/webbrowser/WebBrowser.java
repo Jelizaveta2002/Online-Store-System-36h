@@ -3,9 +3,9 @@ import java.util.*;
 
 public class WebBrowser {
     private static String homePage = "google.com";
-    private static String currentPage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
+    String currentPage = homePage;
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
 

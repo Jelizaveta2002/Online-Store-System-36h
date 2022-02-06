@@ -101,7 +101,7 @@ public class DataStructures {
         int finalGrade = Integer.parseInt(grade);
         if (finalGrade >= 0 && finalGrade <= 5) {
             studentsMap.put(myArray[0], finalGrade);
-        } System.out.println(studentsMap);
+        }
     }
 
     /**

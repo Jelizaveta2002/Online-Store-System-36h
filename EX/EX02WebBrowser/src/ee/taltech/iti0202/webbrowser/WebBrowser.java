@@ -10,7 +10,7 @@ public class WebBrowser {
     Stack<String> forward = new Stack<>();
     String currentPage;
     List<String> history = new ArrayList<>();
-    List<String> bookmark = new ArrayList<>();
+    List<String> MyBookmark = new ArrayList<>();
 
     /**
      * Goes to homepage.
@@ -60,11 +60,11 @@ public class WebBrowser {
     public void addAsBookmark() {
         //TODO: implement
         String myPage = currentPage.toString();
-        for (String i : bookmark) {
+        for (String i : MyBookmark) {
             if (Objects.equals(i, myPage)) {
                 return;
             }
-        } bookmark.add(currentPage);
+        } MyBookmark.add(currentPage);
     }
 
     /**
@@ -74,11 +74,12 @@ public class WebBrowser {
      */
     public void removeBookmark(String bookmark) {
         //TODO: implement
+        MyBookmark.remove(bookmark);
     }
 
     public List<String> getBookmarks() {
         //TODO: implement
-        return bookmark;
+        return MyBookmark;
     }
 
     public void setHomePage(String homePage) {

@@ -64,6 +64,8 @@ public class WebBrowser {
         //TODO: implement
         back.push(currentPage);
         currentPage = url;
+        forward.clear();
+        back.clear();
         addHistory();
     }
 

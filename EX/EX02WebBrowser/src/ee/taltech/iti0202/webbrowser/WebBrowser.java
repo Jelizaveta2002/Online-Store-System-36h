@@ -106,7 +106,11 @@ public class WebBrowser {
     public String  helpFunction(HashMap<String, Integer>  resultMap) {
         StringBuilder myString = new StringBuilder();
         for (String key : resultMap.keySet()) {
-            myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
+            if (resultMap.get(key) != 1) {
+                myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
+            } else {
+                myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visit" + "\n");
+            }
         }
         return myString.toString();
     }

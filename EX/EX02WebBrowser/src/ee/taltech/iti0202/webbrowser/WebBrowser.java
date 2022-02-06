@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.webbrowser;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 public class WebBrowser {
@@ -60,10 +61,10 @@ public class WebBrowser {
         //TODO: implement
         String myPage = currentPage.toString();
         for (String i : bookmark) {
-            if (i == myPage) {
+            if (Objects.equals(i, myPage)) {
                 return;
             }
-        } bookmark.add(currentPage);
+        } bookmark.add(myPage);
     }
 
     /**

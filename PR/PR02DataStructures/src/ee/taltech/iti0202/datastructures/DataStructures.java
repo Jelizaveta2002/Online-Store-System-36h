@@ -77,12 +77,15 @@ public class DataStructures {
     public static List<String> onlyEvenWords(List<String> words) {
         List<String> resultList = new ArrayList<>();
         String[] strings = words.toArray(String[]::new);
-        Map map = wordCount(strings);
-        for (Object key : map.keySet()) {
-            int numericValue = (Integer) map.get(key);
-            if (numericValue % 2 == 0) {
-                String keyToBeAdded = (String) key;
-                resultList.add(keyToBeAdded);
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String a : strings) {
+            if (map.containsKey(a)) {
+                map.put(a, map.get(a) + 1);
+                if (map.get(a) % 2 == 0) {
+                    resultList.add(a);
+                }
+            } else {
+                map.put(a, 1);
             }
         } return resultList;
     }

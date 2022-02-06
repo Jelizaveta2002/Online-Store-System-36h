@@ -2,22 +2,23 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.*;
 
 public class WebBrowser {
-    private static String homePage = "google.com";
+    private String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
     String currentPage = homePage;
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
+    HashMap<String, Integer> popularMap = new HashMap<>();
+    HashMap<String, Integer> myMapp = new HashMap<>();
 
     /**
      * Goes to homepage.
      */
-    public WebBrowser() {
-        homePage();
-    }
     public void homePage() {
         //TODO: implement
-        goTo(homePage);
+        history.add(homePage);
+        back.add(homePage);
+        forward.clear();
     }
 
     /**
@@ -27,18 +28,9 @@ public class WebBrowser {
         //TODO: implement
         if (currentPage != null) {
             forward.push(currentPage);;
-        }
-        if (! back.isEmpty()) {
+        } if (! back.isEmpty()) {
             currentPage = back.pop();
-        }
-
-        addHistory();
-    }
-
-    private void addHistory() {
-        if (currentPage != null) {
-            history.add(currentPage);
-        }
+        } history.add(currentPage);
     }
 
     /**
@@ -48,11 +40,9 @@ public class WebBrowser {
         //TODO: implement
         if (currentPage != null) {
             back.push(currentPage);
-        }
-        if (! forward.isEmpty()) {
+        } if (! forward.isEmpty()) {
             currentPage = forward.pop();
-        }
-        addHistory();
+        } history.add(currentPage);
     }
 
     /**
@@ -65,8 +55,7 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        back.clear();
-        addHistory();
+        history.add(currentPage);
     }
 
     /**
@@ -98,23 +87,27 @@ public class WebBrowser {
     }
 
     public void setHomePage(String homePage) {
+        //TODO: implement
         goTo(homePage);
     }
 
-
-    public String  helpFunction(HashMap<String, Integer>  resultMap) {
-        StringBuilder myString = new StringBuilder();
-        for (String key : resultMap.keySet()) {
-            if (resultMap.get(key) != 1) {
-                myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visits" + "\n");
-            } else {
-                myString.append(key + " " +  "-" + " " + resultMap.get(key) + " " + "visit" + "\n");
+    /**
+     * Get top 3 visited pages.
+     *
+     * @return a String that contains top three visited pages separated with a newline "\n"
+     */
+    public void help1(HashMap<String, Integer> map) {
+        int maxVisits = 0;
+        String result = null;
+        for (String key : map.keySet()) {
+            int value = map.get(key);
+            if (value > maxVisits) {
+                maxVisits = value;
+                result = key;
             }
-        }
-        return myString.toString();
+        } popularMap.put(result, maxVisits);
+        myMapp.remove(result);
     }
-
-
 
     /**
      * Get top 3 visited pages.
@@ -122,34 +115,26 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        HashMap<String, Integer> map = new HashMap<>();
+        //TODO: implement
         HashMap<String, Integer> resultMap = new HashMap<>();
         for (String url : history) {
-            if (map.containsKey(url)) {
-                map.put(url, map.get(url) + 1);
+            if (myMapp.containsKey(url)) {
+                myMapp.put(url, myMapp.get(url) + 1);
             } else {
-                map.put(url, 1);
+                myMapp.put(url, 1);
             }
-        }
-        List<UrlVisits> result = new ArrayList<>();
-        for (String key : map.keySet()) {
-            int value = map.get(key);
-            result.add(new UrlVisits(key, value));
-
-        }
-        //System.out.println(result);
-        Collections.sort(result);
+        } help1(myMapp);
+        help1(myMapp);
+        help1(myMapp);
         StringBuilder myString = new StringBuilder();
-        int count = 0;
-        for (UrlVisits urlVisits : result) {
-            count += 1;
-            myString.append(urlVisits.url + " " +  "-" + " " + urlVisits.visits + " " + "visits" + "\n");
-            if (count == 3) {
-                break;
+        for (String key : popularMap.keySet()) {
+            if (popularMap.get(key) != 1) {
+                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
+            } else {
+                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visit" + "\n");
             }
-        }
-        return myString.toString();
-
+        } String finalResult = myString.toString();
+        return finalResult;
     }
 
     /**
@@ -175,43 +160,5 @@ public class WebBrowser {
     public String getCurrentUrl() {
         //TODO: implement
         return currentPage;
-    }
-
-    public static void main(String[] args) {
-        WebBrowser browser = new WebBrowser();
-//        browser.goTo("google.com");
-//        browser.goTo("yahoo.com");
-//        browser.goTo("facebook.com");
-//        browser.goTo("ois.ee");
-//        browser.goTo("jetbrains.com");
-//        browser.goTo("taltech.com");
-//        browser.goTo("solnet.net");
-//        browser.goTo("instagram.com");
-//        browser.goTo("google.com");
-//        browser.goTo("facebook.com");
-//        browser.goTo("ois.ee");
-//        browser.goTo("google.com");
-        browser.forward();
-        System.out.println(browser.getTop3VisitedPages());
-
-    }
-    public static class UrlVisits implements Comparable<UrlVisits>{
-        private String url;
-        private Integer visits;
-        UrlVisits(String url, Integer visits) {
-            this.url = url;
-            this.visits = visits;
-        }
-
-        @Override  public int compareTo(UrlVisits o) {
-            return o.visits.compareTo(visits);
-        }
-
-        @Override  public String toString() {
-            return "UrlVisits{" +
-                    "url='" + url + '\'' +
-                    ", visits=" + visits +
-                    '}';
-        }
     }
 }

@@ -97,9 +97,7 @@ public class WebBrowser {
     }
 
     public void setHomePage(String homePage) {
-        if (homePage != null) {
-            goTo(homePage);
-        }
+        goTo(homePage);
     }
 
 

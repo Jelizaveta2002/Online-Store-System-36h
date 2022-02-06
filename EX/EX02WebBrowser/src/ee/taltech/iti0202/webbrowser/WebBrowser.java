@@ -28,7 +28,9 @@ public class WebBrowser {
         if (currentPage != null) {
             forward.push(currentPage);;
         }
-        currentPage = back.pop();
+        if (! back.isEmpty()) {
+            currentPage = back.pop();
+        }
         addHistory();
     }
 

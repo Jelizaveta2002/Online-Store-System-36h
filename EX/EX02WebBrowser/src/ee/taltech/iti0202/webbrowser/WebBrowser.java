@@ -60,13 +60,11 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (url == null) {
-            return;
-        }
+//        if (url == null) {
+//            return;
+//        }
         //TODO: implement
-        if (currentPage != null) {
-            back.push(currentPage);
-        }
+        back.push(currentPage);
         currentPage = url;
         forward.clear();
         addHistory();

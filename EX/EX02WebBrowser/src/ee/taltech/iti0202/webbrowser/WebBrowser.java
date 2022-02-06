@@ -52,6 +52,9 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         //TODO: implement
+        back.push(currentPage);
+        currentPage = url;
+        forward.clear();
         history.add(currentPage);
     }
 

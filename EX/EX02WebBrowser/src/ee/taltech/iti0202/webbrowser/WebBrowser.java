@@ -56,12 +56,10 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         //TODO: implement
-        if (currentPage != homePage) {
-            back.push(currentPage);
-            currentPage = url;
-            forward.clear();
-            history.add(currentPage);
-        }
+        back.push(currentPage);
+        currentPage = url;
+        forward.clear();
+        history.add(currentPage);
     }
 
     /**

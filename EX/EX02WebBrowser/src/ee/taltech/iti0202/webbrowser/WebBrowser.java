@@ -48,7 +48,7 @@ public class WebBrowser {
      */
     public void forward() {
         //TODO: implement
-        if (currentPage != null) {
+        if (currentPage != homePage) {
             back.push(currentPage);
         } if (! forward.isEmpty()) {
             currentPage = forward.pop();

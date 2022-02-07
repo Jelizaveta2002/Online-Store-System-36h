@@ -9,7 +9,7 @@ public class WebBrowser {
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
     HashMap<String, Integer> popularMap = new HashMap<>();
-    HashMap<String, Integer> myMapp = new HashMap<>();
+    Map<String, Integer> myMapp = new TreeMap<>();
     List<String> toStorePop = new ArrayList<>();
 
     /**
@@ -100,7 +100,7 @@ public class WebBrowser {
      *
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
-    public void help1(HashMap<String, Integer> map, Integer i) {
+    public void help1(Map<String, Integer> map, Integer i) {
         int maxVisits = 0;
         String result = null;
         for (String key : map.keySet()) {
@@ -125,7 +125,7 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         //TODO: implement
-        Map<String, Integer> resultMap = new TreeMap<>();
+        TreeMap<String, Integer> resultMap = new TreeMap<>();
         for (String url : history) {
             if (myMapp.containsKey(url)) {
                 myMapp.put(url, myMapp.get(url) + 1);

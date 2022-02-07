@@ -16,7 +16,6 @@ public class WebBrowser {
      */
     public void homePage() {
         //TODO: implement
-        history.add(homePage);
         back.add(homePage);
         forward.clear();
     }
@@ -160,6 +159,27 @@ public class WebBrowser {
     public String getCurrentUrl() {
         //TODO: implement
         return currentPage;
+    }
+
+    public static void main(String[] args) {
+        WebBrowser browser = new WebBrowser();
+        browser.goTo("google.com");
+        browser.goTo("yahoo.com");
+        browser.goTo("facebook.com");
+        browser.goTo("ois.ee");
+        browser.goTo("jetbrains.com");
+        browser.goTo("taltech.com");
+        browser.goTo("solnet.net");
+        browser.goTo("instagram.com");
+        browser.goTo("google.com");
+        browser.goTo("facebook.com");
+        browser.goTo("ois.ee");
+        browser.goTo("google.com");
+        browser.forward();
+        browser.forward();
+        browser.forward();
+        browser.back();
+        System.out.println(browser.getTop3VisitedPages());
     }
 }
 

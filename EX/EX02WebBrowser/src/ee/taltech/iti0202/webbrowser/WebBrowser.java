@@ -126,11 +126,10 @@ public class WebBrowser {
             } else {
                 myMapp.put(url, 1);
             }
-        } help1(myMapp);
-        help1(myMapp);
-        help1(myMapp);
+        } for (Integer i = 0; i < 10; i++ ) {
+            help1(myMapp);
+        }
         StringBuilder myString = new StringBuilder();
-        System.out.println(popularMap);
         for (String key : popularMap.keySet()) {
             if (popularMap.get(key) != 1) {
                 myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");

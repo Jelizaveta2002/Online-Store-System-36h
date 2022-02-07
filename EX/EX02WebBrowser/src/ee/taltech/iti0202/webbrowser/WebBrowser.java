@@ -59,7 +59,9 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        history.add(currentPage);
+        if (currentPage != null) {
+            history.add(currentPage);
+        }
     }
 
     /**
@@ -132,7 +134,7 @@ public class WebBrowser {
             } else {
                 myMapp.put(url, 1);
             }
-        } for (Integer i = 0; i < 3; i++ ) {
+        } for (int i = 0; i < 3; i++ ) {
             help1(myMapp, i);
         }
         StringBuilder myString = new StringBuilder();

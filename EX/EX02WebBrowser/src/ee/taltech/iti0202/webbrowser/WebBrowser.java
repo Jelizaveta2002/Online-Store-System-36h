@@ -30,9 +30,9 @@ public class WebBrowser {
      */
     public void back() {
         //TODO: implement
-        if (currentPage != null) {
-            forward.push(currentPage);;
-        } if (! back.isEmpty()) {
+        forward.push(currentPage);
+        int sizeOfStack = back.size();
+        if (sizeOfStack >= 1) {
             currentPage = back.pop();
         } history.add(currentPage);
     }
@@ -42,9 +42,9 @@ public class WebBrowser {
      */
     public void forward() {
         //TODO: implement
-        if (currentPage != null) {
-            back.push(currentPage);
-        } if (! forward.isEmpty()) {
+        back.push(currentPage);
+        int sizeOfForStack =forward.size();
+        if (sizeOfForStack >= 1) {
             currentPage = forward.pop();
         } history.add(currentPage);
     }

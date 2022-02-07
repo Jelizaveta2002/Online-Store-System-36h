@@ -46,7 +46,8 @@ public class WebBrowser {
         int sizeOfForStack =forward.size();
         if (sizeOfForStack >= 1) {
             currentPage = forward.pop();
-        } history.add(currentPage);
+        }
+        history.add(currentPage);
     }
 
     /**

@@ -66,6 +66,8 @@ public class WebBrowser {
             back.push(currentPage);
             currentPage = url;
             forward.clear();
+        }
+        if (currentPage != null) {
             history.add(currentPage);
         }
     }

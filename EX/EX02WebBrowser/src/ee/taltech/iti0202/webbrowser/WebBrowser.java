@@ -10,6 +10,7 @@ public class WebBrowser {
     List<String> MyBookmark = new ArrayList<>();
     HashMap<String, Integer> popularMap = new HashMap<>();
     HashMap<String, Integer> myMapp = new HashMap<>();
+    List<String> toStorePop = new ArrayList<>();
 
     /**
      * Goes to homepage.
@@ -99,7 +100,7 @@ public class WebBrowser {
      *
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
-    public void help1(HashMap<String, Integer> map) {
+    public void help1(HashMap<String, Integer> map, Integer i) {
         int maxVisits = 0;
         String result = null;
         for (String key : map.keySet()) {
@@ -108,7 +109,12 @@ public class WebBrowser {
                 maxVisits = value;
                 result = key;
             }
-        } popularMap.put(result, maxVisits);
+        } if (maxVisits != 1) {
+            toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visits" + "\n");
+        }
+        else {
+            toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visit" + "\n");
+        }
         myMapp.remove(result);
     }
 
@@ -127,17 +133,13 @@ public class WebBrowser {
                 myMapp.put(url, 1);
             }
         } for (Integer i = 0; i < 3; i++ ) {
-            help1(myMapp);
+            help1(myMapp, i);
         }
         StringBuilder myString = new StringBuilder();
-        for (String key : popularMap.keySet()) {
-            if (popularMap.get(key) != 1) {
-                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
-            }
-            else {
-                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visit" + "\n");
-            }
-        } String finalResult = myString.toString();
+        for (String a : toStorePop) {
+            myString.append(a);
+        }
+        String finalResult = myString.toString();
         return finalResult;
     }
 

@@ -126,7 +126,7 @@ public class WebBrowser {
             } else {
                 myMapp.put(url, 1);
             }
-        } for (Integer i = 0; i < 10; i++ ) {
+        } for (Integer i = 0; i < 4; i++ ) {
             help1(myMapp);
         }
         StringBuilder myString = new StringBuilder();

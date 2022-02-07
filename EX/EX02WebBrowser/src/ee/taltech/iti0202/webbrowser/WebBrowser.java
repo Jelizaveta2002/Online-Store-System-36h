@@ -132,8 +132,15 @@ public class WebBrowser {
             } else {
                 myMapp.put(url, 1);
             }
-        } for (Integer i = 0; i < 3; i++ ) {
-            help1(myMapp, i);
+        } int mapSize = myMapp.size();
+        if (mapSize >= 3) {
+            for (Integer i = 0; i < 3; i++ ) {
+                help1(myMapp, i);
+            }
+        } else {
+            for (Integer i = 0; i < mapSize; i++ ) {
+                help1(myMapp, i);
+            }
         }
         StringBuilder myString = new StringBuilder();
         for (String a : toStorePop) {

@@ -14,10 +14,16 @@ public class WebBrowser {
     /**
      * Goes to homepage.
      */
+
+    private void addHistory() {
+        if (currentPage != null) {
+            history.add(currentPage);
+        }
+    }
+
     public void homePage() {
         //TODO: implement
-        back.add(homePage);
-        forward.clear();
+        goTo(homePage);
     }
 
     /**
@@ -29,7 +35,7 @@ public class WebBrowser {
             forward.push(currentPage);;
         } if (! back.isEmpty()) {
             currentPage = back.pop();
-        } history.add(currentPage);
+        } addHistory();
     }
 
     /**
@@ -41,7 +47,7 @@ public class WebBrowser {
             back.push(currentPage);
         } if (! forward.isEmpty()) {
             currentPage = forward.pop();
-        } history.add(currentPage);
+        } addHistory();
     }
 
     /**
@@ -54,7 +60,7 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        history.add(currentPage);
+        addHistory();
     }
 
     /**

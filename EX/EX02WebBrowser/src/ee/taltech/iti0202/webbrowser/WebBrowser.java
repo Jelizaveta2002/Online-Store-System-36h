@@ -2,7 +2,7 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.*;
 
 public class WebBrowser {
-    private String homePage;
+    private final String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
     String currentPage = homePage;
@@ -17,18 +17,12 @@ public class WebBrowser {
      */
 
     public WebBrowser() {
-        this.homePage = "google.com";
-        currentPage = homePage;
-        history.add(homePage);
-        back.push(homePage);
+        homePage();
     }
 
     public void homePage() {
         //TODO: implement
-        if (currentPage != homePage){
-            history.add(homePage);
-            back.push(homePage);
-        }
+        goTo(homePage);
     }
 
     /**
@@ -48,7 +42,7 @@ public class WebBrowser {
      */
     public void forward() {
         //TODO: implement
-        if (currentPage != homePage) {
+        if (currentPage != null) {
             back.push(currentPage);
         } if (! forward.isEmpty()) {
             currentPage = forward.pop();
@@ -63,11 +57,11 @@ public class WebBrowser {
     public void goTo(String url) {
         //TODO: implement
         if (currentPage != homePage) {
+            back.push(currentPage);
+            currentPage = url;
+            forward.clear();
             history.add(currentPage);
         }
-        back.push(currentPage);
-        currentPage = url;
-        forward.clear();
     }
 
     /**
@@ -140,7 +134,7 @@ public class WebBrowser {
             } else {
                 myMapp.put(url, 1);
             }
-        } for (int i = 0; i < 3; i++ ) {
+        } for (Integer i = 0; i < 3; i++ ) {
             help1(myMapp, i);
         }
         StringBuilder myString = new StringBuilder();

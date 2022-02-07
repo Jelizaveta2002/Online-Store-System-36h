@@ -127,12 +127,7 @@ public class WebBrowser {
         help1(myMapp);
         StringBuilder myString = new StringBuilder();
         for (String key : popularMap.keySet()) {
-            if (popularMap.get(key) != 1) {
-                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
-            }
-            else {
-                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visit" + "\n");
-            }
+            myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
         } String finalResult = myString.toString();
         return finalResult;
     }

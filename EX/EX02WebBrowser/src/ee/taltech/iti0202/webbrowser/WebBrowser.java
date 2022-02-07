@@ -22,10 +22,7 @@ public class WebBrowser {
 
     public void homePage() {
         //TODO: implement
-        currentPage = homePage;
-        history.add(currentPage);
-        back.add(currentPage);
-        forward.clear();
+        return;
     }
 
     /**
@@ -33,15 +30,11 @@ public class WebBrowser {
      */
     public void back() {
         //TODO: implement
-        if (back.size() > 1) {
-            forward.add(currentPage);
-            back.remove(currentPage);
-            currentPage = back.get(back.size() - 1);
-            history.add(currentPage);
-        } else {
-            currentPage = "google.com";
-            back.clear();
-        }
+        if (currentPage != null) {
+            forward.push(currentPage);;
+        } if (! back.isEmpty()) {
+            currentPage = back.pop();
+        } history.add(currentPage);
     }
 
     /**
@@ -66,7 +59,9 @@ public class WebBrowser {
         back.push(currentPage);
         currentPage = url;
         forward.clear();
-        history.add(currentPage);
+        if (currentPage != null) {
+            history.add(currentPage);
+        }
     }
 
     /**

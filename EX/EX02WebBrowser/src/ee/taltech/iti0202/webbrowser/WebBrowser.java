@@ -2,7 +2,7 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.*;
 
 public class WebBrowser {
-    private final String homePage = "google.com";
+    private String homePage;
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
     String currentPage = homePage;
@@ -17,12 +17,14 @@ public class WebBrowser {
      */
 
     public WebBrowser() {
-        homePage();
+        this.homePage = "google.com";
+        history.add(homePage);
+        back.push(homePage);
     }
 
     public void homePage() {
         //TODO: implement
-        return;
+        goTo(homePage);
     }
 
     /**
@@ -56,6 +58,9 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         //TODO: implement
+        if (currentPage == homePage) {
+
+        }
         back.push(currentPage);
         currentPage = url;
         forward.clear();

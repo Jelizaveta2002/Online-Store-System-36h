@@ -18,13 +18,17 @@ public class WebBrowser {
 
     public WebBrowser() {
         this.homePage = "google.com";
+        currentPage = homePage;
         history.add(homePage);
         back.push(homePage);
     }
 
     public void homePage() {
         //TODO: implement
-        goTo(homePage);
+        if (currentPage != homePage){
+            history.add(homePage);
+            back.push(homePage);
+        }
     }
 
     /**

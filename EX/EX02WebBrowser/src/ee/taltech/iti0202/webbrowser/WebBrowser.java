@@ -17,7 +17,8 @@ public class WebBrowser {
      */
 
     public WebBrowser() {
-        homePage();
+        //homePage();
+        history.add(currentPage);
     }
 
     public void homePage() {
@@ -34,7 +35,8 @@ public class WebBrowser {
         int sizeOfStack = back.size();
         if (sizeOfStack >= 1) {
             currentPage = back.pop();
-        } history.add(currentPage);
+            history.add(currentPage);
+        }
     }
 
     /**
@@ -44,10 +46,10 @@ public class WebBrowser {
         //TODO: implement
         back.push(currentPage);
         int sizeOfForStack =forward.size();
-        if (sizeOfForStack >= 1) {
+        if (!forward.isEmpty()) {
             currentPage = forward.pop();
+            history.add(currentPage);
         }
-        history.add(currentPage);
     }
 
     /**
@@ -81,6 +83,7 @@ public class WebBrowser {
      *
      * @param bookmark to remove
      */
+
     public void removeBookmark(String bookmark) {
         //TODO: implement
         MyBookmark.remove(bookmark);
@@ -93,7 +96,7 @@ public class WebBrowser {
 
     public void setHomePage(String homePage) {
         //TODO: implement
-        goTo(homePage);
+        this.homePage = homePage;
     }
 
     /**
@@ -178,22 +181,38 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser browser = new WebBrowser();
-        browser.goTo("google.com");
-        browser.goTo("yahoo.com");
-        browser.goTo("facebook.com");
-        browser.goTo("ois.ee");
-        browser.goTo("jetbrains.com");
-        browser.goTo("taltech.com");
-        browser.goTo("solnet.net");
-        browser.goTo("instagram.com");
-        browser.goTo("google.com");
-        browser.goTo("facebook.com");
-        browser.goTo("ois.ee");
-        browser.goTo("google.com");
-        browser.forward();
-        browser.forward();
-        browser.forward();
-        browser.back();
-        System.out.println(browser.getTop3VisitedPages());
+//        browser.goTo("google.com");
+//        browser.goTo("yahoo.com");
+//        browser.goTo("facebook.com");
+//        browser.goTo("ois.ee");
+//        browser.goTo("jetbrains.com");
+//        browser.goTo("taltech.com");
+//        browser.goTo("solnet.net");
+//        browser.goTo("instagram.com");
+//        browser.goTo("google.com");
+//        browser.goTo("facebook.com");
+//        browser.goTo("ois.ee");
+//        browser.setHomePage("neti.ee");
+//        browser.goTo("facebook.com");
+//        browser.back();
+//        browser.homePage();
+//        browser.forward();
+//        browser.forward();
+        browser.getCurrentUrl(); //- > "google.com"
+        browser.setHomePage("neti.ee"); //
+        browser.goTo("facebook.com"); //
+        browser.getCurrentUrl(); // - > "facebook.com"
+        browser.goTo("google.com"); //
+        browser.getCurrentUrl(); // - > "google.com"
+        browser.back(); //
+        browser.getCurrentUrl(); // - > "facebook.com"
+        browser.addAsBookmark(); //
+        browser.forward(); //
+        browser.getCurrentUrl(); // - > "google.com"
+        browser.homePage(); //
+        browser.getCurrentUrl(); // - > "neti.ee"
+        browser.addAsBookmark(); //
+        browser.getBookmarks(); //
+        System.out.println(browser.getHistory());
     }
 }

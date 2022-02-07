@@ -5,7 +5,7 @@ public class WebBrowser {
     private String homePage = "google.com";
     Stack<String> back = new Stack<>();
     Stack<String> forward = new Stack<>();
-    String currentPage = null;
+    String currentPage = homePage;
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
     HashMap<String, Integer> popularMap = new HashMap<>();
@@ -125,7 +125,7 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         //TODO: implement
-        HashMap<String, Integer> resultMap = new HashMap<>();
+        Map<String, Integer> resultMap = new TreeMap<>();
         for (String url : history) {
             if (myMapp.containsKey(url)) {
                 myMapp.put(url, myMapp.get(url) + 1);

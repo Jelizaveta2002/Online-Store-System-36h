@@ -59,6 +59,9 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         //TODO: implement
+        if (url.equals(currentPage)) {
+            return;
+        }
         back.push(currentPage);
         currentPage = url;
         forward.clear();

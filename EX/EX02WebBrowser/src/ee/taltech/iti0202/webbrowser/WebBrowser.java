@@ -9,7 +9,7 @@ public class WebBrowser {
     List<String> history = new ArrayList<>();
     List<String> MyBookmark = new ArrayList<>();
     HashMap<String, Integer> popularMap = new HashMap<>();
-    Map<String, Integer> myMapp = new TreeMap<>();
+    Map<String, Integer> myMapp = new LinkedHashMap<>();
     List<String> toStorePop = new ArrayList<>();
 
     /**
@@ -22,7 +22,6 @@ public class WebBrowser {
     }
 
     public void homePage() {
-        //TODO: implement
         goTo(homePage);
     }
 
@@ -30,7 +29,6 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        //TODO: implement
         forward.push(currentPage);
         int sizeOfStack = back.size();
         if (sizeOfStack >= 1) {
@@ -43,7 +41,6 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        //TODO: implement
         back.push(currentPage);
         int sizeOfForStack =forward.size();
         if (!forward.isEmpty()) {
@@ -58,7 +55,6 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        //TODO: implement
         if (url.equals(currentPage)) {
             return;
         }
@@ -72,7 +68,6 @@ public class WebBrowser {
      * Add a webpage as a bookmark.
      */
     public void addAsBookmark() {
-        //TODO: implement
         String myPage = currentPage.toString();
         for (String i : MyBookmark) {
             if (Objects.equals(i, myPage)) {
@@ -116,7 +111,8 @@ public class WebBrowser {
                 maxVisits = value;
                 result = key;
             }
-        } if (maxVisits != 1) {
+        }
+        if (maxVisits != 1) {
             toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visits" + "\n");
         }
         else {
@@ -132,7 +128,7 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         //TODO: implement
-        TreeMap<String, Integer> resultMap = new TreeMap<>();
+        Map<String, Integer> resultMap = new LinkedHashMap<>();
         for (String url : history) {
             if (myMapp.containsKey(url)) {
                 myMapp.put(url, myMapp.get(url) + 1);

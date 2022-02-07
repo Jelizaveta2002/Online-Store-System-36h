@@ -14,10 +14,14 @@ public class WebBrowser {
     /**
      * Goes to homepage.
      */
+
+    public WebBrowser() {
+        homePage();
+    }
+
     public void homePage() {
         //TODO: implement
-        back.add(homePage);
-        forward.clear();
+        goTo(homePage);
     }
 
     /**
@@ -126,8 +130,14 @@ public class WebBrowser {
         help1(myMapp);
         help1(myMapp);
         StringBuilder myString = new StringBuilder();
+        System.out.println(popularMap);
         for (String key : popularMap.keySet()) {
-            myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
+            if (popularMap.get(key) != 1) {
+                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visits" + "\n");
+            }
+            else {
+                myString.append(key + " " +  "-" + " " + popularMap.get(key) + " " + "visit" + "\n");
+            }
         } String finalResult = myString.toString();
         return finalResult;
     }

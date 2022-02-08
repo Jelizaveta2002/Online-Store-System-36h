@@ -18,7 +18,6 @@ public class WebBrowser {
      */
 
     public WebBrowser() {
-        //homePage();
         history.add(currentPage);
     }
 
@@ -43,7 +42,6 @@ public class WebBrowser {
      */
     public void forward() {
         back.push(currentPage);
-        int sizeOfForStack = forward.size();
         if (!forward.isEmpty()) {
             currentPage = forward.pop();
             history.add(currentPage);
@@ -97,6 +95,7 @@ public class WebBrowser {
 
     /**
      * Get top 3 visited pages.
+     *  @param map to remove
      */
     public void help1(Map<String, Integer> map, Integer i) {
         int maxVisits = 0;
@@ -132,11 +131,11 @@ public class WebBrowser {
             }
         } int mapSize = myMapp.size();
         if (mapSize >= 3) {
-            for (int i = 0; i < 3; i++ ) {
+            for (int i = 0; i < 3; i++) {
                 help1(myMapp, i);
             }
         } else {
-            for (int i = 0; i < mapSize; i++ ) {
+            for (int i = 0; i < mapSize; i++) {
                 help1(myMapp, i);
             }
         }
@@ -211,12 +210,12 @@ public class WebBrowser {
         browser.back(); //
         browser.addAsBookmark(); //
         browser.setHomePage("neti.ee");
-        browser.forward(); //
+        browser.forward();
         browser.goTo("facebook.com");
         browser.goTo("facebook.com");
         browser.addAsBookmark();
         browser.setHomePage("google.ee");
-        browser.homePage(); //
+        browser.homePage();
         browser.goTo("google.com");
         browser.addAsBookmark();
         browser.removeBookmark("facebook.com");//

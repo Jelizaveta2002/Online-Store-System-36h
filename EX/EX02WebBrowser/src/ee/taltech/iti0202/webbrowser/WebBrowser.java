@@ -1,6 +1,12 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.List;
+import java.util.Stack;
+import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class WebBrowser {
     private String homePage = "google.com";
@@ -109,11 +115,9 @@ public class WebBrowser {
         }
         if (maxVisits != 1) {
             toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visits" + "\n");
-        }
-        else {
+        } else {
             toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visit" + "\n");
-        }
-        myMapp.remove(result);
+        } myMapp.remove(result);
     }
 
     /**

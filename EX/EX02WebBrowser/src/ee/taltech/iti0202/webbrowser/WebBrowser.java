@@ -218,7 +218,7 @@ public class WebBrowser {
         browser.homePage();
         browser.goTo("google.com");
         browser.addAsBookmark();
-        browser.removeBookmark("facebook.com");//
+        browser.removeBookmark("facebook.com");
         System.out.println(browser.getBookmarks());
     }
 }

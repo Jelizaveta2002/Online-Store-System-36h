@@ -20,7 +20,7 @@ class WebBrowserTest {
         browser.forward(); //
         browser.homePage(); //
         browser.addAsBookmark(); //
-        List<String> myList = Arrays.asList("facebook.com", "neti.ee");;
+        List<String> myList = Arrays.asList("facebook.com", "neti.ee");
         assertEquals(browser.getBookmarks(), myList);
     }
 
@@ -41,8 +41,8 @@ class WebBrowserTest {
         browser.homePage(); //
         browser.goTo("google.com");
         browser.addAsBookmark();
-        browser.removeBookmark("facebook.com"); //
-        List<String> myList = List.of("google.com");;
+        browser.removeBookmark("facebook.com");
+        List<String> myList = List.of("google.com");
         assertEquals(browser.getBookmarks(), myList);
     }
 

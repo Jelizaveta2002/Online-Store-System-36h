@@ -66,6 +66,40 @@ class WebBrowserTest {
     }
 
     @Test
+    void getTop3VisitedPages3() {
+        WebBrowser browser = new WebBrowser();
+        browser.setHomePage("neti.ee"); //
+        browser.goTo("google.com");
+        browser.goTo("facebook.com");
+        browser.forward();
+        browser.back();
+        browser.setHomePage("ois.ee");
+        browser.goTo("google.com");
+        browser.back();
+        browser.back();
+        browser.homePage();
+        browser.back();
+        String check = "google.com - 4 visits" + "\n" + "facebook.com - 3 visits" + "\n" + "ois.ee - 1 visit" + "\n";
+        assertEquals(check, browser.getTop3VisitedPages());
+    }
+
+    @Test
+    void getTop3VisitedSamePage() {
+        WebBrowser browser = new WebBrowser();
+        browser.setHomePage("neti.ee"); //
+        browser.goTo("google.com");
+        browser.goTo("google.com");
+        browser.forward();
+        browser.setHomePage("ois.ee");
+        browser.goTo("google.com");
+        browser.setHomePage("facebook.com");
+        browser.back();
+        browser.homePage();
+        String check = "google.com - 2 visits" + "\n" + "facebook.com - 1 visit" + "\n";
+        assertEquals(check, browser.getTop3VisitedPages());
+    }
+
+    @Test
     void getHistory() {
         WebBrowser mine = new WebBrowser();
         mine.setHomePage("neti.ee");
@@ -73,6 +107,31 @@ class WebBrowserTest {
         mine.forward();
         mine.forward();
         List<String> checkList = Arrays.asList("google.com", "facebook.com");
+        assertEquals(checkList, mine.getHistory());
+    }
+
+    @Test
+    void getHistoryForwardEmpty() {
+        WebBrowser mine = new WebBrowser();
+        mine.setHomePage("google.com");
+        mine.goTo("facebook.com");
+        mine.back();
+        List<String> checkList = Arrays.asList("google.com", "facebook.com", "google.com");
+        assertEquals(checkList, mine.getHistory());
+    }
+
+    @Test
+    void getHistoryBackEmpty() {
+        WebBrowser mine = new WebBrowser();
+        mine.setHomePage("google.com");
+        mine.goTo("facebook.com");
+        mine.forward();
+        mine.forward();
+        mine.setHomePage("y8.com");
+        mine.goTo("google.com");
+        mine.forward();
+        mine.goTo("jetbrains.com");
+        List<String> checkList = Arrays.asList("google.com", "facebook.com", "google.com", "jetbrains.com");
         assertEquals(checkList, mine.getHistory());
     }
 

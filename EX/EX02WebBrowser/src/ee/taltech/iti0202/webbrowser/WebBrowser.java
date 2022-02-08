@@ -177,54 +177,17 @@ public class WebBrowser {
     }
 
     public static void main(String[] args) {
-//        browser.goTo("google.com");
-//        browser.goTo("yahoo.com");
-//        browser.goTo("facebook.com");
-//        browser.goTo("ois.ee");
-//        browser.goTo("jetbrains.com");
-//        browser.goTo("taltech.com");
-//        browser.goTo("solnet.net");
-//        browser.goTo("instagram.com");
-//        browser.goTo("google.com");
-//        browser.goTo("facebook.com");
-//        browser.goTo("ois.ee");
-//        browser.setHomePage("neti.ee");
-//        browser.goTo("facebook.com");
-//        browser.back();
-//        browser.homePage();
-//        browser.forward();
-//        browser.forward();
-//        browser.getCurrentUrl(); //- > "google.com"
-//        browser.setHomePage("neti.ee"); //
-//        browser.goTo("facebook.com"); //
-//        browser.getCurrentUrl(); // - > "facebook.com"
-//        browser.goTo("google.com"); //
-//        browser.getCurrentUrl(); // - > "google.com"
-//        browser.back(); //
-//        browser.getCurrentUrl(); // - > "facebook.com"
-//        browser.addAsBookmark(); //
-//        browser.forward(); //
-//        browser.getCurrentUrl(); // - > "google.com"
-//        browser.homePage(); //
-//        browser.getCurrentUrl(); // - > "neti.ee"
-//        browser.addAsBookmark(); //
-//        browser.getBookmarks(); //
         WebBrowser browser = new WebBrowser();
         browser.setHomePage("neti.ee"); //
-        browser.goTo("facebook.com"); //
-        browser.goTo("google.com"); //
-        browser.back(); //
-        browser.addAsBookmark(); //
-        browser.setHomePage("neti.ee");
-        browser.forward();
-        browser.goTo("facebook.com");
-        browser.goTo("facebook.com");
-        browser.addAsBookmark();
-        browser.setHomePage("google.ee");
-        browser.homePage();
         browser.goTo("google.com");
+        browser.goTo("google.com");
+        browser.forward();
         browser.addAsBookmark();
-        browser.removeBookmark("facebook.com");
+        browser.setHomePage("ois.ee");
+        browser.goTo("google.com");
+        browser.setHomePage("facebook.com");
+        browser.back();
+        browser.homePage();
         System.out.println(browser.getBookmarks());
     }
 }

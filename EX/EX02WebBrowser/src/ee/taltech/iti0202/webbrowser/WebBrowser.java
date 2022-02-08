@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.webbrowser;
+
 import java.util.*;
 
 public class WebBrowser {
@@ -7,7 +8,7 @@ public class WebBrowser {
     Stack<String> forward = new Stack<>();
     String currentPage = homePage;
     List<String> history = new ArrayList<>();
-    List<String> MyBookmark = new ArrayList<>();
+    List<String> myBookmark = new ArrayList<>();
     HashMap<String, Integer> popularMap = new HashMap<>();
     Map<String, Integer> myMapp = new LinkedHashMap<>();
     List<String> toStorePop = new ArrayList<>();
@@ -42,7 +43,7 @@ public class WebBrowser {
      */
     public void forward() {
         back.push(currentPage);
-        int sizeOfForStack =forward.size();
+        int sizeOfForStack = forward.size();
         if (!forward.isEmpty()) {
             currentPage = forward.pop();
             history.add(currentPage);
@@ -69,11 +70,11 @@ public class WebBrowser {
      */
     public void addAsBookmark() {
         String myPage = currentPage.toString();
-        for (String i : MyBookmark) {
+        for (String i : myBookmark) {
             if (Objects.equals(i, myPage)) {
                 return;
             }
-        } MyBookmark.add(currentPage);
+        } myBookmark.add(currentPage);
     }
 
     /**
@@ -83,17 +84,14 @@ public class WebBrowser {
      */
 
     public void removeBookmark(String bookmark) {
-        //TODO: implement
-        MyBookmark.remove(bookmark);
+        myBookmark.remove(bookmark);
     }
 
     public List<String> getBookmarks() {
-        //TODO: implement
-        return MyBookmark;
+        return myBookmark;
     }
 
     public void setHomePage(String homePage) {
-        //TODO: implement
         this.homePage = homePage;
     }
 

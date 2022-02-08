@@ -103,7 +103,7 @@ public class WebBrowser {
      * Get top 3 visited pages.
      *  @param map to remove
      */
-    public void help1(Map<String, Integer> map, Integer i) {
+    public void help1(Map<String, Integer> map, int i) {
         int maxVisits = 0;
         String result = null;
         for (String key : map.keySet()) {
@@ -117,7 +117,8 @@ public class WebBrowser {
             toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visits" + "\n");
         } else {
             toStorePop.add(i, result + " " +  "-" + " " + maxVisits + " " + "visit" + "\n");
-        } myMapp.remove(result);
+        }
+        myMapp.remove(result);
     }
 
     /**

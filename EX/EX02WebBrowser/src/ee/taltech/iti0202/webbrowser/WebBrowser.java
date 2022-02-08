@@ -99,8 +99,6 @@ public class WebBrowser {
 
     /**
      * Get top 3 visited pages.
-     *
-     * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public void help1(Map<String, Integer> map, Integer i) {
         int maxVisits = 0;
@@ -127,7 +125,6 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        //TODO: implement
         Map<String, Integer> resultMap = new LinkedHashMap<>();
         for (String url : history) {
             if (myMapp.containsKey(url)) {
@@ -137,11 +134,11 @@ public class WebBrowser {
             }
         } int mapSize = myMapp.size();
         if (mapSize >= 3) {
-            for (Integer i = 0; i < 3; i++ ) {
+            for (int i = 0; i < 3; i++ ) {
                 help1(myMapp, i);
             }
         } else {
-            for (Integer i = 0; i < mapSize; i++ ) {
+            for (int i = 0; i < mapSize; i++ ) {
                 help1(myMapp, i);
             }
         }
@@ -163,7 +160,6 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
-        //TODO: implement
         return history;
     }
 
@@ -174,12 +170,10 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
-        //TODO: implement
         return currentPage;
     }
 
     public static void main(String[] args) {
-        WebBrowser browser = new WebBrowser();
 //        browser.goTo("google.com");
 //        browser.goTo("yahoo.com");
 //        browser.goTo("facebook.com");
@@ -197,21 +191,37 @@ public class WebBrowser {
 //        browser.homePage();
 //        browser.forward();
 //        browser.forward();
-        browser.getCurrentUrl(); //- > "google.com"
+//        browser.getCurrentUrl(); //- > "google.com"
+//        browser.setHomePage("neti.ee"); //
+//        browser.goTo("facebook.com"); //
+//        browser.getCurrentUrl(); // - > "facebook.com"
+//        browser.goTo("google.com"); //
+//        browser.getCurrentUrl(); // - > "google.com"
+//        browser.back(); //
+//        browser.getCurrentUrl(); // - > "facebook.com"
+//        browser.addAsBookmark(); //
+//        browser.forward(); //
+//        browser.getCurrentUrl(); // - > "google.com"
+//        browser.homePage(); //
+//        browser.getCurrentUrl(); // - > "neti.ee"
+//        browser.addAsBookmark(); //
+//        browser.getBookmarks(); //
+        WebBrowser browser = new WebBrowser();
         browser.setHomePage("neti.ee"); //
         browser.goTo("facebook.com"); //
-        browser.getCurrentUrl(); // - > "facebook.com"
         browser.goTo("google.com"); //
-        browser.getCurrentUrl(); // - > "google.com"
         browser.back(); //
-        browser.getCurrentUrl(); // - > "facebook.com"
         browser.addAsBookmark(); //
+        browser.setHomePage("neti.ee");
         browser.forward(); //
-        browser.getCurrentUrl(); // - > "google.com"
+        browser.goTo("facebook.com");
+        browser.goTo("facebook.com");
+        browser.addAsBookmark();
+        browser.setHomePage("google.ee");
         browser.homePage(); //
-        browser.getCurrentUrl(); // - > "neti.ee"
-        browser.addAsBookmark(); //
-        browser.getBookmarks(); //
-        System.out.println(browser.getHistory());
+        browser.goTo("google.com");
+        browser.addAsBookmark();
+        browser.removeBookmark("facebook.com");//
+        System.out.println(browser.getBookmarks());
     }
 }

@@ -13,7 +13,7 @@ public class Book {
     int id = getAndIncrementNextId();
     Person owner;
     static List<Book> bookList = new ArrayList<>();
-    static int numberId = -1;
+    static int numberId = 0;
 
 
     public Book(String title, String author, int yearOfPublishing, int price) {

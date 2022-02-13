@@ -10,7 +10,12 @@ import java.util.Objects;
 public class Person {
     String name;
     int money;
-    HashMap<Book, String> bookOwners = new HashMap<>();
+    Person person;
+    static HashMap<Book, Person> bookOwners = new HashMap<>();
+
+    static HashMap<Book, Person> getMap() {
+        return bookOwners;
+    }
 
     public Person(String name, int money) {
         this.name = name;
@@ -36,7 +41,7 @@ public class Person {
                 }
                 else if (key.equals(book) && bookOwners.get(key) == null) {
                     if (money > book.price) {
-                        bookOwners.put(book, getName());
+                        bookOwners.put(book, person);
                         money = money - book.price;
                         return true;
                     }
@@ -47,7 +52,7 @@ public class Person {
             }
         }
         else if (money > book.price) {
-            bookOwners.put(book, getName());
+            bookOwners.put(book, person);
             money = money - book.price;
             return true;
         }
@@ -61,7 +66,7 @@ public class Person {
         else if (! bookOwners.isEmpty()) {
             for (Book key : bookOwners.keySet()) {
                 if (key == book) {
-                    if (Objects.equals(bookOwners.get(book), getName())) {
+                    if (Objects.equals(bookOwners.get(book), person)) {
                         money = money + book.price;
                         return true;
                     }

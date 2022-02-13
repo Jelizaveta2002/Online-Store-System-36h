@@ -2,12 +2,13 @@ package ee.taltech.iti0202.bookshelf;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Person {
     String name;
     int money;
-    List<Book> bookList = new ArrayList<>();
+    HashMap<Book, String> bookOwners = new HashMap<>();
 
     public Person(String name, int money) {
         this.name = name;
@@ -23,20 +24,21 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        if (bookList.isEmpty()) {
-            return false;
+        for (Book key : bookOwners.keySet()) {
+            if (key.equals(book)) {
+                if (bookOwners.get(book).equals(null)) {
+                    if (money > book.price) {
+                        bookOwners.put(book, getName());
+                        money = money - book.price;
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
         }
-        else if (bookList.contains(book)) {
-            return false;
-        }
-        else if (book.price > money) {
-            return false;
-        }
-        else {
-            bookList.add(book);
-            money = money - book.price;
-            return true;
-        }
+        return false;
     }
 
     public boolean sellBook(Book book) {

@@ -1,24 +1,32 @@
 package ee.taltech.iti0202.bookshelf;
 
 public class Book {
+    String title;
+    String author;
+    int yearOfPublishing;
+    int price;
 
     public static int getAndIncrementNextId() {
         return 0;
     }
 
     public Book(String title, String author, int yearOfPublishing, int price) {
+        this.title = title;
+        this.author = author;
+        this.yearOfPublishing = yearOfPublishing;
+        this.price = price;
     }
 
     public String getTitle() {
-        return null;
+        return title;
     }
 
     public String getAuthor() {
-        return null;
+        return author;
     }
 
     public int getYearOfPublishing() {
-        return 0;
+        return yearOfPublishing;
     }
 
     public Person getOwner() {
@@ -26,7 +34,7 @@ public class Book {
     }
 
     public int getPrice() {
-        return 0;
+        return price;
     }
 
     public int getId() {

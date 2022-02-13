@@ -57,11 +57,11 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != this.owner && buyer.money > this.price && this != null) {
-            this.setOwner(buyer);
-            this.owner.money += this.price;
-            buyer.money = buyer.money - this.price;
-            return true;
+        if (buyer != null && buyer.canBuy(this) ) {
+            Person prevOwner = this.owner;
+            boolean two = prevOwner.sellBook(this);
+            boolean one = buyer.buyBook(this);
+            return one && two;
         }
         return false;
     }

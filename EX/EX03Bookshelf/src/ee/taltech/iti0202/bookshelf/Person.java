@@ -28,12 +28,16 @@ public class Person {
         return name;
     }
 
+    public boolean canBuy(Book book) {
+        return book != null && book.price < this.money;
+    }
+
     public boolean buyBook(Book book) {
-        if (book == null || book.owner != null || book.price > money ) {
+        if (book == null || book.owner != null || book.price > this.money ) {
             return false;
         }
         book.setOwner(this);
-        money = money - book.price;
+        this.money = this.money - book.price;
         return true;
     }
 
@@ -42,7 +46,7 @@ public class Person {
             return false;
         }
         book.setOwner(null);
-        money = money + book.price;
+        this.money = this.money + book.price;
         return true;
     }
 }

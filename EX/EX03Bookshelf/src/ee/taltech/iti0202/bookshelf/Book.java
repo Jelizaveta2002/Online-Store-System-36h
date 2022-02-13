@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.bookshelf;
 
-import java.util.HashMap;
-
 public class Book {
     String title;
     String author;

@@ -5,9 +5,11 @@ public class Book {
     String author;
     int yearOfPublishing;
     int price;
+    int id = getAndIncrementNextId();
 
     public static int getAndIncrementNextId() {
-        return 0;
+        int number = -1;
+        return number += 1;
     }
 
     public Book(String title, String author, int yearOfPublishing, int price) {

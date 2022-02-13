@@ -10,16 +10,14 @@ import java.util.Objects;
 public class Person {
     String name;
     int money;
-    Person person;
-    static HashMap<Book, Person> bookOwners = new HashMap<>();
+    //static HashMap<Book, Person> bookOwners = new HashMap<>();
+    static List<Person> persons = new ArrayList<>();
 
-    static HashMap<Book, Person> getMap() {
-        return bookOwners;
-    }
 
     public Person(String name, int money) {
         this.name = name;
         this.money = money;
+        persons.add(this);
     }
 
     public int getMoney() {
@@ -31,50 +29,20 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        if (book == null) {
+        if (book == null || book.owner != null || book.price > money ) {
             return false;
         }
-        else if (! bookOwners.isEmpty()) {
-            for (Book key : bookOwners.keySet()) {
-                if (key.equals(book) && bookOwners.get(key) != null) {
-                    return false;
-                }
-                else if (key.equals(book) && bookOwners.get(key) == null) {
-                    if (money > book.price) {
-                        bookOwners.put(book, person);
-                        money = money - book.price;
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-            }
-        }
-        else if (money > book.price) {
-            bookOwners.put(book, person);
-            money = money - book.price;
-            return true;
-        }
-        return  false;
+        book.setOwner(this);
+        money = money - book.price;
+        return true;
     }
 
     public boolean sellBook(Book book) {
-        if (book == null) {
+        if (book == null || book.owner != this) {
             return false;
         }
-        else if (! bookOwners.isEmpty()) {
-            for (Book key : bookOwners.keySet()) {
-                if (key == book) {
-                    if (Objects.equals(bookOwners.get(book), person)) {
-                        money = money + book.price;
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-            }
-        } return false;
+        book.setOwner(null);
+        money = money + book.price;
+        return true;
     }
 }

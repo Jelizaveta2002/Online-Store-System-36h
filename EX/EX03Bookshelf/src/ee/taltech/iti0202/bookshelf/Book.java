@@ -1,6 +1,8 @@
 package ee.taltech.iti0202.bookshelf;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class Book {
@@ -9,6 +11,8 @@ public class Book {
     int yearOfPublishing;
     int price;
     int id = getAndIncrementNextId();
+    Person owner;
+    static List<Book> bookList = new ArrayList<>();
 
     public static int getAndIncrementNextId() {
         int number = -1;
@@ -20,6 +24,11 @@ public class Book {
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
+        bookList.add(this);
+    }
+
+    public void setOwner(Person owner) {
+       this.owner = owner;
     }
 
     public String getTitle() {
@@ -35,7 +44,7 @@ public class Book {
     }
 
     public Person getOwner() {
-        return null;
+        return owner;
     }
 
     public int getPrice() {

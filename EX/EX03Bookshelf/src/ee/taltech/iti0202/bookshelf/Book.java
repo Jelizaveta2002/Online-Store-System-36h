@@ -57,7 +57,7 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != this.owner && buyer.money > this.price) {
+        if (buyer != this.owner && buyer.money > this.price && this != null) {
             this.setOwner(buyer);
             this.owner.money += this.price;
             buyer.money = buyer.money - this.price;

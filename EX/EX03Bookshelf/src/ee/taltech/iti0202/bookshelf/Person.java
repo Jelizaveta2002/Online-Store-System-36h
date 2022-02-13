@@ -2,16 +2,20 @@ package ee.taltech.iti0202.bookshelf;
 
 
 public class Person {
+    String name;
+    int money;
 
     public Person(String name, int money) {
+        this.name = name;
+        this.money = money;
     }
 
     public int getMoney() {
-        return 0;
+        return money;
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public boolean buyBook(Book book) {

@@ -28,7 +28,7 @@ public class Person {
         if (book == null) {
             return false;
         }
-        if (! bookOwners.isEmpty()) {
+        else if (! bookOwners.isEmpty()) {
             for (Book key : bookOwners.keySet()) {
                 if (key.equals(book) && bookOwners.get(key) != null) {
                     return false;

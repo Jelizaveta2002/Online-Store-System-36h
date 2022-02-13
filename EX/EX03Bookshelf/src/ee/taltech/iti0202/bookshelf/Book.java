@@ -26,7 +26,7 @@ public class Book {
     }
 
     public static int getAndIncrementNextId() {
-        return numberId;
+        return numberId += 1;
     }
 
     public void setOwner(Person owner) {
@@ -54,7 +54,7 @@ public class Book {
     }
 
     public int getId() {
-        return id;
+        return numberId;
     }
 
     public boolean buy(Person buyer) {

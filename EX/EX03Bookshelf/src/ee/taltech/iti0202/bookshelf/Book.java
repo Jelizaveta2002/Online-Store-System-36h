@@ -13,7 +13,7 @@ public class Book {
     int id = getAndIncrementNextId();
     Person owner;
     static List<Book> bookList = new ArrayList<>();
-    static int numberId = -1;
+    static int helper;
 
 
     public Book(String title, String author, int yearOfPublishing, int price) {
@@ -22,11 +22,10 @@ public class Book {
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
         bookList.add(this);
-        numberId += 1;
     }
 
     public static int getAndIncrementNextId() {
-        return numberId + 1;
+        return helper++;
     }
 
     public void setOwner(Person owner) {
@@ -54,7 +53,7 @@ public class Book {
     }
 
     public int getId() {
-        return numberId;
+        return id;
     }
 
     public boolean buy(Person buyer) {

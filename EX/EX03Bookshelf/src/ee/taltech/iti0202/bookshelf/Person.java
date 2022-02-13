@@ -25,19 +25,21 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        for (Book key : bookOwners.keySet()) {
-            if (key.equals(book)) {
-                if (bookOwners.get(book).equals(null)) {
+        if (! bookOwners.isEmpty()) {
+            for (Book key : bookOwners.keySet()) {
+                if (key.equals(book)) {
+                    return false;
+                    }
+                else {
                     if (money > book.price) {
                         bookOwners.put(book, getName());
                         money = money - book.price;
                         return true;
                     }
-                    else {
-                        return false;
-                    }
                 }
+                return false;
             }
+            return false;
         }
         return false;
     }

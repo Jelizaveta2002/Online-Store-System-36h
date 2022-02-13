@@ -25,12 +25,15 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
+        if (book == null) {
+            return false;
+        }
         if (! bookOwners.isEmpty()) {
             for (Book key : bookOwners.keySet()) {
-                if (key.equals(book)) {
+                if (key.equals(book) && bookOwners.get(key) != null) {
                     return false;
                 }
-                else {
+                else if (key.equals(book) && bookOwners.get(key) == null) {
                     if (money > book.price) {
                         bookOwners.put(book, getName());
                         money = money - book.price;
@@ -47,10 +50,7 @@ public class Person {
             money = money - book.price;
             return true;
         }
-        else {
-            return false;
-        }
-        return false;
+        return  false;
     }
 
     public boolean sellBook(Book book) {

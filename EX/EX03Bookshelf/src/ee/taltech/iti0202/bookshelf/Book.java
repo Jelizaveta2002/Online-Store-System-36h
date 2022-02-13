@@ -40,7 +40,7 @@ public class Book {
     }
 
     public int getId() {
-        return -287;
+        return id;
     }
 
     public boolean buy(Person buyer) {

@@ -5,6 +5,7 @@ package ee.taltech.iti0202.bookshelf;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Person {
     String name;
@@ -54,6 +55,21 @@ public class Person {
     }
 
     public boolean sellBook(Book book) {
-        return false;
+        if (book == null) {
+            return false;
+        }
+        else if (! bookOwners.isEmpty()) {
+            for (Book key : bookOwners.keySet()) {
+                if (key == book) {
+                    if (Objects.equals(bookOwners.get(book), getName())) {
+                        money = money + book.price;
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+        } return false;
     }
 }

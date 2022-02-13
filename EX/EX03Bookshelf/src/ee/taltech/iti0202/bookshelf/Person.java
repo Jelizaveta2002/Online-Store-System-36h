@@ -42,7 +42,7 @@ public class Person {
                 }
             }
         }
-        if (money > book.price) {
+        else if (money > book.price) {
             bookOwners.put(book, getName());
             money = money - book.price;
             return true;
@@ -50,6 +50,7 @@ public class Person {
         else {
             return false;
         }
+        return false;
     }
 
     public boolean sellBook(Book book) {

@@ -57,9 +57,13 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != null && buyer.canBuy(this)) {
+        if (buyer != null && buyer.canBuy(this) && this.owner != null) {
             Person prevOwner = this.owner;
             prevOwner.sellBook(this);
+            buyer.buyBook(this);
+            return true;
+        }
+        if (buyer != null && buyer.canBuy(this) && this.owner == null) {
             buyer.buyBook(this);
             return true;
         }

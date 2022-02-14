@@ -107,7 +107,7 @@ public class Book {
 
     public static boolean iterateValueList(ArrayList<Book> list, Book book) {
         for (Book i : list) {
-            if (i.price == book.price && i.owner == book.owner && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
+            if (i.price == book.price && Objects.equals(i.title, book.title) && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
                 return true;
             }
         }

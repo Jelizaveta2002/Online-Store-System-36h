@@ -45,5 +45,9 @@ public class Main {
 
 
         System.out.println(Book.getBooksByOwner(kati));
+        System.out.println(Book.removeBook(tammsaare));
+        System.out.println(Book.removeBook(null));
+        System.out.println(Book.getBooksByOwner(kati));
+        System.out.println(kati.getMoney());
     }
 }

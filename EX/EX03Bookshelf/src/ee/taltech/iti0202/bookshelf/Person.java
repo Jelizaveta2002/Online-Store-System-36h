@@ -46,7 +46,7 @@ public class Person {
         }
         bookOwners.put(this, new ArrayList<>());
         bookOwners.get(this).add(book);
-        System.out.println(bookOwners);
+        //System.out.println(bookOwners);
         book.setOwner(this);
         this.money = this.money - book.price;
         return true;

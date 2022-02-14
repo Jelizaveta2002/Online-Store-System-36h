@@ -115,14 +115,17 @@ public class Book {
     }
 
     public static boolean removeBook(Book book) {
-        if (book != null && iterateValueList(bookList, book)) {
-            for (Person person : Person.bookOwners.keySet()) {
-                if (iterateValueList(Person.bookOwners.get(person), book)) {
-                    person.sellBook(book);
-                    bookList.remove(book);
-                    return true;
+        if (book != null) {
+            if (iterateValueList(bookList, book)) {
+                for (Person person : Person.bookOwners.keySet()) {
+                    if (iterateValueList(Person.bookOwners.get(person), book)) {
+                        person.sellBook(book);
+                        bookList.remove(book);
+                        return true;
+                    }
                 }
             }
+            return false;
         }
         return false;
     }

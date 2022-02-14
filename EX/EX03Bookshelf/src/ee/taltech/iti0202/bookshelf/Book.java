@@ -25,6 +25,11 @@ public class Book {
         bookList.add(this);
     }
 
+    public boolean equals(Book obj) {
+        return Objects.equals(obj.getTitle(), title) && Objects.equals(obj.getAuthor(), author)
+                && obj.getYearOfPublishing() == yearOfPublishing && obj.getPrice() == price;
+    }
+
     public static int getAndIncrementNextId() {
         return helper++;
     }
@@ -90,4 +95,18 @@ public class Book {
     public static Book of(String title, int price) {
         return null;
     }
+
+    public static List<Book> getBooksByOwner(Person owner) {
+        return null;
+    }
+
+    public static boolean removeBook(Book book) {
+        return false;
+    }
+
+    public static List<Book> getBooksByAuthor(String author) {
+        return null;
+    }
+
+
 }

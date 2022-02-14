@@ -49,4 +49,8 @@ public class Person {
         this.money = this.money + book.price;
         return true;
     }
+
+    public List<Book> getBooks() {
+        return null;
+    }
 }

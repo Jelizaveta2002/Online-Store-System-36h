@@ -25,20 +25,30 @@ public class Person {
     }
 
     public String isSauron() {
-        if (this.name.equals("Sauron") && this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
-            return "Affirmative";
-        }
-        else if (this.name.equals("Sauron") && !this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
-            return "No, the ring is fake!";
-        }
-        else if (!this.name.equals("Sauron") && !this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
-            return "No, he just stole the ring";
-        }
-        else if (this.name.equals("Sauron") && (!this.ring.getType().equals(Ring.Type.THE_ONE) || this.ring == null)) {
-            return "No, but he's claiming to be";
+        if (this.ring != null) {
+            if (this.name.equals("Sauron") && this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
+                return "Affirmative";
+            }
+            else if (this.name.equals("Sauron") && !this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
+                return "No, the ring is fake!";
+            }
+            else if (!this.name.equals("Sauron") && !this.ring.material.equals(Ring.Material.GOLD) && this.ring.type.equals(Ring.Type.THE_ONE)) {
+                return "No, he just stole the ring";
+            }
+            else if (this.name.equals("Sauron") && !this.ring.getType().equals(Ring.Type.THE_ONE)) {
+                return "No, but he's claiming to be";
+            }
+            else {
+                return "No";
+            }
         }
         else {
-            return "No";
+            if (this.name.equals("Sauron")) {
+                return "No, but he's claiming to be";
+            }
+            else {
+                return "No";
+            }
         }
     }
 

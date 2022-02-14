@@ -106,10 +106,13 @@ public class Book {
     }
 
     public static boolean iterateValueList(ArrayList<Book> list, Book book) {
-        for (Book i : list) {
-            if (i.price == book.price && Objects.equals(i.title, book.title) && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
-                return true;
+        if (! list.isEmpty()) {
+            for (Book i : list) {
+                if (i.price == book.price && Objects.equals(i.title, book.title) && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
+                    return true;
+                }
             }
+            return false;
         }
         return false;
     }

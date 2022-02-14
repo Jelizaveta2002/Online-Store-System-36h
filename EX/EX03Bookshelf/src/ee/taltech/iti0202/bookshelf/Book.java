@@ -12,7 +12,7 @@ public class Book {
     int price;
     int id = getAndIncrementNextId();
     Person owner;
-    static List<Book> bookList = new ArrayList<>();
+    static ArrayList<Book> bookList = new ArrayList<>();
     static int helper;
     static List<Book> bookOfList = new ArrayList<>();
 
@@ -115,7 +115,7 @@ public class Book {
     }
 
     public static boolean removeBook(Book book) {
-        if (book != null && bookList.contains(book)) {
+        if (book != null && iterateValueList(bookList, book)) {
             for (Person person : Person.bookOwners.keySet()) {
                 if (iterateValueList(Person.bookOwners.get(person), book)) {
                     person.sellBook(book);

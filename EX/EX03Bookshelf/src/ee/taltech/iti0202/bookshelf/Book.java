@@ -15,6 +15,7 @@ public class Book {
     static ArrayList<Book> bookList = new ArrayList<>();
     static int helper;
     static List<Book> bookOfList = new ArrayList<>();
+    static ArrayList<Book> booksByAuthor = new ArrayList<>();
 
 
     public Book(String title, String author, int yearOfPublishing, int price) {
@@ -123,7 +124,11 @@ public class Book {
                 for (Person person : Person.bookOwners.keySet()) {
                     if (iterateValueList(Person.bookOwners.get(person), book)) {
                         person.sellBook(book);
-                        return true;
+                    }
+                }
+                for (Book myBook : booksByAuthor) {
+                    if (iterateValueList(booksByAuthor, book)) {
+                        booksByAuthor.remove(book);
                     }
                 }
                 return true;
@@ -134,7 +139,6 @@ public class Book {
     }
 
     public static List<Book> getBooksByAuthor(String author) {
-        ArrayList<Book> booksByAuthor = new ArrayList<>();
         for (Book book : bookList) {
             if (book.author.equals(author) || book.author.equals(author.toUpperCase()) || book.author.equals(author.toLowerCase())) {
                 booksByAuthor.add(book);

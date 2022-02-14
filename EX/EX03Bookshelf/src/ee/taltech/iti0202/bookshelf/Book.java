@@ -97,7 +97,12 @@ public class Book {
     }
 
     public static List<Book> getBooksByOwner(Person owner) {
-        return null;
+        for (Person person : Person.bookOwners.keySet()) {
+            if (person.equals(owner)) {
+                System.out.println(Person.bookOwners);
+                return Person.bookOwners.get(person);
+            }
+        }return new ArrayList<>();
     }
 
     public static boolean removeBook(Book book) {

@@ -5,12 +5,11 @@ package ee.taltech.iti0202.bookshelf;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class Person {
     String name;
     int money;
-    //static HashMap<Book, Person> bookOwners = new HashMap<>();
+    static HashMap<Person, ArrayList<Book>> bookOwners = new HashMap<>();
     static List<Person> persons = new ArrayList<>();
 
 
@@ -36,15 +35,28 @@ public class Person {
         if (book == null || book.owner != null || book.price > this.money ) {
             return false;
         }
+        for (Person key : bookOwners.keySet()) {
+            if (key.equals(this)) {
+                bookOwners.get(this).add(book);
+                book.setOwner(this);
+                this.money = this.money - book.price;
+                return true;
+            }
+        }
+        bookOwners.put(this, new ArrayList<>());
+        bookOwners.get(this).add(book);
+        System.out.println(bookOwners);
         book.setOwner(this);
         this.money = this.money - book.price;
         return true;
     }
 
+
     public boolean sellBook(Book book) {
         if (book == null || book.owner != this) {
             return false;
         }
+        bookOwners.get(this).remove(book);
         book.setOwner(null);
         this.money = this.money + book.price;
         return true;

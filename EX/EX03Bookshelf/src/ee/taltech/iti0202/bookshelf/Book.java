@@ -81,7 +81,7 @@ public class Book {
     }
 
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        if (! bookList.isEmpty()) {
+        if (! bookOfList.isEmpty()) {
             for (Book i : bookOfList) {
                 if (Objects.equals(i.getTitle(), title) && Objects.equals(i.getAuthor(), author)
                         && i.getYearOfPublishing() == yearOfPublishing && i.getPrice() == price) {

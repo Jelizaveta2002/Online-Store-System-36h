@@ -119,6 +119,7 @@ public class Book {
 
     public static boolean removeBook(Book book) {
         if (book != null) {
+            bookList.remove(book);
             for (Person person : Person.bookOwners.keySet()) {
                 if (iterateValueList(Person.bookOwners.get(person), book)) {
                     person.sellBook(book);

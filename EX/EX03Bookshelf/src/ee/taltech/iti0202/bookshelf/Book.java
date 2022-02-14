@@ -119,22 +119,22 @@ public class Book {
     }
 
     public static boolean removeBook(Book book) {
-        if (book != null) {
-            if (iterateValueList(bookList, book)) {
-                for (Person person : Person.bookOwners.keySet()) {
-                    if (iterateValueList(Person.bookOwners.get(person), book)) {
-                        person.sellBook(book);
-                    }
-                }
-                for (Book myBook : booksByAuthor) {
-                    if (iterateValueList(booksByAuthor, book)) {
-                        booksByAuthor.remove(book);
-                    }
-                }
-                return true;
-            }
-            return false;
-        }
+//        if (book != null) {
+//            if (iterateValueList(bookList, book)) {
+//                for (Person person : Person.bookOwners.keySet()) {
+//                    if (iterateValueList(Person.bookOwners.get(person), book)) {
+//                        person.sellBook(book);
+//                    }
+//                }
+//                for (Book myBook : booksByAuthor) {
+//                    if (iterateValueList(booksByAuthor, book)) {
+//                        booksByAuthor.remove(book);
+//                    }
+//                }
+//                return true;
+//            }
+//            return false;
+//        }
         return false;
     }
 

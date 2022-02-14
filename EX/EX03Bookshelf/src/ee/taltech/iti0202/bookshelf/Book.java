@@ -81,10 +81,12 @@ public class Book {
     }
 
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        for (Book i : bookOfList) {
-            if (Objects.equals(i.getTitle(), title) && Objects.equals(i.getAuthor(), author)
-                    && i.getYearOfPublishing() == yearOfPublishing && i.getPrice() == price) {
-                return i;
+        if (! bookList.isEmpty()) {
+            for (Book i : bookOfList) {
+                if (Objects.equals(i.getTitle(), title) && Objects.equals(i.getAuthor(), author)
+                        && i.getYearOfPublishing() == yearOfPublishing && i.getPrice() == price) {
+                    return i;
+                }
             }
         }
         Book neBook = new Book(title, author, yearOfPublishing, price);

@@ -45,11 +45,12 @@ public class Main {
 
 
         System.out.println(Book.getBooksByOwner(kati));
-        System.out.println(Book.removeBook(tammsaare));
-        System.out.println(Book.removeBook(meri));
-        System.out.println(Book.removeBook(meri));
-        System.out.println(Book.getBooksByOwner(kati));
+        System.out.println(Book.removeBook(null));
+        System.out.println(Book.removeBook(null));
+        //System.out.println(Book.getBooksByOwner(kati));
         System.out.println(kati.getMoney());
-        System.out.println(Book.bookList);
+        //System.out.println(Book.bookList);
+        System.out.println(kati.getMoney());
+        System.out.println(Book.getBooksByAuthor("Tammsaare"));
     }
 }

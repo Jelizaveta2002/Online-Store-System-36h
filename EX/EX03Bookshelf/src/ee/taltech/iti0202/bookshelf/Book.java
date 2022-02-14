@@ -134,7 +134,13 @@ public class Book {
     }
 
     public static List<Book> getBooksByAuthor(String author) {
-        return null;
+        ArrayList<Book> booksByAuthor = new ArrayList<>();
+        for (Book book : bookList) {
+            if (book.author.equals(author) || book.author.equals(author.toUpperCase()) || book.author.equals(author.toLowerCase())) {
+                booksByAuthor.add(book);
+            }
+        }
+        return booksByAuthor;
     }
 
 

@@ -82,8 +82,9 @@ public class Book {
                 return i;
             }
         }
-        bookOfList.add(new Book(title, author, yearOfPublishing, price));
-        return new Book(title, author, yearOfPublishing, price);
+        Book neBook = new Book(title, author, yearOfPublishing, price);
+        bookOfList.add(neBook);
+        return neBook;
     }
 
     public static Book of(String title, int price) {

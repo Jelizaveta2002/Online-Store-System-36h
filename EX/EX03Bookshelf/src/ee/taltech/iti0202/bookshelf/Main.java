@@ -35,5 +35,9 @@ public class Main {
         System.out.println(meri.getId()); // 1
         System.out.println(Book.getAndIncrementNextId()); // 2
 
+        System.out.println(Book.of("Truth and Justice", "Tammsaare", 1926, 100));
+        System.out.println(Book.of("Truth and Justice", "Tammsaare", 1926, 100));
+        System.out.println(Book.of("Truth", "Tammsaare", 1900, 160));
+        System.out.println(Book.of("Nun", "VanGoh", 1598, 250));
     }
 }

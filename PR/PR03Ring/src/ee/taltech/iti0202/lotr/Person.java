@@ -19,9 +19,7 @@ public class Person {
     }
 
     public void setRing(Ring ring) {
-        if (this.ring == null) {
-            this.ring = ring;
-        }
+        this.ring = ring;
     }
 
     public String isSauron() {
@@ -32,7 +30,7 @@ public class Person {
             else if (this.getName().equals("Sauron") && !this.ring.getMaterial().equals(Ring.Material.GOLD) && this.ring.getType().equals(Ring.Type.THE_ONE)) {
                 return "No, the ring is fake!";
             }
-            else if (!this.getName().equals("Sauron") && !this.ring.getMaterial().equals(Ring.Material.GOLD) && this.ring.getType().equals(Ring.Type.THE_ONE)) {
+            else if (!this.getName().equals("Sauron") && this.ring.getMaterial().equals(Ring.Material.GOLD) && this.ring.getType().equals(Ring.Type.THE_ONE)) {
                 return "No, he just stole the ring";
             }
             else if (this.getName().equals("Sauron") && !this.ring.getType().equals(Ring.Type.THE_ONE)) {

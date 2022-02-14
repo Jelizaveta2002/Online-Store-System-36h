@@ -1,12 +1,14 @@
 package ee.taltech.iti0202.lotr;
 
 
+
+
 public class Ring {
-    enum Type {
+    public enum Type {
         THE_ONE, GOLDEN, NENYA, OTHER
     }
 
-    enum Material {
+    public enum Material {
         GOLD, SILVER, BRONZE, PLASTIC, DIAMOND
     }
     Type type;

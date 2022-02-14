@@ -64,6 +64,6 @@ public class Person {
     }
 
     public List<Book> getBooks() {
-        return null;
+        return bookOwners.get(this);
     }
 }

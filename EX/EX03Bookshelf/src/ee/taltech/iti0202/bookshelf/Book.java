@@ -100,7 +100,7 @@ public class Book {
         for (Person person : Person.bookOwners.keySet()) {
             if (person.name.equals(owner.name) && person.money == owner.money) {
                 System.out.println(Person.bookOwners);
-                return Person.bookOwners.get(person);
+                return owner.getBooks();
             }
         }return new ArrayList<>();
     }

@@ -12,7 +12,7 @@ public class Book {
     int price;
     int id = getAndIncrementNextId();
     Person owner;
-    static ArrayList<Book> bookList = new ArrayList<>();
+    ///static ArrayList<Book> bookList = new ArrayList<>();
     static int helper;
     static List<Book> bookOfList = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Book {
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
-        bookList.add(this);
+       ///bookList.add(this);
     }
 
     public boolean equals(Book obj) {
@@ -82,10 +82,13 @@ public class Book {
 
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (! bookOfList.isEmpty()) {
-            for (Book i : bookOfList) {
-                if (Objects.equals(i.getTitle(), title) && Objects.equals(i.getAuthor(), author)
-                        && i.getYearOfPublishing() == yearOfPublishing && i.getPrice() == price) {
-                    return i;
+            for (Book book : bookOfList) {
+                if (book == null) {
+                    continue;
+                }
+                if (Objects.equals(book.getTitle(), title) && Objects.equals(book.getAuthor(), author)
+                        && book.getYearOfPublishing() == yearOfPublishing && book.getPrice() == price) {
+                    return book;
                 }
             }
         }
@@ -121,15 +124,12 @@ public class Book {
 
     public static boolean removeBook(Book book) {
         if (book != null) {
-            if(! bookList.isEmpty()) {
-                bookList.remove(book);
+            if(!bookOfList.isEmpty()) {
+                bookOfList.remove(book);
                 for (Person person : Person.bookOwners.keySet()) {
                     if (iterateValueList(Person.bookOwners.get(person), book)) {
                         person.sellBook(book);
                     }
-                }
-                if (! getBooksByAuthor(book.author).isEmpty()) {
-                    getBooksByAuthor(book.author).remove(book);
                 }
                 return true;
             }
@@ -140,13 +140,23 @@ public class Book {
 
     public static List<Book> getBooksByAuthor(String author) {
         ArrayList<Book> booksByAuthor = new ArrayList<>();
-        for (Book book : bookList) {
-            if (book.author.equals(author) || book.author.equals(author.toUpperCase()) || book.author.equals(author.toLowerCase())) {
+        for (Book book : bookOfList) {
+            if (book.author.equalsIgnoreCase(author)) {
                 booksByAuthor.add(book);
             }
         }
         return booksByAuthor;
     }
 
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", yearOfPublishing=" + yearOfPublishing +
+                ", price=" + price +
+                ", id=" + id +
+                ", owner=" + owner +
+                '}';
+    }
 }

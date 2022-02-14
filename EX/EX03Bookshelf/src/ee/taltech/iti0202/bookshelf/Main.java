@@ -2,12 +2,14 @@ package ee.taltech.iti0202.bookshelf;
 public class Main {
 
     public static void main(String[] args) {
-        Book tammsaare = new Book("Truth and Justice", "Tammsaare", 1926, 100);
-        Book meri = new Book("Silverwhite", "Meri", 1976, 200);
+//        Book tammsaare = new Book("Truth and Justice", "Tammsaare", 1926, 100);
+//        Book meri = new Book("Silverwhite", "Meri", 1976, 200);
 
         Person mati = new Person("Mati", 700);
         Person kati = new Person("Kati", 300);
 
+        Book tammsaare = Book.of("Truth and Justice", "Tammsaare", 1926, 100);
+        Book meri = Book.of("Silverwhite", "Meri", 1976, 200);
         System.out.println(mati.buyBook(tammsaare)); // true
         System.out.println(mati.getMoney());  // 100
         System.out.println(tammsaare.getOwner().getName()); // Mati
@@ -39,7 +41,6 @@ public class Main {
 //        System.out.println(Book.getAndIncrementNextId()); // 2
 
 //        System.out.println(Book.of("Truth and Justice", "Tammsaare", 1926, 100));
-//        System.out.println(Book.of("Truth and Justice", "Tammsaare", 1926, 100));
 //        System.out.println(Book.of("Truth", "Tammsaare", 1900, 160));
 //        System.out.println(Book.of("Nun", "VanGoh", 1598, 250));
 
@@ -49,7 +50,6 @@ public class Main {
         System.out.println(Book.removeBook(tammsaare));
         //System.out.println(Book.getBooksByOwner(kati));
         System.out.println(kati.getMoney());
-        //System.out.println(Book.bookList);
         System.out.println(kati.getMoney());
         System.out.println(Book.getBooksByAuthor("Tammsaare"));
     }

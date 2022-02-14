@@ -25,10 +25,10 @@ public class Book {
        ///bookList.add(this);
     }
 
-    public boolean equals(Book obj) {
-        return Objects.equals(obj.getTitle(), title) && Objects.equals(obj.getAuthor(), author)
-                && obj.getYearOfPublishing() == yearOfPublishing && obj.getPrice() == price;
-    }
+//    public boolean equals(Book obj) {
+//        return Objects.equals(obj.getTitle(), title) && Objects.equals(obj.getAuthor(), author)
+//                && obj.getYearOfPublishing() == yearOfPublishing && obj.getPrice() == price;
+//    }
 
     public static int getAndIncrementNextId() {
         return helper++;
@@ -81,24 +81,33 @@ public class Book {
     }
 
     public static Book of(String title, String author, int yearOfPublishing, int price) {
+        return of(new Book(title, author, yearOfPublishing, price));
+    }
+
+    private static Book of(Book bookToCheck) {
         if (! bookOfList.isEmpty()) {
             for (Book book : bookOfList) {
                 if (book == null) {
                     continue;
                 }
-                if (Objects.equals(book.getTitle(), title) && Objects.equals(book.getAuthor(), author)
-                        && book.getYearOfPublishing() == yearOfPublishing && book.getPrice() == price) {
+                if (Objects.equals(book.getTitle(), bookToCheck.getTitle()) && Objects.equals(book.getAuthor(), bookToCheck.getAuthor())
+                        && book.getYearOfPublishing() == bookToCheck.getYearOfPublishing() && book.getPrice() == bookToCheck.getPrice()) {
                     return book;
                 }
             }
         }
-        Book neBook = new Book(title, author, yearOfPublishing, price);
-        bookOfList.add(neBook);
-        return neBook;
+        bookOfList.add(bookToCheck);
+        return bookToCheck;
     }
 
     public static Book of(String title, int price) {
-        return null;
+        if (bookOfList.isEmpty()) {
+            return null;
+        }
+        Book neededBook = bookOfList.get(bookOfList.size()- 1);
+        Book book = of(new Book(title, neededBook.getAuthor(), neededBook.getYearOfPublishing(), price));
+        return book;
+
     }
 
     public static List<Book> getBooksByOwner(Person owner) {
@@ -129,6 +138,7 @@ public class Book {
                 for (Person person : Person.bookOwners.keySet()) {
                     if (iterateValueList(Person.bookOwners.get(person), book)) {
                         person.sellBook(book);
+                        break;
                     }
                 }
                 return true;

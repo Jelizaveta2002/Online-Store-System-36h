@@ -122,8 +122,10 @@ public class Book {
             for (Person person : Person.bookOwners.keySet()) {
                 if (iterateValueList(Person.bookOwners.get(person), book)) {
                     person.sellBook(book);
-                    return true;
                 }
+            }
+            if (! getBooksByAuthor(book.author).isEmpty()) {
+                getBooksByAuthor(book.author).remove(book);
             }
             return true;
         }

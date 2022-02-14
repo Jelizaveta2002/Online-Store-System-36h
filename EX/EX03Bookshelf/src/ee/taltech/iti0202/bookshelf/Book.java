@@ -105,7 +105,26 @@ public class Book {
         }return new ArrayList<>();
     }
 
+    public static boolean iterateValueList(ArrayList<Book> list, Book book) {
+        for (Book i : list) {
+            if (i.price == book.price && i.owner == book.owner && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean removeBook(Book book) {
+        if (book != null) {
+            for (Person person : Person.bookOwners.keySet()) {
+                if (iterateValueList(Person.bookOwners.get(person), book)) {
+                    person.sellBook(book);
+                    Person.bookOwners.get(person).remove(book);
+                    bookList.remove(book);
+                    return true;
+                }
+            }
+        }
         return false;
     }
 

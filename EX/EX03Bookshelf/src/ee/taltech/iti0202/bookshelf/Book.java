@@ -119,16 +119,19 @@ public class Book {
 
     public static boolean removeBook(Book book) {
         if (book != null) {
-            bookList.remove(book);
-            for (Person person : Person.bookOwners.keySet()) {
-                if (iterateValueList(Person.bookOwners.get(person), book)) {
-                    person.sellBook(book);
+            if(! bookList.isEmpty()) {
+                bookList.remove(book);
+                for (Person person : Person.bookOwners.keySet()) {
+                    if (iterateValueList(Person.bookOwners.get(person), book)) {
+                        person.sellBook(book);
+                    }
                 }
+                if (! getBooksByAuthor(book.author).isEmpty()) {
+                    getBooksByAuthor(book.author).remove(book);
+                }
+                return true;
             }
-            if (! getBooksByAuthor(book.author).isEmpty()) {
-                getBooksByAuthor(book.author).remove(book);
-            }
-            return true;
+            return false;
         }
         return false;
     }

@@ -14,7 +14,7 @@ public class Book {
     Person owner;
     ///static ArrayList<Book> bookList = new ArrayList<>();
     static int helper;
-    static List<Book> bookOfList = new ArrayList<>();
+    static ArrayList<Book> bookOfList = new ArrayList<>();
 
 
     public Book(String title, String author, int yearOfPublishing, int price) {
@@ -132,16 +132,14 @@ public class Book {
     }
 
     public static boolean removeBook(Book book) {
-        if (book != null) {
+        if (book != null && iterateValueList(bookOfList, book)) {
             for (Person person : Person.bookOwners.keySet()) {
                 if (iterateValueList(Person.bookOwners.get(person), book)) {
                     person.sellBook(book);
                     break;
                 }
             }
-            if (!bookOfList.isEmpty()) {
-                bookOfList.remove(book);
-            }
+            bookOfList.remove(book);
             return true;
         }
         return false;

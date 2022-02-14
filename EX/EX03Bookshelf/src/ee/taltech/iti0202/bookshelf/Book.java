@@ -123,8 +123,8 @@ public class Book {
                 for (Person person : Person.bookOwners.keySet()) {
                     if (iterateValueList(Person.bookOwners.get(person), book)) {
                         person.sellBook(book);
-                        bookList.remove(book);
-                        return true;
+                bookList.remove(book);
+                return true;
                     }
                 }
             }

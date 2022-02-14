@@ -14,6 +14,7 @@ public class Book {
     Person owner;
     static List<Book> bookList = new ArrayList<>();
     static int helper;
+    static List<Book> bookOfList = new ArrayList<>();
 
 
     public Book(String title, String author, int yearOfPublishing, int price) {
@@ -74,4 +75,18 @@ public class Book {
         return false;
     }
 
+    public static Book of(String title, String author, int yearOfPublishing, int price) {
+        for (Book i : bookOfList) {
+            if (Objects.equals(i.getTitle(), title) && Objects.equals(i.getAuthor(), author)
+                    && i.getYearOfPublishing() == yearOfPublishing && i.getPrice() == price) {
+                return i;
+            }
+        }
+        bookOfList.add(new Book(title, author, yearOfPublishing, price));
+        return new Book(title, author, yearOfPublishing, price);
+    }
+
+    public static Book of(String title, int price) {
+        return null;
+    }
 }

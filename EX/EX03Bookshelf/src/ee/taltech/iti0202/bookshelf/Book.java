@@ -133,17 +133,16 @@ public class Book {
 
     public static boolean removeBook(Book book) {
         if (book != null) {
-            if(!bookOfList.isEmpty()) {
-                bookOfList.remove(book);
-                for (Person person : Person.bookOwners.keySet()) {
-                    if (iterateValueList(Person.bookOwners.get(person), book)) {
-                        person.sellBook(book);
-                        break;
-                    }
+            for (Person person : Person.bookOwners.keySet()) {
+                if (iterateValueList(Person.bookOwners.get(person), book)) {
+                    person.sellBook(book);
+                    break;
                 }
-                return true;
             }
-            return false;
+            if (!bookOfList.isEmpty()) {
+                bookOfList.remove(book);
+            }
+            return true;
         }
         return false;
     }

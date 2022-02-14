@@ -40,6 +40,7 @@ public class Person {
                 bookOwners.get(this).add(book);
                 book.setOwner(this);
                 this.money = this.money - book.price;
+                System.out.println(bookOwners);
                 return true;
             }
         }

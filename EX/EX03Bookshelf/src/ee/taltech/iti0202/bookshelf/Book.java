@@ -98,7 +98,7 @@ public class Book {
 
     public static List<Book> getBooksByOwner(Person owner) {
         for (Person person : Person.bookOwners.keySet()) {
-            if (person.equals(owner)) {
+            if (person.name.equals(owner.name) && person.money == owner.money) {
                 System.out.println(Person.bookOwners);
                 return Person.bookOwners.get(person);
             }

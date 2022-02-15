@@ -144,7 +144,6 @@ public class Book {
     public static List<Book> getBooksByOwner(Person owner) {
         for (Person person : Person.bookOwners.keySet()) {
             if (person.name.equals(owner.name) && person.money == owner.money) {
-                System.out.println(Person.bookOwners);
                 return owner.getBooks();
             }
         }
@@ -202,17 +201,5 @@ public class Book {
             }
         }
         return booksByAuthor;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{"
-                + "title='" + title + '\''
-                + ", author='" + author + '\''
-                + ", yearOfPublishing=" + yearOfPublishing
-                + ", price=" + price
-                + ", id=" + id
-                + ", owner=" + owner
-                + '}';
     }
 }

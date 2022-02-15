@@ -21,6 +21,7 @@ public class Book {
      *  @param yearOfPublishing to remove
      *  @param price to remove
      */
+
     public Book(String title, String author, int yearOfPublishing, int price) {
         this.title = title;
         this.author = author;
@@ -70,14 +71,6 @@ public class Book {
             Person prevOwner = this.owner;
             prevOwner.sellBook(this);
             buyer.buyBook(this);
-            return true;
-        }
-        if (buyer != this.owner && buyer != null && buyer.canBuy(this) && this.owner == null) {
-            buyer.buyBook(this);
-            return true;
-        }
-        if (buyer != this.owner && buyer == null) {
-            this.owner.sellBook(this);
             return true;
         }
         return false;

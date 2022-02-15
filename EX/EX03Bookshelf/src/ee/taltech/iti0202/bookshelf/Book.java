@@ -73,6 +73,14 @@ public class Book {
             buyer.buyBook(this);
             return true;
         }
+        if (buyer != this.owner && buyer != null && buyer.canBuy(this) && this.owner == null) {
+            buyer.buyBook(this);
+            return true;
+        }
+        if (buyer != this.owner && buyer == null) {
+            this.owner.sellBook(this);
+            return true;
+        }
         return false;
     }
 

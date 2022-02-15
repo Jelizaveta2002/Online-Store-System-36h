@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.bookshelf;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +11,6 @@ public class Book {
     int price;
     int id = getAndIncrementNextId();
     Person owner;
-    ///static ArrayList<Book> bookList = new ArrayList<>();
     static int helper;
     static ArrayList<Book> bookOfList = new ArrayList<>();
 
@@ -28,16 +26,10 @@ public class Book {
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
-       ///bookList.add(this);
     }
 
-//    public boolean equals(Book obj) {
-//        return Objects.equals(obj.getTitle(), title) && Objects.equals(obj.getAuthor(), author)
-//                && obj.getYearOfPublishing() == yearOfPublishing && obj.getPrice() == price;
-//    }
-
     public static int getAndIncrementNextId() {
-        return helper++;
+        return helper ++;
     }
 
     public void setOwner(Person owner) {
@@ -110,7 +102,7 @@ public class Book {
         if (bookOfList.isEmpty()) {
             return null;
         }
-        Book neededBook = bookOfList.get(bookOfList.size()- 1);
+        Book neededBook = bookOfList.get(bookOfList.size() - 1);
         Book book = of(new Book(title, neededBook.getAuthor(), neededBook.getYearOfPublishing(), price));
         return book;
 
@@ -122,7 +114,8 @@ public class Book {
                 System.out.println(Person.bookOwners);
                 return owner.getBooks();
             }
-        }return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
 
     public static boolean iterateValueList(ArrayList<Book> list, Book book) {
@@ -164,12 +157,12 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", yearOfPublishing=" + yearOfPublishing +
-                ", price=" + price +
-                ", id=" + id +
-                ", owner=" + owner +
-                '}';
+                "title='" + title + '\''
+                + ", author='" + author + '\''
+                + ", yearOfPublishing=" + yearOfPublishing
+                + ", price=" + price
+                + ", id=" + id
+                + ", owner=" + owner
+                + '}';
     }
 }

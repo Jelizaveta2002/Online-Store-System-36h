@@ -16,7 +16,13 @@ public class Book {
     static int helper;
     static ArrayList<Book> bookOfList = new ArrayList<>();
 
-
+    /**
+     * Get top 3 visited pages.
+     *  @param title to remove
+     *  @param author to remove
+     *  @param yearOfPublishing to remove
+     *  @param price to remove
+     */
     public Book(String title, String author, int yearOfPublishing, int price) {
         this.title = title;
         this.author = author;

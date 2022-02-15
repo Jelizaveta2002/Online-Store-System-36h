@@ -135,6 +135,11 @@ public class Book {
 
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param owner boolean
+     */
     public static List<Book> getBooksByOwner(Person owner) {
         for (Person person : Person.bookOwners.keySet()) {
             if (person.name.equals(owner.name) && person.money == owner.money) {
@@ -145,6 +150,12 @@ public class Book {
         return new ArrayList<>();
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param list boolean
+     * @param book boolean
+     */
     public static boolean iterateValueList(ArrayList<Book> list, Book book) {
         if (!list.isEmpty()) {
             for (Book i : list) {
@@ -158,6 +169,11 @@ public class Book {
         return false;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param book boolean
+     */
     public static boolean removeBook(Book book) {
         if (book != null && iterateValueList(bookOfList, book)) {
             for (Person person : Person.bookOwners.keySet()) {
@@ -172,6 +188,11 @@ public class Book {
         return false;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param author boolean
+     */
     public static List<Book> getBooksByAuthor(String author) {
         ArrayList<Book> booksByAuthor = new ArrayList<>();
         for (Book book : bookOfList) {

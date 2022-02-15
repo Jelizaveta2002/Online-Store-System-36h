@@ -12,7 +12,12 @@ public class Person {
     static HashMap<Person, ArrayList<Book>> bookOwners = new HashMap<>();
     static List<Person> persons = new ArrayList<>();
 
-
+    /**
+     * Remove a bookmark.
+     *
+     * @param name boolean
+     * @param money boolean
+     */
     public Person(String name, int money) {
         this.name = name;
         this.money = money;
@@ -27,10 +32,20 @@ public class Person {
         return name;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param book boolean
+     */
     public boolean canBuy(Book book) {
         return book != null && book.price < this.money;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param book boolean
+     */
     public boolean buyBook(Book book) {
         if (book == null || book.owner != null || book.price > this.money) {
             return false;
@@ -52,7 +67,11 @@ public class Person {
         return true;
     }
 
-
+    /**
+     * Remove a bookmark.
+     *
+     * @param book boolean
+     */
     public boolean sellBook(Book book) {
         if (book == null || book.owner != this) {
             return false;
@@ -62,6 +81,7 @@ public class Person {
         this.money = this.money + book.price;
         return true;
     }
+
 
     public List<Book> getBooks() {
         return bookOwners.get(this);

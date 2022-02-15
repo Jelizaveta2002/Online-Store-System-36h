@@ -60,6 +60,11 @@ public class Book {
         return id;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param buyer boolean
+     */
     public boolean buy(Person buyer) {
         if (buyer != this.owner && buyer != null && buyer.canBuy(this) && this.owner != null) {
             Person prevOwner = this.owner;
@@ -78,10 +83,23 @@ public class Book {
         return false;
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param title boolean
+     * @param author boolean
+     * @param yearOfPublishing boolean
+     * @param price boolean
+     */
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         return of(new Book(title, author, yearOfPublishing, price));
     }
 
+    /**
+     * Remove a bookmark.
+     *
+     * @param bookToCheck boolean
+     */
     private static Book of(Book bookToCheck) {
         if (!bookOfList.isEmpty()) {
             for (Book book : bookOfList) {
@@ -100,6 +118,13 @@ public class Book {
         return bookToCheck;
     }
 
+
+    /**
+     * Remove a bookmark.
+     *
+     * @param title boolean
+     * @param price boolean
+     */
     public static Book of(String title, int price) {
         if (bookOfList.isEmpty()) {
             return null;

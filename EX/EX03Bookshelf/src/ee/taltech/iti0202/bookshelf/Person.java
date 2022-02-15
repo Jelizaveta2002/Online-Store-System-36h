@@ -32,7 +32,7 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        if (book == null || book.owner != null || book.price > this.money ) {
+        if (book == null || book.owner != null || book.price > this.money) {
             return false;
         }
         for (Person key : bookOwners.keySet()) {

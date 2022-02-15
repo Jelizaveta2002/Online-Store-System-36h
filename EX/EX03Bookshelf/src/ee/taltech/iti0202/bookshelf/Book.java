@@ -29,7 +29,7 @@ public class Book {
     }
 
     public static int getAndIncrementNextId() {
-        return helper ++;
+        return helper++;
     }
 
     public void setOwner(Person owner) {
@@ -83,13 +83,15 @@ public class Book {
     }
 
     private static Book of(Book bookToCheck) {
-        if (! bookOfList.isEmpty()) {
+        if (!bookOfList.isEmpty()) {
             for (Book book : bookOfList) {
                 if (book == null) {
                     continue;
                 }
-                if (Objects.equals(book.getTitle(), bookToCheck.getTitle()) && Objects.equals(book.getAuthor(), bookToCheck.getAuthor())
-                        && book.getYearOfPublishing() == bookToCheck.getYearOfPublishing() && book.getPrice() == bookToCheck.getPrice()) {
+                if (Objects.equals(book.getTitle(), bookToCheck.getTitle())
+                        && Objects.equals(book.getAuthor(), bookToCheck.getAuthor())
+                        && book.getYearOfPublishing() == bookToCheck.getYearOfPublishing()
+                        && book.getPrice() == bookToCheck.getPrice()) {
                     return book;
                 }
             }
@@ -119,9 +121,10 @@ public class Book {
     }
 
     public static boolean iterateValueList(ArrayList<Book> list, Book book) {
-        if (! list.isEmpty()) {
+        if (!list.isEmpty()) {
             for (Book i : list) {
-                if (i.price == book.price && Objects.equals(i.title, book.title) && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
+                if (i.price == book.price && Objects.equals(i.title, book.title)
+                        && i.yearOfPublishing == book.yearOfPublishing && Objects.equals(i.author, book.author)) {
                     return true;
                 }
             }
@@ -156,8 +159,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\''
+        return "Book{"
+                + "title='" + title + '\''
                 + ", author='" + author + '\''
                 + ", yearOfPublishing=" + yearOfPublishing
                 + ", price=" + price

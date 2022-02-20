@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class User {
     private final String name;
     private final Integer age;
-    public static HashMap<User, ArrayList<Group>> groupsOfOwners = new HashMap<>();
+    private final HashMap<User, ArrayList<Group>> groupsOfOwners = new HashMap<>();
 
     public User(String name) {
         this.name = name;
@@ -24,6 +24,10 @@ public class User {
         if (name != null) {
             groupsOfOwners.put(this, new ArrayList<>());
         }
+    }
+
+    public HashMap<User, ArrayList<Group>> getGroupsOfOwners() {
+        return groupsOfOwners;
     }
 
     public String getName() {

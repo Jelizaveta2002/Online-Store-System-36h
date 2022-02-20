@@ -33,7 +33,7 @@ public class SocialNetwork {
 
     public Feed getFeedForUser(User user) {
         Set<Message> hashOfAllGroups = new HashSet<>();
-        for (Group group : User.groupsOfOwners.get(user)) {
+        for (Group group : user.getGroupsOfOwners().get(user)) {
             if (!group.getMessages().isEmpty()) {
                 hashOfAllGroups.addAll(group.getMessages());
             }

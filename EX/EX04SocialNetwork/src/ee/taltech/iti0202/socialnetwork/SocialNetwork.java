@@ -10,24 +10,34 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SocialNetwork {
-    public static Set<Group> hashOfGroups = new HashSet<>();
+    Set<Group> hashOfGroups = new HashSet<>();
     public void registerGroup(Group group) {
-        if (group != null) {
+        if (group != null && ifGroupAlreadyInHash(group)) {
             hashOfGroups.add(group);
         }
+    }
+
+    public boolean ifGroupAlreadyInHash(Group group) {
+        for (Group gr : hashOfGroups) {
+            if (gr.getName().equals(group.getName()) && gr.getOwner().equals(group.getOwner()) && gr.getMessages().equals(group.getMessages())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public Set<Group> getGroups() {
         return hashOfGroups;
     }
 
-    public Feed getFeedForUser(User user) {
+    public Set<Message> getFeedForUser(User user) {
         Set<Message> hashOfAllGroups = new HashSet<>();
         for (Group group : User.groupsOfOwners.get(user)) {
             if (!group.getMessages().isEmpty()) {
                 hashOfAllGroups.addAll(group.getMessages());
             }
         }
-        return new Feed(user, hashOfAllGroups);
+        Feed newFeed = new Feed(user, hashOfAllGroups);
+        return newFeed.getMessages();
     }
 }

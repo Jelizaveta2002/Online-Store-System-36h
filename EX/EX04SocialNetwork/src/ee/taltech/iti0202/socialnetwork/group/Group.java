@@ -13,8 +13,8 @@ public class Group {
     User owner;
     ArrayList<Message> listOfMessages = new ArrayList<>();
     int numOfMessage = -1;
-
     static Set<User> hashOfUsers = new HashSet<>();
+
     public Group(String name, User owner) {
         this.name = name;
         this.owner = owner;

@@ -38,7 +38,14 @@ public class Group {
     public void addUser(User user) {
         if (user != null) {
             hashOfUsers.add(user);
-            User.groupsOfOwners.get(user).add(this);
+            if (User.groupsOfOwners.containsKey(user)) {
+                User.groupsOfOwners.get(user).add(this);
+            }
+            else {
+                ArrayList<Group> newList = new ArrayList<>();
+                newList.add(this);
+                User.groupsOfOwners.put(user, newList);
+            }
         }
     }
 

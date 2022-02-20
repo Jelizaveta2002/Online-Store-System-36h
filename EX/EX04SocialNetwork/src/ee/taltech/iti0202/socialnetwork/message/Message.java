@@ -15,7 +15,7 @@ public class Message {
         return null;
     }
 
-    public User getAuthor(){
+    public User getAuthor() {
         return null;
     }
 }

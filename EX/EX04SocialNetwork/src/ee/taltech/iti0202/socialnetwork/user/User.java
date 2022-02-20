@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class User {
-    String name;
-    Integer age;
+    private final String name;
+    private final Integer age;
     public static HashMap<User, ArrayList<Group>> groupsOfOwners = new HashMap<>();
 
     public User(String name) {

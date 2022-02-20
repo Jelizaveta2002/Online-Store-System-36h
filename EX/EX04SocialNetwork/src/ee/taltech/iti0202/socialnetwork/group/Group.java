@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Group {
-    String name;
-    User owner;
+    private String name;
+    private User owner;
     private final ArrayList<Message> listOfMessages = new ArrayList<>();
     private int numOfMessage = -1;
     private final Set<User> hashOfUsers = new HashSet<>();

@@ -3,9 +3,9 @@ package ee.taltech.iti0202.socialnetwork.message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
 public class Message {
-    String title;
-    String message;
-    User author;
+    private final String title;
+    private final String message;
+    private final User author;
     public Message(String title, String message, User author) {
         this.title = title;
         this.message = message;

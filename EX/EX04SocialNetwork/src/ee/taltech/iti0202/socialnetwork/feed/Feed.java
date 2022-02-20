@@ -6,15 +6,19 @@ import ee.taltech.iti0202.socialnetwork.user.User;
 import java.util.Set;
 
 public class Feed {
-    public Feed(User user, Set<Message> messages) {
+    User user;
+    Set<Message> messages;
 
+    public Feed(User user, Set<Message> messages) {
+        this.user = user;
+        this.messages = messages;
     }
 
     public User getUser() {
-        return null;
+        return user;
     }
 
     public Set<Message> getMessages() {
-        return null;
+        return messages;
     }
 }

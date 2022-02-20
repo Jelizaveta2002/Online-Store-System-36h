@@ -36,7 +36,7 @@ public class Group {
     }
 
     public void addUser(User user) {
-        if (user != null) {
+        if (user != null && ! hashOfUsers.contains(user)) {
             hashOfUsers.add(user);
             User.groupsOfOwners.get(user).add(this);
         }

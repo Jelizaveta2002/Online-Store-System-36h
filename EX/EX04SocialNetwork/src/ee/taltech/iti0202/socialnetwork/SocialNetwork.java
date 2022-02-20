@@ -11,6 +11,7 @@ import java.util.Set;
 
 public class SocialNetwork {
     private final Set<Group> hashOfGroups = new HashSet<>();
+
     public void registerGroup(Group group) {
         if (group != null && ifGroupAlreadyInHash(group)) {
             hashOfGroups.add(group);

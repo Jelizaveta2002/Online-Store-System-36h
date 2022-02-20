@@ -11,9 +11,9 @@ import java.util.Set;
 public class Group {
     String name;
     User owner;
-    static ArrayList<Message> listOfMessages = new ArrayList<>();
+    private ArrayList<Message> listOfMessages = new ArrayList<>();
     int numOfMessage = -1;
-    static Set<User> hashOfUsers = new HashSet<>();
+    private Set<User> hashOfUsers = new HashSet<>();
 
     public Group(String name, User owner) {
         this.name = name;

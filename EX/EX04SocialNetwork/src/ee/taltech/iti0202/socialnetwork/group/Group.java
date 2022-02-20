@@ -49,7 +49,8 @@ public class Group {
     public void publishMessage(Message message) {
         if (message != null) {
             if (hashOfUsers.contains(message.getAuthor())) {
-                listOfMessages.add(message);
+                numOfMessage += 1;
+                listOfMessages.add(numOfMessage, message);
             }
         }
     }

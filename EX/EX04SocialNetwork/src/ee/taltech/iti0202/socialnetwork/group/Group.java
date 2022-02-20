@@ -1,12 +1,10 @@
 package ee.taltech.iti0202.socialnetwork.group;
 
+import ee.taltech.iti0202.socialnetwork.SocialNetwork;
 import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Group {
     String name;
@@ -28,15 +26,48 @@ public class Group {
     }
 
     public void setName(String name) {
+        changeNameOfGroup(name);
+        changeNameOfGroupInHashMap(name);
         this.name = name;
+    }
+
+    public void changeNameOfGroup(String newName) {
+        for (Group group : SocialNetwork.hashOfGroups) {
+            if (group.getOwner().equals(this.owner) && group.getName().equals(this.name)) {
+                group.name = newName;
+            }
+        }
+    }
+
+    public void changeNameOfGroupForPerson(String newName, ArrayList<Group> list) {
+        for (Group group : list) {
+            if (group.getOwner().equals(this.owner) && group.getName().equals(this.name)) {
+                group.name = newName;
+            }
+        }
+    }
+
+    public void changeNameOfGroupInHashMap(String newName) {
+        for (User key : User.groupsOfOwners.keySet()) {
+            changeNameOfGroupForPerson(newName, User.groupsOfOwners.get(key));
+        }
     }
 
     public User getOwner() {
         return owner;
     }
 
+    public boolean checkUser(User user) {
+        for (User i : hashOfUsers ) {
+            if (Objects.equals(user.getAge(), i.getAge()) && user.getName().equals(i.getName())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void addUser(User user) {
-        if (user != null) {
+        if (user != null && checkUser(user) && user != this.getOwner()) {
             hashOfUsers.add(user);
             if (User.groupsOfOwners.containsKey(user)) {
                 User.groupsOfOwners.get(user).add(this);

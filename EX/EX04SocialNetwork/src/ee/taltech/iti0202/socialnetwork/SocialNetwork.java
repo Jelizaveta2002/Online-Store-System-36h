@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SocialNetwork {
-    static Set<Group> hashOfGroups = new HashSet<>();
+    Set<Group> hashOfGroups = new HashSet<>();
     public void registerGroup(Group group) {
         if (group != null && ifGroupAlreadyInHash(group)) {
             hashOfGroups.add(group);

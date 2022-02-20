@@ -12,7 +12,6 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        this.age = null;
         groupsOfOwners.put(this, new ArrayList<>());
     }
 

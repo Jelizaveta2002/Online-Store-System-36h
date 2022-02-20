@@ -6,8 +6,8 @@ import ee.taltech.iti0202.socialnetwork.user.User;
 import java.util.Set;
 
 public class Feed {
-    User user;
-    Set<Message> messages;
+    private final User user;
+    private final Set<Message> messages;
 
     public Feed(User user, Set<Message> messages) {
         this.user = user;

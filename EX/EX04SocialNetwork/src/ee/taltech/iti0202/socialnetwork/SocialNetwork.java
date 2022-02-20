@@ -30,7 +30,7 @@ public class SocialNetwork {
         return hashOfGroups;
     }
 
-    public Set<Message> getFeedForUser(User user) {
+    public Feed getFeedForUser(User user) {
         Set<Message> hashOfAllGroups = new HashSet<>();
         for (Group group : User.groupsOfOwners.get(user)) {
             if (!group.getMessages().isEmpty()) {
@@ -38,6 +38,6 @@ public class SocialNetwork {
             }
         }
         Feed newFeed = new Feed(user, hashOfAllGroups);
-        return newFeed.getMessages();
+        return newFeed;
     }
 }

@@ -35,8 +35,17 @@ public class Group {
         return owner;
     }
 
+    public boolean ifUserAlreadyInHash(User user) {
+        for (User us : hashOfUsers) {
+            if (us.getName().equals(user.getName()) && us.getAge().equals(user.getAge())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void addUser(User user) {
-        if (user != null && ! hashOfUsers.contains(user)) {
+        if (user != null && ifUserAlreadyInHash(user)) {
             hashOfUsers.add(user);
             User.groupsOfOwners.get(user).add(this);
         }

@@ -33,7 +33,7 @@ public class Product {
      *
      * @return The next id.
      */
-    public int getNextId() {
+    public static int getNextId() {
         return id += 1;
     }
 

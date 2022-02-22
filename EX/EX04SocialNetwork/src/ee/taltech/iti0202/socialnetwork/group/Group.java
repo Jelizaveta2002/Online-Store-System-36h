@@ -15,6 +15,12 @@ public class Group {
     private int numOfMessage = -1;
     private final Set<User> hashOfUsers = new HashSet<>();
 
+
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param name the name of the stock.
+     * @param owner the name of the stock.
+     */
     public Group(String name, User owner) {
         this.name = name;
         this.owner = owner;
@@ -27,6 +33,10 @@ public class Group {
         return name;
     }
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param name the name of the stock.
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -35,6 +45,10 @@ public class Group {
         return owner;
     }
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param user the name of the stock.
+     */
     public boolean ifUserAlreadyInHash(User user) {
         for (User us : hashOfUsers) {
             if (us.getName().equals(user.getName()) && us.getAge().equals(user.getAge())) {
@@ -44,6 +58,10 @@ public class Group {
         return true;
     }
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param user the name of the stock.
+     */
     public void addUser(User user) {
         if (user != null && ifUserAlreadyInHash(user)) {
             hashOfUsers.add(user);
@@ -55,6 +73,10 @@ public class Group {
         return hashOfUsers;
     }
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param message the name of the stock.
+     */
     public void publishMessage(Message message) {
         if (message != null && message.getAuthor() != null) {
             if (hashOfUsers.contains(message.getAuthor())) {

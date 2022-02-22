@@ -9,6 +9,11 @@ public class Feed {
     private final User user;
     private final Set<Message> messages;
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param messages the name of the stock.
+     * @param user the name of the stock.
+     */
     public Feed(User user, Set<Message> messages) {
         this.user = user;
         this.messages = messages;

@@ -10,6 +10,10 @@ public class User {
     private final Integer age;
     private final HashMap<User, ArrayList<Group>> groupsOfOwners = new HashMap<>();
 
+
+    /**
+     * @param name the name of the stock.
+     */
     public User(String name) {
         this.name = name;
         this.age = null;
@@ -18,6 +22,12 @@ public class User {
         }
     }
 
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     *
+     * @param name the name of the stock.
+     * @param age max amount of products allowed in the stock.
+     */
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;

@@ -6,6 +6,14 @@ public class Message {
     private final String title;
     private final String message;
     private final User author;
+
+
+    /**
+     * Create a new stock with the given name and the max capacity for the products.
+     * @param message the name of the stock.
+     * @param title the name of the stock.
+     * @param author the name of the stock.
+     */
     public Message(String title, String message, User author) {
         this.title = title;
         this.message = message;

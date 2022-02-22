@@ -3,8 +3,10 @@ import ee.taltech.iti0202.stock.exceptions.StockException;
 
 public class Product {
 
-    private String name;
-    private int price;
+    private final String name;
+    private final int price;
+    static int id = 0;
+    private final int productId;
     /**
      * Create a new product with the given name and price.
      * <p>
@@ -18,6 +20,7 @@ public class Product {
         if (price >=0) {
             this.name = name;
             this.price = price;
+            this.productId = getNextId();
         }
         else {
             throw new StockException(StockException.Reason.NEGATIVE_PRICE);
@@ -32,7 +35,7 @@ public class Product {
      * @return The next id.
      */
     public static int getNextId() {
-        return 0;
+        return id += 1;
     }
 
     /**
@@ -41,7 +44,7 @@ public class Product {
      * @return id of the product.
      */
     public int getId() {
-        return 0;
+        return productId;
     }
 
     /**
@@ -50,7 +53,7 @@ public class Product {
      * @return the name of the product.
      */
     public String getName() {
-        return null;
+        return this.name;
     }
 
     /**
@@ -59,6 +62,6 @@ public class Product {
      * @return the price of the product.
      */
     public int getPrice() {
-        return 0;
+        return this.price;
     }
 }

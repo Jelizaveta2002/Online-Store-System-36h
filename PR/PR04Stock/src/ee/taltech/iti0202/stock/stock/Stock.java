@@ -2,8 +2,7 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The stock class.
@@ -20,6 +19,9 @@ import java.util.Optional;
  */
 
 public class Stock {
+    private final String name;
+    private final int maxCapacity;
+    private final ArrayList<Product> listOfProducts = new ArrayList<>();
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -28,6 +30,8 @@ public class Stock {
      * @param maxCapacity max amount of products allowed in the stock.
      */
     public Stock(String name, int maxCapacity) {
+        this.name = name;
+        this.maxCapacity = maxCapacity;
     }
 
     /**
@@ -42,6 +46,28 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
+        if (listOfProducts.isEmpty() && this.maxCapacity > 0) {
+            listOfProducts.add(product);
+        }
+        else {
+            if (ifContainsProduct(listOfProducts, product)) {
+                throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+            } else if (isFull()) {
+                throw new StockException(StockException.Reason.STOCK_IS_FULL);
+            }
+            else {
+                listOfProducts.add(product);
+            }
+        }
+    }
+
+    public boolean ifContainsProduct(ArrayList<Product> list, Product product) {
+        for (Product pr : listOfProducts) {
+            if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice() && pr.getId() == product.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -54,6 +80,38 @@ public class Stock {
      * @return Optional
      */
     public Optional<Product> getProduct(String name) {
+        if (!listOfProducts.isEmpty()) {
+            ArrayList<Product> storageByName = new ArrayList<>();
+            ArrayList<Integer> storageByPrice = new ArrayList<>();
+            ArrayList<Integer> storageById = new ArrayList<>();
+            ArrayList<Product> storageByPrice2 = new ArrayList<>();
+            for (Product product : listOfProducts) {
+                if (Objects.equals(product.getName(), name)) {
+                    storageByName.add(product);
+                }
+            }
+            if (!storageByName.isEmpty()) {
+                for (Product product : storageByName) {
+                    storageByPrice.add(product.getPrice());
+                }
+                int minPrice = Collections.min(storageByPrice);
+                for (Product product : storageByName) {
+                    if (product.getPrice() == minPrice) {
+                        storageByPrice2.add(product);
+                    }
+                }
+                for (Product product : storageByPrice2) {
+                    storageById.add(product.getId());
+                }
+                int minId = Collections.min(storageById);
+                for (Product product : storageByPrice2) {
+                    if (product.getId() == minId) {
+                        return Optional.of(product);
+                    }
+                }
+            }
+            return Optional.empty();
+        }
         return Optional.empty();
     }
 
@@ -70,6 +128,19 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
+        if (!listOfProducts.isEmpty()) {
+            if (getProduct(name).isPresent()) {
+                Product product = getProduct(name).get();
+                for (Product pr : listOfProducts) {
+                    if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice() && pr.getId() == product.getId()) {
+                        listOfProducts.remove(pr);
+                        return Optional.of(pr);
+                    }
+                }
+                return Optional.empty();
+            }
+            return Optional.empty();
+        }
         return Optional.empty();
     }
 
@@ -79,7 +150,8 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts() {
-        return null;
+        System.out.println(listOfProducts);
+        return listOfProducts;
     }
 
     /**
@@ -91,7 +163,16 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts(String name) {
-        return null;
+        ArrayList<Product> storageOfProductsByName = new ArrayList<>();
+        if (!listOfProducts.isEmpty()) {
+            for (Product product : listOfProducts) {
+                if (product.getName().equals(name)) {
+                    storageOfProductsByName.add(product);
+                }
+            }
+            return storageOfProductsByName;
+        }
+        return storageOfProductsByName;
     }
 
     /**
@@ -100,7 +181,14 @@ public class Stock {
      * @return Total price.
      */
     public int getTotalPrice() {
-        return -1;
+        int totalPrice = 0;
+        if (!listOfProducts.isEmpty()) {
+            for (Product product : listOfProducts) {
+                totalPrice += product.getPrice();
+            }
+            return totalPrice;
+        }
+        return totalPrice;
     }
 
     /**
@@ -109,7 +197,7 @@ public class Stock {
      * @return boolean
      */
     public boolean isFull() {
-        return false;
+        return listOfProducts.size() == maxCapacity;
     }
 
 }

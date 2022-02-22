@@ -4,6 +4,7 @@ import ee.taltech.iti0202.stock.product.Product;
 
 import java.util.*;
 
+
 /**
  * The stock class.
  * <p>
@@ -47,14 +48,12 @@ public class Stock {
     public void addProduct(Product product) throws StockException {
         if (listOfProducts.isEmpty() && this.maxCapacity > 0) {
             listOfProducts.add(product);
-        }
-        else {
+        } else {
             if (ifContainsProduct(listOfProducts, product)) {
                 throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
             } else if (isFull()) {
                 throw new StockException(StockException.Reason.STOCK_IS_FULL);
-            }
-            else {
+            } else {
                 listOfProducts.add(product);
             }
         }
@@ -68,7 +67,8 @@ public class Stock {
      */
     public boolean ifContainsProduct(ArrayList<Product> list, Product product) {
         for (Product pr : listOfProducts) {
-            if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice() && pr.getId() == product.getId()) {
+            if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice()
+                    && pr.getId() == product.getId()) {
                 return true;
             }
         }
@@ -137,7 +137,8 @@ public class Stock {
             if (getProduct(name).isPresent()) {
                 Product product = getProduct(name).get();
                 for (Product pr : listOfProducts) {
-                    if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice() && pr.getId() == product.getId()) {
+                    if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice()
+                            && pr.getId() == product.getId()) {
                         listOfProducts.remove(pr);
                         return Optional.of(pr);
                     }

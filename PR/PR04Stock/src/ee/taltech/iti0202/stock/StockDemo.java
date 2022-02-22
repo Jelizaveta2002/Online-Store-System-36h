@@ -7,13 +7,16 @@ import java.util.Optional;
 
 public class StockDemo {
 
+    public static final int NINE = 9;
+    public static final int SIX = 6;
+
     public static void main(String[] args) throws StockException {
         Stock fruitStock = new Stock("fruit-stock-1", 4);
 
         Product cheapApple = new Product("apple", 3);
-        Product expensiveApple = new Product("apple", 9);
+        Product expensiveApple = new Product("apple", NINE);
         Product orange = new Product("orange", 5);
-        Product mango = new Product("mango", 6);
+        Product mango = new Product("mango", SIX);
         Product pear = new Product("pear", 4);
         System.out.println(pear.getId()); // 5
 

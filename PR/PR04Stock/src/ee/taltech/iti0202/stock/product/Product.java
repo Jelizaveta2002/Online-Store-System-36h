@@ -17,12 +17,11 @@ public class Product {
      * @throws StockException NEGATIVE_PRICE
      */
     public Product(String name, int price) throws StockException {
-        if (price >=0) {
+        if (price >= 0) {
             this.name = name;
             this.price = price;
             this.productId = getNextId();
-        }
-        else {
+        } else {
             throw new StockException(StockException.Reason.NEGATIVE_PRICE);
         }
     }
@@ -34,7 +33,7 @@ public class Product {
      *
      * @return The next id.
      */
-    public static int getNextId() {
+    public int getNextId() {
         return id += 1;
     }
 

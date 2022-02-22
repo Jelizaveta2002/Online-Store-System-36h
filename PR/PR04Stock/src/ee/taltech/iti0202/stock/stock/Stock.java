@@ -63,9 +63,14 @@ public class Stock {
     }
 
     /**
-     * @param product product that will be checked.
+     * Add a product to the stock, if stock does not contain the product and is not full yet.
+     * <p>
+     * Check in following order:
+     * If stock already contains a product, throw an StockException with a STOCK_ALREADY_CONTAINS_PRODUCT reason.
+     * If stock is full, throw a StockException with a STOCK_IS_FULL reason.
+     *
+     * @param product to be added
      */
-
     public boolean ifContainsProduct(Product product) {
         for (Product pr : listOfProducts) {
             if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice()

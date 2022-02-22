@@ -6,16 +6,26 @@ import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+
 
 class SocialNetworkTest {
+
+    public static final int TWOZERO = 20;
+    public static final int ONEEIGHT = 18;
+    public static final int TEN = 10;
+
     @Test
     void userGetters() {
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
         String checkName = "user2";
         assertEquals(checkName, user2.getName());
     }
@@ -23,17 +33,17 @@ class SocialNetworkTest {
     @Test
     void userGetters2() {
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
-        Integer checkAge = 10;
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
+        Integer checkAge = TEN;
         assertEquals(checkAge, user2.getAge());
     }
 
     @Test
     void userGetters3() {
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
         Integer checkAge = null;
         assertEquals(checkAge, user1.getAge());
     }
@@ -70,7 +80,8 @@ class SocialNetworkTest {
         User user1 = new User("user1");
         Group group2 = new Group("group1", user1);
         Message message1 = new Message("title1", "content1", user1);
-        String name = "group1";
+        group2.setName("group3");
+        String name = "group3";
         assertEquals(name, group2.getName());
     }
 
@@ -86,8 +97,8 @@ class SocialNetworkTest {
     @Test
     void getParticipants() {
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
         Group group2 = new Group("group1", user1);
         group2.addUser(user2);
         group2.addUser(user3);
@@ -101,8 +112,8 @@ class SocialNetworkTest {
     @Test
     void getMessages() {
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
         Group group2 = new Group("group1", user1);
         group2.addUser(user2);
         Message message1 = new Message("title1", "content1", user1);
@@ -111,7 +122,7 @@ class SocialNetworkTest {
         group2.publishMessage(message1);
         group2.publishMessage(message2);
         group2.publishMessage(message3);
-        List<Message> checkList = Arrays.asList(message1, message2);
+        ArrayList<Message> checkList = new ArrayList<>(Arrays. asList(message1, message2));
         assertEquals(checkList, group2.getMessages());
     }
 
@@ -119,8 +130,8 @@ class SocialNetworkTest {
     void getGroups() {
         SocialNetwork socialNetwork = new SocialNetwork();
         User user1 = new User("user1");
-        User user2 = new User("user2", 10);
-        User user3 = new User("user2", 20);
+        User user2 = new User("user2", TEN);
+        User user3 = new User("user2", TWOZERO);
         Group group2 = new Group("group1", user1);
         Group group3 = new Group("group2", user2);
         socialNetwork.registerGroup(group2);
@@ -134,8 +145,8 @@ class SocialNetworkTest {
     @Test
     void getFeedForUser() {
         SocialNetwork socialNetwork = new SocialNetwork();
-        User user1 = new User("user1", 18);
-        User user2 = new User("user2", 10);
+        User user1 = new User("user1", ONEEIGHT);
+        User user2 = new User("user2", TEN);
         Group group = new Group("group1", user1);
         Message message = new Message("title", "message", user1);
         socialNetwork.registerGroup(group);
@@ -145,5 +156,14 @@ class SocialNetworkTest {
         Feed feed2 = new Feed(user2, Set.of(message));
         assertEquals(feed1.getUser(), feed1.getUser());
         assertEquals(feed2.getMessages(), feed2.getMessages());
+    }
+
+    @Test
+    void getGroups2() {
+        SocialNetwork socialNetwork = new SocialNetwork();
+        User user2 = new User("user2", TEN);
+        Group group = new Group("group1", user2);
+        socialNetwork.registerGroup(group);
+        assertEquals(socialNetwork.getGroups(), Set.of(group));
     }
 }

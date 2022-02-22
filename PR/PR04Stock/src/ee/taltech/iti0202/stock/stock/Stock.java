@@ -70,6 +70,7 @@ public class Stock {
      * If stock is full, throw a StockException with a STOCK_IS_FULL reason.
      *
      * @param product to be added
+     * @return boolean
      */
     public boolean ifContainsProduct(Product product) {
         for (Product pr : listOfProducts) {

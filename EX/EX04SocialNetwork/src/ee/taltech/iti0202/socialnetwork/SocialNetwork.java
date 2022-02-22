@@ -29,7 +29,8 @@ public class SocialNetwork {
      */
     public boolean ifGroupAlreadyInHash(Group group) {
         for (Group gr : hashOfGroups) {
-            if (gr.getName().equals(group.getName()) && gr.getOwner().equals(group.getOwner()) && gr.getMessages().equals(group.getMessages())) {
+            if (gr.getName().equals(group.getName()) && gr.getOwner().equals(group.getOwner())
+                    && gr.getMessages().equals(group.getMessages())) {
                 return false;
             }
         }

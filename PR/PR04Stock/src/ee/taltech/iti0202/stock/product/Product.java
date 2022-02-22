@@ -5,8 +5,8 @@ public class Product {
 
     private final String name;
     private final int price;
-    private static int id;
-    private final int productId;
+    int id = getNextId();
+    static int helper;
     /**
      * Create a new product with the given name and price.
      * <p>
@@ -20,7 +20,7 @@ public class Product {
         if (price >= 0) {
             this.name = name;
             this.price = price;
-            this.productId = getNextId();
+            this.id = getNextId();
         } else {
             throw new StockException(StockException.Reason.NEGATIVE_PRICE);
         }
@@ -34,7 +34,7 @@ public class Product {
      * @return The next id.
      */
     public static int getNextId() {
-        return id += 1;
+        return helper += 1;
     }
 
     /**
@@ -43,7 +43,7 @@ public class Product {
      * @return id of the product.
      */
     public int getId() {
-        return productId;
+        return id;
     }
 
     /**

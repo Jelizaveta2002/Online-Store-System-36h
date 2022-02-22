@@ -2,7 +2,10 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Optional;
 
 
 /**
@@ -155,7 +158,7 @@ public class Stock {
      *
      * @return List
      */
-    public List<Product> getProducts() {
+    public ArrayList<Product> getProducts() {
         System.out.println(listOfProducts);
         return listOfProducts;
     }
@@ -168,7 +171,7 @@ public class Stock {
      * @param name Name to be filtered.
      * @return List
      */
-    public List<Product> getProducts(String name) {
+    public ArrayList<Product> getProducts(String name) {
         ArrayList<Product> storageOfProductsByName = new ArrayList<>();
         if (!listOfProducts.isEmpty()) {
             for (Product product : listOfProducts) {

@@ -5,7 +5,7 @@ public class Product {
 
     private final String name;
     private final int price;
-    private static int id = 0;
+    private static int id;
     private final int productId;
     /**
      * Create a new product with the given name and price.

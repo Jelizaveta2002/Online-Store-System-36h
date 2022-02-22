@@ -3,6 +3,8 @@ import ee.taltech.iti0202.stock.exceptions.StockException;
 
 public class Product {
 
+    private String name;
+    private int price;
     /**
      * Create a new product with the given name and price.
      * <p>
@@ -13,6 +15,13 @@ public class Product {
      * @throws StockException NEGATIVE_PRICE
      */
     public Product(String name, int price) throws StockException {
+        if (price >=0) {
+            this.name = name;
+            this.price = price;
+        }
+        else {
+            throw new StockException(StockException.Reason.NEGATIVE_PRICE);
+        }
     }
 
     /**

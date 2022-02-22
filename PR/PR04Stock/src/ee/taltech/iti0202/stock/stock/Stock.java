@@ -52,7 +52,7 @@ public class Stock {
         if (listOfProducts.isEmpty() && this.maxCapacity > 0) {
             listOfProducts.add(product);
         } else {
-            if (ifContainsProduct(listOfProducts, product)) {
+            if (ifContainsProduct(product)) {
                 throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
             } else if (isFull()) {
                 throw new StockException(StockException.Reason.STOCK_IS_FULL);
@@ -64,11 +64,9 @@ public class Stock {
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
-     *
-     * @param list the name of the stock.
      * @param product max amount of products allowed in the stock.
      */
-    public boolean ifContainsProduct(ArrayList<Product> list, Product product) {
+    public boolean ifContainsProduct(Product product) {
         for (Product pr : listOfProducts) {
             if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice()
                     && pr.getId() == product.getId()) {

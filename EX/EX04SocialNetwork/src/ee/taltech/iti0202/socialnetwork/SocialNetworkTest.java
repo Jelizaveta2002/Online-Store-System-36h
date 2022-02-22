@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 
 class SocialNetworkTest {
@@ -122,7 +121,7 @@ class SocialNetworkTest {
         group2.publishMessage(message1);
         group2.publishMessage(message2);
         group2.publishMessage(message3);
-        ArrayList<Message> checkList = new ArrayList<>(Arrays. asList(message1, message2));
+        ArrayList<Message> checkList = new ArrayList<>(Arrays.asList(message1, message2));
         assertEquals(checkList, group2.getMessages());
     }
 

@@ -65,6 +65,7 @@ public class Stock {
     /**
      * @param product product that will be checked.
      */
+
     public boolean ifContainsProduct(Product product) {
         for (Product pr : listOfProducts) {
             if (pr.getName().equals(product.getName()) && pr.getPrice() == product.getPrice()

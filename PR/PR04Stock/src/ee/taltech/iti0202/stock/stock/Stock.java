@@ -64,7 +64,7 @@ public class Stock {
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
-     * @param product max amount of products allowed in the stock.
+     * @param product the name of the stock.
      */
     public boolean ifContainsProduct(Product product) {
         for (Product pr : listOfProducts) {

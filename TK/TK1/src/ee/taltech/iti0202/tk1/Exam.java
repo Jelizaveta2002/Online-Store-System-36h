@@ -1,10 +1,7 @@
 package ee.taltech.iti0202.tk1;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.lang.Math.*;
-import java.util.Objects;
 
 public class Exam {
 
@@ -57,21 +54,16 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(a);
+        list.add(b);
         if (a > 21 && b > 21) {
             return 0;
-        } else if (a <= 21 && b <= 21) {
-            if (a > b) {
-                return a;
-            } else if (b > a) {
-                return b;
-            }
-            else {
-                return a;
-            }
-        } else if (a > 21 && b <= 21) {
-            return b;
         }
-        return a;
+        if (a <= 21 && b <= 21) {
+            return Collections.max(list);
+        }
+        return 0;
     }
 
 

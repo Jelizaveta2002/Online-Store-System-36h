@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.lang.Math.*;
+import java.util.Objects;
+
 public class Exam {
 
 
@@ -18,21 +20,21 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        int sizeOfList = nums.size();
+        Integer sizeOfList = nums.size();
         if (sizeOfList != 0) {
-            int minNum = Collections.min(nums);
-            int maxNum = Collections.max(nums);
-            for (int num : nums) {
-                if (num == minNum) {
+            Integer minNum = Collections.min(nums);
+            Integer maxNum = Collections.max(nums);
+            for (Integer num : nums) {
+                if (Objects.equals(num, maxNum)) {
                     nums.remove(num);
+                    break;
+                }
+            for (Integer numb : nums) {
+                if (Objects.equals(numb, minNum)) {
+                    nums.remove(numb);
                     break;
                 }
             }
-            for (int num : nums) {
-                if (num == maxNum) {
-                    nums.remove(num);
-                    break;
-                }
             }
             int counter = 0;
             if (! nums.isEmpty()) {
@@ -55,7 +57,21 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        return 0;
+        if (a > 21 && b > 21) {
+            return 0;
+        } else if (a < 21 && b < 21) {
+            if (a > b) {
+                return a;
+            } else if (b > a) {
+                return b;
+            }
+            else {
+                return a;
+            }
+        } else if (a > 21 && b < 21) {
+            return b;
+        }
+        return a;
     }
 
 
@@ -84,5 +100,9 @@ public class Exam {
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100)));
     }
 }

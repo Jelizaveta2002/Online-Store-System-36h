@@ -59,7 +59,7 @@ public class Exam {
     public static int blackjack(int a, int b) {
         if (a > 21 && b > 21) {
             return 0;
-        } else if (a < 21 && b < 21) {
+        } else if (a <= 21 && b <= 21) {
             if (a > b) {
                 return a;
             } else if (b > a) {
@@ -68,7 +68,7 @@ public class Exam {
             else {
                 return a;
             }
-        } else if (a > 21 && b < 21) {
+        } else if (a > 21 && b <= 21) {
             return b;
         }
         return a;

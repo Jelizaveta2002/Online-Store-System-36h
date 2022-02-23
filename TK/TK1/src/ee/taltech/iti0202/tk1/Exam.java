@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.tk1;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.lang.Math.*;
@@ -19,16 +20,27 @@ public class Exam {
     public static int centeredAverage(List<Integer> nums) {
         int sizeOfList = nums.size();
         if (sizeOfList != 0) {
-            if (sizeOfList % 2 != 0) {
-                long indexNeeded = (sizeOfList / 2);
-                int finalResultIndex = Math.round(indexNeeded);
-                return nums.indexOf(finalResultIndex);
-            } else {
-                int finalIndex1 = (sizeOfList / 2);
-                int finalIndex2 = finalIndex1 - 1;
-                long result = (nums.indexOf(finalIndex1) + nums.indexOf(finalIndex2)) / 2;
-                return Math.round(result);
+            int minNum = Collections.min(nums);
+            int maxNum = Collections.max(nums);
+            for (int num : nums) {
+                if (num == minNum) {
+                    nums.remove(num);
+                    break;
+                }
             }
+            for (int num : nums) {
+                if (num == maxNum) {
+                    nums.remove(num);
+                    break;
+                }
+            }
+            int counter = 0;
+            if (! nums.isEmpty()) {
+                for (int num : nums) {
+                    counter += num;
+                }
+            }
+            return (counter / nums.size());
         }
         return 0;
     }

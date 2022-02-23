@@ -8,6 +8,10 @@ public class Painting {
         this.author = author;
     }
 
+    public Painting(String title) {
+        this.title = title;
+    }
+
     public String getTitle() {
         return null;
     }

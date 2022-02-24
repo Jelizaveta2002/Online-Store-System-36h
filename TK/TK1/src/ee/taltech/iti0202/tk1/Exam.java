@@ -19,23 +19,24 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        int sizeOfList = nums.size();
+        ArrayList<Integer> list = new ArrayList<>(nums);
+        int sizeOfList = list.size();
         if (sizeOfList >= 3) {
-            Collections.sort(nums);
-            nums.remove(sizeOfList - 1);
-            nums.remove(0);
+            Collections.sort(list);
+            list.remove(sizeOfList - 1);
+            list.remove(0);
             int counter = 0;
-            for (int num : nums) {
+            for (int num : list) {
                 counter += num;
             }
-            return (counter / nums.size());
+            return (counter / list.size());
         }
         int counter = 0;
-        if (! nums.isEmpty()) {
-            for (int num : nums) {
+        if (! list.isEmpty()) {
+            for (int num : list) {
                 counter += num;
             }
-            return (counter / nums.size());
+            return (counter / list.size());
         }
         return 0;
     }
@@ -95,6 +96,6 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(centeredAverage(new ArrayList<>(List.of())));
+        System.out.println(centeredAverage(new ArrayList<>(List.of(1, 2, 3, 4, 100))));
     }
 }

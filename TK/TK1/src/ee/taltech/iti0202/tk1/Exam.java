@@ -1,7 +1,9 @@
 package ee.taltech.iti0202.tk1;
 
-import java.util.*;
-import java.lang.Math.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class Exam {
 
@@ -19,11 +21,9 @@ public class Exam {
     public static int centeredAverage(List<Integer> nums) {
         int sizeOfList = nums.size();
         if (sizeOfList != 0) {
-            Integer minNum = Collections.min(nums);
-            Integer maxNum = Collections.max(nums);
-            nums.remove(minNum.intValue());
-            nums.remove(maxNum.intValue());
-            }
+            Collections.sort(nums);
+            nums.remove(sizeOfList - 1);
+            nums.remove(0);
             int counter = 0;
             if (! nums.isEmpty()) {
                 for (int num : nums) {
@@ -33,6 +33,8 @@ public class Exam {
             }
             return 0;
         }
+        return 0;
+    }
 
 
     /**
@@ -84,11 +86,11 @@ public class Exam {
      mapAB({"a": "aaa", "b": "bbb"}) → {"a": "aaa", "b": "bbb"}
      mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
-//    public static Map<String, String> mapAB(Map<String, String> map) {
-//        return null;
-//    }
-//
-//    public static void main(String[] args) {
-//        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100)));
-//    }
+    public static Map<String, String> mapAB(Map<String, String> map) {
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(centeredAverage(new ArrayList<>(List.of(1, 2, 4, 100))));
+    }
 }

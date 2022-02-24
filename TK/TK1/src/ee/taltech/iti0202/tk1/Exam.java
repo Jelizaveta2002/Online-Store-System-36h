@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.tk1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Exam {
 
@@ -107,11 +104,38 @@ public class Exam {
      mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        return null;
+        HashMap<String, String> newMap = new HashMap<>(map);
+        boolean checkA = false;
+        boolean checkB = false;
+        String keyA = "a";
+        String keyB = "b";
+        for (String key : newMap.keySet()) {
+            if (key.equals("a")) {
+                checkA = true;
+                break;
+            }
+        }
+        for (String key : newMap.keySet()) {
+            if (key.equals("b")) {
+                checkB = true;
+                break;
+            }
+        }
+        if (checkA && checkB) {
+            String a = newMap.get("a");
+            String b = newMap.get("b");
+            if (a.equals(b)) {
+                newMap.remove(keyA);
+                newMap.remove(keyB);
+                return newMap;
+            }
+        }
+        return newMap;
     }
 
     public static void main(String[] args) {
         System.out.println(centeredAverage(new ArrayList<>(List.of(1, 2, 3, 4, 100))));
         System.out.println(repeatEnd("", 1));
+        System.out.println(mapAB(new HashMap<String, String>(Map.of())));
     }
 }

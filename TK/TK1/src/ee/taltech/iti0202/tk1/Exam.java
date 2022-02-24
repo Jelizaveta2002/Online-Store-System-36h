@@ -79,6 +79,21 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
+        if (str.length() != 0 && n <= str.length() && n >= 0) {
+            StringBuilder newSting = new StringBuilder(str);
+            ArrayList<String> storage = new ArrayList<>();
+            StringBuilder string = new StringBuilder();
+            StringBuilder stringResult = new StringBuilder();
+            for (Integer i = 1; i < n + 1; i++ ) {
+                char ch = str.charAt(str.length() - i);
+                string.append(ch);
+            }
+            string.reverse();
+            for (int i = 0; i < n; i++) {
+                stringResult.append(string);
+            }
+            return stringResult.toString();
+        }
         return null;
     }
 
@@ -97,5 +112,6 @@ public class Exam {
 
     public static void main(String[] args) {
         System.out.println(centeredAverage(new ArrayList<>(List.of(1, 2, 3, 4, 100))));
+        System.out.println(repeatEnd("", 1));
     }
 }

@@ -13,7 +13,7 @@ public class Painting {
     }
 
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Painting {
     }
 
     public String getAuthor() {
-        return null;
+        return this.author;
     }
 
 }

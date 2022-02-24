@@ -17,32 +17,22 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        Integer sizeOfList = nums.size();
+        int sizeOfList = nums.size();
         if (sizeOfList != 0) {
             Integer minNum = Collections.min(nums);
             Integer maxNum = Collections.max(nums);
-            for (Integer num : nums) {
-                if (Objects.equals(num, maxNum)) {
-                    nums.remove(num);
-                    break;
-                }
-            for (Integer numb : nums) {
-                if (Objects.equals(numb, minNum)) {
-                    nums.remove(numb);
-                    break;
-                }
-            }
+            nums.remove(minNum.intValue());
+            nums.remove(maxNum.intValue());
             }
             int counter = 0;
             if (! nums.isEmpty()) {
                 for (int num : nums) {
                     counter += num;
                 }
+                return (counter / nums.size());
             }
-            return (counter / nums.size());
+            return 0;
         }
-        return 0;
-    }
 
 
     /**
@@ -54,16 +44,21 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(a);
-        list.add(b);
         if (a > 21 && b > 21) {
             return 0;
+        } else if (a <= 21 && b <= 21) {
+            if (a > b) {
+                return a;
+            } else if (b > a) {
+                return b;
+            }
+            else {
+                return a;
+            }
+        } else if (a > 21 && b <= 21) {
+            return b;
         }
-        if (a <= 21 && b <= 21) {
-            return Collections.max(list);
-        }
-        return 0;
+        return a;
     }
 
 
@@ -77,8 +72,7 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        return "";
-
+        return null;
     }
 
     /**
@@ -90,11 +84,11 @@ public class Exam {
      mapAB({"a": "aaa", "b": "bbb"}) → {"a": "aaa", "b": "bbb"}
      mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
-    public static Map<String, String> mapAB(Map<String, String> map) {
-        return null;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100)));
-    }
+//    public static Map<String, String> mapAB(Map<String, String> map) {
+//        return null;
+//    }
+//
+//    public static void main(String[] args) {
+//        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100)));
+//    }
 }

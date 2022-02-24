@@ -94,7 +94,7 @@ public class Exam {
             }
             return stringResult.toString();
         }
-        return null;
+        return "";
     }
 
     /**

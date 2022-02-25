@@ -113,8 +113,7 @@ public class Exam {
         if ((checkA && !checkB) || (!checkA && checkB)) {
             if (checkA) {
                 newMap.put(keyB, newMap.get(keyA));
-            }
-            else {
+            } else {
                 newMap.put(keyA, newMap.get(keyB));
             }
         }

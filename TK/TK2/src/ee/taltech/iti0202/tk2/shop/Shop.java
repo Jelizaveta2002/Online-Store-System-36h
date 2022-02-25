@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class Shop {
 
-    boolean addProduct(Product product) {
+    public boolean addProduct(Product product) {
         return false;
     }
 

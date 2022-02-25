@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.tk2;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class Exam {
@@ -92,7 +93,32 @@ public class Exam {
      * mapAXorB({"a": "aaa", "b": "bbb", "c": "cake"}) => {"a": "aaa", "b": "bbb", "c": "cake"}
      */
     public static Map<String, String> mapAXorB(Map<String, String> map) {
-        return null;
+        HashMap<String, String> newMap = new HashMap<>(map);
+        boolean checkA = false;
+        boolean checkB = false;
+        String keyA = "a";
+        String keyB = "b";
+        for (String key : newMap.keySet()) {
+            if (key.equals("a")) {
+                checkA = true;
+                break;
+            }
+        }
+        for (String key : newMap.keySet()) {
+            if (key.equals("b")) {
+                checkB = true;
+                break;
+            }
+        }
+        if ((checkA && !checkB) || (!checkA && checkB)) {
+            if (checkA) {
+                newMap.put(keyB, newMap.get(keyA));
+            }
+            else {
+                newMap.put(keyA, newMap.get(keyB));
+            }
+        }
+        return newMap;
     }
 
 

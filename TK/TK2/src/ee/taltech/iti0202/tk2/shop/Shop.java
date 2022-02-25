@@ -9,11 +9,11 @@ public class Shop {
         return false;
     }
 
-    Optional<Product> sellProduct(String name, int maxPrice) {
+    public Optional<Product> sellProduct(String name, int maxPrice) {
         return Optional.empty();
     }
 
-    List<Product> getProducts() {
+    public List<Product> getProducts() {
         return null;
     }
 }

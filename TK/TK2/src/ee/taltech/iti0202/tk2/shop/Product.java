@@ -2,7 +2,7 @@ package ee.taltech.iti0202.tk2.shop;
 
 public class Product {
     private final String name;
-    private int price;
+    private Integer price;
 
     /**
 
@@ -13,7 +13,7 @@ public class Product {
      repeatEnd("Hello", 2) → "lolo"
      repeatEnd("Hello", 1) → "o"
      */
-    public Product(String name, int price) {
+    public Product(String name, Integer price) {
         this.name = name;
         this.price = price;
     }
@@ -30,6 +30,7 @@ public class Product {
      */
     public Product(String name) {
         this.name = name;
+        this.price = null;
     }
 
 

@@ -19,7 +19,6 @@ public class Exam {
     public static int sum67(List<Integer> numbers) {
         ArrayList<Integer> list = new ArrayList<>(numbers);
         if (!numbers.isEmpty()) {
-            int sizeOfList = list.size();
             int counter = 0;
             boolean checker = false;
             for (Integer i : list) {
@@ -36,6 +35,7 @@ public class Exam {
                     counter += i;
                 }
             }
+            return counter;
         }
         return 0;
     }

@@ -1,22 +1,29 @@
 package ee.taltech.iti0202.tk1.art;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
     public class Collector {
-        private ArrayList<Painting> list = new ArrayList<>();
+        public static HashMap<Collector, ArrayList<Painting>> map = new HashMap<>();
+
+        public Collector() {
+            map.put(this, new ArrayList<>());
+        }
 
         public boolean addPainting(Painting painting) {
-            if (! list.isEmpty() && painting != null) {
-                for (Painting pic : list) {
-                    if (pic.getAuthor().equals(painting.getAuthor()) && pic.getTitle().equals(painting.getTitle())) {
+            System.out.println(map);
+            if (! map.get(this).isEmpty() && painting != null) {
+                for (Painting pic : map.get(this)) {
+                    if (pic.getAuthor().equals(painting.getAuthor())) {
                         return false;
                     }
                 }
-                list.add(painting);
+                map.get(this).add(painting);
                 return true;
             }
-            return false;
+            map.get(this).add(painting);
+            return true;
         }
 
         public boolean ifTheSameBuyer(Collector seller, Collector buyer) {
@@ -31,6 +38,6 @@ import java.util.List;
         }
 
         public List<Painting> getPaintings() {
-            return list;
+            return map.get(this);
         }
     }

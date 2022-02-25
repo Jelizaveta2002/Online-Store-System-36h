@@ -16,13 +16,16 @@ public class Painting {
         return this.title;
     }
 
-    @Override
-    public String toString() {
-        return "Painting{}";
-    }
-
     public String getAuthor() {
         return this.author;
+    }
+
+    @Override
+    public String toString() {
+        if (this.getAuthor() != null) {
+            return "This is a painting named " + this.getTitle() + " and made by " + this.getAuthor() + ".";
+        }
+        return "This is a painting named " + this.getTitle() + " and made by an unknown artist.";
     }
 
 }

@@ -52,7 +52,18 @@ public class Exam {
      * roundSum(6, 4, 4) => 10
      */
     public static int roundSum(int a, int b, int c) {
-        return -1;
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(a);
+        list.add(b);
+        list.add(c);
+        int counter = 0;
+        for (Integer i : list) {
+            double newA = i  / 10d;
+            long newAA = Math.round(newA);
+            int val = (int) (newAA * 10);
+            counter += val;
+        }
+        return counter;
     }
 
     /**
@@ -87,5 +98,6 @@ public class Exam {
 
     public static void main(String[] args) {
         System.out.println(sum67(new ArrayList<>(List.of())));
+        System.out.println(roundSum(6, 4, 4));
     }
 }

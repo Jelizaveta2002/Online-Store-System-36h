@@ -25,14 +25,14 @@ public class Exam {
                 if (i == 6) {
                     checker = true;
                 }
-                if (i == 7) {
-                    checker = false;
-                }
                 if (checker) {
                     counter += 0;
                 }
                 if (!checker) {
                     counter += i;
+                }
+                if (i == 7) {
+                    checker = false;
                 }
             }
             return counter;
@@ -82,5 +82,10 @@ public class Exam {
      */
     public static Map<String, String> mapAXorB(Map<String, String> map) {
         return null;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(sum67(new ArrayList<>(List.of())));
     }
 }

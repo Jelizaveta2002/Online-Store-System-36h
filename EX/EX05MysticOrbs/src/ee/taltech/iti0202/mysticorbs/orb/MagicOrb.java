@@ -1,20 +1,30 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
-import java.util.HashMap;
-
-public class MagicOrb {
-    private final String creator;
-    private Integer energy = 1;
-    private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();
+public class MagicOrb extends Orb{
+    private Integer energy = 0;
 
     public MagicOrb(String creator) {
-        this.creator = creator;
+        super(creator);
     }
-    public void charge(String resource, int amount) {
 
+    public void charge(String resource, int amount) {
+        if (!resource.equalsIgnoreCase("dust") && !resource.trim().isEmpty() && amount != 0) {
+            energy += resource.length() * amount * 2;
+        }
+    }
+
+    public int getEnergy() {
+        return energy;
     }
 
     public String toString() {
-        return null;
+        return "Orb by " + super.getCreator();
     }
+
+    public static void main(String[] args) {
+        Orb orb = new MagicOrb("CreatorHere");
+        orb.charge("magic wind", 2);
+        System.out.println(orb.getEnergy());
+    }
+
 }

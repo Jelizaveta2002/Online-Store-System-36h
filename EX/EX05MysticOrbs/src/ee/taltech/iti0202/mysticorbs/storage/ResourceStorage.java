@@ -3,11 +3,8 @@ package ee.taltech.iti0202.mysticorbs.storage;
 import java.util.HashMap;
 
 public class ResourceStorage {
-    private HashMap<String, Integer> mapOfResources = new HashMap<String, Integer>();
+    private final HashMap<String, Integer> mapOfResources = new HashMap<String, Integer>();
 
-    public ResourceStorage() {
-        mapOfResources = new HashMap<String, Integer>();
-    }
     public boolean isEmpty() {
         if (! mapOfResources.isEmpty()) {
             for (String key : mapOfResources.keySet()) {
@@ -15,50 +12,69 @@ public class ResourceStorage {
                     return false;
                 }
             }
+            return true;
         }
         return true;
     }
 
     public void addResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty() && resource != null) {
-            if(mapOfResources.containsKey(resource)) {
-                mapOfResources.put(resource, mapOfResources.get(resource) + amount);
-            } else {
-                mapOfResources.put(resource, amount);
+        if (!mapOfResources.isEmpty() && amount > 0) {
+            for (String existedResource : mapOfResources.keySet()) {
+                if (resource.equalsIgnoreCase(existedResource)) {
+                    mapOfResources.put(existedResource, mapOfResources.get(existedResource) + amount);
+                    return;
+                }
             }
-        } else if (mapOfResources.isEmpty() && resource != null){
+            mapOfResources.put(resource, amount);
+        } else if (mapOfResources.isEmpty() && amount > 0) {
             mapOfResources.put(resource, amount);
         }
     }
 
     public int getResourceAmount(String resource) {
-        if (mapOfResources.containsKey(resource)) {
-            return mapOfResources.get(resource);
+        if (!mapOfResources.isEmpty()) {
+            for (String existedResource : mapOfResources.keySet()) {
+                if (existedResource.equalsIgnoreCase(resource)) {
+                    return mapOfResources.get(existedResource);
+                }
+            }
         }
         return 0;
     }
 
     public boolean hasEnoughResource(String resource, int amount) {
-        if (mapOfResources.containsKey(resource)) {
-            if (amount < 1) {
-                return false;
+        if (!mapOfResources.isEmpty()) {
+            for (String existedResource : mapOfResources.keySet()) {
+                if (resource.equalsIgnoreCase(existedResource)) {
+                    return amount >= 1 && amount <= this.getResourceAmount(resource);
+                }
             }
-            return true;
         }
         return false;
     }
 
     public boolean takeResource(String resource, int amount) {
         if (!mapOfResources.isEmpty()) {
-            if (mapOfResources.containsKey(resource)) {
-                return mapOfResources.get(resource) >= amount;
+            for (String existedResource : mapOfResources.keySet()) {
+                if (resource.equalsIgnoreCase(existedResource) && mapOfResources.get(existedResource) >= amount) {
+                    mapOfResources.replace(existedResource, mapOfResources.get(existedResource) - amount);
+                    return mapOfResources.get(resource) >= amount;
+                }
             }
-            return false;
         }
         return false;
     }
 
     public HashMap<String, Integer> returnMap() {
         return this.mapOfResources;
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("wood", 33);
+        resourceStorage.addResource("wood", 34);
+        resourceStorage.addResource("water", 444);
+        resourceStorage.takeResource("water", 1);
+        System.out.println(resourceStorage.getResourceAmount("water"));
     }
 }

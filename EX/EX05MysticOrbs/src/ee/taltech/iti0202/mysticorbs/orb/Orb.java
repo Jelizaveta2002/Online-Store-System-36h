@@ -5,16 +5,20 @@ import java.util.HashMap;
 public class Orb {
 
     private final String creator;
-    private Integer energy = 1;
+    private Integer energy = 0;
     private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();
 
     public Orb(String creator) {
         this.creator = creator;
     }
 
+    public String getCreator() {
+        return this.creator;
+    }
+
     public void charge(String resource, int amount) {
-        if (resource != null && ! resource.equals("dust")) {
-            energy *= amount;
+        if (!resource.equalsIgnoreCase("dust") && !resource.trim().isEmpty() && amount != 0) {
+            energy += resource.length() * amount;
         }
     }
 

@@ -31,4 +31,16 @@ public class OrbFactory {
     public int produceOrbs(int cycles) {
         return 0;
     }
+
+    public List<Oven> getOvensThatCannotBeFixed() {
+        return null;
+    }
+
+    public void getRidOfOvensThatCannotBeFixed() {
+
+    }
+
+    public void optimizeOvensOrder() {
+
+    }
 }

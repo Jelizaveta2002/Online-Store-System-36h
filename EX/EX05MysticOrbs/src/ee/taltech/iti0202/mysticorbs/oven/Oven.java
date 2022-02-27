@@ -5,7 +5,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven {
+public class Oven implements Comparable<Oven>{
     private final ResourceStorage resourceStorage;
     private final String name;
     private boolean Broken = false;
@@ -37,5 +37,9 @@ public class Oven {
 
     public Optional<Orb> craftOrb() {
         return Optional.empty();
+    }
+
+    public int compareTo(Oven o) {
+        return 0;
     }
 }

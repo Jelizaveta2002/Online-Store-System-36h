@@ -13,4 +13,11 @@ public class SpaceOven {
     public boolean craftOrb() {
         return false;
     }
+
+    public boolean isBroken() {
+        return false;
+    }
+    public int getCreatedOrbsAmount() {
+        return 0;
+    }
 }

@@ -19,4 +19,8 @@ public class MagicOven {
     public boolean craftOrb() {
         return false;
     }
+
+    public int getCreatedOrbsAmount() {
+        return 0;
+    }
 }

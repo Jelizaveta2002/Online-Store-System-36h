@@ -2,27 +2,19 @@ package ee.taltech.iti0202.mysticorbs.orb;
 
 import java.util.HashMap;
 
-public class Orb {
-
+public class MagicOrb {
     private final String creator;
     private Integer energy = 1;
     private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();
 
-    public Orb(String creator) {
+    public MagicOrb(String creator) {
         this.creator = creator;
     }
-
     public void charge(String resource, int amount) {
-        if (resource != null && ! resource.equals("dust")) {
-            energy *= amount;
-        }
-    }
 
-    public int getEnergy() {
-        return energy;
     }
 
     public String toString() {
-        return "Orb by " + this.creator;
+        return null;
     }
 }

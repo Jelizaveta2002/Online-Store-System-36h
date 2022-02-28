@@ -54,7 +54,7 @@ public class ResourceStorage {
     }
 
     public boolean takeResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty() && !resource.trim().isEmpty()) {
+        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource) && mapOfResources.get(existedResource) >= amount) {
                     mapOfResources.replace(existedResource, mapOfResources.get(existedResource) - amount);

@@ -57,7 +57,7 @@ public class ResourceStorage {
         if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource) && mapOfResources.get(existedResource) >= amount) {
-                    mapOfResources.replace(existedResource, mapOfResources.get(existedResource) - amount);
+                    mapOfResources.put(existedResource, mapOfResources.get(existedResource) - amount);
                     return mapOfResources.get(resource) >= amount;
                 }
             }

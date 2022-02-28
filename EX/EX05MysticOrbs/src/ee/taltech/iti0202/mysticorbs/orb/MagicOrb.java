@@ -23,8 +23,9 @@ public class MagicOrb extends Orb{
         return energy;
     }
 
+    @Override
     public String toString() {
-        return "Orb by " + super.getCreator();
+        return "MagicOrb by " + super.getCreator();
     }
 
 

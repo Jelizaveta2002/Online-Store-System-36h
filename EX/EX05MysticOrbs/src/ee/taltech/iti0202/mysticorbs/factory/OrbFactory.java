@@ -22,6 +22,7 @@ public class OrbFactory {
                 }
             }
             listOfOvens.add(oven);
+            return;
         }
         if (oven.getName() != null && oven.getResourceStorage() != null) {
             listOfOvens.add(oven);
@@ -54,5 +55,21 @@ public class OrbFactory {
 
     public void optimizeOvensOrder() {
 
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("wood", 33);
+        resourceStorage.addResource("wood", 34);
+        OrbFactory factory = new OrbFactory(resourceStorage);
+        Oven oven = new Oven("oven1", resourceStorage);
+        Oven oven2 = new Oven("oven1", resourceStorage);
+        Oven oven3 = new Oven("oven2", resourceStorage);
+        Oven oven4 = new Oven("oven3", resourceStorage);
+        factory.addOven(oven);
+        factory.addOven(oven2);
+        factory.addOven(oven3);
+        factory.addOven(oven4);
+        System.out.println(factory.getOvens());
     }
 }

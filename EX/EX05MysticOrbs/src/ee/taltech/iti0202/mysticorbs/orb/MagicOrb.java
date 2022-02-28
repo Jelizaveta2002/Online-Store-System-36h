@@ -24,7 +24,7 @@ public class MagicOrb extends Orb{
     }
 
     public String toString() {
-        return "MagicOrb by " + super.getCreator();
+        return "Orb by " + super.getCreator();
     }
 
 

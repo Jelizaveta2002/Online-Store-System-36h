@@ -53,7 +53,7 @@ public class MagicOven extends Oven {
             if (amountOfOrbs == 5) {
                 Broken = true;
             }
-            if (amountOfOrbs == 2 || amountOfOrbs == 4) {
+            if (amountOfOrbs % 2 == 0) {
                 Orb value = new MagicOrb(this.getName());
                 value.charge("gold", 1);
                 value.charge("dust", 3);

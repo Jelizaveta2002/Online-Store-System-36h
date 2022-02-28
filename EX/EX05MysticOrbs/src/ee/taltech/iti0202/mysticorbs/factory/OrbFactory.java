@@ -19,18 +19,18 @@ public class OrbFactory {
     }
 
     public void addOven(Oven oven) {
-        if (!listOfOvens.isEmpty() && oven.getName() != null && oven.getResourceStorage() != null) {
+        if (oven.getName() != null && oven.getResourceStorage() != null) {
             for (Oven oneOven : listOfOvens) {
                 if (oven.getResourceStorage() == oneOven.getResourceStorage() && oven.getName().equals(oneOven.getName())) {
                     return;
                 }
             }
             listOfOvens.add(oven);
-            return;
+
         }
-        if (oven.getName() != null && oven.getResourceStorage() != null) {
-            listOfOvens.add(oven);
-        }
+//        if (oven.getName() != null && oven.getResourceStorage() != null) {
+//            listOfOvens.add(oven);
+//        }
     }
 
     public List<Oven> getOvens() {
@@ -47,9 +47,11 @@ public class OrbFactory {
     public int produceOrbs() {
         int counter = 0;
         for (Oven oven : listOfOvens) {
-            if (oven.craftOrb().isPresent()) {
+
+            Optional<Orb> optionalOrb = oven.craftOrb();
+            if (optionalOrb.isPresent()) {
                 counter += 1;
-                listOfOrbs.add(oven.craftOrb().get());
+                listOfOrbs.add(optionalOrb.get());
                 System.out.println(listOfOrbs);
             }
         }

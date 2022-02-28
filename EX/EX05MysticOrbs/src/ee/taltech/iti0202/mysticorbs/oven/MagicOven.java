@@ -8,16 +8,10 @@ import java.util.Optional;
 
 public class MagicOven extends Oven {
 
-    private boolean Broken = false;
-    private int amountOfOrbs = 0;
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }
 
-
-    public boolean isBroken() {
-        return this.Broken;
-    }
 
     public int getCreatedOrbsAmount() {
         return 0;
@@ -40,18 +34,18 @@ public class MagicOven extends Oven {
 
     public int getCreatedAmount() {
         if (amountOfOrbs >= 5) {
-            this.Broken = true;
+           makeBroken();
         }
         return amountOfOrbs;
     }
 
     public Optional<Orb> craftOrb() {
-        if (!Broken && !super.getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
+        if (!isBroken() && !super.getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
             super.getResourceStorage().takeResource("gold", 1);
             super.getResourceStorage().takeResource("dust", 3);
             amountOfOrbs += 1;
             if (amountOfOrbs == 5) {
-                Broken = true;
+                makeBroken();
             }
             if (amountOfOrbs % 2 == 0) {
                 Orb value = new MagicOrb(this.getName());

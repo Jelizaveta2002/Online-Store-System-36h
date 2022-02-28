@@ -10,7 +10,7 @@ public class Oven implements Comparable<Oven>{
     private final ResourceStorage resourceStorage;
     private final String name;
     private boolean Broken = false;
-    private int amountOfOrbs = 0;
+    protected int amountOfOrbs = 0;
 
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;
@@ -26,9 +26,6 @@ public class Oven implements Comparable<Oven>{
     }
 
     public int getCreatedOrbsAmount() {
-        if (amountOfOrbs >= 15) {
-            this.Broken = true;
-        }
         return amountOfOrbs;
     }
 
@@ -53,12 +50,12 @@ public class Oven implements Comparable<Oven>{
     }
 
     public Optional<Orb> craftOrb() {
-        if (!Broken&& !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
+        if (!isBroken() && !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
             resourceStorage.takeResource("pearl", 1);
             resourceStorage.takeResource("silver", 1);
             amountOfOrbs += 1;
             if (amountOfOrbs == 15) {
-                Broken = true;
+               makeBroken();
             }
             Orb value = new Orb(this.name);
             value.charge("pearl", 1);

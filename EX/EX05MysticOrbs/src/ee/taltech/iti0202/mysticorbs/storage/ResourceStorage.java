@@ -18,7 +18,7 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty() && amount > 0) {
+        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource)) {
                     mapOfResources.put(existedResource, mapOfResources.get(existedResource) + amount);

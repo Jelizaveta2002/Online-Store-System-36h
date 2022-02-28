@@ -9,7 +9,7 @@ public class MagicOrb extends Orb{
     }
 
     public void charge(String resource, int amount) {
-        if (!resource.equalsIgnoreCase("dust") && !resource.trim().isEmpty() && amount != 0) {
+        if (!resource.equalsIgnoreCase("dust") && !resource.trim().isEmpty() && amount > 0) {
             energy += resource.length() * amount * 2;
         }
     }

@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
 public class MagicOrb extends Orb{
-    private Integer energy = 0;
     private boolean absorbed = false;
     private boolean isSpaceOrb = false;
 
@@ -38,11 +37,4 @@ public class MagicOrb extends Orb{
         this.absorbed = true;
         this.energy = 0;
     }
-
-    public static void main(String[] args) {
-        Orb orb = new MagicOrb("CreatorHere");
-        orb.charge("magic wind", 2);
-        System.out.println(orb.getEnergy());
-    }
-
 }

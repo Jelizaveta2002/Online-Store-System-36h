@@ -77,8 +77,6 @@ public class MagicOven extends Oven {
         Optional<Orb> orbOptional2 = magicOven.craftOrb();
         Optional<Orb> orbOptional3 = magicOven.craftOrb();
         Optional<Orb> orbOptional4 = magicOven.craftOrb();
-        Optional<Orb> orbOptional5 = magicOven.craftOrb();
-        Optional<Orb> orbOptional6 = magicOven.craftOrb();
         System.out.println(magicOven.isBroken());
     }
 }

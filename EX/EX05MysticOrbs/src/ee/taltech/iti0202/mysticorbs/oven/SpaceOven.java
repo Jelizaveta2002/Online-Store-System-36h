@@ -7,20 +7,16 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class SpaceOven extends Oven {
-    private boolean Broken;
     private int amountOfOrbs = 0;
     public SpaceOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }
 
     public Optional<Orb> craftOrb() {
-        if (!Broken && !super.getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
+        if (!super.getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
             super.getResourceStorage().takeResource("gold", 1);
             super.getResourceStorage().takeResource("dust", 3);
             amountOfOrbs += 1;
-            if (amountOfOrbs == 5) {
-                this.makeBroken();
-            }
             if (amountOfOrbs == 2 || amountOfOrbs == 4) {
                 Orb value = new MagicOrb(this.getName());
                 value.charge("gold", 1);

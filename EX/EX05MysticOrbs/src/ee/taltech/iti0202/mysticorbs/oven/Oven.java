@@ -53,10 +53,13 @@ public class Oven implements Comparable<Oven>{
     }
 
     public Optional<Orb> craftOrb() {
-        if (!Broken && !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
+        if (!Broken&& !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
             resourceStorage.takeResource("pearl", 1);
             resourceStorage.takeResource("silver", 1);
             amountOfOrbs += 1;
+            if (amountOfOrbs == 15) {
+                Broken = true;
+            }
             Orb value = new Orb(this.name);
             value.charge("pearl", 1);
             value.charge("silver", 1);

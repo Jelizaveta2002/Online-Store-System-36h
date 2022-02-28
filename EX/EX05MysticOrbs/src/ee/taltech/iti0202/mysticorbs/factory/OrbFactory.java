@@ -40,6 +40,7 @@ public class OrbFactory {
     public List<Orb> getAndClearProducedOrbsList() {
         ArrayList<Orb> listToReturn = new ArrayList<Orb>(this.listOfOrbs);
         this.listOfOrbs.clear();
+        System.out.println(listOfOrbs);
         return listToReturn;
     }
 
@@ -49,8 +50,10 @@ public class OrbFactory {
             if (oven.craftOrb().isPresent()) {
                 counter += 1;
                 listOfOrbs.add(oven.craftOrb().get());
+                System.out.println(listOfOrbs);
             }
         }
+        System.out.println(counter);
         return counter;
     }
 
@@ -80,15 +83,29 @@ public class OrbFactory {
         resourceStorage.addResource("star fragment", 999999);
 
         OrbFactory orbFactory = new OrbFactory(resourceStorage);
-
         Oven oven1 = new Oven("Oven1", resourceStorage);
-
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
+        oven1.craftOrb();
         Oven oven2 = new SpaceOven("SpaceOven1", resourceStorage);
         Oven oven3 = new MagicOven("MagicOven1", resourceStorage);
+        oven3.craftOrb();
         orbFactory.addOven(oven1);
         orbFactory.addOven(oven2);
         orbFactory.addOven(oven3);
-        orbFactory.produceOrbs();
-        System.out.println(orbFactory.getAndClearProducedOrbsList());
+        System.out.println(orbFactory.produceOrbs());
     }
 }

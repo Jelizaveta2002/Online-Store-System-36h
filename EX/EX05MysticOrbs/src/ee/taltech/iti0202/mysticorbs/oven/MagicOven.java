@@ -59,7 +59,7 @@ public class MagicOven extends Oven {
                 value.charge("dust", 3);
                 return Optional.of(value);
             }
-            Orb value = new MagicOrb(this.getName());
+            Orb value = new Orb(this.getName());
             value.charge("gold", 1);
             value.charge("dust", 3);
             return Optional.of(value);

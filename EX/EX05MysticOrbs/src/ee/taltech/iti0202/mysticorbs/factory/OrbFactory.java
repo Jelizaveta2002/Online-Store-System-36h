@@ -6,6 +6,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class OrbFactory {
     private final ResourceStorage resourceStorage;
@@ -35,7 +36,9 @@ public class OrbFactory {
     }
 
     public List<Orb> getAndClearProducedOrbsList() {
-        return listOfOrbs;
+        ArrayList<Orb> listToReturn = new ArrayList<Orb>(this.listOfOrbs);
+        this.listOfOrbs.clear();
+        return listToReturn;
     }
 
     public int produceOrbs() {
@@ -78,6 +81,8 @@ public class OrbFactory {
         factory.addOven(oven2);
         factory.addOven(oven3);
         factory.addOven(oven4);
-        System.out.println(factory.getOvens());
+        Optional<Orb> optionalOrb = oven.craftOrb();
+        factory.getAndClearProducedOrbsList();
+        System.out.println(factory.produceOrbs());
     }
 }

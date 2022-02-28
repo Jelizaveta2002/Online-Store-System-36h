@@ -6,6 +6,7 @@ public class Orb {
 
     private final String creator;
     private Integer energy = 0;
+    private boolean absorbed = false;
     private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();
 
     public Orb(String creator) {
@@ -16,6 +17,10 @@ public class Orb {
         return this.creator;
     }
 
+    public boolean returnState() {
+        return this.absorbed;
+    }
+
     public void charge(String resource, int amount) {
         if (!resource.equalsIgnoreCase("dust") && !resource.trim().isEmpty() && amount != 0) {
             energy += resource.length() * amount;
@@ -24,6 +29,11 @@ public class Orb {
 
     public int getEnergy() {
         return energy;
+    }
+
+    public void changeState() {
+        this.absorbed = true;
+        this.energy = 0;
     }
 
     public String toString() {

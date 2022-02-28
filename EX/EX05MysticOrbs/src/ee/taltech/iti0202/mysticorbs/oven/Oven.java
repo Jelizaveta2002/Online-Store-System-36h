@@ -36,6 +36,10 @@ public class Oven implements Comparable<Oven>{
         return this.Broken;
     }
 
+    public void makeBroken() {
+        this.Broken = true;
+    }
+
     public boolean helpMethod(String resource) {
         if (!resourceStorage.returnMap().isEmpty()) {
             for (String existedResource : resourceStorage.returnMap().keySet()) {

@@ -2,6 +2,7 @@ package ee.taltech.iti0202.mysticorbs.orb;
 
 public class MagicOrb extends Orb{
     private Integer energy = 0;
+    private boolean absorbed = false;
 
     public MagicOrb(String creator) {
         super(creator);
@@ -18,7 +19,18 @@ public class MagicOrb extends Orb{
     }
 
     public String toString() {
-        return "Orb by " + super.getCreator();
+        return "MagicOrb by " + super.getCreator();
+    }
+
+
+
+    public boolean returnState() {
+        return this.absorbed;
+    }
+
+    public void changeState() {
+        this.absorbed = true;
+        this.energy = 0;
     }
 
     public static void main(String[] args) {

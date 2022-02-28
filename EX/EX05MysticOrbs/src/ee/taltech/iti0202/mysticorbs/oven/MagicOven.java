@@ -1,26 +1,69 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
+import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-public class MagicOven {
+import java.util.Optional;
 
-    private final String name;
-    private final ResourceStorage resourceStorage;
+public class MagicOven extends Oven {
 
+    private boolean Broken = false;
+    private int amountOfOrbs = 0;
     public MagicOven(String name, ResourceStorage resourceStorage) {
-        this.name = name;
-        this.resourceStorage = resourceStorage;
+        super(name, resourceStorage);
     }
+
 
     public boolean isBroken() {
-        return false;
-    }
-
-    public boolean craftOrb() {
-        return false;
+        return this.Broken;
     }
 
     public int getCreatedOrbsAmount() {
         return 0;
+    }
+
+    public boolean helpMethod(String resource) {
+        if (!super.getResourceStorage().returnMap().isEmpty()) {
+            for (String existedResource : super.getResourceStorage().returnMap().keySet()) {
+                if (resource.equalsIgnoreCase(existedResource) && super.getResourceStorage().returnMap().get(existedResource) >= 3 && resource.equalsIgnoreCase("dust")) {
+                    return true;
+                }
+                if (resource.equalsIgnoreCase(existedResource) && super.getResourceStorage().returnMap().get(existedResource) >= 1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public int getCreatedAmount() {
+        if (amountOfOrbs >= 5) {
+            this.Broken = true;
+        }
+        return amountOfOrbs;
+    }
+
+    public Optional<Orb> craftOrb() {
+        if (!Broken && !super.getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
+            super.getResourceStorage().takeResource("gold", 1);
+            super.getResourceStorage().takeResource("dust", 3);
+            amountOfOrbs += 1;
+            if (amountOfOrbs == 5) {
+                this.makeBroken();
+            }
+            if (amountOfOrbs == 2 || amountOfOrbs == 4) {
+                Orb value = new MagicOrb(this.getName());
+                value.charge("gold", 1);
+                value.charge("dust", 3);
+                return Optional.of(value);
+            }
+            Orb value = new Orb(this.getName());
+            value.charge("gold", 1);
+            value.charge("dust", 3);
+            return Optional.of(value);
+        }
+        return Optional.empty();
     }
 }

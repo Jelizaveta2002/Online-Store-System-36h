@@ -2,12 +2,10 @@ package ee.taltech.iti0202.mysticorbs.oven;
 
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-public class InfinityMagicOven {
-    private final String name;
-    private final ResourceStorage resourceStorage;
+public class InfinityMagicOven extends MagicOven {
+
     public InfinityMagicOven(String name, ResourceStorage resourceStorage) {
-        this.name = name;
-        this.resourceStorage = resourceStorage;
+        super(name, resourceStorage);
     }
 
     public boolean isBroken() {

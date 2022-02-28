@@ -1,7 +1,9 @@
 package ee.taltech.iti0202.mysticorbs.factory;
 
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
+import ee.taltech.iti0202.mysticorbs.oven.MagicOven;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
+import ee.taltech.iti0202.mysticorbs.oven.SpaceOven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.ArrayList;
@@ -70,19 +72,23 @@ public class OrbFactory {
 
     public static void main(String[] args) {
         ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("wood", 33);
-        resourceStorage.addResource("wood", 34);
-        OrbFactory factory = new OrbFactory(resourceStorage);
-        Oven oven = new Oven("oven1", resourceStorage);
-        Oven oven2 = new Oven("oven1", resourceStorage);
-        Oven oven3 = new Oven("oven2", resourceStorage);
-        Oven oven4 = new Oven("oven3", resourceStorage);
-        factory.addOven(oven);
-        factory.addOven(oven2);
-        factory.addOven(oven3);
-        factory.addOven(oven4);
-        Optional<Orb> optionalOrb = oven.craftOrb();
-        factory.getAndClearProducedOrbsList();
-        System.out.println(factory.produceOrbs());
+        resourceStorage.addResource("pearl", 999999);
+        resourceStorage.addResource("silver", 999999);
+        resourceStorage.addResource("gold", 999999);
+        resourceStorage.addResource("dust", 999999);
+        resourceStorage.addResource("meteorite stone", 999999);
+        resourceStorage.addResource("star fragment", 999999);
+
+        OrbFactory orbFactory = new OrbFactory(resourceStorage);
+
+        Oven oven1 = new Oven("Oven1", resourceStorage);
+
+        Oven oven2 = new SpaceOven("SpaceOven1", resourceStorage);
+        Oven oven3 = new MagicOven("MagicOven1", resourceStorage);
+        orbFactory.addOven(oven1);
+        orbFactory.addOven(oven2);
+        orbFactory.addOven(oven3);
+        orbFactory.produceOrbs();
+        System.out.println(orbFactory.getAndClearProducedOrbsList());
     }
 }

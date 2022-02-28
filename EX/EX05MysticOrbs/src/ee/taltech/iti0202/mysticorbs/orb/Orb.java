@@ -7,10 +7,15 @@ public class Orb {
     private final String creator;
     private Integer energy = 0;
     private boolean absorbed = false;
+    private boolean isSpaceOrb = false;
     private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();
 
     public Orb(String creator) {
         this.creator = creator;
+    }
+
+    public boolean returnIsSpace() {
+        return this.isSpaceOrb;
     }
 
     public String getCreator() {

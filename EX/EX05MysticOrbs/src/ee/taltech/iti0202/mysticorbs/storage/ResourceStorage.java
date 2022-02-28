@@ -58,7 +58,7 @@ public class ResourceStorage {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource) && mapOfResources.get(existedResource) >= amount) {
                     mapOfResources.put(existedResource, mapOfResources.get(existedResource) - amount);
-                    return mapOfResources.get(resource) >= amount;
+                    return mapOfResources.get(existedResource) >= amount;
                 }
             }
         }

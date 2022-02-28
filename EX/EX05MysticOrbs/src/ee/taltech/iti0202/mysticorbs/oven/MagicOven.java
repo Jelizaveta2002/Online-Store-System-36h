@@ -29,7 +29,7 @@ public class MagicOven extends Oven {
                 if (resource.equalsIgnoreCase(existedResource) && super.getResourceStorage().returnMap().get(existedResource) >= 3 && resource.equalsIgnoreCase("dust")) {
                     return true;
                 }
-                if (resource.equalsIgnoreCase(existedResource) && super.getResourceStorage().returnMap().get(existedResource) >= 1) {
+                if (resource.equalsIgnoreCase(existedResource) && super.getResourceStorage().returnMap().get(existedResource) >= 1 && resource.equalsIgnoreCase("gold")){
                     return true;
                 }
             }
@@ -51,7 +51,7 @@ public class MagicOven extends Oven {
             super.getResourceStorage().takeResource("dust", 3);
             amountOfOrbs += 1;
             if (amountOfOrbs == 5) {
-                this.makeBroken();
+                Broken = true;
             }
             if (amountOfOrbs == 2 || amountOfOrbs == 4) {
                 Orb value = new MagicOrb(this.getName());
@@ -65,5 +65,20 @@ public class MagicOven extends Oven {
             return Optional.of(value);
         }
         return Optional.empty();
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("gold", 999999);
+        resourceStorage.addResource("dust", 999999);
+
+        Oven magicOven = new MagicOven("magic oven", resourceStorage);
+        Optional<Orb> orbOptional = magicOven.craftOrb();
+        Optional<Orb> orbOptional2 = magicOven.craftOrb();
+        Optional<Orb> orbOptional3 = magicOven.craftOrb();
+        Optional<Orb> orbOptional4 = magicOven.craftOrb();
+        Optional<Orb> orbOptional5 = magicOven.craftOrb();
+        Optional<Orb> orbOptional6 = magicOven.craftOrb();
+        System.out.println(magicOven.isBroken());
     }
 }

@@ -53,12 +53,15 @@ public class OrbFactory {
                 System.out.println(listOfOrbs);
             }
         }
-        System.out.println(counter);
         return counter;
     }
 
     public int produceOrbs(int cycles) {
-        return 0;
+        int counter = 0;
+        for (int i = 0; i < cycles; i++ ) {
+            counter += produceOrbs();
+        }
+        return counter;
     }
 
     public List<Oven> getOvensThatCannotBeFixed() {

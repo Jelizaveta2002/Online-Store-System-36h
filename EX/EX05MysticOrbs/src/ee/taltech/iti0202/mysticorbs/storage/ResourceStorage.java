@@ -18,7 +18,7 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty() && resource != null) {
+        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource)) {
                     mapOfResources.put(existedResource, mapOfResources.get(existedResource) + amount);
@@ -26,7 +26,7 @@ public class ResourceStorage {
                 }
             }
             mapOfResources.put(resource, amount);
-        } else if (mapOfResources.isEmpty() && amount > 0) {
+        } else if (mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             mapOfResources.put(resource, amount);
         }
     }
@@ -54,7 +54,7 @@ public class ResourceStorage {
     }
 
     public boolean takeResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty()) {
+        if (!mapOfResources.isEmpty() && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource) && mapOfResources.get(existedResource) >= amount) {
                     mapOfResources.replace(existedResource, mapOfResources.get(existedResource) - amount);

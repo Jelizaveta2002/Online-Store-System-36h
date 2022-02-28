@@ -56,8 +56,8 @@ public class SpaceOven extends Oven {
             return Optional.of(value);
         }
         if (Broken && !super.getResourceStorage().isEmpty() && helpMethodStandardOrb("pearl") && helpMethodStandardOrb("silver")) {
-            super.getResourceStorage().takeResource("star fragment", 15);
-            super.getResourceStorage().takeResource("meteorite stone", 1);
+            super.getResourceStorage().takeResource("pearl", 1);
+            super.getResourceStorage().takeResource("silver", 1);
             Orb value = new Orb(this.getName());
             value.charge("pearl", 1);
             value.charge("silver", 1);

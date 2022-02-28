@@ -59,6 +59,8 @@ public class SpaceOven extends Oven {
             super.getResourceStorage().takeResource("star fragment", 15);
             super.getResourceStorage().takeResource("meteorite stone", 1);
             Orb value = new Orb(this.getName());
+            value.charge("pearl", 1);
+            value.charge("silver", 1);
             amountOfOrbs += 1;
             return Optional.of(value);
         }

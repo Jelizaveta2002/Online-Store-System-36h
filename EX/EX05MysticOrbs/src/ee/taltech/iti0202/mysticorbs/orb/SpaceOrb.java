@@ -14,7 +14,7 @@ public class SpaceOrb extends Orb {
     public void charge(String resource, int amount) {}
 
     public String toString() {
-        return "Orb by " + super.getCreator();
+        return "SpaceOrb by " + super.getCreator();
     }
 
     public int getEnergy() {

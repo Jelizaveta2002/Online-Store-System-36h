@@ -18,7 +18,7 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
+        if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty() && resource != null) {
             for (String existedResource : mapOfResources.keySet()) {
                 if (resource.equalsIgnoreCase(existedResource)) {
                     mapOfResources.put(existedResource, mapOfResources.get(existedResource) + amount);
@@ -73,8 +73,7 @@ public class ResourceStorage {
         ResourceStorage resourceStorage = new ResourceStorage();
         resourceStorage.addResource("wood", 33);
         resourceStorage.addResource("wood", 34);
-        resourceStorage.addResource("water", 444);
-        resourceStorage.takeResource("water", 1);
-        System.out.println(resourceStorage.getResourceAmount("water"));
+        resourceStorage.addResource("        ", 444);
+        System.out.println(resourceStorage.returnMap());
     }
 }

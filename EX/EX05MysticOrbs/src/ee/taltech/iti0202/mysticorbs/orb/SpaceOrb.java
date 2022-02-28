@@ -3,7 +3,7 @@ package ee.taltech.iti0202.mysticorbs.orb;
 import java.util.HashMap;
 
 public class SpaceOrb extends Orb {
-    private Integer energy = 0;
+    private Integer energy = 100;
     private boolean absorbed = false;
     private boolean isSpaceOrb = true;
     private HashMap<String, Integer> mapOfOrbs = new HashMap<String, Integer>();

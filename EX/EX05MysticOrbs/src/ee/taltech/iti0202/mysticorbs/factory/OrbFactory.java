@@ -10,6 +10,7 @@ import java.util.List;
 public class OrbFactory {
     private final ResourceStorage resourceStorage;
     private final ArrayList<Oven> listOfOvens = new ArrayList<>();
+    private final ArrayList<Orb> listOfOrbs = new ArrayList<>();
     public OrbFactory(ResourceStorage resourceStorage) {
         this.resourceStorage = resourceStorage;
     }
@@ -34,11 +35,18 @@ public class OrbFactory {
     }
 
     public List<Orb> getAndClearProducedOrbsList() {
-        return null;
+        return listOfOrbs;
     }
 
     public int produceOrbs() {
-        return 0;
+        int counter = 0;
+        for (Oven oven : listOfOvens) {
+            if (oven.craftOrb().isPresent()) {
+                counter += 1;
+                listOfOrbs.add(oven.craftOrb().get());
+            }
+        }
+        return counter;
     }
 
     public int produceOrbs(int cycles) {

@@ -3,10 +3,17 @@ package ee.taltech.iti0202.mysticorbs.storage;
 import java.util.HashMap;
 
 public class ResourceStorage {
+
+    /**
+     * Create a resourceStorage.
+     */
     private final HashMap<String, Integer> mapOfResources = new HashMap<String, Integer>();
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean isEmpty() {
-        if (! mapOfResources.isEmpty()) {
+        if (!mapOfResources.isEmpty()) {
             for (String key : mapOfResources.keySet()) {
                 if (mapOfResources.get(key) > 0) {
                     return false;
@@ -17,6 +24,9 @@ public class ResourceStorage {
         return true;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public void addResource(String resource, int amount) {
         if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
@@ -31,6 +41,9 @@ public class ResourceStorage {
         }
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public int getResourceAmount(String resource) {
         if (!mapOfResources.isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
@@ -42,6 +55,9 @@ public class ResourceStorage {
         return 0;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean hasEnoughResource(String resource, int amount) {
         if (!mapOfResources.isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
@@ -53,6 +69,9 @@ public class ResourceStorage {
         return false;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean takeResource(String resource, int amount) {
         if (!mapOfResources.isEmpty() && amount > 0 && !resource.trim().isEmpty()) {
             for (String existedResource : mapOfResources.keySet()) {
@@ -65,15 +84,11 @@ public class ResourceStorage {
         return false;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public HashMap<String, Integer> returnMap() {
         return this.mapOfResources;
     }
 
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("wood", 33);
-        resourceStorage.addResource("wood", 34);
-        resourceStorage.addResource("        ", 444);
-        System.out.println(resourceStorage.returnMap());
-    }
 }

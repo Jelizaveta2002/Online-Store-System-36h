@@ -8,15 +8,23 @@ import java.util.Optional;
 
 public class MagicOven extends Oven {
 
+    /**
+     * Create a resourceStorage.
+     */
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }
 
-
+    /**
+     * Create a resourceStorage.
+     */
     public int getCreatedOrbsAmount() {
         return 0;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean helpMethod(String resource) {
         if (!getResourceStorage().returnMap().isEmpty()) {
             for (String existedResource : getResourceStorage().returnMap().keySet()) {
@@ -32,13 +40,19 @@ public class MagicOven extends Oven {
         return false;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public int getCreatedAmount() {
         if (amountOfOrbs >= 5) {
-           makeBroken();
+            makeBroken();
         }
         return amountOfOrbs;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public Optional<Orb> craftOrb() {
         if (!isBroken() && !getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
             super.getResourceStorage().takeResource("gold", 1);
@@ -61,16 +75,4 @@ public class MagicOven extends Oven {
         return Optional.empty();
     }
 
-//    public static void main(String[] args) {
-//        ResourceStorage resourceStorage = new ResourceStorage();
-//        resourceStorage.addResource("gold", 999999);
-//        resourceStorage.addResource("dust", 999999);
-//
-//        Oven magicOven = new MagicOven("magic oven", resourceStorage);
-//        Optional<Orb> orbOptional = magicOven.craftOrb();
-//        Optional<Orb> orbOptional2 = magicOven.craftOrb();
-//        Optional<Orb> orbOptional3 = magicOven.craftOrb();
-//        Optional<Orb> orbOptional4 = magicOven.craftOrb();
-//        System.out.println(magicOven.isBroken());
-//    }
 }

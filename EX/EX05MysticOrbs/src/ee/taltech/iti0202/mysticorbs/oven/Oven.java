@@ -3,7 +3,6 @@ package ee.taltech.iti0202.mysticorbs.oven;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class Oven implements Comparable<Oven>{
@@ -12,31 +11,52 @@ public class Oven implements Comparable<Oven>{
     private boolean Broken = false;
     protected int amountOfOrbs = 0;
 
+    /**
+     * Create a resourceStorage.
+     */
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;
         this.resourceStorage = resourceStorage;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public ResourceStorage getResourceStorage() {
         return resourceStorage;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public int getCreatedOrbsAmount() {
         return amountOfOrbs;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean isBroken() {
         return this.Broken;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public void makeBroken() {
         this.Broken = true;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public boolean helpMethod(String resource) {
         if (!resourceStorage.returnMap().isEmpty()) {
             for (String existedResource : resourceStorage.returnMap().keySet()) {
@@ -49,6 +69,9 @@ public class Oven implements Comparable<Oven>{
         return false;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public Optional<Orb> craftOrb() {
         if (!isBroken() && !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
             resourceStorage.takeResource("pearl", 1);
@@ -65,25 +88,11 @@ public class Oven implements Comparable<Oven>{
         return Optional.empty();
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public int compareTo(Oven o) {
         return 0;
-//        if (o == this ) {
-//            return 0;
-//        }
-//        if
-//
-//        return 0;
     }
 
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("pearl", 10);
-        resourceStorage.addResource("silver", 12);
-
-        Oven oven = new Oven("oven", resourceStorage);
-
-        Optional<Orb> optionalOrb = oven.craftOrb();
-        Orb orb = optionalOrb.get();
-        System.out.println(orb.getEnergy());
-    }
 }

@@ -5,10 +5,11 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven implements Comparable<Oven>{
+public class Oven implements Comparable<Oven> {
+    public static final int ONEFIVE = 15;
     private final ResourceStorage resourceStorage;
     private final String name;
-    private boolean Broken = false;
+    private boolean broken = false;
     protected int amountOfOrbs = 0;
 
     /**
@@ -44,14 +45,14 @@ public class Oven implements Comparable<Oven>{
      * Create a resourceStorage.
      */
     public boolean isBroken() {
-        return this.Broken;
+        return this.broken;
     }
 
     /**
      * Create a resourceStorage.
      */
     public void makeBroken() {
-        this.Broken = true;
+        this.broken = true;
     }
 
     /**
@@ -60,7 +61,8 @@ public class Oven implements Comparable<Oven>{
     public boolean helpMethod(String resource) {
         if (!resourceStorage.returnMap().isEmpty()) {
             for (String existedResource : resourceStorage.returnMap().keySet()) {
-                if (resource.equalsIgnoreCase(existedResource) && resourceStorage.returnMap().get(existedResource) >= 1) {
+                if (resource.equalsIgnoreCase(existedResource)
+                        && resourceStorage.returnMap().get(existedResource) >= 1) {
                     return true;
                 }
             }
@@ -73,11 +75,12 @@ public class Oven implements Comparable<Oven>{
      * Create a resourceStorage.
      */
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && !resourceStorage.isEmpty() && helpMethod("pearl") && helpMethod("silver")) {
+        if (!isBroken() && !resourceStorage.isEmpty() && helpMethod("pearl")
+                && helpMethod("silver")) {
             resourceStorage.takeResource("pearl", 1);
             resourceStorage.takeResource("silver", 1);
             amountOfOrbs += 1;
-            if (amountOfOrbs == 15) {
+            if (amountOfOrbs == ONEFIVE) {
                makeBroken();
             }
             Orb value = new Orb(this.name);

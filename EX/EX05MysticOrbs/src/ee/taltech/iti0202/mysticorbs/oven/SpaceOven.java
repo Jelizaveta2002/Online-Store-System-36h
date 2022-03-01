@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
-import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.orb.SpaceOrb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
@@ -11,7 +10,7 @@ public class SpaceOven extends Oven {
     public static final int ONEFIVE = 15;
     public static final int TWOFIVE = 25;
     private int amountOfOrbs = 0;
-    private boolean Broken = false;
+    private boolean broken = false;
 
     /**
      * Create a resourceStorage.
@@ -27,13 +26,13 @@ public class SpaceOven extends Oven {
         if (!super.getResourceStorage().returnMap().isEmpty()) {
             for (String existedResource : super.getResourceStorage().returnMap().keySet()) {
                 if (resource.equalsIgnoreCase(existedResource)
-                        && super.getResourceStorage().returnMap().get(existedResource) >= ONEFIVE &&
-                        resource.equalsIgnoreCase("star fragment")) {
+                        && super.getResourceStorage().returnMap().get(existedResource) >= ONEFIVE
+                        && resource.equalsIgnoreCase("star fragment")) {
                     return true;
                 }
                 if (resource.equalsIgnoreCase(existedResource)
                         && super.getResourceStorage().returnMap().get(existedResource) >= 1
-                        && resource.equalsIgnoreCase("meteorite stone")){
+                        && resource.equalsIgnoreCase("meteorite stone")) {
                     return true;
                 }
             }
@@ -55,7 +54,7 @@ public class SpaceOven extends Oven {
                 }
                 if (resource.equalsIgnoreCase(existedResource)
                         && super.getResourceStorage().returnMap().get(existedResource) >= 1
-                        && resource.equalsIgnoreCase("silver")){
+                        && resource.equalsIgnoreCase("silver")) {
                     return true;
                 }
             }
@@ -68,18 +67,18 @@ public class SpaceOven extends Oven {
      * Create a resourceStorage.
      */
     public Optional<Orb> craftOrb() {
-        if (!Broken && !super.getResourceStorage().isEmpty() && helpMethodSpaceOrb("meteorite stone")
+        if (!broken && !super.getResourceStorage().isEmpty() && helpMethodSpaceOrb("meteorite stone")
                 && helpMethodSpaceOrb("star fragment")) {
             super.getResourceStorage().takeResource("star fragment", ONEFIVE);
             super.getResourceStorage().takeResource("meteorite stone", 1);
             amountOfOrbs += 1;
             if (amountOfOrbs == TWOFIVE) {
-                Broken = true;
+                broken = true;
             }
             Orb value = new SpaceOrb(this.getName());
             return Optional.of(value);
         }
-        if ((Broken || !helpMethodSpaceOrb("meteorite stone") || !helpMethodSpaceOrb("star fragment"))
+        if ((broken || !helpMethodSpaceOrb("meteorite stone") || !helpMethodSpaceOrb("star fragment"))
                 && !super.getResourceStorage().isEmpty() && helpMethodStandardOrb("pearl")
                 && helpMethodStandardOrb("silver")) {
             super.getResourceStorage().takeResource("pearl", 1);
@@ -97,7 +96,7 @@ public class SpaceOven extends Oven {
      * Create a resourceStorage.
      */
     public boolean isBroken() {
-        return this.Broken;
+        return this.broken;
     }
 
     /**

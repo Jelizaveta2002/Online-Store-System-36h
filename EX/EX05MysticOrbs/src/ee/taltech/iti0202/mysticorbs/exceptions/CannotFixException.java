@@ -11,15 +11,25 @@ public class CannotFixException extends Throwable {
     }
     private final Oven oven;
     private Reason reason;
+
+    /**
+     * Create a resourceStorage.
+     */
     public CannotFixException(Oven oven, Reason reason) {
         this.oven = oven;
         this.reason = reason;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public Oven getOven() {
         return null;
     }
 
+    /**
+     * Create a resourceStorage.
+     */
     public Reason getReason() {
         return null;
     }

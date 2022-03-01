@@ -1,9 +1,7 @@
 package ee.taltech.iti0202.mysticorbs.factory;
 
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
-import ee.taltech.iti0202.mysticorbs.oven.MagicOven;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
-import ee.taltech.iti0202.mysticorbs.oven.SpaceOven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.ArrayList;
@@ -29,7 +27,8 @@ public class OrbFactory {
     public void addOven(Oven oven) {
         if (!listOfOvens.isEmpty() && oven.getName() != null && oven.getResourceStorage() != null) {
             for (Oven oneOven : listOfOvens) {
-                if (oven.getResourceStorage() == oneOven.getResourceStorage() && oven.getName().equals(oneOven.getName())) {
+                if (oven.getResourceStorage() == oneOven.getResourceStorage()
+                        && oven.getName().equals(oneOven.getName())) {
                     return;
                 }
             }
@@ -79,7 +78,7 @@ public class OrbFactory {
      */
     public int produceOrbs(int cycles) {
         int counter = 0;
-        for (int i = 0; i < cycles; i++ ) {
+        for (int i = 0; i < cycles; i++) {
             counter += produceOrbs();
         }
         return counter;
@@ -104,6 +103,5 @@ public class OrbFactory {
      * Create a resourceStorage.
      */
     public void optimizeOvensOrder() {
-
     }
 }

@@ -1,8 +1,5 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
-import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
-
-import java.util.HashMap;
 
 public class SpaceOrb extends Orb {
     private boolean absorbed = false;
@@ -26,7 +23,9 @@ public class SpaceOrb extends Orb {
     /**
      * Create a resourceStorage.
      */
-    public void charge(String resource, int amount) {}
+    public void charge(String resource, int amount) {
+
+    }
 
     /**
      * Create a resourceStorage.

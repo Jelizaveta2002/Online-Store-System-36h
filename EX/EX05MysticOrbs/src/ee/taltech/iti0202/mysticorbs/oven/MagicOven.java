@@ -28,10 +28,14 @@ public class MagicOven extends Oven {
     public boolean helpMethod(String resource) {
         if (!getResourceStorage().returnMap().isEmpty()) {
             for (String existedResource : getResourceStorage().returnMap().keySet()) {
-                if (resource.equalsIgnoreCase(existedResource) && getResourceStorage().returnMap().get(existedResource) >= 3 && resource.equalsIgnoreCase("dust")) {
+                if (resource.equalsIgnoreCase(existedResource)
+                        && getResourceStorage().returnMap().get(existedResource) >= 3
+                        && resource.equalsIgnoreCase("dust")) {
                     return true;
                 }
-                if (resource.equalsIgnoreCase(existedResource) && getResourceStorage().returnMap().get(existedResource) >= 1 && resource.equalsIgnoreCase("gold")){
+                if (resource.equalsIgnoreCase(existedResource)
+                        && getResourceStorage().returnMap().get(existedResource) >= 1
+                        && resource.equalsIgnoreCase("gold")) {
                     return true;
                 }
             }
@@ -54,7 +58,8 @@ public class MagicOven extends Oven {
      * Create a resourceStorage.
      */
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && !getResourceStorage().isEmpty() && helpMethod("gold") && helpMethod("dust")) {
+        if (!isBroken() && !getResourceStorage().isEmpty() && helpMethod("gold")
+                && helpMethod("dust")) {
             super.getResourceStorage().takeResource("gold", 1);
             super.getResourceStorage().takeResource("dust", 3);
             amountOfOrbs += 1;

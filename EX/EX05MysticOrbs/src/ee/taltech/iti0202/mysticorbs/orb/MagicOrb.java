@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
-public class MagicOrb extends Orb{
+public class MagicOrb extends Orb {
     private boolean absorbed = false;
 
     /**

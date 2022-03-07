@@ -26,10 +26,15 @@ public class InputFilesBufferReader implements InputFilesReader {
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+           // e.printStackTrace();
             throw new FileReaderException(e, "No such file");
 
         }
         return newList;
+    }
+
+    public static void main(String[] args) {
+        InputFilesBufferReader newReader = new InputFilesBufferReader();
+        System.out.println(newReader.readTextFromFile("C:\\temp\\text_jva_.txt"));
     }
 }

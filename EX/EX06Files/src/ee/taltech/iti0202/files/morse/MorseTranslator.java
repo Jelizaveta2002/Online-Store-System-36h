@@ -14,7 +14,7 @@ public class MorseTranslator {
             String key1 = key.toLowerCase(Locale.ROOT);
             String trim = newBuilder.toString().trim();
             mapWithMorse.put(key1, trim);
-            mapKeyIsMorse.put(trim, key);
+            mapKeyIsMorse.put(trim, key.toLowerCase(Locale.ROOT));
         }
         return mapWithMorse;
     }
@@ -61,20 +61,15 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
-        String[] words = line.split("\t");
-        System.out.println(words);
+        String[] words = line.split("\\s++");
+        System.out.println(Arrays.toString(words));
         for (int i=0; i < words.length ; i++) {
             String word = words[i];
-            char[] chars = word.toCharArray();
-            for (int j=0; j < chars.length ; j++) {
-                char str = chars[j];
-                String s = String.valueOf(str);
-                if (!s.equals(" ")) {
-                    newBuilder.append(mapKeyIsMorse.get(s));
-                }
-            }
-            if (i < words.length - 1) {
-                newBuilder.append(" ");
+            String[] letters = word.split(" ");
+            System.out.println(Arrays.toString(letters));
+            for (int j=0; j < letters.length ; j++) {
+                String str = letters[j];
+                newBuilder.append(mapKeyIsMorse.get(str));
             }
 
         }

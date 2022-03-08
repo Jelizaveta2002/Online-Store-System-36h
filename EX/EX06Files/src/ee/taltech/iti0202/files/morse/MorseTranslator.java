@@ -3,6 +3,7 @@ import java.util.*;
 
 public class MorseTranslator {
     private final Map<String, String> mapWithMorse = new HashMap<>();
+    private final Map<String, String> mapKeyIsMorse = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
         for (String line : lines) {
@@ -13,6 +14,7 @@ public class MorseTranslator {
             String key1 = key.toLowerCase(Locale.ROOT);
             String trim = newBuilder.toString().trim();
             mapWithMorse.put(key1, trim);
+            mapKeyIsMorse.put(trim, key);
         }
         return mapWithMorse;
     }
@@ -32,12 +34,11 @@ public class MorseTranslator {
 
     private String translateLineToMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
-        //char[] chars = line.toCharArray();
         String[] words = line.split(" ");
-        for (  int i=0; i < words.length ; i++) {
+        for (int i=0; i < words.length ; i++) {
             String word = words[i];
             char[] chars = word.toCharArray();
-            for (  int j=0; j < chars.length ; j++) {
+            for (int j=0; j < chars.length ; j++) {
                 char str = chars[j];
                 String s = String.valueOf(str);
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
@@ -54,7 +55,25 @@ public class MorseTranslator {
     }
 
     private String translateLineFromMorse(String line) {
-        return null;
+        StringBuilder newBuilder = new StringBuilder();
+        String[] words = line.split("\t");
+        System.out.println(words);
+        for (int i=0; i < words.length ; i++) {
+            String word = words[i];
+            char[] chars = word.toCharArray();
+            for (int j=0; j < chars.length ; j++) {
+                char str = chars[j];
+                String s = String.valueOf(str);
+                if (!s.equals(" ")) {
+                    newBuilder.append(mapKeyIsMorse.get(s));
+                }
+            }
+            if (i < words.length - 1) {
+                newBuilder.append(" ");
+            }
+
+        }
+        return newBuilder.toString();
     }
 
     public static void main(String[] args) {
@@ -66,6 +85,6 @@ public class MorseTranslator {
         newList.add("Z--..--");
         newList.add("A.--");
         translator.addMorseCodes(newList);
-        System.out.println(translator.translateLineToMorse("liza az"));
+        System.out.println(translator.translateLineFromMorse("-- ,--..-- --..-- .--     ,--..--"));
     }
 }

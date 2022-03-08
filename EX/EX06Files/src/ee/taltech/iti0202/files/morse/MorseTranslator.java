@@ -30,12 +30,17 @@ public class MorseTranslator {
 
     private String translateLineToMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
-        for (char str : line.toCharArray()) {
+        char[] chars = line.toCharArray();
+        for (  int i=0; i < chars.length ; i++) {
+            char str = chars[i];
             String s = String.valueOf(str);
+
             if (!s.equals(" ")) {
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
-                newBuilder.append(" ");
-            } else if (s.equals(" ")) {
+                if (i < chars.length - 1) {
+                    newBuilder.append(" ");
+                }
+            } else {
                 newBuilder.append("\t");
             }
         }

@@ -32,8 +32,12 @@ public class MorseTranslator {
         StringBuilder newBuilder = new StringBuilder();
         for (char str : line.toCharArray()) {
             String s = String.valueOf(str);
-            newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
-            newBuilder.append("    ");
+            if (!s.equals(" ")) {
+                newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
+                newBuilder.append(" ");
+            } else {
+                newBuilder.append("    ");
+            }
         }
         return newBuilder.toString();
     }
@@ -45,11 +49,11 @@ public class MorseTranslator {
     public static void main(String[] args) {
         MorseTranslator translator = new MorseTranslator();
         List<String> newList = new ArrayList<>();
-        newList.add("6--");
-        newList.add("7, --..--");
-        newList.add("0--..--");
-        newList.add("U.--");
+        newList.add("L--");
+        newList.add("I, --..--");
+        newList.add("Z--..--");
+        newList.add("A.--");
         translator.addMorseCodes(newList);
-        System.out.println(translator.translateLineToMorse("670U"));
+        System.out.println(translator.translateLineToMorse("liza az"));
     }
 }

@@ -2,9 +2,9 @@ package ee.taltech.iti0202.files.morse;
 import java.util.*;
 
 public class MorseTranslator {
+    private final Map<String, String> mapWithMorse = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
-        Map<String, String> mapWithMorse = new HashMap<>();
         for (String line : lines) {
             String key = String.valueOf(line.charAt(0));
             StringBuilder newBuilder = new StringBuilder();
@@ -24,7 +24,12 @@ public class MorseTranslator {
     }
 
     private String translateLineToMorse(String line) {
-        return null;
+        StringBuilder newBuilder = new StringBuilder();
+        for (char str : line.toCharArray()) {
+            String s = String.valueOf(str);
+            newBuilder.append(mapWithMorse.get(s));
+        }
+        return newBuilder.toString();
     }
 
     private String translateLineFromMorse(String line) {

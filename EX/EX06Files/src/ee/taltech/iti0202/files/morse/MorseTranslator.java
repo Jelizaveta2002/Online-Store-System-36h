@@ -29,7 +29,12 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesFromMorse(List<String> lines) {
-        return null;
+        List<String> listOfLines = new ArrayList<>();
+        for (String line : lines) {
+            String newLine = translateLineFromMorse(line);
+            listOfLines.add(newLine);
+        }
+        return listOfLines;
     }
 
     private String translateLineToMorse(String line) {

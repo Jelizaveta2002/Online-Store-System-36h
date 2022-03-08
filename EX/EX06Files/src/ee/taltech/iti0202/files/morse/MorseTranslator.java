@@ -34,7 +34,7 @@ public class MorseTranslator {
             String s = String.valueOf(str);
             if (!s.equals(" ")) {
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
-                newBuilder.append(" ");
+                newBuilder.append("\n");
             } else {
                 newBuilder.append("\t");
             }

@@ -36,7 +36,7 @@ public class MorseTranslator {
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
                 newBuilder.append(" ");
             } else {
-                newBuilder.append("    ");
+                newBuilder.append("   ");
             }
         }
         return newBuilder.toString();

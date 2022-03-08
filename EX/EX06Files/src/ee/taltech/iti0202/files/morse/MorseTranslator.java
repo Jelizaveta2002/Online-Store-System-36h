@@ -41,6 +41,9 @@ public class MorseTranslator {
                 char str = chars[j];
                 String s = String.valueOf(str);
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
+                if (j < chars.length - 1) {
+                    newBuilder.append(" ");
+                }
             }
             if (i < words.length - 1) {
                 newBuilder.append("\t");

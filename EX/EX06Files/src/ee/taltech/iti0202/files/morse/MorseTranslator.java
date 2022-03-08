@@ -10,7 +10,9 @@ public class MorseTranslator {
             StringBuilder newBuilder = new StringBuilder();
             newBuilder.append(line);
             newBuilder.deleteCharAt(0);
-            mapWithMorse.put(key.toLowerCase(Locale.ROOT), newBuilder.toString().trim());
+            String key1 = key.toLowerCase(Locale.ROOT);
+            String trim = newBuilder.toString().trim();
+            mapWithMorse.put(key1, trim);
         }
         return mapWithMorse;
     }
@@ -30,19 +32,20 @@ public class MorseTranslator {
 
     private String translateLineToMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
-        char[] chars = line.toCharArray();
-        for (  int i=0; i < chars.length ; i++) {
-            char str = chars[i];
-            String s = String.valueOf(str);
-
-            if (!s.equals(" ")) {
+        //char[] chars = line.toCharArray();
+        String[] words = line.split(" ");
+        for (  int i=0; i < words.length ; i++) {
+            String word = words[i];
+            char[] chars = word.toCharArray();
+            for (  int j=0; j < chars.length ; j++) {
+                char str = chars[j];
+                String s = String.valueOf(str);
                 newBuilder.append(mapWithMorse.get(s.toLowerCase(Locale.ROOT)));
-                if (i < chars.length - 1) {
-                    newBuilder.append(" ");
-                }
-            } else {
+            }
+            if (i < words.length - 1) {
                 newBuilder.append("\t");
             }
+
         }
         return newBuilder.toString();
     }
@@ -54,8 +57,9 @@ public class MorseTranslator {
     public static void main(String[] args) {
         MorseTranslator translator = new MorseTranslator();
         List<String> newList = new ArrayList<>();
+        List<String> listOfLines = new ArrayList<>();
         newList.add("L--");
-        newList.add("I, --..--");
+        newList.add("I,--..--");
         newList.add("Z--..--");
         newList.add("A.--");
         translator.addMorseCodes(newList);

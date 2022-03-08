@@ -16,7 +16,12 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        return null;
+        List<String> listOfLines = new ArrayList<>();
+        for (String line : lines) {
+            String newLine = translateLineToMorse(line);
+            listOfLines.add(newLine);
+        }
+        return listOfLines;
     }
 
     public List<String> translateLinesFromMorse(List<String> lines) {

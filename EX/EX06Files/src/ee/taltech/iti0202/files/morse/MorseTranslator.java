@@ -10,7 +10,7 @@ public class MorseTranslator {
             StringBuilder newBuilder = new StringBuilder();
             newBuilder.append(line);
             newBuilder.deleteCharAt(0);
-            mapWithMorse.put(key.toLowerCase(Locale.ROOT), newBuilder.toString());
+            mapWithMorse.put(key.toLowerCase(Locale.ROOT), newBuilder.toString().trim());
         }
         return mapWithMorse;
     }

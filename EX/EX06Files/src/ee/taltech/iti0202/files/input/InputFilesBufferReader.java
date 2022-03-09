@@ -20,7 +20,8 @@ public class InputFilesBufferReader implements InputFilesReader {
                 newList.add(line);
             }
             fr.close();
-        } catch(Exception e) {
+        }
+        catch(Exception e) {
             throw new FileReaderException(e, "No such file");
         }
         return newList;

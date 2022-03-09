@@ -61,17 +61,18 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
-        String[] words = line.split("\\s++");
+        String[] words = line.split("\\t");
         System.out.println(Arrays.toString(words));
-        for (int i=0; i < words.length ; i++) {
+        for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String[] letters = word.split(" ");
-            System.out.println(Arrays.toString(letters));
-            for (int j=0; j < letters.length ; j++) {
+            for (int j = 0; j < letters.length ; j++) {
                 String str = letters[j];
                 newBuilder.append(mapKeyIsMorse.get(str));
             }
-
+            if (i < words.length - 1) {
+                newBuilder.append(" ");
+            }
         }
         return newBuilder.toString();
     }
@@ -81,10 +82,10 @@ public class MorseTranslator {
         List<String> newList = new ArrayList<>();
         List<String> listOfLines = new ArrayList<>();
         newList.add("L--");
-        newList.add("I,--..--");
-        newList.add("Z--..--");
+        newList.add("I--..--");
+        newList.add("Z--..-.-");
         newList.add("A.--");
         translator.addMorseCodes(newList);
-        System.out.println(translator.translateLineFromMorse("-- ,--..-- --..-- .--     ,--..--"));
+        System.out.println(translator.translateLineFromMorse("-- --..-- --..-.- .--\t--..-- .--"));
     }
 }

@@ -105,7 +105,6 @@ public class MorseTranslator {
     public static void main(String[] args) {
         MorseTranslator translator = new MorseTranslator();
         List<String> newList = new ArrayList<>();
-        List<String> listOfLines = new ArrayList<>();
         newList.add("L--");
         newList.add("I--..--");
         newList.add("Z--..-.-");

@@ -25,10 +25,4 @@ public class InputFilesScanner implements InputFilesReader {
         }
         return newList;
     }
-
-    public static void main(String[] args) {
-        InputFilesScanner newReader = new InputFilesScanner();
-        System.out.println(newReader.readTextFromFile("C:\\temp\\text_jva_ex06.txt"));
-
-    }
 }

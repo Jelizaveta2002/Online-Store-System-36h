@@ -3,7 +3,6 @@ package ee.taltech.iti0202.files.output;
 import ee.taltech.iti0202.files.input.FileReaderException;
 
 import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OutputFilesWriter {
@@ -20,8 +19,7 @@ public class OutputFilesWriter {
             }
             myWriter.close();
             return true;
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new FileReaderException(e, "No such file");
         }
     }

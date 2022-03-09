@@ -18,12 +18,11 @@ public class InputFilesLines implements InputFilesReader {
         try (Stream<String> stream = Files.lines(Paths.get(file.toString()))) {
             FileReader fr = new FileReader(file);
             Scanner sc = new Scanner(fr);
-            while((sc.hasNextLine()))
-            {
+            while ((sc.hasNextLine())) {
                 newList.add(sc.nextLine());
             }
             fr.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new FileReaderException(e, "No such file");
 
         }

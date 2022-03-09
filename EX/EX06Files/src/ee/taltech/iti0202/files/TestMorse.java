@@ -28,8 +28,8 @@ class MorseTranslatorTest {
         result.put("b", "-...");
         result.put("c", "-.-.");
         result.put("d", "-..");
-        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX"
-                + "\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
+        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos"
+                + "\\IdeaProjects\\iti0202-2022\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
     }
 
     @org.junit.jupiter.api.Test

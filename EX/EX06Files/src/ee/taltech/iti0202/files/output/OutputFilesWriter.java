@@ -20,18 +20,9 @@ public class OutputFilesWriter {
             }
             myWriter.close();
             return true;
-        } catch(Exception e) {
+        }
+        catch(Exception e) {
             throw new FileReaderException(e, "No such file");
         }
-    }
-
-
-    public static void main(String[] args) {
-        List<String> newList = new ArrayList<>();
-        newList.add("rfvrver");
-        newList.add("rfvrver");
-        newList.add("rfvrver");
-        OutputFilesWriter newWriter = new OutputFilesWriter();
-        System.out.println(newWriter.writeLinesToFile(newList,"C:\\temp\\file_.txt"));
     }
 }

@@ -12,16 +12,15 @@ public class InputFilesBufferReader implements InputFilesReader {
     public List<String> readTextFromFile(String filename) {
         List<String> newList = new ArrayList<>();
         try {
-            File file=new File(filename);
-            FileReader fr=new FileReader(file);
-            BufferedReader br=new BufferedReader(fr);
+            File file = new File(filename);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
             String line;
-            while((line=br.readLine()) != null)
-            {
+            while ((line = br.readLine()) != null) {
                 newList.add(line);
             }
             fr.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new FileReaderException(e, "No such file");
         }
         return newList;

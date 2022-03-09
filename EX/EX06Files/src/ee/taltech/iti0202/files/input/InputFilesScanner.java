@@ -12,15 +12,15 @@ public class InputFilesScanner implements InputFilesReader {
     public List<String> readTextFromFile(String filename) {
         List<String> newList = new ArrayList<>();
         File file = new File(filename);
-        try
-        {
+        try {
             FileReader fr = new FileReader(file);
             Scanner sc = new Scanner(fr);
-            while((sc.hasNextLine())) {
+            while ((sc.hasNextLine())) {
                 newList.add(sc.nextLine());
             }
             fr.close();
-        } catch(Exception e) {
+        }
+        catch (Exception e) {
             throw new FileReaderException(e, "No such file");
 
         }

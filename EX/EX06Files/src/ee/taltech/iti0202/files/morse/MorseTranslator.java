@@ -1,5 +1,11 @@
 package ee.taltech.iti0202.files.morse;
-import java.util.*;
+
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.ArrayList;
 
 public class MorseTranslator {
     private final Map<String, String> mapWithMorse = new HashMap<>();
@@ -20,7 +26,7 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        List<String> listOfLines = new ArrayList<>();
+        ArrayList<String> listOfLines = new ArrayList<>();
         for (String line : lines) {
             String newLine = translateLineToMorse(line);
             listOfLines.add(newLine);
@@ -62,7 +68,6 @@ public class MorseTranslator {
     private String translateLineFromMorse(String line) {
         StringBuilder newBuilder = new StringBuilder();
         String[] words = line.split("\\t");
-        System.out.println(Arrays.toString(words));
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String[] letters = word.split(" ");

@@ -14,21 +14,16 @@ public class InputFilesLines implements InputFilesReader {
     @Override
     public List<String> readTextFromFile(String filename) {
         List<String> newList = new ArrayList<>();
-        File file=new File(filename);    //creates a new file instance
-        try(Stream<String> stream = Files.lines(Paths.get(file.toString())))
-        {
-            FileReader fr=new FileReader(file);   //reads the file
-            Scanner sc=new Scanner(fr);  //creates a buffering character input stream
-            String line;
+        File file = new File(filename);
+        try (Stream<String> stream = Files.lines(Paths.get(file.toString()))) {
+            FileReader fr = new FileReader(file);
+            Scanner sc = new Scanner(fr);
             while((sc.hasNextLine()))
             {
-                newList.add(sc.nextLine());      //appends line to string buffer
+                newList.add(sc.nextLine());
             }
-            fr.close();    //closes the stream and release the resources
-        }
-        catch(Exception e)
-        {
-            // e.printStackTrace();
+            fr.close();
+        } catch(Exception e) {
             throw new FileReaderException(e, "No such file");
 
         }

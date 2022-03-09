@@ -2,20 +2,17 @@ package ee.taltech.iti0202.files.output;
 
 import ee.taltech.iti0202.files.input.FileReaderException;
 
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class OutputFilesWriter {
 
+    /**
+     * Write lines.
+     */
     public boolean writeLinesToFile(List<String> lines, String filename) {
-        try
-        {
+        try {
             FileWriter myWriter = new FileWriter(filename);
             for (String line : lines) {
                 myWriter.write(line);
@@ -23,10 +20,7 @@ public class OutputFilesWriter {
             }
             myWriter.close();
             return true;
-        }
-        catch(Exception e)
-        {
-            // e.printStackTrace();
+        } catch(Exception e) {
             throw new FileReaderException(e, "No such file");
         }
     }

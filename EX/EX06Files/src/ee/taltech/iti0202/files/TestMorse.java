@@ -28,8 +28,8 @@ class MorseTranslatorTest {
         result.put("b", "-...");
         result.put("c", "-.-.");
         result.put("d", "-..");
-        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX" +
-                "\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
+        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX"
+                + "\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
     }
 
     @org.junit.jupiter.api.Test
@@ -41,8 +41,8 @@ class MorseTranslatorTest {
         result.put("b", "-...");
         result.put("c", "-.-.");
         result.put("d", "-..");
-        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects" +
-                "\\iti0202-2022\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
+        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects"
+                + "\\iti0202-2022\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
     }
 
     @org.junit.jupiter.api.Test
@@ -54,8 +54,8 @@ class MorseTranslatorTest {
         result.put("b", "-...");
         result.put("c", "-.-.");
         result.put("d", "-..");
-        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX\\EX06Files\\src" +
-                "\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
+        assertEquals(result, translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects"
+                + "\\iti0202-2022\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt")));
     }
 
     @Test
@@ -95,8 +95,8 @@ class MorseTranslatorTest {
         listWithWords.add("flower");
         listWithWords.add("spring");
         listWithWords.add("sun");
-        assertTrue(writer.writeLinesToFile(listWithWords, "C:\\Users\\volos\\IdeaProjects\\iti0202-2022" +
-                "\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\check.txt"));
+        assertTrue(writer.writeLinesToFile(listWithWords, "C:\\Users\\volos\\IdeaProjects\\iti0202-2022"
+                + "\\EX\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\check.txt"));
     }
 
 
@@ -105,8 +105,8 @@ class MorseTranslatorTest {
         MorseTranslator translator = new MorseTranslator();
         ArrayList<String> list = new ArrayList<>();
         InputFilesBufferReader reader = new InputFilesBufferReader();
-        translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX\\EX06Files" +
-                "\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt"));
+        translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX\\EX06Files"
+                + "\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt"));
         list.add("a");
         list.add("d");
         list.add("cd ad");
@@ -122,8 +122,8 @@ class MorseTranslatorTest {
         MorseTranslator translator = new MorseTranslator();
         ArrayList<String> list = new ArrayList<>();
         InputFilesBufferReader reader = new InputFilesBufferReader();
-        translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX" +
-                "\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt"));
+        translator.addMorseCodes(reader.readTextFromFile("C:\\Users\\volos\\IdeaProjects\\iti0202-2022\\EX"
+                + "\\EX06Files\\src\\ee\\taltech\\iti0202\\files\\input\\morse.txt"));
         list.add(".-");
         list.add("-..");
         list.add("-.-. -..\t.- -..");

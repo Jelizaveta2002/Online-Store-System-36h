@@ -167,7 +167,7 @@ public class Zoo {
     /**
      * Method that helps to find the best caretaker.
      */
-    public ArrayList<Caretaker> findTheBestCaretakers(HashMap<Caretaker, Integer> mapOfCaretakers) {
+    private ArrayList<Caretaker> findTheBestCaretakers(HashMap<Caretaker, Integer> mapOfCaretakers) {
         int maxValueInMap=(Collections.max(mapOfCaretakers.values()));
         ArrayList<Caretaker> listOfBestCaretakers = new ArrayList<>();
         if (maxValueInMap != 0) {

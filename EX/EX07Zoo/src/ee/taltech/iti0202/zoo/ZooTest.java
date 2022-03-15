@@ -70,7 +70,7 @@ class ZooTest {
                 + "turtle (AMPHIBIAN): \n"
                 + "cat (MAMMAL): \n"
                 + "dog (MAMMAL): \n";
-        assertEquals(toCheck1, newZoo.getStateOfTheAnimals());//2 animals are hungry, so they make no voice
+        assertEquals(toCheck1, newZoo.getStateOfTheAnimals()); //2 animals are hungry, so they make no voice
                                                             //turtle is also hungry, but it does not have voice at all
                                                             //lamb is not hungry,because it is never hungry
         caretaker.feedAnimal(newZoo);   //caretaker feeds animals of the zoo, where he works
@@ -78,7 +78,7 @@ class ZooTest {
                 + "turtle (AMPHIBIAN): \n"
                 + "cat (MAMMAL): miuu\n"
                 + "dog (MAMMAL): gav\n";
-        assertEquals(toCheck, newZoo.getStateOfTheAnimals());//all the animals are fed, so they are not hungry
+        assertEquals(toCheck, newZoo.getStateOfTheAnimals()); //all the animals are fed, so they are not hungry
     }
 
     @org.junit.jupiter.api.Test
@@ -138,6 +138,6 @@ class ZooTest {
         newZoo.nextDay();
         listToCheck.add(animal1);
         listToCheck.add(animal3);
-        assertEquals(listToCheck, caretaker.feedAnimal(newZoo));//only two animals can be fed, cause one is not hungry
+        assertEquals(listToCheck, caretaker.feedAnimal(newZoo)); //only two animals can be fed, cause one is not hungry
     }
 }

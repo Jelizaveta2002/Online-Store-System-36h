@@ -55,6 +55,7 @@ class ZooTest {
         Animal animal1 = new Animal.AnimalBuilder("cat").voice("miuu").daysBeforeHunger(2).build();
         Animal animal2 = new Animal.AnimalBuilder("dog").voice("gav").daysBeforeHunger(3).build();
         Turtle turtle = new Turtle("turtle", 3);
+        turtle.getDaysBeforeHunger();
         Lamb lamb = new Lamb("lamb", 3);
         animal1.setUpType(Animal.Type.MAMMAL);   //set up type to the animal
         animal2.setUpType(Animal.Type.MAMMAL);   //set up type to the animal

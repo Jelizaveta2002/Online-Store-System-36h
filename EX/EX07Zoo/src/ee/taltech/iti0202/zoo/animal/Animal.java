@@ -62,7 +62,7 @@ public class Animal {
     /**
      * Constructor for usual animals.
      */
-    public Animal(AnimalBuilder builder) {
+    private Animal(AnimalBuilder builder) {
         this.specie = builder.specie;
         this.voice = builder.voice;
         this.daysBeforeHunger = builder.daysBeforeHunger;
@@ -97,15 +97,7 @@ public class Animal {
          * Builder pattern.
          */
         public AnimalBuilder daysBeforeHunger(Integer daysBeforeHunger) {
-            this.daysBeforeHunger = daysBeforeHunger;
-            return this;
-        }
-
-        /**
-         * Builder pattern.
-         */
-        public AnimalBuilder constantDays(Integer daysBeforeHunger) {
-            this.constantDays = daysBeforeHunger;
+            this.daysBeforeHunger = this.constantDays = daysBeforeHunger;
             return this;
         }
 
@@ -113,8 +105,7 @@ public class Animal {
          * Builder pattern.
          */
         public Animal build() {
-            Animal animal = new Animal(this);
-            return animal;
+            return new Animal(this);
         }
     }
 

@@ -23,7 +23,7 @@ public class Animal {
         this.type = Type.AMPHIBIAN;
     }
 
-    void setVoiceMonkey() {
+    protected void setVoiceMonkey() {
         ArrayList<String> listWithVoices = new ArrayList<>();
         listWithVoices.add("uuh");
         listWithVoices.add("ääh");
@@ -31,8 +31,16 @@ public class Animal {
         this.voice = listWithVoices.get(rand.nextInt(listWithVoices.size()));
     }
 
-    void setTypeMonkey() {
+    protected void setTypeMonkey() {
         this.type = Type.MAMMAL;
+    }
+
+    protected void setTypeLamb() {
+        this.type = Type.MAMMAL;
+    }
+
+    protected void setVoiceLamb() {
+        this.voice = "Mää";
     }
 
 

@@ -2,6 +2,9 @@ package ee.taltech.iti0202.zoo.animal;
 
 public class Monkey extends Animal {
 
+    /**
+     * Create a new monkey.
+     */
     public Monkey(String specie, Integer daysBeforeHunger) {
         super(specie, daysBeforeHunger);
         this.setVoiceMonkey();

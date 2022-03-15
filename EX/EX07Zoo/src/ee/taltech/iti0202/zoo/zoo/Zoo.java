@@ -161,7 +161,7 @@ public class Zoo {
     /**
      * Get a caretaker who is able to feed the most animals of the zoo.
      */
-    public ArrayList<Caretaker> profitOfCaretakers() {
+    public ArrayList<Caretaker> getTheBestCaretakers() {
         HashMap<Caretaker, Integer> mapWithProfit = new HashMap<>();
         for (Caretaker caretaker : this.listOfCaretakers) {
             int value = 0;
@@ -176,7 +176,7 @@ public class Zoo {
     }
 
     /**
-     * Method that helps to find the best caretaker.
+     * Method that helps to find the best caretaker (it is used for profitOfCaretakers method).
      */
     private ArrayList<Caretaker> findTheBestCaretakers(HashMap<Caretaker, Integer> mapOfCaretakers) {
         int maxValueInMap = (Collections.max(mapOfCaretakers.values()));

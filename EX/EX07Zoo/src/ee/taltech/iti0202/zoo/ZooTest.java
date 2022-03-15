@@ -66,12 +66,19 @@ class ZooTest {
         newZoo.nextDay();   //set up a next day
         newZoo.nextDay();
         newZoo.nextDay();
+        String toCheck1 = "lamb (MAMMAL): Mää\n"
+                + "turtle (AMPHIBIAN): \n"
+                + "cat (MAMMAL): \n"
+                + "dog (MAMMAL): \n";
+        assertEquals(toCheck1, newZoo.getStateOfTheAnimals());//2 animals are hungry, so they make no voice
+                                                            //turtle is also hungry, but it does not have voice at all
+                                                            //lamb is not hungry,because it is never hungry
         caretaker.feedAnimal(newZoo);   //caretaker feeds animals of the zoo, where he works
         String toCheck = "lamb (MAMMAL): Mää\n"
                 + "turtle (AMPHIBIAN): \n"
                 + "cat (MAMMAL): miuu\n"
                 + "dog (MAMMAL): gav\n";
-        assertEquals(toCheck, newZoo.getStateOfTheAnimals());
+        assertEquals(toCheck, newZoo.getStateOfTheAnimals());//all the animals are fed, so they are not hungry
     }
 
     @org.junit.jupiter.api.Test
@@ -98,6 +105,39 @@ class ZooTest {
         newZoo.addCareTaker(caretaker2);
         ArrayList<Caretaker> listToCheck = new ArrayList<>();
         listToCheck.add(caretaker2);
-        assertEquals(listToCheck, newZoo.profitOfCaretakers());
+        assertEquals(listToCheck, newZoo.getTheBestCaretakers());  //only caretaker2 is in list, cause it has more types
+    }
+
+    @org.junit.jupiter.api.Test
+    void canFeedOnlyHungryAnimals() {
+        Zoo newZoo = new Zoo("zoo");
+        assertEquals("zoo", newZoo.getName());
+        Caretaker caretaker = new Caretaker("liza", new ArrayList<>());
+        caretaker.addNewType(Animal.Type.MAMMAL);
+        caretaker.addNewType(Animal.Type.FISH);
+        caretaker.addNewType(Animal.Type.BIRD);
+        newZoo.addCareTaker(caretaker);
+        Animal animal1 = new Animal.AnimalBuilder("cat").voice("miuu").daysBeforeHunger(2).build();
+        Animal animal2 = new Animal.AnimalBuilder("birdy").voice("iii").daysBeforeHunger(5).build();
+        Animal animal3 = new Animal.AnimalBuilder("sashimi").voice("...").daysBeforeHunger(3).build();
+        animal1.setUpType(Animal.Type.MAMMAL);
+        animal2.setUpType(Animal.Type.BIRD);
+        animal3.setUpType(Animal.Type.FISH);
+        newZoo.addAnimal(animal1);
+        newZoo.addAnimal(animal2);
+        newZoo.addAnimal(animal3);
+        ArrayList<Animal.Type> listOfTypes = new ArrayList<>();
+        listOfTypes.add(Animal.Type.MAMMAL);
+        listOfTypes.add(Animal.Type.BIRD);
+        listOfTypes.add(Animal.Type.FISH);
+        assertEquals(listOfTypes, newZoo.getTypesOfAnimalsInTheZoo());
+        ArrayList<Animal> listToCheck = new ArrayList<>();
+        assertEquals(listToCheck, caretaker.feedAnimal(newZoo)); //list is empty because animals are not hungry yet
+        newZoo.nextDay();
+        newZoo.nextDay();
+        newZoo.nextDay();
+        listToCheck.add(animal1);
+        listToCheck.add(animal3);
+        assertEquals(listToCheck, caretaker.feedAnimal(newZoo));//only two animals can be fed, cause one is not hungry
     }
 }

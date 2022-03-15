@@ -126,7 +126,7 @@ public class Zoo {
      * Get a current day.
      */
     public int getDays() {
-        return nextDay;
+        return this.nextDay;
     }
 
     /**

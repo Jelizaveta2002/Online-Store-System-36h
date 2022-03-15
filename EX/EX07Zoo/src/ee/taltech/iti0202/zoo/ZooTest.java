@@ -67,18 +67,25 @@ class ZooTest {
         newZoo.nextDay();   //set up a next day
         newZoo.nextDay();
         newZoo.nextDay();
-        String toCheck1 = "lamb (MAMMAL): Mää\n"
-                + "turtle (AMPHIBIAN): \n"
-                + "cat (MAMMAL): \n"
-                + "dog (MAMMAL): \n";
+        System.out.println(newZoo.getListOfAnimals());
+        System.out.println(newZoo.getCaretakers());
+        System.out.println(newZoo.getDays());
+        String toCheck1 = """
+                lamb (MAMMAL): Mää
+                turtle (AMPHIBIAN):\s
+                cat (MAMMAL):\s
+                dog (MAMMAL):\s
+                """;
         assertEquals(toCheck1, newZoo.getStateOfTheAnimals()); //2 animals are hungry, so they make no voice
                                                             //turtle is also hungry, but it does not have voice at all
                                                             //lamb is not hungry,because it is never hungry
         caretaker.feedAnimal(newZoo);   //caretaker feeds animals of the zoo, where he works
-        String toCheck = "lamb (MAMMAL): Mää\n"
-                + "turtle (AMPHIBIAN): \n"
-                + "cat (MAMMAL): miuu\n"
-                + "dog (MAMMAL): gav\n";
+        String toCheck = """
+                lamb (MAMMAL): Mää
+                turtle (AMPHIBIAN):\s
+                cat (MAMMAL): miuu
+                dog (MAMMAL): gav
+                """;
         assertEquals(toCheck, newZoo.getStateOfTheAnimals()); //all the animals are fed, so they are not hungry
     }
 

@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.zoo;
+package ee.taltech.iti0202.zoo.animal;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,11 +7,11 @@ public class Animal {
 
     private final String specie;
     public String voice;
-    Integer daysBeforeHunger;
+    public Integer daysBeforeHunger;
     Type type;
     private final Integer constantDays;
 
-    enum Type {
+    public enum Type {
         BIRD, MAMMAL, FISH, REPTILE, AMPHIBIAN
     }
 

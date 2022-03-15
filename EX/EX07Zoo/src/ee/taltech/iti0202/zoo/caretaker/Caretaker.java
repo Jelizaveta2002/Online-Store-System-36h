@@ -1,4 +1,7 @@
-package ee.taltech.iti0202.zoo;
+package ee.taltech.iti0202.zoo.caretaker;
+
+import ee.taltech.iti0202.zoo.animal.Animal;
+import ee.taltech.iti0202.zoo.zoo.Zoo;
 
 import java.awt.*;
 import java.util.ArrayList;

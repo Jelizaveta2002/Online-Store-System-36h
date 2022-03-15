@@ -1,4 +1,6 @@
-package ee.taltech.iti0202.zoo;
+package ee.taltech.iti0202.zoo.animal;
+
+import ee.taltech.iti0202.zoo.animal.Animal;
 
 public class Lamb extends Animal {
 

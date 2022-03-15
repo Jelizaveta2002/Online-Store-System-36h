@@ -97,7 +97,8 @@ public class Animal {
          * Builder pattern.
          */
         public AnimalBuilder daysBeforeHunger(Integer daysBeforeHunger) {
-            this.daysBeforeHunger = this.constantDays = daysBeforeHunger;
+            this.daysBeforeHunger = daysBeforeHunger;
+            this.constantDays = daysBeforeHunger;
             return this;
         }
 

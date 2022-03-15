@@ -78,25 +78,40 @@ public class Animal {
         Integer daysBeforeHunger;
         private Integer constantDays;
 
+        /**
+         * Builder pattern.
+         */
         public AnimalBuilder(String specie) {
             this.specie = specie;
         }
 
+        /**
+         * Builder pattern.
+         */
         public AnimalBuilder voice(String voice) {
             this.voice = voice;
             return this;
         }
 
+        /**
+         * Builder pattern.
+         */
         public AnimalBuilder daysBeforeHunger(Integer daysBeforeHunger) {
             this.daysBeforeHunger = daysBeforeHunger;
             return this;
         }
 
+        /**
+         * Builder pattern.
+         */
         public AnimalBuilder constantDays(Integer daysBeforeHunger) {
             this.constantDays = daysBeforeHunger;
             return this;
         }
 
+        /**
+         * Builder pattern.
+         */
         public Animal build() {
             Animal animal = new Animal(this);
             return animal;

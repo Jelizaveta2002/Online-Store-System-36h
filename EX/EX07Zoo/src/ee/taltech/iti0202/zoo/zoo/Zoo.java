@@ -3,7 +3,11 @@ package ee.taltech.iti0202.zoo.zoo;
 import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Zoo {
     private final ArrayList<Animal> listOfAnimals = new ArrayList<>();
@@ -12,6 +16,9 @@ public class Zoo {
     private int nextDay = 1;
     private final String name;
 
+    /**
+     * Create a new zoo.
+     */
     public Zoo(String name) {
         this.name = name;
     }
@@ -60,9 +67,12 @@ public class Zoo {
      * Check if animal can be added to the zoo.
      */
     public boolean checkIfAnimalCanBeAdded(Animal animal) {
-        if (animal.getSpecie() != null && animal.getVoice() != null && animal.returnType() != null && animal.getConstantDays() != 0) {
+        if (animal.getSpecie() != null && animal.getVoice() != null && animal.returnType() != null
+                && animal.getConstantDays() != 0) {
             for (Animal animal1 : this.listOfAnimals) {
-                if (animal.getSpecie().equals(animal1.getSpecie()) && animal.getVoice().equals(animal1.getVoice()) && animal.returnType().equals(animal1.returnType()) && animal.getConstantDays() == animal1.getConstantDays()) {
+                if (animal.getSpecie().equals(animal1.getSpecie()) && animal.getVoice().equals(animal1.getVoice())
+                        && animal.returnType().equals(animal1.returnType())
+                        && animal.getConstantDays() == animal1.getConstantDays()) {
                     return false;
                 }
             }
@@ -141,7 +151,8 @@ public class Zoo {
     public String getStateOfTheAnimals() {
         StringBuilder newBuilder = new StringBuilder();
         for (Animal animal : this.getListOfAnimals()) {
-            String str = animal.getSpecie() + " " + "(" + animal.returnType() + ")" + ":" + " " + animal.getVoice() + "\n";
+            String str = animal.getSpecie() + " " + "("
+                    + animal.returnType() + ")" + ":" + " " + animal.getVoice() + "\n";
             newBuilder.append(str);
         }
         return newBuilder.toString();
@@ -168,7 +179,7 @@ public class Zoo {
      * Method that helps to find the best caretaker.
      */
     private ArrayList<Caretaker> findTheBestCaretakers(HashMap<Caretaker, Integer> mapOfCaretakers) {
-        int maxValueInMap=(Collections.max(mapOfCaretakers.values()));
+        int maxValueInMap = (Collections.max(mapOfCaretakers.values()));
         ArrayList<Caretaker> listOfBestCaretakers = new ArrayList<>();
         if (maxValueInMap != 0) {
             for (Map.Entry<Caretaker, Integer> entry : mapOfCaretakers.entrySet()) {  // Itrate through hashmap

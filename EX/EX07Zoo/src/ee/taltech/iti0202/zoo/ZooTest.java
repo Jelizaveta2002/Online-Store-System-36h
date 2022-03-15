@@ -67,10 +67,10 @@ class ZooTest {
         newZoo.nextDay();
         newZoo.nextDay();
         caretaker.feedAnimal(newZoo);   //caretaker feeds animals of the zoo, where he works
-        String toCheck = "lamb (MAMMAL): Mää\n" +
-                "turtle (AMPHIBIAN): \n" +
-                "cat (MAMMAL): miuu\n" +
-                "dog (MAMMAL): gav\n";
+        String toCheck = "lamb (MAMMAL): Mää\n"
+                + "turtle (AMPHIBIAN): \n"
+                + "cat (MAMMAL): miuu\n"
+                + "dog (MAMMAL): gav\n";
         assertEquals(toCheck, newZoo.getStateOfTheAnimals());
     }
 

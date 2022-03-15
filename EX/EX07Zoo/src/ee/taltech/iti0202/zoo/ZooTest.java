@@ -6,11 +6,11 @@ import ee.taltech.iti0202.zoo.animal.Monkey;
 import ee.taltech.iti0202.zoo.animal.Turtle;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 import ee.taltech.iti0202.zoo.zoo.Zoo;
-import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class ZooTest {
 
@@ -50,23 +50,23 @@ class ZooTest {
     void getStateOfTheAnimals() {
         Zoo newZoo = new Zoo("zoo");
         Caretaker caretaker = new Caretaker("liza", new ArrayList<>());
-        caretaker.addNewType(Animal.Type.MAMMAL);
-        caretaker.addNewType(Animal.Type.AMPHIBIAN);
+        caretaker.addNewType(Animal.Type.MAMMAL);   //add new type to the caretaker
+        caretaker.addNewType(Animal.Type.AMPHIBIAN);   //add new type to the caretaker
         Animal animal1 = new Animal.AnimalBuilder("cat").voice("miuu").daysBeforeHunger(2).build();
         Animal animal2 = new Animal.AnimalBuilder("dog").voice("gav").daysBeforeHunger(3).build();
         Turtle turtle = new Turtle("turtle", 3);
         Lamb lamb = new Lamb("lamb", 3);
-        animal1.setUpType(Animal.Type.MAMMAL);
-        animal2.setUpType(Animal.Type.MAMMAL);
-        newZoo.addAnimal(lamb);
-        newZoo.addAnimal(turtle);
-        newZoo.addAnimal(animal1);
-        newZoo.addAnimal(animal2);
-        newZoo.addCareTaker(caretaker);
+        animal1.setUpType(Animal.Type.MAMMAL);   //set up type to the animal
+        animal2.setUpType(Animal.Type.MAMMAL);   //set up type to the animal
+        newZoo.addAnimal(lamb);   //add animal to the zoo
+        newZoo.addAnimal(turtle);   //add animal to the zoo
+        newZoo.addAnimal(animal1);   //add animal to the zoo
+        newZoo.addAnimal(animal2);   //add animal to the zoo
+        newZoo.addCareTaker(caretaker);   //add caretaker to the zoo
+        newZoo.nextDay();   //set up a next day
         newZoo.nextDay();
         newZoo.nextDay();
-        newZoo.nextDay();
-        caretaker.feedAnimal(newZoo);
+        caretaker.feedAnimal(newZoo);   //caretaker feeds animals of the zoo, where he works
         String toCheck = "lamb (MAMMAL): Mää\n" +
                 "turtle (AMPHIBIAN): \n" +
                 "cat (MAMMAL): miuu\n" +

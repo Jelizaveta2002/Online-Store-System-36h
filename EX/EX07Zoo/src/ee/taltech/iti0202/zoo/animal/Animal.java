@@ -15,6 +15,9 @@ public class Animal {
         BIRD, MAMMAL, FISH, REPTILE, AMPHIBIAN
     }
 
+    /**
+     * Constructor for unusual animals.
+     */
     public Animal(String specie, Integer daysBeforeHunger) {
         this.specie = specie;
         this.voice = "";
@@ -23,6 +26,9 @@ public class Animal {
         this.type = Type.AMPHIBIAN;
     }
 
+    /**
+     * Set voice of monkey (only for constructor is used).
+     */
     protected void setVoiceMonkey() {
         ArrayList<String> listWithVoices = new ArrayList<>();
         listWithVoices.add("uuh");
@@ -31,19 +37,31 @@ public class Animal {
         this.voice = listWithVoices.get(rand.nextInt(listWithVoices.size()));
     }
 
+    /**
+     * Set type of monkey (only for constructor is used).
+     */
     protected void setTypeMonkey() {
         this.type = Type.MAMMAL;
     }
 
+    /**
+     * Set type of lamb (only for constructor is used).
+     */
     protected void setTypeLamb() {
         this.type = Type.MAMMAL;
     }
 
+    /**
+     * Set voice of lamb (only for constructor is used).
+     */
     protected void setVoiceLamb() {
         this.voice = "Mää";
     }
 
 
+    /**
+     * Constructor for usual animals.
+     */
     public Animal(AnimalBuilder builder) {
         this.specie = builder.specie;
         this.voice = builder.voice;
@@ -51,6 +69,9 @@ public class Animal {
         this.constantDays = builder.daysBeforeHunger;
     }
 
+    /**
+     * Builder pattern.
+     */
     public static class AnimalBuilder {
         private final String specie;
         private String voice;
@@ -82,14 +103,23 @@ public class Animal {
         }
     }
 
+    /**
+     * Get days that animal can live without food.
+     */
     public int getConstantDays() {
         return this.constantDays;
     }
 
+    /**
+     * Get specie of the animal.
+     */
     public String getSpecie() {
         return this.specie;
     }
 
+    /**
+     * Get voice of the animal.
+     */
     public String getVoice() {
         if (!this.isAnimalHungry()) {
             return this.voice;
@@ -97,18 +127,30 @@ public class Animal {
         return "";
     }
 
+    /**
+     * Get days before animal get hungry.
+     */
     public int getDaysBeforeHunger() {
         return daysBeforeHunger;
     }
 
+    /**
+     * Check if animal is hungry.
+     */
     public boolean isAnimalHungry() {
         return this.daysBeforeHunger <= 0;
     }
 
+    /**
+     * Before animal can be added to the zoo, the type must be set up.
+     */
     public void setUpType(Type type) {
         this.type = type;
     }
 
+    /**
+     * Get the type of the animal.
+     */
     public Type returnType() {
         return this.type;
     }

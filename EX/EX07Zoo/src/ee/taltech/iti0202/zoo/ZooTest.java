@@ -10,6 +10,7 @@ import ee.taltech.iti0202.zoo.zoo.Zoo;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class ZooTest {
@@ -44,6 +45,7 @@ class ZooTest {
         caretaker.feedAnimal(newZoo);
         listToCheck.clear();
         assertEquals(listToCheck, newZoo.getHungryAnimals());
+        assertTrue(lamb.animalInTheZoo);
     }
 
     @org.junit.jupiter.api.Test

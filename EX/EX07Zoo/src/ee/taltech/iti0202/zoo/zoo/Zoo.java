@@ -86,9 +86,10 @@ public class Zoo {
      */
     public void addAnimal(Animal animal) {
         if (animal != null) {
-            if (checkIfAnimalCanBeAdded(animal)) {
+            if (checkIfAnimalCanBeAdded(animal) && !animal.getAnimalInTheZoo()) {
                 this.listOfAnimals.add(animal);
                 addNewType(animal);
+                animal.animalInTheZoo = true;
             }
         }
     }

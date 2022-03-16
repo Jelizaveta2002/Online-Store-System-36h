@@ -10,6 +10,7 @@ public class Animal {
     public Integer daysBeforeHunger;
     Type type;
     private final Integer constantDays;
+    public boolean animalInTheZoo;
 
     public enum Type {
         BIRD, MAMMAL, FISH, REPTILE, AMPHIBIAN
@@ -24,6 +25,7 @@ public class Animal {
         this.daysBeforeHunger = daysBeforeHunger;
         this.constantDays = daysBeforeHunger;
         this.type = Type.AMPHIBIAN;
+        this.animalInTheZoo = false;
     }
 
     /**
@@ -67,6 +69,7 @@ public class Animal {
         this.voice = builder.voice;
         this.daysBeforeHunger = builder.daysBeforeHunger;
         this.constantDays = builder.daysBeforeHunger;
+        this.animalInTheZoo = false;
     }
 
     /**
@@ -77,6 +80,7 @@ public class Animal {
         private String voice;
         Integer daysBeforeHunger;
         private Integer constantDays;
+        public boolean animalInTheZoo;
 
         /**
          * Builder pattern.
@@ -122,6 +126,13 @@ public class Animal {
      */
     public String getSpecie() {
         return this.specie;
+    }
+
+    /**
+     * Get specie of the animal.
+     */
+    public boolean getAnimalInTheZoo() {
+        return this.animalInTheZoo;
     }
 
     /**

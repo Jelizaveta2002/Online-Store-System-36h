@@ -18,6 +18,7 @@ class ZooTest {
     @org.junit.jupiter.api.Test
     public void getHungryAnimals() {
         Zoo newZoo = new Zoo("zoo");
+        Zoo newZaa = new Zoo("zaa");
         Caretaker caretaker = new Caretaker("liza", new ArrayList<>());
         caretaker.addNewType(Animal.Type.MAMMAL);
         caretaker.addNewType(Animal.Type.AMPHIBIAN);
@@ -33,6 +34,7 @@ class ZooTest {
         newZoo.addAnimal(monkey);
         newZoo.addAnimal(animal1);
         newZoo.addAnimal(animal2);
+        newZaa.addAnimal(animal1); //we try to add an animal in the zoo, to another zoo
         newZoo.addCareTaker(caretaker);
         newZoo.nextDay();
         newZoo.nextDay();
@@ -46,6 +48,9 @@ class ZooTest {
         listToCheck.clear();
         assertEquals(listToCheck, newZoo.getHungryAnimals());
         assertTrue(lamb.animalInTheZoo);
+        ArrayList<Animal> list1 = new ArrayList();
+        assertEquals(list1, newZaa.getListOfAnimals()); //returns empty list because animal1 is already in the newZoo
+                                                        //and can not be added to another zoo
     }
 
     @org.junit.jupiter.api.Test

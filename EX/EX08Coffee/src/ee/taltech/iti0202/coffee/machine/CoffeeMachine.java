@@ -81,8 +81,10 @@ public class CoffeeMachine {
      * Connect machine with water bank.
      */
     public void setWaterBank(WaterBank waterbank) {
-        this.storageOfWater = waterbank;
-        waterbank.connectNewMachine(this);
+        if (waterbank != null) {
+            this.storageOfWater = waterbank;
+            waterbank.connectNewMachine(this);
+        }
     }
 
     /**

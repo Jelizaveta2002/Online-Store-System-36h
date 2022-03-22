@@ -6,6 +6,7 @@ import ee.taltech.iti0202.coffee.storage.Storage;
 import ee.taltech.iti0202.coffee.water.WaterBank;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class CoffeeMachine {
     protected String name;
@@ -25,11 +26,13 @@ public class CoffeeMachine {
     }
 
     public static class CoffeeMachineBuilder {
+        private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
         private String name;
         private Integer capacityOfRubbishBin ;
         private Integer capacityOfRubbishBinConstant;
 
         public CoffeeMachineBuilder(String name) {
+            LOGGER.info("Creating CoffeeMachineBuilder.");
             this.name = name;
         }
 

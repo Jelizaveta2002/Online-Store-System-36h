@@ -51,10 +51,10 @@ public class CapsuleMachine extends CoffeeMachine {
             this.listOfAllDrinks.add(drink);
             this.capacityOfRubbishBin -= 1;
             this.storageOfWater.getWaterFromBank();
-            this.capsule = null;
+            this.capsule.useCapsule();
             return drink;
         }
-        if (this.machineWorks()) {
+        if (this.machineWorks() && this.capsule.getFilling() == null) {
             this.storageOfWater.getWaterFromBank();
         }
         return null;

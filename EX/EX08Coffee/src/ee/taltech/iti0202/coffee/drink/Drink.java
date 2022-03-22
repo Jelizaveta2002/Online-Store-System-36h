@@ -3,9 +3,10 @@ package ee.taltech.iti0202.coffee.drink;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class Drink {
-    private CoffeeMachine coffeeMachine;
+    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
     private final TypeOfCoffee typeOfCoffee;
     public enum Component {
         MILK, BEANS, CACAO
@@ -16,6 +17,7 @@ public class Drink {
     }
 
     public Drink(TypeOfCoffee typeOfCoffee) {
+        LOGGER.info("Creating Drink.");
         this.typeOfCoffee = typeOfCoffee;
         setRecipe();
     }
@@ -26,12 +28,12 @@ public class Drink {
             recipe.put(Component.CACAO, 30);
         }
         if (this.typeOfCoffee.equals(TypeOfCoffee.CAPPUCCINO)) {
-            recipe.put(Component.MILK, 70);
-            recipe.put(Component.BEANS, 30);
+            recipe.put(Component.MILK, 100);
+            recipe.put(Component.BEANS, 20);
         }
 
         if (this.typeOfCoffee.equals(TypeOfCoffee.ESPRESSO)) {
-            recipe.put(Component.BEANS, 30);
+            recipe.put(Component.BEANS, 20);
         }
 
         if (this.typeOfCoffee.equals(TypeOfCoffee.LATTE)) {

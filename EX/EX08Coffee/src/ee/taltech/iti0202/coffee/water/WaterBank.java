@@ -1,15 +1,19 @@
 package ee.taltech.iti0202.coffee.water;
 
+import ee.taltech.iti0202.coffee.drink.Drink;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class WaterBank {
-    private String name;
+    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private final String name;
     private Integer millilitersOfWater = 200;
-    private ArrayList<CoffeeMachine> listOfConnectedMachines = new ArrayList<>();
+    private final ArrayList<CoffeeMachine> listOfConnectedMachines = new ArrayList<>();
 
     public WaterBank(String name) {
+        LOGGER.info("Creating a Water Bank.");
         this.name = name;
     }
 

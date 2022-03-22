@@ -2,16 +2,19 @@ package ee.taltech.iti0202.coffee.kitchen;
 
 import ee.taltech.iti0202.coffee.drink.Drink;
 import ee.taltech.iti0202.coffee.machine.AutomaticMachine;
-import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Kitchen {
-    private String name;
-    private ArrayList<CoffeeMachine> listOfMachines = new ArrayList<>();
-    private ArrayList<ArrayList<Drink>> listOfOrders = new ArrayList<>();
+    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private final String name;
+    private final ArrayList<CoffeeMachine> listOfMachines = new ArrayList<>();
+    private final ArrayList<ArrayList<Drink>> listOfOrders = new ArrayList<>();
+
     public Kitchen(String name) {
+        LOGGER.info("Creating a Kitchen.");
         this.name = name;
     }
 
@@ -27,9 +30,8 @@ public class Kitchen {
         return this.listOfOrders;
     }
 
-    public boolean addNewMachine(CoffeeMachine machine) {
+    public void addNewMachine(CoffeeMachine machine) {
         this.listOfMachines.add(machine);
-        return true;
     }
 
     public ArrayList<Drink> makeAnOrder(AutomaticMachine machine, ArrayList<Drink.TypeOfCoffee> typeOfCoffees) {

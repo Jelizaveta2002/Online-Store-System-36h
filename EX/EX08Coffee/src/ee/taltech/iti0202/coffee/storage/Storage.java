@@ -5,15 +5,17 @@ import ee.taltech.iti0202.coffee.drink.Drink;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class Storage {
+    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
     private int millilitersOfMilk;
     private int gramsOfBeans;
     private int gramsOfCacao;
     private final ArrayList<Capsule> listOfCapsules = new ArrayList<>();
 
     public Storage() {
-
+        LOGGER.info("Creating a Storage.");
     }
 
     public Integer getMillilitersOfMilk() {

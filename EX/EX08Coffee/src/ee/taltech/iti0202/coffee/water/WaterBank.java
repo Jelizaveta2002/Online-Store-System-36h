@@ -6,35 +6,36 @@ import java.util.ArrayList;
 
 public class WaterBank {
     private String name;
-    private Integer litersOfWater;
+    private Integer millilitersOfWater = 200;
     private ArrayList<CoffeeMachine> listOfConnectedMachines = new ArrayList<>();
 
-    public WaterBank(String name, Integer litersOfWater) {
+    public WaterBank(String name) {
         this.name = name;
-        this.litersOfWater = litersOfWater;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public Integer getLitersOfWater() {
-        return this.litersOfWater;
+    public Integer getMillilitersOfWater() {
+        return this.millilitersOfWater;
     }
 
-    public void fillWaterBank(Integer litersOfWater) {
-        this.litersOfWater += litersOfWater;
+    public void fillWaterBank() {
+        this.millilitersOfWater = 200;
     }
 
-    public boolean getWaterFromBank(Integer litersOfWater) {
-        if (this.litersOfWater >= litersOfWater) {
-            this.litersOfWater -= litersOfWater;
-            return true;
+    public void getWaterFromBank() {
+        if (this.millilitersOfWater >= 50) {
+            this.millilitersOfWater -= 50;
         }
-        return false;
     }
 
     public void connectNewMachine(CoffeeMachine machine) {
         this.listOfConnectedMachines.add(machine);
+    }
+
+    public ArrayList<CoffeeMachine> getAllTheMachines() {
+        return this.listOfConnectedMachines;
     }
 }

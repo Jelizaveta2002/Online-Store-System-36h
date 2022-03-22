@@ -1,10 +1,10 @@
 package ee.taltech.iti0202.coffee.example;
 
+import ee.taltech.iti0202.coffee.drink.Drink;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.machine.AutomaticMachine;
 import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
-import ee.taltech.iti0202.coffee.recipe.*;
 import ee.taltech.iti0202.coffee.storage.Storage;
 import ee.taltech.iti0202.coffee.water.WaterBank;
 
@@ -31,31 +31,31 @@ public class Main {
         machine2.setStorage(storage);
         System.out.println(storage.getStateOfStorage()); //get the state of storage(num of products)
         System.out.println(newKitchen.getListOfMachines());  //list of all machines in the kitchen
-        System.out.println(machine.produceDrink(new CappuccinoRecipe())); //make cappucino using ordinary machine
-        System.out.println(machine.produceDrink(new CappuccinoRecipe())); //make espresso using ordinary machine
-        System.out.println(machine.produceDrink(new CappuccinoRecipe())); //make one more drink, but get null because not enough products
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO)); //make cappucino using ordinary machine
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO)); //make espresso using ordinary machine
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO)); //make one more drink, but get null because not enough products
         storage.fillStorage(); //fill the storage
-        System.out.println(machine.produceDrink(new CappuccinoRecipe())); //make espresso using ordinary machine
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO)); //make espresso using ordinary machine
         System.out.println(machine.getListOfDrinks()); //get all the drinks done by this machine (3 in total)
-        System.out.println(machine.produceDrink(new EspressoRecipe())); //cant make drink, cause bin is full
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.ESPRESSO)); //cant make drink, cause bin is full
         machine.cleanBin();
-        System.out.println(machine.produceDrink(new EspressoRecipe()));
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.ESPRESSO));
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 0
         System.out.println(machine.isBroken()); //machine is broken, because water bank should always be full
-        System.out.println(machine.produceDrink(new CappuccinoRecipe()));
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO));
         water.fillWaterBank(); //fill bank of water
-        System.out.println(machine.produceDrink(new CappuccinoRecipe()));
+        System.out.println(machine.produceDrink(Drink.TypeOfCoffee.CAPPUCCINO));
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 0
-        ArrayList<Recipe> orderlist = new ArrayList<>();
-        orderlist.add(new CappuccinoRecipe());
-        orderlist.add(new CacaoRecipe());
+        ArrayList<Drink.TypeOfCoffee> orderlist = new ArrayList<>();
+        orderlist.add(Drink.TypeOfCoffee.CAPPUCCINO);
+        orderlist.add(Drink.TypeOfCoffee.CACAO);
         System.out.println(newKitchen.makeAnOrder(machine1, orderlist));
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 0
-        machine2.setUpCapsule(new CacaoRecipe());
+        machine2.setUpCapsule(Drink.TypeOfCoffee.CACAO);
         water.fillWaterBank(); //fill bank of water
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink using capsule
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink again, but get null, cause we have to set up a new capsule
-        machine2.setUpCapsule(new CacaoRecipe());
+        machine2.setUpCapsule(Drink.TypeOfCoffee.CACAO);
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink using capsule
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 50
         System.out.println(newKitchen.makeAnOrder(machine1, orderlist)); //order is null, cause we don t have enough water in water bank

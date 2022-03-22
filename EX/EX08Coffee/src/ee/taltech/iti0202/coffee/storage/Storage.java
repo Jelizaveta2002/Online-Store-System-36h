@@ -1,10 +1,7 @@
 package ee.taltech.iti0202.coffee.storage;
 
 import ee.taltech.iti0202.coffee.capsule.Capsule;
-import ee.taltech.iti0202.coffee.recipe.CacaoRecipe;
-import ee.taltech.iti0202.coffee.recipe.CappuccinoRecipe;
-import ee.taltech.iti0202.coffee.recipe.EspressoRecipe;
-import ee.taltech.iti0202.coffee.recipe.Recipe;
+import ee.taltech.iti0202.coffee.drink.Drink;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -40,13 +37,14 @@ public class Storage {
         this.millilitersOfMilk = 200;
         this.gramsOfBeans = 60;
         this.gramsOfCacao = 500;
-        ArrayList<Recipe> choice = new ArrayList<>();
-        choice.add(new CappuccinoRecipe());
-        choice.add(new CacaoRecipe());
-        choice.add(new EspressoRecipe());
+        ArrayList<Drink> choiceOfDrinks = new ArrayList<>();
+        choiceOfDrinks.add(new Drink(Drink.TypeOfCoffee.CACAO));
+        choiceOfDrinks.add(new Drink(Drink.TypeOfCoffee.CAPPUCCINO));
+        choiceOfDrinks.add(new Drink(Drink.TypeOfCoffee.ESPRESSO));
+        choiceOfDrinks.add(new Drink(Drink.TypeOfCoffee.LATTE));
         Random rand = new Random();
         for (int i = 0; i < 15; i++) {
-            Capsule capsule = new Capsule(choice.get(rand.nextInt(choice.size())));
+            Capsule capsule = new Capsule(choiceOfDrinks.get(rand.nextInt(choiceOfDrinks.size())));
             this.listOfCapsules.add(capsule);
         }
     }

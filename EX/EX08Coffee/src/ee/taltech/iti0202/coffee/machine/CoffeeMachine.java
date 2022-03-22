@@ -2,7 +2,6 @@ package ee.taltech.iti0202.coffee.machine;
 
 
 import ee.taltech.iti0202.coffee.drink.Drink;
-import ee.taltech.iti0202.coffee.recipe.Recipe;
 import ee.taltech.iti0202.coffee.storage.Storage;
 import ee.taltech.iti0202.coffee.water.WaterBank;
 
@@ -123,34 +122,34 @@ public class CoffeeMachine {
         return this.storageOfWater;
     }
 
-    public Drink produceDrink(Recipe recipe) {
+    public Drink produceDrink(Drink.TypeOfCoffee typeOfCoffee) {
+        Drink drink = new Drink(typeOfCoffee);
         if (machineWorks()) {
-            HashMap<Recipe.Component, Integer> ingredients = recipe.getIngredients();
+            HashMap<Drink.Component, Integer> ingredients = drink.getRecipe();
             Storage storageOfIngredients = this.storageOfIngredients;
-            for (Recipe.Component component : ingredients.keySet()) {
-                if (component.equals(Recipe.Component.MILK)) {
+            for (Drink.Component component : ingredients.keySet()) {
+                if (component.equals(Drink.Component.MILK)) {
                     if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){
                         return null;
                     }
                 }
-                if (component.equals(Recipe.Component.BEANS)) {
+                if (component.equals(Drink.Component.BEANS)) {
                     if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){
                         return null;
                     }
                 }
-                if (component.equals(Recipe.Component.CACAO)) {
+                if (component.equals(Drink.Component.CACAO)) {
                     return null;
                 }
             }
-            for (Recipe.Component component : recipe.getIngredients().keySet()) {
-                if (component.equals(Recipe.Component.MILK)) {
-                    storageOfIngredients.takeMilkFromStorage(recipe.getIngredients().get(component));
+            for (Drink.Component component : ingredients.keySet()) {
+                if (component.equals(Drink.Component.MILK)) {
+                    storageOfIngredients.takeMilkFromStorage(drink.getRecipe().get(component));
                 }
-                if (component.equals(Recipe.Component.BEANS)) {
-                    storageOfIngredients.takeBeansFromStorage(recipe.getIngredients().get(component));
+                if (component.equals(Drink.Component.BEANS)) {
+                    storageOfIngredients.takeBeansFromStorage(drink.getRecipe().get(component));
                 }
             }
-            Drink drink = new Drink(this, recipe);
             this.listOfAllDrinks.add(drink);
             this.capacityOfRubbishBin -= 1;
             this.storageOfWater.getWaterFromBank();

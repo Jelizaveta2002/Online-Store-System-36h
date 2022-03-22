@@ -4,7 +4,6 @@ import ee.taltech.iti0202.coffee.drink.Drink;
 import ee.taltech.iti0202.coffee.machine.AutomaticMachine;
 import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
-import ee.taltech.iti0202.coffee.recipe.Recipe;
 
 import java.util.ArrayList;
 
@@ -33,10 +32,10 @@ public class Kitchen {
         return true;
     }
 
-    public ArrayList<Drink> makeAnOrder(AutomaticMachine machine, ArrayList<Recipe> recipes) {
+    public ArrayList<Drink> makeAnOrder(AutomaticMachine machine, ArrayList<Drink.TypeOfCoffee> typeOfCoffees) {
         ArrayList<Drink> order = new ArrayList<>();
-        if (machine.machineWorks() && machine.getCapacityOfRubbishBin() >= recipes.size() && machine.getWaterBank().getMillilitersOfWater() >= recipes.size() * 50) {
-            for (Recipe recipe : recipes) {
+        if (machine.machineWorks() && machine.getCapacityOfRubbishBin() >= typeOfCoffees.size() && machine.getWaterBank().getMillilitersOfWater() >= typeOfCoffees.size() * 50) {
+            for (Drink.TypeOfCoffee recipe : typeOfCoffees) {
                 order.add(machine.produceDrink(recipe));
             }
             return order;

@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drink.Drink;
-import ee.taltech.iti0202.coffee.recipe.Recipe;
 
 public class AutomaticMachine extends CoffeeMachine {
     public AutomaticMachine(CoffeeMachineBuilder builder) {
@@ -21,9 +20,9 @@ public class AutomaticMachine extends CoffeeMachine {
     }
 
     @Override
-    public Drink produceDrink(Recipe recipe) {
+    public Drink produceDrink(Drink.TypeOfCoffee typeOfCoffee) {
         if (machineWorks()) {
-            Drink drink = new Drink(this, recipe);
+            Drink drink = new Drink(typeOfCoffee);
             this.listOfAllDrinks.add(drink);
             this.capacityOfRubbishBin -= 1;
             this.storageOfWater.getWaterFromBank();

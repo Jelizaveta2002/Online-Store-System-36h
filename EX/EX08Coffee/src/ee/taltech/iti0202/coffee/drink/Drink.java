@@ -1,14 +1,50 @@
 package ee.taltech.iti0202.coffee.drink;
 
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
-import ee.taltech.iti0202.coffee.recipe.Recipe;
+
+import java.util.HashMap;
 
 public class Drink {
     private CoffeeMachine coffeeMachine;
-    private Recipe recipe;
+    private final TypeOfCoffee typeOfCoffee;
+    public enum Component {
+        MILK, BEANS, CACAO
+    }
+    protected HashMap<Component, Integer> recipe = new HashMap<>();
+    public enum TypeOfCoffee {
+        CACAO, ESPRESSO, CAPPUCCINO, LATTE
+    }
 
-    public Drink(CoffeeMachine coffeeMachine, Recipe recipe) {
-        this.coffeeMachine = coffeeMachine;
-        this.recipe = recipe;
+    public Drink(TypeOfCoffee typeOfCoffee) {
+        this.typeOfCoffee = typeOfCoffee;
+        setRecipe();
+    }
+
+    private void setRecipe() {
+        if (this.typeOfCoffee.equals(TypeOfCoffee.CACAO)) {
+            recipe.put(Component.MILK, 100);
+            recipe.put(Component.CACAO, 30);
+        }
+        if (this.typeOfCoffee.equals(TypeOfCoffee.CAPPUCCINO)) {
+            recipe.put(Component.MILK, 70);
+            recipe.put(Component.BEANS, 30);
+        }
+
+        if (this.typeOfCoffee.equals(TypeOfCoffee.ESPRESSO)) {
+            recipe.put(Component.BEANS, 30);
+        }
+
+        if (this.typeOfCoffee.equals(TypeOfCoffee.LATTE)) {
+            recipe.put(Component.BEANS, 30);
+            recipe.put(Component.MILK, 100);
+        }
+    }
+
+    public HashMap<Component, Integer> getRecipe() {
+        return this.recipe;
+    }
+
+    public TypeOfCoffee getTypeOfCoffee() {
+        return this.typeOfCoffee;
     }
 }

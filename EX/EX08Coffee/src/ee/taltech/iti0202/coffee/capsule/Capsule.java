@@ -1,11 +1,11 @@
 package ee.taltech.iti0202.coffee.capsule;
 
-import ee.taltech.iti0202.coffee.recipe.Recipe;
+import ee.taltech.iti0202.coffee.drink.Drink;
 
 public class Capsule {
-    private Recipe fillingOfCapsule;
+    private Drink fillingOfCapsule;
 
-    public Capsule(Recipe fillingOfCapsule) {
+    public Capsule(Drink fillingOfCapsule) {
         this.fillingOfCapsule = fillingOfCapsule;
     }
 
@@ -17,7 +17,7 @@ public class Capsule {
         return this.fillingOfCapsule == null;
     }
 
-    public Recipe getFilling() {
+    public Drink getFilling() {
         return this.fillingOfCapsule;
     }
 }

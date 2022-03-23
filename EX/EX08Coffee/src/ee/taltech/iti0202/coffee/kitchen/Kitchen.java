@@ -25,6 +25,7 @@ public class Kitchen {
 
     /**
      * Get name of the kitchen.
+     * @return the name of the object
      */
     public String getName() {
         return this.name;
@@ -32,6 +33,7 @@ public class Kitchen {
 
     /**
      * Get list of all machines in the kitchen.
+     * @return the name of the object
      */
     public ArrayList<AutomaticMachine> getListOfMachines() {
         return this.listOfMachines;
@@ -39,6 +41,7 @@ public class Kitchen {
 
     /**
      * Check if our kitchen has at least one machine.
+     * @return the name of the object
      */
     public boolean isListOfMachinesEmpty() {
         return !this.listOfMachines.isEmpty();
@@ -46,6 +49,7 @@ public class Kitchen {
 
     /**
      * Get list of all orders that were done by this kitchen.
+     * @return the name of the object
      */
     public ArrayList<ArrayList<Drink>> getListOfOrders() {
         return this.listOfOrders;

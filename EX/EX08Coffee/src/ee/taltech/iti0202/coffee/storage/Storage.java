@@ -127,7 +127,7 @@ public class Storage {
      * Get state of storage in a current time.
      */
     public String getStateOfStorage() {
-        return "Milliliters of Milk: " + this.millilitersOfMilk + "\n" + "Grams of Coffee beans: "
-                + this.gramsOfBeans + "\n" + "Grams of Cacao: " + this.gramsOfCacao + "\n" + "Number of capsules: " + this.listOfCapsules.size();
+        return "|||  Milliliters of Milk: " + this.millilitersOfMilk + "\n" + "Grams of Coffee beans: "
+                + this.gramsOfBeans + "\n" + "Grams of Cacao: " + this.gramsOfCacao + "\n" + "Number of capsules: " + this.listOfCapsules.size() + " |||";
     }
 }

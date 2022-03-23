@@ -1,52 +1,65 @@
 package ee.taltech.iti0202.coffee.drink;
 
-import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
-
 import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class Drink {
+
     private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
-    private final TypeOfCoffee typeOfCoffee;
-    public enum Component {
+    private final TypeOfDrink typeOfDrink;
+    public enum Component { //ingredient of the drink
         MILK, BEANS, CACAO
     }
     protected HashMap<Component, Integer> recipe = new HashMap<>();
-    public enum TypeOfCoffee {
+    public enum TypeOfDrink { //type of drinks
         CACAO, ESPRESSO, CAPPUCCINO, LATTE
     }
 
-    public Drink(TypeOfCoffee typeOfCoffee) {
+    /**
+     * Create a new drink.
+     */
+    public Drink(TypeOfDrink typeOfCoffee) {
         LOGGER.info("Creating Drink.");
-        this.typeOfCoffee = typeOfCoffee;
+        this.typeOfDrink = typeOfCoffee;
         setRecipe();
     }
 
+
+    /**
+     * Set the recipe of the drink considering its type.
+     */
     private void setRecipe() {
-        if (this.typeOfCoffee.equals(TypeOfCoffee.CACAO)) {
+        if (this.typeOfDrink.equals(TypeOfDrink.CACAO)) {
             recipe.put(Component.MILK, 100);
             recipe.put(Component.CACAO, 30);
         }
-        if (this.typeOfCoffee.equals(TypeOfCoffee.CAPPUCCINO)) {
+        if (this.typeOfDrink.equals(TypeOfDrink.CAPPUCCINO)) {
             recipe.put(Component.MILK, 100);
             recipe.put(Component.BEANS, 20);
         }
 
-        if (this.typeOfCoffee.equals(TypeOfCoffee.ESPRESSO)) {
+        if (this.typeOfDrink.equals(TypeOfDrink.ESPRESSO)) {
             recipe.put(Component.BEANS, 20);
         }
 
-        if (this.typeOfCoffee.equals(TypeOfCoffee.LATTE)) {
+        if (this.typeOfDrink.equals(TypeOfDrink.LATTE)) {
             recipe.put(Component.BEANS, 30);
             recipe.put(Component.MILK, 100);
         }
     }
 
+    /**
+     * Get map of all the ingredients of the drink.
+     */
     public HashMap<Component, Integer> getRecipe() {
         return this.recipe;
     }
 
-    public TypeOfCoffee getTypeOfCoffee() {
-        return this.typeOfCoffee;
+
+    /**
+     * Get type of drink.
+     */
+    public TypeOfDrink getTypeOfDrink() {
+        return this.typeOfDrink;
     }
 }

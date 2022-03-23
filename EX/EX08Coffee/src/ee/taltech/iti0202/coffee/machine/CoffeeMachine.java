@@ -16,15 +16,23 @@ public class CoffeeMachine {
     protected WaterBank storageOfWater;
     protected Storage storageOfIngredients;
 
-    protected boolean isBroken;
-    protected final ArrayList<Drink> listOfAllDrinks = new ArrayList<>(); //list of all drinks, that coffee machine produced
+    protected final ArrayList<Drink> listOfAllDrinks = new ArrayList<>(); //list of all drinks,
+                                                                        // that coffee machine produced
 
+
+    /**
+     * Create coffee machine using builder.
+     */
     public CoffeeMachine(CoffeeMachineBuilder builder) {
         this.name = builder.name;
         this.capacityOfRubbishBin = builder.capacityOfRubbishBin;
         this.capacityOfRubbishBinConstant = builder.capacityOfRubbishBinConstant;
     }
 
+
+    /**
+     * Create builder for coffee machine.
+     */
     public static class CoffeeMachineBuilder {
         private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
         private String name;
@@ -83,12 +91,13 @@ public class CoffeeMachine {
     public void setWaterBank(WaterBank waterbank) {
         if (waterbank != null) {
             this.storageOfWater = waterbank;
-            waterbank.connectNewMachine(this);
+            waterbank.connectNewMachine(this); //add machine to the list of machines,
+                                                // that get water from exact water bank
         }
     }
 
     /**
-     * Connect machine with water bank.
+     * Set the storage where machine can get needed products
      */
     public void setStorage(Storage storageOfIngredients) {
         this.storageOfIngredients = storageOfIngredients;
@@ -107,7 +116,7 @@ public class CoffeeMachine {
      */
     public boolean isBroken() {
         if (this.storageOfWater != null) {
-            return this.storageOfWater.getMillilitersOfWater() <= 0;
+            return this.storageOfWater.getMillilitersOfWater() <= 0; //machine is broken, if its water bank is empty
         }
         return false;
     }
@@ -117,50 +126,54 @@ public class CoffeeMachine {
      */
     public boolean machineWorks() {
         if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > 0) {
-            return !isBroken() && !storageOfIngredients.isEmpty();
+            return !isBroken() && !storageOfIngredients.isEmpty(); //machine can work if it is not broken and
+                                                                    // its product storage is not empty
         }
         return false;
 
     }
 
+    /**
+     * Get storage of water.
+     */
     public WaterBank getWaterBank() {
         return this.storageOfWater;
     }
 
-    public Drink produceDrink(Drink.TypeOfCoffee typeOfCoffee) {
-        Drink drink = new Drink(typeOfCoffee);
+    public Drink produceDrink(Drink.TypeOfDrink typeOfCoffee) {
+        Drink drink = new Drink(typeOfCoffee); //create a new drink
         if (machineWorks()) {
-            HashMap<Drink.Component, Integer> ingredients = drink.getRecipe();
+            HashMap<Drink.Component, Integer> ingredients = drink.getRecipe(); //get recipe of drink, that we have done
             Storage storageOfIngredients = this.storageOfIngredients;
-            for (Drink.Component component : ingredients.keySet()) {
-                if (component.equals(Drink.Component.MILK)) {
-                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){
-                        return null;
+            for (Drink.Component component : ingredients.keySet()) { //iterate over map that consist key:ingredient, value:number of ingredient
+                if (component.equals(Drink.Component.MILK)) { //if one ingredient is milk:
+                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){ //check that our storage has enough milk
+                        return null; //if not, return null instead of drink
                     }
                 }
-                if (component.equals(Drink.Component.BEANS)) {
-                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){
-                        return null;
+                if (component.equals(Drink.Component.BEANS)) { //if one ingredient are beans:
+                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){ //check that our storage has enough beans
+                        return null; //if not, return null instead of drink
                     }
                 }
-                if (component.equals(Drink.Component.CACAO)) {
-                    return null;
+                if (component.equals(Drink.Component.CACAO)) { //if one ingredient is cacao:
+                    return null; //return null, because manual machine can not make cacao
                 }
             }
-            for (Drink.Component component : ingredients.keySet()) {
-                if (component.equals(Drink.Component.MILK)) {
-                    storageOfIngredients.takeMilkFromStorage(drink.getRecipe().get(component));
+            for (Drink.Component component : ingredients.keySet()) {  //iterate over map that consists of  key:ingredient, value:number of ingredient
+                if (component.equals(Drink.Component.MILK)) { //if ingredient is milk:
+                    storageOfIngredients.takeMilkFromStorage(drink.getRecipe().get(component)); //take milk from storage, considering the number of ingredients in milliliters/grams
                 }
-                if (component.equals(Drink.Component.BEANS)) {
-                    storageOfIngredients.takeBeansFromStorage(drink.getRecipe().get(component));
+                if (component.equals(Drink.Component.BEANS)) { //if ingredient are beans:
+                    storageOfIngredients.takeBeansFromStorage(drink.getRecipe().get(component)); //take beans from storage, considering the number of ingredients in milliliters/grams
                 }
             }
-            this.listOfAllDrinks.add(drink);
-            this.capacityOfRubbishBin -= 1;
-            this.storageOfWater.getWaterFromBank();
-            return drink;
+            this.listOfAllDrinks.add(drink); //if method is here, so we can produce drink, so we add it to the list of all the produced drinks byt this machine
+            this.capacityOfRubbishBin -= 1; //capacity of rubbish bin is getting smaller
+            this.storageOfWater.takeWaterFromBank(); //take water from bank(every cup takes 50ml)
+            return drink; //return drink, because it can be produced
         }
-        return null;
+        return null; //return null if machine does not work
     }
 
 }

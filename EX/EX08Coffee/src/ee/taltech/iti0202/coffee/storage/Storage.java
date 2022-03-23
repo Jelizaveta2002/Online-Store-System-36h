@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Storage {
 
-    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
     public static final int TWOZEROZERO = 200;
     public static final int KUUZSERO = 60;
     public static final int FIVEZEROZERO = 500;

@@ -39,7 +39,7 @@ public class CoffeeMachine {
      * Create builder for coffee machine.
      */
     public static class CoffeeMachineBuilder {
-        private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+        private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
         private String name;
         private Integer capacityOfRubbishBin;
         private Integer capacityOfRubbishBinConstant;

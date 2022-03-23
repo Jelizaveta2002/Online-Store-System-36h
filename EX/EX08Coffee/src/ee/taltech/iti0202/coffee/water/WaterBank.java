@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class WaterBank {
 
-    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
     public static final int TWOZEROZERO = 200;
     public static final int FIVEZERO = 50;
     private final String name;

@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 
 public class Capsule {
-    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
     private Drink fillingOfCapsule;
 
 

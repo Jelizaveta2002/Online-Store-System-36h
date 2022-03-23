@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Drink {
 
-    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
     public static final int ONEZEROZERO = 100;
     public static final int THREEZERO = 30;
     public static final int TWOZERO = 20;

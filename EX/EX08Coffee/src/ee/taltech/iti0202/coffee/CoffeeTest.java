@@ -2,6 +2,7 @@ package ee.taltech.iti0202.coffee;
 
 import ee.taltech.iti0202.coffee.capsule.Capsule;
 import ee.taltech.iti0202.coffee.drink.Drink;
+import ee.taltech.iti0202.coffee.example.Main;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.machine.AutomaticMachine;
 import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
@@ -32,8 +33,8 @@ class CoffeeTest {
     public void capsuleTest() {
         Drink drink = new Drink(Drink.TypeOfDrink.CAPPUCCINO);
         Capsule capsule = new Capsule(drink);
-        capsule.useCapsule();
-        assertNull(capsule.getFilling());
+        capsule.useCapsule(); //use it after the drink is done
+        assertNull(capsule.getFilling()); //filling of capsule become null
         assertTrue(capsule.isEmpty());
     }
 
@@ -51,15 +52,16 @@ class CoffeeTest {
         WaterBank bank = new WaterBank("water");
         CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
         bank.fillWaterBank();
-        assertEquals(TWOZEROZERO, bank.getMillilitersOfWater());
+        assertEquals(TWOZEROZERO, bank.getMillilitersOfWater()); //bank has 200ml of water
         ArrayList<CoffeeMachine> list = new ArrayList<>();
         assertEquals(list, bank.getAllTheMachines());
         bank.takeWaterFromBank();
-        assertEquals(ONEFIVEZERO, bank.getMillilitersOfWater());
+        assertEquals(ONEFIVEZERO, bank.getMillilitersOfWater()); //after taking water we have 150ml
         assertEquals("water", bank.getName());
-        bank.connectNewMachine(machine2);
+        bank.connectNewMachine(machine2); //connect new machine to the water bank
         list.add(machine2);
         assertEquals(list, bank.getAllTheMachines());
+        Main.main(null);
 
     }
 
@@ -77,9 +79,10 @@ class CoffeeTest {
         machine.setWaterBank(bank);
         machine2.setStorage(storage);
         machine.setStorage(storage);
-        machine2.setUpCapsule(Drink.TypeOfDrink.CAPPUCCINO);
-        machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);
-        machine1.produceDrink(Drink.TypeOfDrink.CACAO);
+        machine2.setUpCapsule(Drink.TypeOfDrink.CAPPUCCINO); //set up a new capsule
+        machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO); //produce new drink
+        machine1.produceDrink(Drink.TypeOfDrink.CACAO); //produce new drink, but get null
+                                                            // (because we did not get out capsule)
         assertEquals(storage.getCapsules().size(), ONEFOUR);
         String toCheck = "|||  Milliliters of Milk: 100\n"
                 + "Grams of Coffee beans: 40\n"
@@ -105,9 +108,9 @@ class CoffeeTest {
         order.add(Drink.TypeOfDrink.CACAO);
         order.add(Drink.TypeOfDrink.CAPPUCCINO);
         order.add(Drink.TypeOfDrink.LATTE);
-        kitchen.makeAnOrder(machine1, order);
-        kitchen.makeAnOrder(machine1, order);
-        assertEquals(ONE, kitchen.getListOfOrders().size());
+        kitchen.makeAnOrder(machine1, order); //make a new order
+        kitchen.makeAnOrder(machine1, order); //make one more order, but get null (because water is not enough)
+        assertEquals(ONE, kitchen.getListOfOrders().size()); //only one order is done
     }
 
     @org.junit.jupiter.api.Test
@@ -121,7 +124,7 @@ class CoffeeTest {
         machine1.setStorage(storage);
         machine1.setUpCapsule(Drink.TypeOfDrink.CAPPUCCINO);
         machine1.produceDrinkOfCapsule();
-        machine1.produceDrinkOfCapsule();
+        machine1.produceDrinkOfCapsule(); //can not produce because we did not get capsule out
         assertEquals(ONE, machine1.getListOfDrinks().size());
     }
 }

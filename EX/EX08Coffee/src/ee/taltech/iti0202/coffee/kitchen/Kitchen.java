@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class Kitchen {
-    private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Drink.class.getName());
     public static final int FIVEZERO = 50;
     private final String name;
     private final ArrayList<AutomaticMachine> listOfMachines = new ArrayList<>();

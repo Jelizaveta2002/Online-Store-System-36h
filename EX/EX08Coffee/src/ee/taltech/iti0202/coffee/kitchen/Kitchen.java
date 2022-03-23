@@ -67,6 +67,7 @@ public class Kitchen {
                 for (Drink.TypeOfDrink typeOfCoffee : typeOfCoffees) {
                     order.add(machine.produceDrink(typeOfCoffee)); //produce a new drink and add it into the order list
                 }
+                this.listOfOrders.add(order);
                 return order;
             }
         }

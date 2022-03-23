@@ -58,5 +58,9 @@ public class Main {
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink using capsule again (we get a drink)
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 50
         System.out.println(newKitchen.makeAnOrder(machine1, order)); //order is null, because we do not have enough water in water bank
+        storage.fillStorage();
+        machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);
+        machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);
+        System.out.println(storage.getStateOfStorage());
     }
 }

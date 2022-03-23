@@ -15,6 +15,8 @@ public class Kitchen {
 
     /**
      * Create a new kitchen (kitchen can have only automatic machines).
+     *
+     * @param name name
      */
     public Kitchen(String name) {
         LOGGER.info("Creating a Kitchen.");
@@ -23,7 +25,6 @@ public class Kitchen {
 
     /**
      * Get name of the kitchen.
-     * @return <name>
      */
     public String getName() {
         return this.name;
@@ -31,7 +32,6 @@ public class Kitchen {
 
     /**
      * Get list of all machines in the kitchen.
-     * * @return <this.listOfMachines>
      */
     public ArrayList<AutomaticMachine> getListOfMachines() {
         return this.listOfMachines;
@@ -39,7 +39,6 @@ public class Kitchen {
 
     /**
      * Check if our kitchen has at least one machine.
-     * @return the name of the object
      */
     public boolean isListOfMachinesEmpty() {
         return !this.listOfMachines.isEmpty();
@@ -47,14 +46,15 @@ public class Kitchen {
 
     /**
      * Get list of all orders that were done by this kitchen.
-     * @return the name of the object
      */
     public ArrayList<ArrayList<Drink>> getListOfOrders() {
         return this.listOfOrders;
     }
 
     /**
-     * Add a new machine into the kitchen
+     * Add new machine to the kitchen
+     *
+     * @param machine new machine
      */
     public void addNewMachine(AutomaticMachine machine) {
         this.listOfMachines.add(machine);
@@ -62,8 +62,11 @@ public class Kitchen {
 
 
     /**
-     * Make an order for the automatic machine.
-     * @return the name of the object
+     * Make a new order (orders can be done only for automatic machines)
+     *
+     * @param machine machine
+     *
+     * @param typeOfCoffees types
      */
     public ArrayList<Drink> makeAnOrder(AutomaticMachine machine, ArrayList<Drink.TypeOfDrink> typeOfCoffees) {
         if (this.isListOfMachinesEmpty()) { //if we have at least one machine

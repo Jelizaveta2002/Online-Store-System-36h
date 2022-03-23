@@ -20,6 +20,8 @@ public class Drink {
 
     /**
      * Create a new drink.
+     *
+     * @param typeOfCoffee type
      */
     public Drink(TypeOfDrink typeOfCoffee) {
         LOGGER.info("Creating Drink.");

@@ -25,6 +25,7 @@ class CoffeeTest {
     public static final int KOLM = 3;
     public static final int ONEFIVEZERO = 150;
     public static final int TWOZEROZERO = 200;
+    public static final int TWOZERO = 20;
 
     @Test
     public void CapsuleTest() {
@@ -36,10 +37,10 @@ class CoffeeTest {
     }
 
     @org.junit.Test
-    void DrinkTest() {
+    void drinkTest() {
         Drink drink = new Drink(Drink.TypeOfDrink.ESPRESSO);
         HashMap<Drink.Component, Integer> mapToCheck = new HashMap<>();
-        mapToCheck.put(Drink.Component.BEANS, 20);
+        mapToCheck.put(Drink.Component.BEANS, TWOZERO);
         assertEquals(mapToCheck, drink.getRecipe());
         assertEquals(Drink.TypeOfDrink.ESPRESSO, drink.getTypeOfDrink());
     }
@@ -109,7 +110,7 @@ class CoffeeTest {
     }
 
     @org.junit.jupiter.api.Test
-    void CapsuleMachineTest() {
+    void capsuleMachineTest() {
         Storage storage = new Storage(); //create a storage (firstly it is empty)
         storage.fillStorage(); //fill our storage
         WaterBank bank = new WaterBank("water");

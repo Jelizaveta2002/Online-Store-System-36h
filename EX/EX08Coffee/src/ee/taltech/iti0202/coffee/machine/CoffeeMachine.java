@@ -5,7 +5,8 @@ import ee.taltech.iti0202.coffee.drink.Drink;
 import ee.taltech.iti0202.coffee.storage.Storage;
 import ee.taltech.iti0202.coffee.water.WaterBank;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class CoffeeMachine {
@@ -24,6 +25,8 @@ public class CoffeeMachine {
 
     /**
      * Create coffee machine using builder.
+     *
+     * @param builder builder
      */
     public CoffeeMachine(CoffeeMachineBuilder builder) {
         this.name = builder.name;
@@ -95,6 +98,8 @@ public class CoffeeMachine {
 
     /**
      * Connect machine with water bank.
+     *
+     * @param waterbank waterbank
      */
     public void setWaterBank(WaterBank waterbank) {
         if (waterbank != null) {
@@ -106,6 +111,8 @@ public class CoffeeMachine {
 
     /**
      * Set the storage where machine can get needed products
+     *
+     * @param storageOfIngredients storage
      */
     public void setStorage(Storage storageOfIngredients) {
         this.storageOfIngredients = storageOfIngredients;
@@ -155,6 +162,8 @@ public class CoffeeMachine {
     /**
      * Produce new drink (considering that it is ordinary machine we can produce only cappuccino and espresso)
      * @return the name of the object
+     *
+     * @param typeOfCoffee type
      */
     public Drink produceDrink(Drink.TypeOfDrink typeOfCoffee) {
         Drink drink = new Drink(typeOfCoffee); //create a new drink

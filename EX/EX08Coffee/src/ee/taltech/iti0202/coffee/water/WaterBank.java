@@ -17,6 +17,8 @@ public class WaterBank {
 
     /**
      * Create a new water bank.
+     *
+     * @param name name
      */
     public WaterBank(String name) {
         LOGGER.info("Creating a Water Bank.");
@@ -60,6 +62,8 @@ public class WaterBank {
 
     /**
      * Connect water bank with new machine.
+     *
+     * @param machine machine
      */
     public void connectNewMachine(CoffeeMachine machine) {
         if (!listOfConnectedMachines.contains(machine)) {

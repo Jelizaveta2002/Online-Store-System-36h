@@ -11,6 +11,8 @@ public class CapsuleMachine extends CoffeeMachine {
 
     /**
      * Create a new capsule machine.
+     *
+     * @param builder builder
      */
     public CapsuleMachine(CoffeeMachineBuilder builder) {
         super(builder);
@@ -33,6 +35,8 @@ public class CapsuleMachine extends CoffeeMachine {
     /**
      * Set up a new capsule.
      * @return the name of the object
+     *
+     * @param typeOfCoffee type
      */
     public boolean setUpCapsule(Drink.TypeOfDrink typeOfCoffee) {
         if (this.capsule == null) { //we can set up capsule only after method getOutCapsule
@@ -59,8 +63,8 @@ public class CapsuleMachine extends CoffeeMachine {
 
     @Override
     public Drink produceDrink(Drink.TypeOfDrink typeOfCoffee) {
-        throw new IllegalArgumentException("This method is not supported by Capsule machine, " +
-                "use 'produceDrinkOfCapsule' instead!");
+        throw new IllegalArgumentException("This method is not supported by Capsule machine, "
+                + "use 'produceDrinkOfCapsule' instead!");
     }
 
 

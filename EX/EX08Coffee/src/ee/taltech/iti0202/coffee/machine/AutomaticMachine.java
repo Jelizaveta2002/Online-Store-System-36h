@@ -10,6 +10,8 @@ public class AutomaticMachine extends CoffeeMachine {
 
     /**
      * Create a new automatic machine.
+     *
+     * @param builder builder
      */
     public AutomaticMachine(CoffeeMachineBuilder builder) {
         super(builder);

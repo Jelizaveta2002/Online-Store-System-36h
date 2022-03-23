@@ -11,16 +11,20 @@ import ee.taltech.iti0202.coffee.water.WaterBank;
 import java.util.ArrayList;
 
 public class Main {
+
+    public static final int ONEFIVE = 15;
+    public static final int THREE = 3;
+
     public static void main(String[] args) {
         Kitchen newKitchen = new Kitchen("kitchen"); //create a kitchen
         Storage storage = new Storage(); //create a storage (firstly it is empty)
         storage.fillStorage(); //fill our storage
         WaterBank water = new WaterBank("bank"); //create bank with water
         water.fillWaterBank(); //fill bank with water
-        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build();
+        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(THREE).build();
         //create machine
         AutomaticMachine machine1 =
-                new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(15));
+                new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(ONEFIVE));
         //create machine
         CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
         //create machine

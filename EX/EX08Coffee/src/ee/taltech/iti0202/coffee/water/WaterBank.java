@@ -9,8 +9,10 @@ import java.util.logging.Logger;
 public class WaterBank {
 
     private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    public static final int TWOZEROZERO = 200;
+    public static final int FIVEZERO = 50;
     private final String name;
-    private Integer millilitersOfWater = 200;
+    private Integer millilitersOfWater = TWOZEROZERO;
     private final ArrayList<CoffeeMachine> listOfConnectedMachines = new ArrayList<>();
 
     /**
@@ -40,7 +42,7 @@ public class WaterBank {
      * Fill the water bank with water (amount is fixed).
      */
     public void fillWaterBank() {
-        this.millilitersOfWater = 200;
+        this.millilitersOfWater = TWOZEROZERO;
     }
 
 
@@ -48,8 +50,8 @@ public class WaterBank {
      * Use water from bank for making new drinks.
      */
     public void takeWaterFromBank() {
-        if (this.millilitersOfWater >= 50) {
-            this.millilitersOfWater -= 50;
+        if (this.millilitersOfWater >= FIVEZERO) {
+            this.millilitersOfWater -= FIVEZERO;
         }
     }
 

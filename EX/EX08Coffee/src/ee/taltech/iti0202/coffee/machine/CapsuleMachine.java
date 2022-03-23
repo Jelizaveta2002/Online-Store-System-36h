@@ -4,6 +4,9 @@ import ee.taltech.iti0202.coffee.capsule.Capsule;
 import ee.taltech.iti0202.coffee.drink.Drink;
 
 public class CapsuleMachine extends CoffeeMachine {
+    public static final int ONEZERO = 10;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
     private Capsule capsule;
 
     /**
@@ -12,16 +15,16 @@ public class CapsuleMachine extends CoffeeMachine {
     public CapsuleMachine(CoffeeMachineBuilder builder) {
         super(builder);
         if (this.capacityOfRubbishBin == null) { //if we do not have a capacity, we can use fixed capacity instead
-            this.capacityOfRubbishBin = 10;
-            this.capacityOfRubbishBinConstant = 10;
+            this.capacityOfRubbishBin = ONEZERO;
+            this.capacityOfRubbishBinConstant = ONEZERO;
         }
     }
 
 
     @Override
     public boolean machineWorks() {
-        if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > 0) {
-            return !isBroken() && this.storageOfIngredients.getCapsules().size() != 0;
+        if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > ZERO) {
+            return !isBroken() && this.storageOfIngredients.getCapsules().size() != ZERO;
         }
         return false;
 
@@ -69,7 +72,7 @@ public class CapsuleMachine extends CoffeeMachine {
             Drink drink = new Drink(this.capsule.getFilling().getTypeOfDrink()); //create a new drink considering
                                                                             // the filling of capsule that we set up
             this.listOfAllDrinks.add(drink); //add our drink to all the drinks that this machine produced
-            this.capacityOfRubbishBin -= 1; //capacity of rubbish bin is getting smaller
+            this.capacityOfRubbishBin -= ONE; //capacity of rubbish bin is getting smaller
             this.storageOfWater.takeWaterFromBank(); //take a fixed milliliters of water away from water bank(50 ml)
             this.capsule.useCapsule(); //capsule is used, so its filling become null
             return drink;

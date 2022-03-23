@@ -10,6 +10,11 @@ import java.util.logging.Logger;
 public class Storage {
 
     private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    public static final int TWOZEROZERO = 200;
+    public static final int KUUZSERO = 60;
+    public static final int FIVEZEROZERO = 500;
+    public static final int ZERO = 0;
+    public static final int ONEFIVE = 15;
     private int millilitersOfMilk;
     private int gramsOfBeans;
     private int gramsOfCacao;
@@ -59,16 +64,16 @@ public class Storage {
      */
     public void fillStorage() { //we fill the storage (all the amounts of products are fixed)
         this.listOfCapsules.clear(); //clear the list of capsules to have only a fixed amount of them
-        this.millilitersOfMilk = 200;
-        this.gramsOfBeans = 60;
-        this.gramsOfCacao = 500;
+        this.millilitersOfMilk = TWOZEROZERO;
+        this.gramsOfBeans = KUUZSERO;
+        this.gramsOfCacao = FIVEZEROZERO;
         ArrayList<Drink> choiceOfDrinks = new ArrayList<>(); //make a list of all types of capsules
         choiceOfDrinks.add(new Drink(Drink.TypeOfDrink.CACAO));
         choiceOfDrinks.add(new Drink(Drink.TypeOfDrink.CAPPUCCINO));
         choiceOfDrinks.add(new Drink(Drink.TypeOfDrink.ESPRESSO));
         choiceOfDrinks.add(new Drink(Drink.TypeOfDrink.LATTE));
         Random rand = new Random();
-        for (int i = 0; i < 15; i++) { //
+        for (int i = ZERO; i < ONEFIVE; i++) { //
             Capsule capsule = new Capsule(choiceOfDrinks.get(rand.nextInt(choiceOfDrinks.size()))); //randomly
                                                                                                 // add a new capsule
             this.listOfCapsules.add(capsule);
@@ -120,7 +125,7 @@ public class Storage {
      * Check if storage is not empty.
      */
     public boolean isEmpty() {
-        return this.gramsOfCacao == 0 && this.gramsOfBeans == 0 && this.millilitersOfMilk == 0;
+        return this.gramsOfCacao == ZERO && this.gramsOfBeans == ZERO && this.millilitersOfMilk == ZERO;
     }
 
 

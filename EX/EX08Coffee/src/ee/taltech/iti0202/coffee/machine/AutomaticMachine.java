@@ -4,20 +4,24 @@ import ee.taltech.iti0202.coffee.drink.Drink;
 
 public class AutomaticMachine extends CoffeeMachine {
 
+    public static final int SEVEN = 7;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+
     /**
      * Create a new automatic machine.
      */
     public AutomaticMachine(CoffeeMachineBuilder builder) {
         super(builder);
         if (this.capacityOfRubbishBin == null) {
-            this.capacityOfRubbishBin = 7;
-            this.capacityOfRubbishBinConstant = 7;
+            this.capacityOfRubbishBin = SEVEN;
+            this.capacityOfRubbishBinConstant = SEVEN;
         }
     }
 
     @Override
     public boolean machineWorks() {
-        if (this.storageOfWater != null && this.capacityOfRubbishBin > 0) {
+        if (this.storageOfWater != null && this.capacityOfRubbishBin > ZERO) {
             return !isBroken();
         }
         return false;
@@ -29,7 +33,7 @@ public class AutomaticMachine extends CoffeeMachine {
                                 // capacity of rubbish bin in order to produce new drink
             Drink drink = new Drink(typeOfCoffee);
             this.listOfAllDrinks.add(drink);
-            this.capacityOfRubbishBin -= 1;
+            this.capacityOfRubbishBin -= ONE;
             this.storageOfWater.takeWaterFromBank();
             return drink;
         }

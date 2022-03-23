@@ -2,7 +2,6 @@ package ee.taltech.iti0202.coffee;
 
 import ee.taltech.iti0202.coffee.capsule.Capsule;
 import ee.taltech.iti0202.coffee.drink.Drink;
-import ee.taltech.iti0202.coffee.example.Main;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.machine.AutomaticMachine;
 import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
@@ -18,6 +17,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class CoffeeTest {
+
+    public static final int ONE = 1;
+    public static final int FOUR = 4;
+    public static final int ONEFOUR = 14;
+    public static final int ONEFIVE = 15;
+    public static final int KOLM = 3;
+    public static final int ONEFIVEZERO = 150;
+    public static final int TWOZEROZERO = 200;
 
     @Test
     public void CapsuleTest() {
@@ -42,11 +49,11 @@ class CoffeeTest {
         WaterBank bank = new WaterBank("water");
         CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
         bank.fillWaterBank();
-        assertEquals(200, bank.getMillilitersOfWater());
+        assertEquals(TWOZEROZERO, bank.getMillilitersOfWater());
         ArrayList<CoffeeMachine> list = new ArrayList<>();
         assertEquals(list, bank.getAllTheMachines());
         bank.takeWaterFromBank();
-        assertEquals(150, bank.getMillilitersOfWater());
+        assertEquals(ONEFIVEZERO, bank.getMillilitersOfWater());
         assertEquals("water", bank.getName());
         bank.connectNewMachine(machine2);
         list.add(machine2);
@@ -61,8 +68,8 @@ class CoffeeTest {
         Storage storage = new Storage(); //create a storage (firstly it is empty)
         storage.fillStorage(); //fill our storage
         AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").
-                capacityOfRubbishBin(15)); //create machine
-        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build();
+                capacityOfRubbishBin(ONEFIVE)); //create machine
+        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(KOLM).build();
                                                                                                 //create machine
         CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
         machine.setWaterBank(bank);
@@ -71,7 +78,7 @@ class CoffeeTest {
         machine2.setUpCapsule(Drink.TypeOfDrink.CAPPUCCINO);
         machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);
         machine1.produceDrink(Drink.TypeOfDrink.CACAO);
-        assertEquals(storage.getCapsules().size(), 14);
+        assertEquals(storage.getCapsules().size(), ONEFOUR);
         String toCheck = "|||  Milliliters of Milk: 100\n"
                 + "Grams of Coffee beans: 40\n"
                 + "Grams of Cacao: 500\n"
@@ -88,7 +95,7 @@ class CoffeeTest {
         WaterBank bank = new WaterBank("water");
         bank.fillWaterBank();
         AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").
-                capacityOfRubbishBin(4)); //create machine
+                capacityOfRubbishBin(FOUR)); //create machine
         machine1.setWaterBank(bank);
         machine1.setStorage(storage);
         kitchen.addNewMachine(machine1);
@@ -98,7 +105,7 @@ class CoffeeTest {
         order.add(Drink.TypeOfDrink.LATTE);
         kitchen.makeAnOrder(machine1, order);
         kitchen.makeAnOrder(machine1, order);
-        assertEquals(1, kitchen.getListOfOrders().size());
+        assertEquals(ONE, kitchen.getListOfOrders().size());
     }
 
     @org.junit.jupiter.api.Test
@@ -113,7 +120,7 @@ class CoffeeTest {
         machine1.setUpCapsule(Drink.TypeOfDrink.CAPPUCCINO);
         machine1.produceDrinkOfCapsule();
         machine1.produceDrinkOfCapsule();
-        assertEquals(1, machine1.getListOfDrinks().size());
+        assertEquals(ONE, machine1.getListOfDrinks().size());
     }
 }
 

@@ -9,6 +9,8 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class CoffeeMachine {
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
     protected String name;
     protected Integer capacityOfRubbishBin;
     protected Integer capacityOfRubbishBinConstant;
@@ -116,7 +118,7 @@ public class CoffeeMachine {
      */
     public boolean isBroken() {
         if (this.storageOfWater != null) {
-            return this.storageOfWater.getMillilitersOfWater() <= 0; //machine is broken, if its water bank is empty
+            return this.storageOfWater.getMillilitersOfWater() <= ZERO; //machine is broken, if its water bank is empty
         }
         return false;
     }
@@ -125,7 +127,7 @@ public class CoffeeMachine {
      * Check if machine can work.
      */
     public boolean machineWorks() {
-        if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > 0) {
+        if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > ZERO) {
             return !isBroken() && !storageOfIngredients.isEmpty(); //machine can work if it is not broken and
                                                                     // its product storage is not empty
         }
@@ -176,7 +178,7 @@ public class CoffeeMachine {
             }
             this.listOfAllDrinks.add(drink); //if method is here, so we can produce drink, so we add
                                                 // it to the list of all the produced drinks byt this machine
-            this.capacityOfRubbishBin -= 1; //capacity of rubbish bin is getting smaller
+            this.capacityOfRubbishBin -= ONE; //capacity of rubbish bin is getting smaller
             this.storageOfWater.takeWaterFromBank(); //take water from bank(every cup takes 50ml)
             return drink; //return drink, because it can be produced
         }

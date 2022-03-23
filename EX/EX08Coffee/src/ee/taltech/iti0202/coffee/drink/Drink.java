@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 public class Drink {
 
     private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    public static final int ONEZEROZERO = 100;
+    public static final int THREEZERO = 30;
+    public static final int TWOZERO = 20;
     private final TypeOfDrink typeOfDrink;
     public enum Component { //ingredient of the drink
         MILK, BEANS, CACAO
@@ -30,21 +33,21 @@ public class Drink {
      */
     private void setRecipe() {
         if (this.typeOfDrink.equals(TypeOfDrink.CACAO)) {
-            recipe.put(Component.MILK, 100);
-            recipe.put(Component.CACAO, 30);
+            recipe.put(Component.MILK, ONEZEROZERO);
+            recipe.put(Component.CACAO, THREEZERO);
         }
         if (this.typeOfDrink.equals(TypeOfDrink.CAPPUCCINO)) {
-            recipe.put(Component.MILK, 100);
-            recipe.put(Component.BEANS, 20);
+            recipe.put(Component.MILK, ONEZEROZERO);
+            recipe.put(Component.BEANS, TWOZERO);
         }
 
         if (this.typeOfDrink.equals(TypeOfDrink.ESPRESSO)) {
-            recipe.put(Component.BEANS, 20);
+            recipe.put(Component.BEANS, TWOZERO);
         }
 
         if (this.typeOfDrink.equals(TypeOfDrink.LATTE)) {
-            recipe.put(Component.BEANS, 30);
-            recipe.put(Component.MILK, 100);
+            recipe.put(Component.BEANS, THREEZERO);
+            recipe.put(Component.MILK, ONEZEROZERO);
         }
     }
 

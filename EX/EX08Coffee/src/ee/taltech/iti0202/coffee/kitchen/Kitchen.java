@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 public class Kitchen {
     private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
+    public static final int FIVEZERO = 50;
     private final String name;
     private final ArrayList<AutomaticMachine> listOfMachines = new ArrayList<>();
     private final ArrayList<ArrayList<Drink>> listOfOrders = new ArrayList<>();
@@ -64,7 +65,7 @@ public class Kitchen {
             ArrayList<Drink> order = new ArrayList<>(); //create a new order list
             if (machine.machineWorks() && machine.getCapacityOfRubbishBin() >= typeOfCoffees.size()
                     //check if our machine has enough water and capacity of bin to produce all the drinks in order
-                    && machine.getWaterBank().getMillilitersOfWater() >= typeOfCoffees.size() * 50) {
+                    && machine.getWaterBank().getMillilitersOfWater() >= typeOfCoffees.size() * FIVEZERO) {
                 for (Drink.TypeOfDrink typeOfCoffee : typeOfCoffees) {
                     order.add(machine.produceDrink(typeOfCoffee));
                     //produce a new drink and add it into the order list

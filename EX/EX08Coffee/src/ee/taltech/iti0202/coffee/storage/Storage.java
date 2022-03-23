@@ -29,6 +29,7 @@ public class Storage {
 
     /**
      * Get milliliters of milk.
+     * @return the name of the object
      */
     public Integer getMillilitersOfMilk() {
         return this.millilitersOfMilk;
@@ -37,6 +38,7 @@ public class Storage {
 
     /**
      * Get amount of coffee beans.
+     * @return the name of the object
      */
     public Integer getGramsOfBeans() {
         return this.gramsOfBeans;
@@ -45,6 +47,7 @@ public class Storage {
 
     /**
      * Get amount of cacao.
+     * @return the name of the object
      */
     public Integer getGramsOfCacao() {
         return this.gramsOfCacao;
@@ -53,6 +56,7 @@ public class Storage {
 
     /**
      * Get list of all the capsules.
+     * @return the name of the object
      */
     public ArrayList<Capsule> getCapsules() {
         return this.listOfCapsules;
@@ -103,6 +107,7 @@ public class Storage {
 
     /**
      * Take cacao from storage.
+     * @return the name of the object
      */
     public boolean takeCacaoFromStorage(Integer gramsOfCacao) {
         if (this.gramsOfCacao >= gramsOfCacao) {
@@ -123,6 +128,7 @@ public class Storage {
 
     /**
      * Check if storage is not empty.
+     * @return the name of the object
      */
     public boolean isEmpty() {
         return this.gramsOfCacao == ZERO && this.gramsOfBeans == ZERO && this.millilitersOfMilk == ZERO;
@@ -131,6 +137,7 @@ public class Storage {
 
     /**
      * Get state of storage in a current time.
+     * @return the name of the object
      */
     public String getStateOfStorage() {
         return "|||  Milliliters of Milk: " + this.millilitersOfMilk + "\n" + "Grams of Coffee beans: "

@@ -8,12 +8,13 @@ import ee.taltech.iti0202.coffee.machine.CapsuleMachine;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 import ee.taltech.iti0202.coffee.storage.Storage;
 import ee.taltech.iti0202.coffee.water.WaterBank;
-import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 class CoffeeTest {
@@ -27,8 +28,8 @@ class CoffeeTest {
     public static final int TWOZEROZERO = 200;
     public static final int TWOZERO = 20;
 
-    @Test
-    public void CapsuleTest() {
+    @org.junit.Test
+    public void capsuleTest() {
         Drink drink = new Drink(Drink.TypeOfDrink.CAPPUCCINO);
         Capsule capsule = new Capsule(drink);
         capsule.useCapsule();

@@ -41,7 +41,7 @@ public class CoffeeMachine {
     public static class CoffeeMachineBuilder {
         private final static Logger LOGGER = Logger.getLogger(Drink.class.getName());
         private String name;
-        private Integer capacityOfRubbishBin ;
+        private Integer capacityOfRubbishBin;
         private Integer capacityOfRubbishBinConstant;
 
         public CoffeeMachineBuilder(String name) {
@@ -173,13 +173,13 @@ public class CoffeeMachine {
             for (Drink.Component component : ingredients.keySet()) { //iterate over map that consist
                                                                     // key:ingredient, value:number of ingredient
                 if (component.equals(Drink.Component.MILK)) { //if one ingredient is milk:
-                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){ //check that our
+                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()) { //check that our
                                                                                             // storage has enough milk
                         return null; //if not, return null instead of drink
                     }
                 }
                 if (component.equals(Drink.Component.BEANS)) { //if one ingredient are beans:
-                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){ //check that our
+                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()) { //check that our
                                                                                             // storage has enough beans
                         return null; //if not, return null instead of drink
                     }

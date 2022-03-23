@@ -23,7 +23,7 @@ public class Kitchen {
 
     /**
      * Get name of the kitchen.
-     * @return the name of the object
+     * @return <name>
      */
     public String getName() {
         return this.name;
@@ -31,7 +31,7 @@ public class Kitchen {
 
     /**
      * Get list of all machines in the kitchen.
-     * @return the name of the object
+     * * @return <this.listOfMachines>
      */
     public ArrayList<AutomaticMachine> getListOfMachines() {
         return this.listOfMachines;

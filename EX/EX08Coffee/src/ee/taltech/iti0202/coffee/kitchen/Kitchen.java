@@ -67,6 +67,7 @@ public class Kitchen {
 
     /**
      * Make a new order (orders can be done only for automatic machines)
+     * @return the name of the object
      *
      * @param machine machine
      *

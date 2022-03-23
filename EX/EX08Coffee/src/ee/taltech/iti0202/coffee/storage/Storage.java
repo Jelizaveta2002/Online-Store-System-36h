@@ -22,6 +22,7 @@ public class Storage {
 
     /**
      * Create a new storage for products.
+     *
      */
     public Storage() { //firstly storage is empty, we have to fill it
         LOGGER.info("Creating a Storage.");
@@ -87,6 +88,8 @@ public class Storage {
 
     /**
      * Take milk from storage.
+     *
+     * @param millilitersOfMilk milk
      */
     public void takeMilkFromStorage(Integer millilitersOfMilk) {
         if (this.millilitersOfMilk >= millilitersOfMilk) {
@@ -97,6 +100,8 @@ public class Storage {
 
     /**
      * Take coffee beans from storage.
+     *
+     * @param gramsOfBeans beans
      */
     public void takeBeansFromStorage(Integer gramsOfBeans) {
         if (this.gramsOfBeans >= gramsOfBeans) {
@@ -108,6 +113,8 @@ public class Storage {
     /**
      * Take cacao from storage.
      * @return the name of the object
+     *
+     * @param gramsOfCacao cacao
      */
     public boolean takeCacaoFromStorage(Integer gramsOfCacao) {
         if (this.gramsOfCacao >= gramsOfCacao) {
@@ -120,6 +127,8 @@ public class Storage {
 
     /**
      * Take capsule from storage.
+     *
+     * @param capsule capsule
      */
     public void takeCapsule(Capsule capsule) {
         this.listOfCapsules.remove(capsule);

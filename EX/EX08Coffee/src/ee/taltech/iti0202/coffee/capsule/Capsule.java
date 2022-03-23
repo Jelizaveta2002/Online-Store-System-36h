@@ -28,6 +28,7 @@ public class Capsule {
 
     /**
      * Check if capsule is not empty.
+     * @return the name of the object
      */
     public boolean isEmpty() {
         return this.fillingOfCapsule == null;

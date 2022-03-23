@@ -25,7 +25,8 @@ public class AutomaticMachine extends CoffeeMachine {
 
     @Override
     public Drink produceDrink(Drink.TypeOfDrink typeOfCoffee) {
-        if (machineWorks()) { //here we only need to have enough water and free capacity of rubbish bin in order to produce new drink
+        if (machineWorks()) { //here we only need to have enough water and free
+                                // capacity of rubbish bin in order to produce new drink
             Drink drink = new Drink(typeOfCoffee);
             this.listOfAllDrinks.add(drink);
             this.capacityOfRubbishBin -= 1;

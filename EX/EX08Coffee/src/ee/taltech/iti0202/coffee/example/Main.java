@@ -17,9 +17,13 @@ public class Main {
         storage.fillStorage(); //fill our storage
         WaterBank water = new WaterBank("bank"); //create bank with water
         water.fillWaterBank(); //fill bank with water
-        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build(); //create machine
-        AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(15)); //create machine
-        CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2")); //create machine
+        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build();
+        //create machine
+        AutomaticMachine machine1 =
+                new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(15));
+        //create machine
+        CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
+        //create machine
         newKitchen.addNewMachine(machine1); //add new machine into the kitchen
         machine.setWaterBank(water); //set water bank
         machine1.setWaterBank(water); //set water bank
@@ -31,7 +35,8 @@ public class Main {
         System.out.println(newKitchen.getListOfMachines());  //list of all machines in the kitchen
         System.out.println(machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO)); //make cappuccino using ordinary machine
         System.out.println(machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO)); //make espresso using ordinary machine
-        System.out.println(machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO)); //make one more drink, but get null because not enough products
+        System.out.println(machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO));
+        //make one more drink, but get null because not enough products
         storage.fillStorage(); //fill the storage
         System.out.println(machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO)); //make espresso using ordinary machine
         System.out.println(machine.getListOfDrinks()); //get all the drinks done by this machine (3 in total)
@@ -52,12 +57,14 @@ public class Main {
         machine2.setUpCapsule(Drink.TypeOfDrink.CACAO); //put a new capsule to the capsule machine
         water.fillWaterBank(); //fill bank of water
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink using capsule
-        System.out.println(machine2.produceDrinkOfCapsule()); //make drink again, but get null, because we have to set up a new capsule
+        System.out.println(machine2.produceDrinkOfCapsule()); //make drink again, but get null,
+                                                                // because we have to set up a new capsule
         machine2.getOutCapsule(); //get out a used capsule
         machine2.setUpCapsule(Drink.TypeOfDrink.CACAO); //set up a new capsule
         System.out.println(machine2.produceDrinkOfCapsule()); //make drink using capsule again (we get a drink)
         System.out.println(water.getMillilitersOfWater()); //check our state of water, it is 50
-        System.out.println(newKitchen.makeAnOrder(machine1, order)); //order is null, because we do not have enough water in water bank
+        System.out.println(newKitchen.makeAnOrder(machine1, order)); //order is null, because we do not
+                                                                        // have enough water in water bank
         storage.fillStorage();
         machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);
         machine.produceDrink(Drink.TypeOfDrink.CAPPUCCINO);

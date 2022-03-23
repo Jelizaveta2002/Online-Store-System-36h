@@ -69,7 +69,8 @@ public class Storage {
         choiceOfDrinks.add(new Drink(Drink.TypeOfDrink.LATTE));
         Random rand = new Random();
         for (int i = 0; i < 15; i++) { //
-            Capsule capsule = new Capsule(choiceOfDrinks.get(rand.nextInt(choiceOfDrinks.size()))); //randomly add a new capsule
+            Capsule capsule = new Capsule(choiceOfDrinks.get(rand.nextInt(choiceOfDrinks.size()))); //randomly
+                                                                                                // add a new capsule
             this.listOfCapsules.add(capsule);
         }
     }
@@ -128,6 +129,7 @@ public class Storage {
      */
     public String getStateOfStorage() {
         return "|||  Milliliters of Milk: " + this.millilitersOfMilk + "\n" + "Grams of Coffee beans: "
-                + this.gramsOfBeans + "\n" + "Grams of Cacao: " + this.gramsOfCacao + "\n" + "Number of capsules: " + this.listOfCapsules.size() + " |||";
+                + this.gramsOfBeans + "\n" + "Grams of Cacao: " + this.gramsOfCacao + "\n" + "Number of capsules: "
+                + this.listOfCapsules.size() + " |||";
     }
 }

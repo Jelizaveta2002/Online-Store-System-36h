@@ -60,8 +60,10 @@ class CoffeeTest {
         bank.fillWaterBank();
         Storage storage = new Storage(); //create a storage (firstly it is empty)
         storage.fillStorage(); //fill our storage
-        AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(15)); //create machine
-        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build(); //create machine
+        AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").
+                capacityOfRubbishBin(15)); //create machine
+        CoffeeMachine machine = new CoffeeMachine.CoffeeMachineBuilder("name").capacityOfRubbishBin(3).build();
+                                                                                                //create machine
         CapsuleMachine machine2 = new CapsuleMachine(new CoffeeMachine.CoffeeMachineBuilder("name2"));
         machine.setWaterBank(bank);
         machine2.setStorage(storage);
@@ -85,7 +87,8 @@ class CoffeeTest {
         assertEquals("kitchen", kitchen.getName());
         WaterBank bank = new WaterBank("water");
         bank.fillWaterBank();
-        AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").capacityOfRubbishBin(4)); //create machine
+        AutomaticMachine machine1 = new AutomaticMachine(new CoffeeMachine.CoffeeMachineBuilder("name1").
+                capacityOfRubbishBin(4)); //create machine
         machine1.setWaterBank(bank);
         machine1.setStorage(storage);
         kitchen.addNewMachine(machine1);

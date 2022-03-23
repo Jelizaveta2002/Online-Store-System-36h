@@ -62,10 +62,12 @@ public class Kitchen {
     public ArrayList<Drink> makeAnOrder(AutomaticMachine machine, ArrayList<Drink.TypeOfDrink> typeOfCoffees) {
         if (this.isListOfMachinesEmpty()) { //if we have at least one machine
             ArrayList<Drink> order = new ArrayList<>(); //create a new order list
-            if (machine.machineWorks() && machine.getCapacityOfRubbishBin() >= typeOfCoffees.size() //check if our machine has enough water and capacity of bin to produce all the drinks in order
+            if (machine.machineWorks() && machine.getCapacityOfRubbishBin() >= typeOfCoffees.size()
+                    //check if our machine has enough water and capacity of bin to produce all the drinks in order
                     && machine.getWaterBank().getMillilitersOfWater() >= typeOfCoffees.size() * 50) {
                 for (Drink.TypeOfDrink typeOfCoffee : typeOfCoffees) {
-                    order.add(machine.produceDrink(typeOfCoffee)); //produce a new drink and add it into the order list
+                    order.add(machine.produceDrink(typeOfCoffee));
+                    //produce a new drink and add it into the order list
                 }
                 this.listOfOrders.add(order);
                 return order;

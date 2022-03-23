@@ -145,14 +145,17 @@ public class CoffeeMachine {
         if (machineWorks()) {
             HashMap<Drink.Component, Integer> ingredients = drink.getRecipe(); //get recipe of drink, that we have done
             Storage storageOfIngredients = this.storageOfIngredients;
-            for (Drink.Component component : ingredients.keySet()) { //iterate over map that consist key:ingredient, value:number of ingredient
+            for (Drink.Component component : ingredients.keySet()) { //iterate over map that consist
+                                                                    // key:ingredient, value:number of ingredient
                 if (component.equals(Drink.Component.MILK)) { //if one ingredient is milk:
-                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){ //check that our storage has enough milk
+                    if (ingredients.get(component) > storageOfIngredients.getMillilitersOfMilk()){ //check that our
+                                                                                            // storage has enough milk
                         return null; //if not, return null instead of drink
                     }
                 }
                 if (component.equals(Drink.Component.BEANS)) { //if one ingredient are beans:
-                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){ //check that our storage has enough beans
+                    if (ingredients.get(component) > storageOfIngredients.getGramsOfBeans()){ //check that our
+                                                                                            // storage has enough beans
                         return null; //if not, return null instead of drink
                     }
                 }
@@ -160,15 +163,19 @@ public class CoffeeMachine {
                     return null; //return null, because manual machine can not make cacao
                 }
             }
-            for (Drink.Component component : ingredients.keySet()) {  //iterate over map that consists of  key:ingredient, value:number of ingredient
+            for (Drink.Component component : ingredients.keySet()) {  //iterate over map that consists of
+                                                                        // key:ingredient, value:number of ingredient
                 if (component.equals(Drink.Component.MILK)) { //if ingredient is milk:
-                    storageOfIngredients.takeMilkFromStorage(drink.getRecipe().get(component)); //take milk from storage, considering the number of ingredients in milliliters/grams
+                    storageOfIngredients.takeMilkFromStorage(drink.getRecipe().get(component)); //take milk from
+                                                // storage, considering the number of ingredients in milliliters/grams
                 }
                 if (component.equals(Drink.Component.BEANS)) { //if ingredient are beans:
-                    storageOfIngredients.takeBeansFromStorage(drink.getRecipe().get(component)); //take beans from storage, considering the number of ingredients in milliliters/grams
+                    storageOfIngredients.takeBeansFromStorage(drink.getRecipe().get(component)); //take beans from
+                                                // storage, considering the number of ingredients in milliliters/grams
                 }
             }
-            this.listOfAllDrinks.add(drink); //if method is here, so we can produce drink, so we add it to the list of all the produced drinks byt this machine
+            this.listOfAllDrinks.add(drink); //if method is here, so we can produce drink, so we add
+                                                // it to the list of all the produced drinks byt this machine
             this.capacityOfRubbishBin -= 1; //capacity of rubbish bin is getting smaller
             this.storageOfWater.takeWaterFromBank(); //take water from bank(every cup takes 50ml)
             return drink; //return drink, because it can be produced

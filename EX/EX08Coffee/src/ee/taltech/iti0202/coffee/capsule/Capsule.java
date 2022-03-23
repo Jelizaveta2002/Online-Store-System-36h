@@ -12,6 +12,8 @@ public class Capsule {
 
     /**
      * Create a new capsule.
+     *
+     * @param fillingOfCapsule filling
      */
     public Capsule(Drink fillingOfCapsule) {
         LOGGER.info("Creating a Capsule.");

@@ -32,6 +32,7 @@ public class CapsuleMachine extends CoffeeMachine {
 
     /**
      * Set up a new capsule.
+     * @return the name of the object
      */
     public boolean setUpCapsule(Drink.TypeOfDrink typeOfCoffee) {
         if (this.capsule == null) { //we can set up capsule only after method getOutCapsule
@@ -65,6 +66,7 @@ public class CapsuleMachine extends CoffeeMachine {
 
     /**
      * Method START to crate the drink by using capsule machine.
+     * @return the name of the object
      */
     public Drink produceDrinkOfCapsule() {
         if (this.machineWorks() && this.capsule != null && !this.capsule.isEmpty()) { //if our machine

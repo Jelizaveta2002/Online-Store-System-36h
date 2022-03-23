@@ -71,17 +71,23 @@ public class CoffeeMachine {
 
     /**
      * Get name.
+     * @return the name of the object
      */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Get list of all the produced drinks.
+     * @return the name of the object
+     */
     public ArrayList<Drink> getListOfDrinks() {
         return this.listOfAllDrinks;
     }
 
     /**
      * Get capacity of rubbish bin.
+     * @return the name of the object
      */
     public Integer getCapacityOfRubbishBin() {
         return this.capacityOfRubbishBin;
@@ -115,6 +121,7 @@ public class CoffeeMachine {
 
     /**
      * Check if water bank is not empty and machine is not broken.
+     * @return the name of the object
      */
     public boolean isBroken() {
         if (this.storageOfWater != null) {
@@ -125,6 +132,7 @@ public class CoffeeMachine {
 
     /**
      * Check if machine can work.
+     * @return the name of the object
      */
     public boolean machineWorks() {
         if (this.storageOfWater != null && this.storageOfIngredients != null && this.capacityOfRubbishBin > ZERO) {
@@ -137,11 +145,17 @@ public class CoffeeMachine {
 
     /**
      * Get storage of water.
+     * @return the name of the object
      */
     public WaterBank getWaterBank() {
         return this.storageOfWater;
     }
 
+
+    /**
+     * Produce new drink (considering that it is ordinary machine we can produce only cappuccino and espresso)
+     * @return the name of the object
+     */
     public Drink produceDrink(Drink.TypeOfDrink typeOfCoffee) {
         Drink drink = new Drink(typeOfCoffee); //create a new drink
         if (machineWorks()) {
@@ -184,5 +198,4 @@ public class CoffeeMachine {
         }
         return null; //return null if machine does not work
     }
-
 }

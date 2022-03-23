@@ -53,6 +53,7 @@ public class Drink {
 
     /**
      * Get map of all the ingredients of the drink.
+     * @return the name of the object
      */
     public HashMap<Component, Integer> getRecipe() {
         return this.recipe;
@@ -61,6 +62,7 @@ public class Drink {
 
     /**
      * Get type of drink.
+     * @return the name of the object
      */
     public TypeOfDrink getTypeOfDrink() {
         return this.typeOfDrink;

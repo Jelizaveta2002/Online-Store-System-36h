@@ -25,6 +25,7 @@ public class WaterBank {
 
     /**
      * Get name of water bank.
+     * @return the name of the object
      */
     public String getName() {
         return this.name;
@@ -32,6 +33,7 @@ public class WaterBank {
 
     /**
      * Get current state of water bank.
+     * @return the name of the object
      */
     public Integer getMillilitersOfWater() {
         return this.millilitersOfWater;
@@ -67,6 +69,7 @@ public class WaterBank {
 
     /**
      * Get list of all machines taht are connected to this water bank.
+     * @return the name of the object
      */
     public ArrayList<CoffeeMachine> getAllTheMachines() {
         return this.listOfConnectedMachines;

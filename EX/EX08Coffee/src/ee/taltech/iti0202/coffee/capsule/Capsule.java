@@ -36,6 +36,7 @@ public class Capsule {
 
     /**
      * Get filling of capsule.
+     * @return the name of the object
      */
     public Drink getFilling() {
         return this.fillingOfCapsule;

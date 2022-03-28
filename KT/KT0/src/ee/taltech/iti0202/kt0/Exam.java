@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.kt0;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
@@ -15,7 +16,22 @@ public class Exam {
      * matchUp([1, 2, 3], [2, 3, 3]) => 2
      */
     public static int matchUp(List<Integer> a, List<Integer> b) {
-        return -1;
+        ArrayList<Integer> list1 = new ArrayList<>(a);
+        ArrayList<Integer> list2 = new ArrayList<>(b);
+        int numberToReturn = 0;
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i) > list2.get(i)) {
+                if (list1.get(i) - list2.get(i) > 0 && list1.get(i) - list2.get(i) <= 2) {
+                    numberToReturn += 1;
+                }
+            }
+            if (list1.get(i) < list2.get(i)) {
+                if (list2.get(i) - list1.get(i) > 0 && list2.get(i) - list1.get(i) <= 2) {
+                    numberToReturn += 1;
+                }
+            }
+        }
+        return numberToReturn;
     }
 
     /**
@@ -30,5 +46,9 @@ public class Exam {
     public static String repeatSeparator(String word, String sep, int count) {
         return "wat";
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(matchUp(new ArrayList<>(List.of(1, 2, 3)), new ArrayList<>(List.of(2, 3, 10))));
+//    }
 
 }

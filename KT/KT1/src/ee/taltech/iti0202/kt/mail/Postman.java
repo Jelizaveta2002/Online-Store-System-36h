@@ -42,13 +42,14 @@ public class Postman {
      * Otherwise returns true and letter is added to postman.
      */
     public boolean addLetter(Letter letter) {
-        if (this.name != null && letter != null) {
+        if (this.name != null && letter != null && !this.name.trim().isEmpty() && !letter.getAddress().trim().isEmpty()) {
             char nameChar = this.name.charAt(0);
             String name = Character.toString(nameChar);
             char nameLetterChar = letter.getAddress().charAt(0);
             String nameLetter = Character.toString(nameLetterChar);
             if (name.equals(nameLetter) && this.letters.size() < this.limitOfLetters) {
                 letters.add(letter);
+                this.limitOfLetters += 1;
                 return true;
             }
             return false;

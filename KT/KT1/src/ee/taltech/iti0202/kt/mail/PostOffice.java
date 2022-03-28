@@ -34,12 +34,12 @@ public class PostOffice {
     public void addPostman(Postman postman) {
         if (postman != null) {
             if (!this.postmenInOffice.isEmpty()) {
+                char firstPostC = postman.getName().charAt(0);
+                String firstPost = Character.toString(firstPostC);
                 for (Postman man : this.postmenInOffice) {
                     char firstChar = man.getName().charAt(0);
                     String firstLetter = Character.toString(firstChar);
-                    char firstPostC = postman.getName().charAt(0);
-                    String firstPost = Character.toString(firstPostC);
-                    if (firstLetter.equalsIgnoreCase(firstPost)) {
+                    if (firstLetter.equals(firstPost)) {
                         return;
                     }
                 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PostOffice {
     public static final int FORTY = 40;
-    private String location;
+    private final String location;
     ArrayList<Letter> lettersInOffice = new ArrayList<>();
     ArrayList<Postman> postmenInOffice = new ArrayList<>();
     /**
@@ -76,20 +76,5 @@ public class PostOffice {
         for (Postman man : this.postmenInOffice) {
             this.lettersInOffice.removeIf(man::addLetter);
         }
-    }
-
-    public static void main(String[] args) {
-        PostOffice postOffice = new PostOffice("Tallinn");
-
-        Postman postman = new Postman("Martin", FORTY);
-
-        postOffice.addPostman(postman);
-
-        postOffice.addLetter(new Letter("Toomas", "Tartu", "Rahu tn"));
-        postOffice.addLetter(new Letter("Erki", "Tallinn", "Männi tee"));
-
-        postOffice.divideLetters();
-
-        System.out.println(postman.getLetters());   // [City: Tallinn, Address: Männi tee, Recipient: Erki]
     }
 }

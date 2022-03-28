@@ -18,7 +18,7 @@ public class PostOffice {
      * Letter is added only if the letter's destination city matches the location of the office.
      */
     public void addLetter(Letter letter) {
-        if (letter.getDestinationCity() != null && !letter.getDestinationCity().trim().isEmpty()) {
+        if (letter.getDestinationCity() != null) {
             if (this.location.equals(letter.getDestinationCity())) {
                 this.lettersInOffice.add(letter);
             }
@@ -32,18 +32,18 @@ public class PostOffice {
      * Otherwise postman is added to the office.
      */
     public void addPostman(Postman postman) {
-        if (postman != null && postman.getName() != null && !postman.getName().trim().isEmpty()) {
+        if (postman != null) {
             if (!this.postmenInOffice.isEmpty()) {
                 for (Postman man : this.postmenInOffice) {
                     char firstChar = man.getName().charAt(0);
                     String firstLetter = Character.toString(firstChar);
                     char firstPostC = postman.getName().charAt(0);
                     String firstPost = Character.toString(firstPostC);
-                    if (firstLetter.equals(firstPost)) {
+                    if (firstLetter.equalsIgnoreCase(firstPost)) {
                         return;
                     }
-                    postmenInOffice.add(postman);
                 }
+                postmenInOffice.add(postman);
             }
             postmenInOffice.add(postman);
         }

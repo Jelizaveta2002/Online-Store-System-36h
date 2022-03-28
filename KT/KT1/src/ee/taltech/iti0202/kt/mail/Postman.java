@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.kt.mail;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Postman {
     private String name;
@@ -40,13 +41,16 @@ public class Postman {
      * Otherwise returns true and letter is added to postman.
      */
     public boolean addLetter(Letter letter) {
-        char nameChar = this.name.charAt(0);
-        String name = Character.toString(nameChar);
-        char nameLetterChar = letter.getAddress().charAt(0);
-        String nameLetter = Character.toString(nameLetterChar);
-        if (name.equalsIgnoreCase(nameLetter) && letters.size() < limitOfLetters) {
-            letters.add(letter);
-            return true;
+        if (this.name != null && !this.name.trim().isEmpty() && letter.getAddress() != null && !letter.getAddress().trim().isEmpty()) {
+            char nameChar = this.name.charAt(0);
+            String name = Character.toString(nameChar);
+            char nameLetterChar = letter.getAddress().charAt(0);
+            String nameLetter = Character.toString(nameLetterChar);
+            if (name.equalsIgnoreCase(nameLetter) && letters.size() < limitOfLetters) {
+                letters.add(letter);
+                return true;
+            }
+            return false;
         }
         return false;
     }

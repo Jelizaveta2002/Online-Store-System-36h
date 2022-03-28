@@ -30,6 +30,17 @@ public class Postman {
         return letters;
     }
 
+    public boolean canAddLetter(Letter letter) {
+        if (this.name != null && !this.name.trim().isEmpty() && letter.getAddress() != null && !letter.getAddress().trim().isEmpty()) {
+            char nameChar = this.name.charAt(0);
+            String name = Character.toString(nameChar);
+            char nameLetterChar = letter.getAddress().charAt(0);
+            String nameLetter = Character.toString(nameLetterChar);
+            return name.equalsIgnoreCase(nameLetter) && letters.size() < limitOfLetters;
+        }
+        return false;
+    }
+
     /**
      * Adds a letter to postman.
      * The letter can be added if the name of the postman and the name of the letter's address
@@ -41,16 +52,9 @@ public class Postman {
      * Otherwise returns true and letter is added to postman.
      */
     public boolean addLetter(Letter letter) {
-        if (this.name != null && !this.name.trim().isEmpty() && letter.getAddress() != null && !letter.getAddress().trim().isEmpty()) {
-            char nameChar = this.name.charAt(0);
-            String name = Character.toString(nameChar);
-            char nameLetterChar = letter.getAddress().charAt(0);
-            String nameLetter = Character.toString(nameLetterChar);
-            if (name.equalsIgnoreCase(nameLetter) && letters.size() < limitOfLetters) {
-                letters.add(letter);
-                return true;
-            }
-            return false;
+        if (this.canAddLetter(letter)) {
+            this.letters.add(letter);
+            return true;
         }
         return false;
     }

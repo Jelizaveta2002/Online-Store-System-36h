@@ -33,16 +33,19 @@ public class PostOffice {
      */
     public void addPostman(Postman postman) {
         if (postman != null && postman.getName() != null && !postman.getName().trim().isEmpty()) {
-            for (Postman man : this.postmenInOffice) {
-                char firstChar = man.getName().charAt(0);
-                String firstLetter = Character.toString(firstChar);
-                char firstPostC = postman.getName().charAt(0);
-                String firstPost = Character.toString(firstPostC);
-                if (firstLetter.equals(firstPost)) {
-                    return;
+            if (!this.postmenInOffice.isEmpty()) {
+                for (Postman man : this.postmenInOffice) {
+                    char firstChar = man.getName().charAt(0);
+                    String firstLetter = Character.toString(firstChar);
+                    char firstPostC = postman.getName().charAt(0);
+                    String firstPost = Character.toString(firstPostC);
+                    if (firstLetter.equals(firstPost)) {
+                        return;
+                    }
+                    postmenInOffice.add(postman);
                 }
-                postmenInOffice.add(postman);
             }
+            postmenInOffice.add(postman);
         }
     }
 
@@ -69,15 +72,9 @@ public class PostOffice {
      * If no postman can take the letter, then this letter remains in the office.
      */
     public void divideLetters() {
+        System.out.println(this.lettersInOffice);
         for (Postman man : this.postmenInOffice) {
-            for (Letter letter : this.lettersInOffice) {
-                if (man.addLetter(letter)) {
-                    this.lettersInOffice.remove(letter);
-                }
-                else {
-                    break;
-                }
-            }
+            this.lettersInOffice.removeIf(man::addLetter);
         }
     }
 

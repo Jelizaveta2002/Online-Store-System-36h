@@ -47,7 +47,7 @@ public class Postman {
             String name = Character.toString(nameChar);
             char nameLetterChar = letter.getAddress().charAt(0);
             String nameLetter = Character.toString(nameLetterChar);
-            if (name.equalsIgnoreCase(nameLetter) && letters.size() < limitOfLetters) {
+            if (name.equals(nameLetter) && this.letters.size() < this.limitOfLetters) {
                 letters.add(letter);
                 return true;
             }

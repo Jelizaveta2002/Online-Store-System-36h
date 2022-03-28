@@ -37,6 +37,7 @@ public class Letter {
      * The format is: City: %s, Address: %s, Recipient: %s
      */
     public String toString() {
-        return "City: " + this.destinationCity + "," + " Address: " + this.address + "," + " Recipient: " + this.recipient;
+        return "City: " + this.destinationCity + "," + " Address: " + this.address + "," + " Recipient: "
+                + this.recipient;
     }
 }

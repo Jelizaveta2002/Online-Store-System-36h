@@ -1,9 +1,9 @@
 package ee.taltech.iti0202.kt.mail;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Postman {
+    public static final int FORTY = 40;
     private String name;
     private Integer age;
     Integer limitOfLetters;
@@ -14,10 +14,9 @@ public class Postman {
     public Postman(String name, Integer age) {
         this.name = name;
         this.age = age;
-        if (this.age >= 40) {
+        if (this.age >= FORTY) {
             this.limitOfLetters = age - name.length();
-        }
-        else {
+        } else {
             this.limitOfLetters = age + name.length();
         }
     }

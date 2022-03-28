@@ -69,6 +69,16 @@ public class PostOffice {
      * If no postman can take the letter, then this letter remains in the office.
      */
     public void divideLetters() {
+        for (Postman man : this.postmenInOffice) {
+            for (Letter letter : this.lettersInOffice) {
+                if (man.addLetter(letter)) {
+                    this.lettersInOffice.remove(letter);
+                }
+                else {
+                    break;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

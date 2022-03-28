@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.kt;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Exam {
     /**
@@ -13,19 +14,23 @@ public class Exam {
      * rotatedString("kurgid", "gikur") => false
      */
     public static boolean rotatedString(String str1, String str2) {
-        ArrayList<Character> list1 = new ArrayList<>();
-        ArrayList<Character> list2 = new ArrayList<>();
+        ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>();
         for (int i = 0; i < str1.length(); i++) {
-            list1.add(str1.charAt(i));
+            char a = str1.charAt(i);
+            String b = Character.toString(a);
+            list1.add(b);
         }
         for (int i = 0; i < str2.length(); i++) {
-            list2.add(str2.charAt(i));
+            char a = str2.charAt(i);
+            String b = Character.toString(a);
+            list2.add(b);
         }
         if (list1.size() != list2.size()) {
             return false;
         }
-        for (Character ch : list1) {
-            if (!list2.contains(ch)) {
+        for (String ch : list1) {
+            if (!list2.contains(ch.toUpperCase(Locale.ROOT)) && !list2.contains(ch.toLowerCase(Locale.ROOT))) {
                 return false;
             }
             list2.remove(ch);

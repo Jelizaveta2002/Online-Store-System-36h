@@ -19,7 +19,7 @@ public class PostOffice {
      * Letter is added only if the letter's destination city matches the location of the office.
      */
     public void addLetter(Letter letter) {
-        if (letter.getDestinationCity() != null && letter.getAddress() != null) {
+        if (letter.getDestinationCity() != null && letter.getAddress() != null && letter.getRecipient() != null) {
             if (this.location.equals(letter.getDestinationCity())) {
                 this.lettersInOffice.add(letter);
             }

@@ -16,6 +16,7 @@ public class Letter {
     public String getDestinationCity() {
         return this.destinationCity;
     }
+
     public void setDestinationCity(String destinationCity) {
         this.destinationCity = destinationCity;
     }

@@ -53,7 +53,14 @@ public class Exam {
      * prefixExistsAgain("aaaa", 4) => false
      */
     public static boolean prefixExistsAgain(String str, int n) {
-        return false;
+        StringBuilder prefix = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            char a = str.charAt(i);
+            String b = Character.toString(a);
+            str.substring(i);
+            prefix.append(b);
+        }
+        return str.contains(prefix);
     }
 
 }

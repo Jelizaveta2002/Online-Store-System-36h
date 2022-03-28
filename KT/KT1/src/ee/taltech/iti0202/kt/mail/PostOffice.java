@@ -19,7 +19,7 @@ public class PostOffice {
      * Letter is added only if the letter's destination city matches the location of the office.
      */
     public void addLetter(Letter letter) {
-        if (letter.getDestinationCity() != null) {
+        if (letter.getDestinationCity() != null && letter.getAddress() != null) {
             if (this.location.equals(letter.getDestinationCity())) {
                 this.lettersInOffice.add(letter);
             }
@@ -40,7 +40,7 @@ public class PostOffice {
                 for (Postman man : this.postmenInOffice) {
                     char firstChar = man.getName().charAt(0);
                     String firstLetter = Character.toString(firstChar);
-                    if (firstLetter.equalsIgnoreCase(firstPost)) {
+                    if (firstLetter.equals(firstPost)) {
                         return;
                     }
                 }

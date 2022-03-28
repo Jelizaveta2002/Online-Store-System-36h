@@ -41,7 +41,8 @@ public class Postman {
      * Otherwise returns true and letter is added to postman.
      */
     public boolean addLetter(Letter letter) {
-        if (this.name != null && letter != null && letter.getAddress() != null && this.age != null) {
+        if (this.name != null && letter != null && !this.name.trim().isEmpty() && !letter.getAddress().trim().isEmpty()
+                && letter.getAddress() != null && this.age != null) {
             char nameChar = this.name.charAt(0);
             String name = Character.toString(nameChar);
             char nameLetterChar = letter.getAddress().charAt(0);

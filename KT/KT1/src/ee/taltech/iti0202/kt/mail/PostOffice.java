@@ -72,7 +72,6 @@ public class PostOffice {
      * If no postman can take the letter, then this letter remains in the office.
      */
     public void divideLetters() {
-        System.out.println(this.lettersInOffice);
         for (Postman man : this.postmenInOffice) {
             this.lettersInOffice.removeIf(man::addLetter);
         }

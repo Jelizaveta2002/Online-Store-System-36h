@@ -2,25 +2,34 @@ package ee.taltech.iti0202.kt.mail;
 
 public class Letter {
 
+    private String recipient;
+    private String destinationCity;
+    private String address;
     /**
      * Create a new letter with recipient, destination city and address.
      */
     public Letter(String recipient, String destinationCity, String address) {
+        this.recipient = recipient;
+        this.destinationCity = destinationCity;
+        this.address = address;
     }
     public String getDestinationCity() {
-        return null;
+        return this.destinationCity;
     }
     public void setDestinationCity(String destinationCity) {
+        this.destinationCity = destinationCity;
     }
     public String getAddress() {
-        return null;
+        return this.address;
     }
     public void setAddress(String address) {
+        this.address = address;
     }
     public String getRecipient() {
-        return null;
+        return this.recipient;
     }
     public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     /**
@@ -28,6 +37,6 @@ public class Letter {
      * The format is: City: %s, Address: %s, Recipient: %s
      */
     public String toString() {
-        return "";
+        return "City: " + this.destinationCity + "," + " Address: " + this.address + "," + " Recipient: " + this.recipient;
     }
 }

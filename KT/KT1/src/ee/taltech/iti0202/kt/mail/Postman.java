@@ -15,10 +15,10 @@ public class Postman {
         this.name = name;
         this.age = age;
         if (this.age >= 40) {
-            limitOfLetters = age - name.length();
+            this.limitOfLetters = age - name.length();
         }
         else {
-            limitOfLetters = age + name.length();
+            this.limitOfLetters = age + name.length();
         }
     }
 
@@ -27,7 +27,7 @@ public class Postman {
     }
 
     public List<Letter> getLetters() {
-        return letters;
+        return this.letters;
     }
 
 
@@ -42,7 +42,7 @@ public class Postman {
      * Otherwise returns true and letter is added to postman.
      */
     public boolean addLetter(Letter letter) {
-        if (this.name != null && !this.name.trim().isEmpty() && letter.getAddress() != null && !letter.getAddress().trim().isEmpty()) {
+        if (this.name != null && letter != null) {
             char nameChar = this.name.charAt(0);
             String name = Character.toString(nameChar);
             char nameLetterChar = letter.getAddress().charAt(0);

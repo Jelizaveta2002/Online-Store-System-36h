@@ -39,7 +39,7 @@ public class PostOffice {
                 for (Postman man : this.postmenInOffice) {
                     char firstChar = man.getName().charAt(0);
                     String firstLetter = Character.toString(firstChar);
-                    if (firstLetter.equals(firstPost)) {
+                    if (firstLetter.equalsIgnoreCase(firstPost)) {
                         return;
                     }
                 }

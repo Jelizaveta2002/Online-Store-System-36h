@@ -54,7 +54,7 @@ public class Exam {
      */
     public static boolean prefixExistsAgain(String str, int n) {
         if (!str.trim().isEmpty() && n >= 1 && n <= str.length()) {
-            String toCompare = str.substring(n);
+            String toCompare = str.substring(1);
             StringBuilder prefix = new StringBuilder();
             for (int i = 0; i < n; i++) {
                 char a = str.charAt(i);
@@ -65,4 +65,9 @@ public class Exam {
         }
         return false;
     }
+
+
+//    public static void main(String[] args) {
+//        System.out.println(prefixExistsAgain("aaaa", 3));
+//    }
 }

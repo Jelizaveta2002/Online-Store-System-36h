@@ -32,7 +32,7 @@ public class PostOffice {
      * Otherwise postman is added to the office.
      */
     public void addPostman(Postman postman) {
-        if (postman != null) {
+        if (postman != null && postman.getName() != null && !postman.getName().trim().isEmpty()) {
             if (!this.postmenInOffice.isEmpty()) {
                 char firstPostC = postman.getName().charAt(0);
                 String firstPost = Character.toString(firstPostC);

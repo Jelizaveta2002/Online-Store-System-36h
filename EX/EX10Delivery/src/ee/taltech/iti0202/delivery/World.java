@@ -22,7 +22,7 @@ public class World {
                 return Optional.empty();
             }
         }
-        if (otherLocations.size() == distances.size() && otherLocations.size() == listOfLocations.size()) {
+        if (otherLocations.size() == distances.size() && otherLocations.size() == listOfLocations.size() && name != null) {
             Location newLocation = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
                 newLocation.addDistance(otherLocations.get(i), distances.get(i));
@@ -35,17 +35,19 @@ public class World {
     }
 
     public Optional<Courier> addCourier(String name, String to) {
-        for (Courier courier : this.listOfCouriers) {
-            if (courier.getName().equals(name)) {
-                return Optional.empty();
+        if (name != null && to != null) {
+            for (Courier courier : this.listOfCouriers) {
+                if (courier.getName().equals(name)) {
+                    return Optional.empty();
+                }
             }
-        }
-        for (Location location : this.listOfLocations) {
-            if (location.getName().equals(to)) {
-                Courier newCourier = new Courier(name, location);
-                this.listOfCouriers.add(newCourier);
-                mapOfLocations.get(location).add(newCourier);
-                return Optional.of(newCourier);
+            for (Location location : this.listOfLocations) {
+                if (location.getName().equals(to)) {
+                    Courier newCourier = new Courier(name, location);
+                    this.listOfCouriers.add(newCourier);
+                    mapOfLocations.get(location).add(newCourier);
+                    return Optional.of(newCourier);
+                }
             }
         }
         return Optional.empty();

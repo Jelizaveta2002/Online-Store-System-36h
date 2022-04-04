@@ -7,7 +7,11 @@ import java.util.Optional;
 public class World {
     private ArrayList<Location> listOfLocations;
 
-    Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+    public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+        return Optional.empty();
+    }
+
+    public Optional<Courier> addCourier(String name, String to) {
         return Optional.empty();
     }
 

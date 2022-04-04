@@ -5,10 +5,16 @@ import java.util.Optional;
 public class Courier {
     private Location location;
     private Integer amountOfPackets;
+    private String name;
 
-    public Courier (Location location, Integer amountOfPackets) {
+    public Courier (String name, Location location, Integer amountOfPackets) {
+        this.name = name;
         this.location = location;
         this.amountOfPackets = amountOfPackets;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public Optional<Location> getLocation() {

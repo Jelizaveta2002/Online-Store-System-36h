@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class World {
-    private ArrayList<Location> listOfLocations;
-    private ArrayList<Courier> listOfCouriers;
+    private ArrayList<Location> listOfLocations = new ArrayList<>();
+    private ArrayList<Courier> listOfCouriers = new ArrayList<>();
     private HashMap<Location, ArrayList<Courier>> mapOfLocations = new HashMap<>();
 
 

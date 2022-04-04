@@ -19,7 +19,7 @@ public class World {
                 return Optional.empty();
             }
         }
-        if (otherLocations.size() == distances.size()) {
+        if (otherLocations.size() == distances.size() && otherLocations.size() == listOfLocations.size()) {
             Location newLocation = new Location(name);
             listOfLocations.add(newLocation);
             return Optional.of(newLocation);
@@ -52,6 +52,9 @@ public class World {
         return false;
     }
 
-    void tick() {
+    public void tick() {
+        for (Courier courier : this.listOfCouriers) {
+
+        }
     }
 }

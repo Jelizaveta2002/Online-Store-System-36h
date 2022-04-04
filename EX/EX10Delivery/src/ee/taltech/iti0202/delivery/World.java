@@ -45,6 +45,7 @@ public class World {
                 Courier newCourier = new Courier(name, location);
                 this.listOfCouriers.add(newCourier);
                 mapOfLocations.get(location).add(newCourier);
+                return Optional.of(newCourier);
             }
         }
         return Optional.empty();

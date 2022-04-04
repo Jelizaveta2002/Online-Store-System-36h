@@ -7,8 +7,8 @@ import java.util.Optional;
 public class Location {
     private String name;
     private Integer amountOfPackets;
-    private ArrayList<Packet> listOfPackets;
-    private HashMap<String, Integer> destinationDistances;
+    private ArrayList<Packet> listOfPackets = new ArrayList<>();
+    private HashMap<String, Integer> destinationDistances = new HashMap<>();
 
     public Location (String name) {
         this.name = name;

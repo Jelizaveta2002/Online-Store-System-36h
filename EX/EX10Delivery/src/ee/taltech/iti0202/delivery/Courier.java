@@ -6,6 +6,7 @@ public class Courier {
     private Location location;
     private Integer amountOfPackets;
     private String name;
+    private Strategy strategy;
 
     public Courier (String name, Location location) {
         this.name = name;
@@ -21,7 +22,7 @@ public class Courier {
     }
 
     public void setStrategy(Strategy strategy) {
-
+        this.strategy = strategy;
     }
 
     public Strategy getStrategy() {

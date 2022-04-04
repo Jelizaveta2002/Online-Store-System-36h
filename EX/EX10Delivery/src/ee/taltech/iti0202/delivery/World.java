@@ -42,7 +42,13 @@ public class World {
         return Optional.empty();
     }
 
-    boolean giveStrategy(String name, Strategy strategy) {
+    public boolean giveStrategy(String name, Strategy strategy) {
+        for (Courier courier : this.listOfCouriers) {
+            if (courier.getName().equals(name)) {
+                courier.setStrategy(strategy);
+                return true;
+            }
+        }
         return false;
     }
 

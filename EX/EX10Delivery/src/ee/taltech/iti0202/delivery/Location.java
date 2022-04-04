@@ -6,9 +6,8 @@ public class Location {
     private String name;
     private Integer amountOfPackets;
 
-    public Location (String name , Integer amountOfPackets) {
+    public Location (String name) {
         this.name = name;
-        this.amountOfPackets = amountOfPackets;
     }
 
     public String getNme() {

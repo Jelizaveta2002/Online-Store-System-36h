@@ -1,12 +1,15 @@
 package ee.taltech.iti0202.delivery;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 public class World {
     private ArrayList<Location> listOfLocations;
     private ArrayList<Courier> listOfCouriers;
+    private HashMap<Location, ArrayList<Courier>> mapOfLocations = new HashMap<>();
+
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         for (String location : otherLocations) {
@@ -21,7 +24,11 @@ public class World {
         }
         if (otherLocations.size() == distances.size() && otherLocations.size() == listOfLocations.size()) {
             Location newLocation = new Location(name);
+            for (int i = 0; i < otherLocations.size(); i++) {
+                newLocation.addDistance(otherLocations.get(i), distances.get(i));
+            }
             listOfLocations.add(newLocation);
+            mapOfLocations.put(newLocation, new ArrayList<>());
             return Optional.of(newLocation);
         }
         return Optional.empty();
@@ -37,6 +44,7 @@ public class World {
             if (location.getName().equals(to)) {
                 Courier newCourier = new Courier(name, location);
                 this.listOfCouriers.add(newCourier);
+                mapOfLocations.get(location).add(newCourier);
             }
         }
         return Optional.empty();

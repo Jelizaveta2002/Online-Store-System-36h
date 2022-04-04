@@ -20,7 +20,7 @@ public class Location {
 
     public Integer getDistanceTo(String name) {
         for (String destination : destinationDistances.keySet()) {
-            if (name.equals(destination)) {
+            if (name.equalsIgnoreCase(destination)) {
                 return destinationDistances.get(destination);
             }
         }

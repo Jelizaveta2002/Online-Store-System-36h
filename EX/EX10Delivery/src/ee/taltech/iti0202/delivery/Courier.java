@@ -26,7 +26,7 @@ public class Courier {
     }
 
     public Strategy getStrategy() {
-        return null;
+        return this.strategy;
     }
 
 }

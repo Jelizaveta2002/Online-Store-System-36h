@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public class World {
     private ArrayList<Location> listOfLocations;
+    private ArrayList<Courier> listOfCouriers;
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         for (String location : otherLocations) {
@@ -27,6 +28,17 @@ public class World {
     }
 
     public Optional<Courier> addCourier(String name, String to) {
+        for (Courier courier : this.listOfCouriers) {
+            if (courier.getName().equals(name)) {
+                return Optional.empty();
+            }
+        }
+        for (Location location : this.listOfLocations) {
+            if (location.getName().equals(to)) {
+                Courier newCourier = new Courier(name, location);
+                this.listOfCouriers.add(newCourier);
+            }
+        }
         return Optional.empty();
     }
 

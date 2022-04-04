@@ -7,10 +7,9 @@ public class Courier {
     private Integer amountOfPackets;
     private String name;
 
-    public Courier (String name, Location location, Integer amountOfPackets) {
+    public Courier (String name, Location location) {
         this.name = name;
         this.location = location;
-        this.amountOfPackets = amountOfPackets;
     }
 
     public String getName() {

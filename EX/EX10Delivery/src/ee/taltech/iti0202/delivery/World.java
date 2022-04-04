@@ -8,6 +8,21 @@ public class World {
     private ArrayList<Location> listOfLocations;
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+        for (String location : otherLocations) {
+            if (location.equals(name)) {
+                return Optional.empty();
+            }
+        }
+        for (Integer distance : distances) {
+            if (distance == null) {
+                return Optional.empty();
+            }
+        }
+        if (otherLocations.size() == distances.size()) {
+            Location newLocation = new Location(name);
+            listOfLocations.add(newLocation);
+            return Optional.of(newLocation);
+        }
         return Optional.empty();
     }
 

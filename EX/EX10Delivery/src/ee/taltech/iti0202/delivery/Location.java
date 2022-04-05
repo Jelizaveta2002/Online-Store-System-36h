@@ -7,7 +7,7 @@ import java.util.Optional;
 public class Location {
     private String name;
     private Integer amountOfPackets;
-    private ArrayList<Packet> listOfPackets = new ArrayList<>();
+    private HashMap<String, Packet> mapOfPackets = new HashMap<>();
     private HashMap<String, Integer> destinationDistances = new HashMap<>();
     private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
 
@@ -31,17 +31,14 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        if (packet != null) {
-            this.listOfPackets.add(packet);
-        }
+        mapOfPackets.put(packet.getName(), packet);
     }
 
     public Optional<Packet> getPacket(String name) {
-        for (Packet packet : this.listOfPackets) {
-            if (packet.getName().equals(name)) {
-                this.listOfPackets.remove(packet);
-                return Optional.of(packet);
-            }
+        if (mapOfPackets.containsKey(name)) {
+            Packet toFind = mapOfPackets.get(name);
+            mapOfPackets.remove(name);
+            return Optional.of(toFind);
         }
         return Optional.empty();
     }
@@ -50,7 +47,7 @@ public class Location {
         this.destinationDistances.put(location, distance);
     }
 
-    public ArrayList<Packet> getListOfPackets() {
-        return this.listOfPackets;
+    public HashMap<String, Packet> getMapOfPackets() {
+        return mapOfPackets;
     }
 }

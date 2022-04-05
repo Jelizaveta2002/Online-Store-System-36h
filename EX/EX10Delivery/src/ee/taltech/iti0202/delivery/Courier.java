@@ -32,7 +32,6 @@ public class Courier {
     }
 
     public void takePacketsFromLocation() {
-        this.listOfPackets.addAll(this.location.getListOfPackets());
     }
 
 }

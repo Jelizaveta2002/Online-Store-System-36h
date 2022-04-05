@@ -32,7 +32,9 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        this.listOfPackets.add(packet);
+        if (packet != null) {
+            this.listOfPackets.add(packet);
+        }
     }
 
     public Optional<Packet> getPacket(String name) {

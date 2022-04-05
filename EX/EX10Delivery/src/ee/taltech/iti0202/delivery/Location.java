@@ -50,4 +50,8 @@ public class Location {
     public void addDistance(String location, int distance) {
         this.destinationDistances.put(location, distance);
     }
+
+    public ArrayList<Packet> getListOfPackets() {
+        return this.listOfPackets;
+    }
 }

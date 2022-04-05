@@ -1,10 +1,12 @@
 package ee.taltech.iti0202.delivery;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class Courier {
     private Location location;
     private Integer amountOfPackets;
+    private ArrayList<Packet> listOfPackets = new ArrayList<>();
     private String name;
     private Strategy strategy;
 
@@ -27,6 +29,10 @@ public class Courier {
 
     public Strategy getStrategy() {
         return this.strategy;
+    }
+
+    public void takePacketsFromLocation() {
+        this.listOfPackets.addAll(this.location.getListOfPackets());
     }
 
 }

@@ -14,13 +14,17 @@ public class Location {
         this.name = name;
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
+    }
+
+    public HashMap<String, Integer> getDestinationDistances() {
+        return this.destinationDistances;
     }
 
     public Integer getDistanceTo(String name) {
         for (String destination : destinationDistances.keySet()) {
-            if (name.equalsIgnoreCase(destination)) {
+            if (name.equals(destination)) {
                 return destinationDistances.get(destination);
             }
         }

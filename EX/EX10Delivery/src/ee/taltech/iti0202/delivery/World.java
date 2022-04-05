@@ -22,10 +22,15 @@ public class World {
                 return Optional.empty();
             }
         }
-        if (otherLocations.size() == distances.size() && otherLocations.size() == listOfLocations.size() && name != null) {
+        if (otherLocations.size() == distances.size() && otherLocations.size() == this.listOfLocations.size() && name != null) {
             Location newLocation = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
                 newLocation.addDistance(otherLocations.get(i), distances.get(i));
+                for (Location location : this.listOfLocations) {
+                    if (location.getName().equals(otherLocations.get(i))) {
+                        location.addDistance(newLocation.getName(), distances.get(i));
+                    }
+                }
             }
             listOfLocations.add(newLocation);
             mapOfLocations.put(newLocation, new ArrayList<>());

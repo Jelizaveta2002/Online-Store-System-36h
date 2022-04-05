@@ -9,6 +9,7 @@ public class Location {
     private Integer amountOfPackets;
     private ArrayList<Packet> listOfPackets = new ArrayList<>();
     private HashMap<String, Integer> destinationDistances = new HashMap<>();
+    private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
 
     public Location (String name) {
         this.name = name;
@@ -23,10 +24,8 @@ public class Location {
     }
 
     public Integer getDistanceTo(String name) {
-        for (String destination : destinationDistances.keySet()) {
-            if (name.equals(destination)) {
-                return destinationDistances.get(destination);
-            }
+        if (destinationDistances.containsKey(name)) {
+            return destinationDistances.get(name);
         }
         return Integer.MAX_VALUE;
     }

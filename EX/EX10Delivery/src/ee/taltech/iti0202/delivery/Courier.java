@@ -81,7 +81,6 @@ public class Courier {
 
     public void setTarget(Location target) {
         this.target = target;
-        this.distanceToTarget = target.getDistanceTo(this.location.getName());
     }
 
     public Location getTarget() {

@@ -74,6 +74,7 @@ public class World {
                         }
                     }
                     courier.locationMakeNull();
+                    courier.justMove();
                 }
             }
         }

@@ -10,6 +10,7 @@ public class Location {
     private HashMap<String, Packet> mapOfPackets = new HashMap<>();
     private HashMap<String, Integer> destinationDistances = new HashMap<>();
     private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
+    private ArrayList<Packet> listOfPackets = new ArrayList<>();
 
     public Location (String name) {
         this.name = name;
@@ -32,6 +33,10 @@ public class Location {
 
     public void addPacket(Packet packet) {
         mapOfPackets.put(packet.getName(), packet);
+    }
+
+    public void removePacket(Packet packet) {
+        mapOfPackets.remove(packet.getName());
     }
 
     public Optional<Packet> getPacket(String name) {

@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class World {
     private HashMap<ee.taltech.iti0202.delivery.Location, ArrayList<ee.taltech.iti0202.delivery.Courier>> couriersOfLocations = new HashMap<>();
@@ -12,13 +9,9 @@ public class World {
 
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size()) {
+        Set<String> otherLocationSet = new HashSet<String>(otherLocations);
+        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocationSet.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
-        }
-        for (String location : mapOfLocationName.keySet()) {
-            if (!otherLocations.contains(location)) {
-                return Optional.empty();
-            }
         }
         int counter = otherLocations.size();
         if (otherLocations.size() != mapOfLocationName.size()) {
@@ -26,6 +19,7 @@ public class World {
         }
         Location newLocation = new Location(name);
         for (int i = 0; i < counter; i++) {
+
             String destination = otherLocations.get(i);
             newLocation.addDistance(destination, distances.get(i));
             mapOfLocationName.get(destination).addDistance(newLocation.getName(), distances.get(i));

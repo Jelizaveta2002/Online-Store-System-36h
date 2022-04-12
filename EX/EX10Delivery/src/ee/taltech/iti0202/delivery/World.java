@@ -15,12 +15,9 @@ public class World {
         if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || !otherLocations.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
         }
-        int counter;
+        int counter = otherLocations.size();
         if (otherLocations.size() != mapOfLocationName.size()) {
             counter = otherLocations.size() - mapOfLocationName.size();
-        }
-        else {
-            counter = otherLocations.size();
         }
         Location newLocation = new Location(name);
         for (int i = 0; i < counter; i++) {

@@ -33,7 +33,7 @@ public class Location {
         mapOfPackets.put(packet.getName(), packet);
     }
 
-    public Optional<ee.taltech.iti0202.delivery.Packet> getPacket(String name) {
+    public Optional<Packet> getPacket(String name) {
         if (mapOfPackets.containsKey(name)) {
             ee.taltech.iti0202.delivery.Packet toFind = mapOfPackets.get(name);
             mapOfPackets.remove(name);

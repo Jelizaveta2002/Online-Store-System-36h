@@ -11,8 +11,8 @@ public class World {
     private HashMap<String, ee.taltech.iti0202.delivery.Courier> mapOfCourierName = new HashMap<>();
 
 
-    public Optional<ee.taltech.iti0202.delivery.Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocations.size() < mapOfLocationName.size()) {
+    public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size()) {
             return Optional.empty();
         }
         for (String location : mapOfLocationName.keySet()) {

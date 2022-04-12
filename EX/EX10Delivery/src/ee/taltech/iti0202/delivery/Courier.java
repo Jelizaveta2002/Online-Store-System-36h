@@ -91,9 +91,6 @@ public class Courier {
         this.location = null;
     }
 
-    public void justMove() {
-        distanceToTarget -= 1;
-    }
 
     public void moveToTarget() {
         if (this.distanceToTarget != 0) {

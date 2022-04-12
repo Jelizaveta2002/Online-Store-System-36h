@@ -9,8 +9,8 @@ public class World {
 
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-        Set<String> otherLocationSet = new HashSet<String>(otherLocations);
-        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocationSet.containsAll(mapOfLocationName.keySet())) {
+        Set<String> otherLocationSet = new HashSet<>(otherLocations);
+        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || !otherLocationSet.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
         }
         int counter = otherLocations.size();

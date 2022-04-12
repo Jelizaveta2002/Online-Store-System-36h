@@ -59,6 +59,7 @@ public class World {
                     Action actionToTake = courier.getStrategy().getAction();
                     courier.setAction(actionToTake);
                     courier.setTarget(courier.getAction().getGoTo());
+                    courier.setDistanceToTarget(courier.getTarget().getDistanceTo(courier.getLocation().get().getName()));
                     for (String packet : courier.getAction().getTake()) {
                         if (courier.getLocation().get().getMapOfPackets().containsKey(packet)) {
                             courier.addPacket(courier.getLocation().get().getMapOfPackets().get(packet));

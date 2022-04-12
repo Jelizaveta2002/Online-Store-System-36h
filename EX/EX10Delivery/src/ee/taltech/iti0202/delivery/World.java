@@ -12,11 +12,18 @@ public class World {
 
 
     public Optional<ee.taltech.iti0202.delivery.Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocations.size() != mapOfLocationName.size()) {
+        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || !otherLocations.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
         }
-        ee.taltech.iti0202.delivery.Location newLocation = new ee.taltech.iti0202.delivery.Location(name);
-        for (int i = 0; i < otherLocations.size(); i++) {
+        int counter;
+        if (otherLocations.size() != mapOfLocationName.size()) {
+            counter = otherLocations.size() - mapOfLocationName.size();
+        }
+        else {
+            counter = otherLocations.size();
+        }
+        Location newLocation = new Location(name);
+        for (int i = 0; i < counter; i++) {
             String destination = otherLocations.get(i);
             newLocation.addDistance(destination, distances.get(i));
             mapOfLocationName.get(destination).addDistance(newLocation.getName(), distances.get(i));

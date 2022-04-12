@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Action {
-    private Location location;
+    private ee.taltech.iti0202.delivery.Location location;
     private ArrayList<String> take = new ArrayList<>();
     private ArrayList<String> deposit = new ArrayList<>();
 
-    public Action(Location location) {
+    public Action(ee.taltech.iti0202.delivery.Location location) {
         this.location = location;
     }
 
@@ -20,7 +20,7 @@ public class Action {
         return this.take;
     }
 
-    public Location getGoTo() {
+    public ee.taltech.iti0202.delivery.Location getGoTo() {
         return this.location;
     }
 

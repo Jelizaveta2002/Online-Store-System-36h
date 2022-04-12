@@ -2,9 +2,9 @@ package ee.taltech.iti0202.delivery;
 
 public class Packet {
     private String name;
-    private Location target;
+    private ee.taltech.iti0202.delivery.Location target;
 
-    public Packet(String name, Location target) {
+    public Packet(String name, ee.taltech.iti0202.delivery.Location target) {
         this.name = name;
         this.target = target;
     }
@@ -13,7 +13,7 @@ public class Packet {
         return this.name;
     }
 
-    public Location getTarget() {
+    public ee.taltech.iti0202.delivery.Location getTarget() {
         return this.target;
     }
 }

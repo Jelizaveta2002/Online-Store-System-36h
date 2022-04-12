@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class Courier {
-    private Location location;
+    private ee.taltech.iti0202.delivery.Location location;
     private Integer amountOfPackets;
-    private ArrayList<Packet> listOfPackets = new ArrayList<>();
+    private ArrayList<ee.taltech.iti0202.delivery.Packet> listOfPackets = new ArrayList<>();
     private String name;
-    private Strategy strategy;
+    private ee.taltech.iti0202.delivery.Strategy strategy;
 
-    public Courier (String name, Location location) {
+    public Courier (String name, ee.taltech.iti0202.delivery.Location location) {
         this.name = name;
         this.location = location;
     }
@@ -19,15 +19,15 @@ public class Courier {
         return this.name;
     }
 
-    public Optional<Location> getLocation() {
+    public Optional<ee.taltech.iti0202.delivery.Location> getLocation() {
         return Optional.empty();
     }
 
-    public void setStrategy(Strategy strategy) {
+    public void setStrategy(ee.taltech.iti0202.delivery.Strategy strategy) {
         this.strategy = strategy;
     }
 
-    public Strategy getStrategy() {
+    public ee.taltech.iti0202.delivery.Strategy getStrategy() {
         return this.strategy;
     }
 

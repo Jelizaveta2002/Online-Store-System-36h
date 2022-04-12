@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class World {
-    private HashMap<Location, ArrayList<Courier>> couriersOfLocations = new HashMap<>();
-    private HashMap<String, Location> mapOfLocationName = new HashMap<>();
-    private HashMap<String, Courier> mapOfCourierName = new HashMap<>();
+    private HashMap<ee.taltech.iti0202.delivery.Location, ArrayList<ee.taltech.iti0202.delivery.Courier>> couriersOfLocations = new HashMap<>();
+    private HashMap<String, ee.taltech.iti0202.delivery.Location> mapOfLocationName = new HashMap<>();
+    private HashMap<String, ee.taltech.iti0202.delivery.Courier> mapOfCourierName = new HashMap<>();
 
 
-    public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+    public Optional<ee.taltech.iti0202.delivery.Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocations.size() != mapOfLocationName.size()) {
             return Optional.empty();
         }
-        Location newLocation = new Location(name);
+        ee.taltech.iti0202.delivery.Location newLocation = new ee.taltech.iti0202.delivery.Location(name);
         for (int i = 0; i < otherLocations.size(); i++) {
             String destination = otherLocations.get(i);
             newLocation.addDistance(destination, distances.get(i));
@@ -27,7 +27,7 @@ public class World {
     }
 
 
-    public Optional<Courier> addCourier(String name, String to) {
+    public Optional<ee.taltech.iti0202.delivery.Courier> addCourier(String name, String to) {
         if (name != null && to != null && !mapOfCourierName.containsKey(name) && mapOfLocationName.containsKey(to)) {
             Courier newCourier = new Courier(name, mapOfLocationName.get(to));
             mapOfCourierName.put(name, newCourier);

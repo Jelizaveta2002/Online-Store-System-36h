@@ -1,13 +1,12 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
 public class Location {
     private String name;
     private Integer amountOfPackets;
-    private HashMap<String, Packet> mapOfPackets = new HashMap<>();
+    private HashMap<String, ee.taltech.iti0202.delivery.Packet> mapOfPackets = new HashMap<>();
     private HashMap<String, Integer> destinationDistances = new HashMap<>();
     private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
 
@@ -30,13 +29,13 @@ public class Location {
         return Integer.MAX_VALUE;
     }
 
-    public void addPacket(Packet packet) {
+    public void addPacket(ee.taltech.iti0202.delivery.Packet packet) {
         mapOfPackets.put(packet.getName(), packet);
     }
 
-    public Optional<Packet> getPacket(String name) {
+    public Optional<ee.taltech.iti0202.delivery.Packet> getPacket(String name) {
         if (mapOfPackets.containsKey(name)) {
-            Packet toFind = mapOfPackets.get(name);
+            ee.taltech.iti0202.delivery.Packet toFind = mapOfPackets.get(name);
             mapOfPackets.remove(name);
             return Optional.of(toFind);
         }
@@ -47,7 +46,7 @@ public class Location {
         this.destinationDistances.put(location, distance);
     }
 
-    public HashMap<String, Packet> getMapOfPackets() {
+    public HashMap<String, ee.taltech.iti0202.delivery.Packet> getMapOfPackets() {
         return mapOfPackets;
     }
 }

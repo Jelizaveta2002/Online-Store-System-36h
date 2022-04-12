@@ -15,8 +15,8 @@ public class World {
         if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || otherLocations.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
         }
-        for (String location : mapOfLocationName.keySet()) {
-            if (!otherLocations.contains(location)) {
+        for (String location : otherLocations) {
+            if (!mapOfLocationName.containsKey(location)) {
                 return Optional.empty();
             }
         }

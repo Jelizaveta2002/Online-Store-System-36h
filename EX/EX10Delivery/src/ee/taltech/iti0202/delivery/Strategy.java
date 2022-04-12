@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.delivery;
 
 public interface Strategy {
-    Action getAction();
+    public default Action getAction() {
+        return null;
+    }
 }

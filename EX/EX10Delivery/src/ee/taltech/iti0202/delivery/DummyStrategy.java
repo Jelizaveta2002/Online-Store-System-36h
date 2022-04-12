@@ -1,12 +1,13 @@
 package ee.taltech.iti0202.delivery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DummyStrategy implements Strategy {
-    private List<Action> actions;
+    private final ArrayList<Action> actions;
 
     public DummyStrategy(List<Action> actions) {
-        this.actions = actions;
+        this.actions = new ArrayList<>(actions);
     }
 
     @Override

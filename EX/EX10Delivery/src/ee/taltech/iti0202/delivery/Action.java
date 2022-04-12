@@ -8,7 +8,7 @@ public class Action {
     private ArrayList<String> take = new ArrayList<>();
     private ArrayList<String> deposit = new ArrayList<>();
 
-    public Action(ee.taltech.iti0202.delivery.Location location) {
+    public Action(Location location) {
         this.location = location;
     }
 
@@ -20,7 +20,7 @@ public class Action {
         return this.take;
     }
 
-    public ee.taltech.iti0202.delivery.Location getGoTo() {
+    public Location getGoTo() {
         return this.location;
     }
 

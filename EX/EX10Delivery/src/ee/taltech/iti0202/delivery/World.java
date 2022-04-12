@@ -56,20 +56,20 @@ public class World {
                     courier.moveToTarget();
                 }
                 else {
-                    courier.setAction(courier.getStrategy().getAction());
-                    courier.setTarget(courier.getAction().getGoTo());
-                    List<String> listOfPacksToTake = courier.getAction().getTake();
-                    List<String> listOfPacksToLeave = courier.getAction().getDeposit();
-                    for (String packet : courier.getLocation().get().getMapOfPackets().keySet()) {
-                        if (listOfPacksToTake.contains(packet)) {
-                            Packet packetToTake = courier.getLocation().get().getMapOfPackets().get(packet);
-                            courier.addPacket(packetToTake);
-                            listOfPacksToTake.remove(packet);
+                    Action actionToTake = courier.getStrategy().getAction();
+                    courier.setAction(actionToTake);
+                    courier.setTarget(actionToTake.getGoTo());
+                    List<String> listOfPacksToTake = actionToTake.getTake();
+                    List<String> listOfPacksToLeave = actionToTake.getDeposit();
+                    for (String packet : courier.getAction().getTake()) {
+                        if (courier.getLocation().get().getMapOfPackets().containsKey(packet)) {
+                            courier.addPacket(courier.getLocation().get().getMapOfPackets().get(packet));
+                            courier.getLocation().get().getMapOfPackets().remove(packet);
                         }
                     }
-                    for (String packet : courier.getMapOfPackets().keySet()) {
-                        if (listOfPacksToLeave.contains(packet)) {
-                            courier.getLocation().get().getMapOfPackets().put(packet, courier.getMapOfPackets().get(packet));
+                    for (String packet : courier.getAction().getDeposit()) {
+                        if (courier.getMapOfPackets().containsKey(packet)) {
+                            courier.getLocation().get().addPacket(courier.getMapOfPackets().get(packet));
                             courier.getMapOfPackets().remove(packet);
                         }
                     }

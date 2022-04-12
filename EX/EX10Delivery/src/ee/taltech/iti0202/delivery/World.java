@@ -49,6 +49,33 @@ public class World {
     }
 
     public void tick() {
-
+        for (String courierName : mapOfCourierName.keySet()) {
+            Courier courier = mapOfCourierName.get(courierName);
+            if (courier.getStrategy() != null) {
+                if (courier.getLocation().isEmpty()) {
+                    courier.moveToTarget();
+                }
+                else {
+                    courier.setAction(courier.getStrategy().getAction());
+                    courier.setTarget(courier.getAction().getGoTo());
+                    List<String> listOfPacksToTake = courier.getAction().getTake();
+                    List<String> listOfPacksToLeave = courier.getAction().getDeposit();
+                    for (String packet : courier.getLocation().get().getMapOfPackets().keySet()) {
+                        if (listOfPacksToTake.contains(packet)) {
+                            Packet packetToTake = courier.getLocation().get().getMapOfPackets().get(packet);
+                            courier.addPacket(packetToTake);
+                            listOfPacksToTake.remove(packet);
+                        }
+                    }
+                    for (String packet : courier.getMapOfPackets().keySet()) {
+                        if (listOfPacksToLeave.contains(packet)) {
+                            courier.getLocation().get().getMapOfPackets().put(packet, courier.getMapOfPackets().get(packet));
+                            courier.getMapOfPackets().remove(packet);
+                        }
+                    }
+                    courier.locationMakeNull();
+                }
+            }
+        }
     }
 }

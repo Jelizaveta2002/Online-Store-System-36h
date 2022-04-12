@@ -24,6 +24,10 @@ public class Courier {
         return this.name;
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public Optional<Location> getLocation() {
         if (location != null) {
             return Optional.of(location);
@@ -81,7 +85,7 @@ public class Courier {
 
     public void setTarget(Location target) {
         this.target = target;
-        //this.distanceToTarget = target.getDistanceTo(this.location.getName());
+        this.distanceToTarget = target.getDistanceTo(this.location.getName());
     }
 
     public Location getTarget() {
@@ -92,6 +96,10 @@ public class Courier {
         this.location = null;
     }
 
+    public void removePacket(String packet) {
+        this.mapOfPackets.remove(packet);
+    }
+
 
     public void moveToTarget() {
         if (this.distanceToTarget != 0) {
@@ -99,7 +107,6 @@ public class Courier {
         }
         else {
             this.location = this.target;
-            this.target = null;
         }
     }
 }

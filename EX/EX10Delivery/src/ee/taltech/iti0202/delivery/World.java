@@ -51,27 +51,26 @@ public class World {
     public void tick() {
         for (String courierName : mapOfCourierName.keySet()) {
             Courier courier = mapOfCourierName.get(courierName);
-            if (courier.getLocation().isEmpty()) {
-                courier.moveToTarget();
-            }
-            else {
-                Action actionToTake = courier.getStrategy().getAction();
-                courier.setAction(actionToTake);
-                courier.setTarget(courier.getAction().getGoTo());
-                for (String packet : courier.getAction().getTake()) {
-                    if (courier.getLocation().get().getMapOfPackets().containsKey(packet)) {
-                        courier.addPacket(courier.getLocation().get().getMapOfPackets().get(packet));
-                        courier.getLocation().get().getMapOfPackets().remove(packet);
-                    }
-                }
-                for (String packet : courier.getAction().getDeposit()) {
+            if (courier.getLocation().isPresent()) {
+                Location location = courier.getLocation().get();
+                Action action = courier.getStrategy().getAction();
+
+                for (String packet : action.getDeposit()) {
                     if (courier.getMapOfPackets().containsKey(packet)) {
-                        courier.getLocation().get().addPacket(courier.getMapOfPackets().get(packet));
-                        courier.getMapOfPackets().remove(packet);
+                        location.addPacket(courier.getMapOfPackets().get(packet));
+                        courier.removePacket(packet);
                     }
                 }
-                courier.locationMakeNull();
+                for (String packet : action.getTake()) {
+                    if (location.getMapOfPackets().containsKey(packet)) {
+                        courier.getMapOfPackets().put(packet, location.getMapOfPackets().get(packet));
+                        location.removePacket(location.getMapOfPackets().get(packet));
+                    }
+                }
+                courier.setTarget(action.getGoTo());
+                courier.setLocation(null);
             }
+            courier.moveToTarget();
         }
     }
 }

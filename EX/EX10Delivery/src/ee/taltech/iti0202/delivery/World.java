@@ -58,9 +58,7 @@ public class World {
                 else {
                     Action actionToTake = courier.getStrategy().getAction();
                     courier.setAction(actionToTake);
-                    courier.setTarget(actionToTake.getGoTo());
-                    List<String> listOfPacksToTake = actionToTake.getTake();
-                    List<String> listOfPacksToLeave = actionToTake.getDeposit();
+                    courier.setTarget(courier.getAction().getGoTo());
                     for (String packet : courier.getAction().getTake()) {
                         if (courier.getLocation().get().getMapOfPackets().containsKey(packet)) {
                             courier.addPacket(courier.getLocation().get().getMapOfPackets().get(packet));

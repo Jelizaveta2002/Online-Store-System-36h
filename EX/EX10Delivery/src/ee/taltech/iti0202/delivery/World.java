@@ -10,8 +10,8 @@ import java.util.HashSet;
 
 public class World {
     private HashMap<Location, ArrayList<Courier>> couriersOfLocations = new HashMap<>();
-    private HashMap<String,Location> mapOfLocationName = new HashMap<>();
-    private HashMap<String,Courier> mapOfCourierName = new HashMap<>();
+    private HashMap<String, Location> mapOfLocationName = new HashMap<>();
+    private HashMap<String, Courier> mapOfCourierName = new HashMap<>();
 
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
@@ -60,8 +60,7 @@ public class World {
             Courier courier = mapOfCourierName.get(courierName);
             if (courier.getLocation().isEmpty()) {
                 courier.moveToTarget();
-            }
-            else {
+            } else {
                 Action actionToTake = courier.getStrategy().getAction();
                 courier.setAction(actionToTake);
                 courier.setTarget(courier.getAction().getGoTo());

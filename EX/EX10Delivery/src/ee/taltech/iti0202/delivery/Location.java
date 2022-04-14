@@ -2,13 +2,14 @@ package ee.taltech.iti0202.delivery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Optional;
 
 public class Location {
     private String name;
     private Integer amountOfPackets;
     private HashMap<String, Packet> mapOfPackets = new HashMap<>();
-    private HashMap<String, Integer> destinationDistances = new HashMap<>();
+    private LinkedHashMap<String, Integer> destinationDistances = new LinkedHashMap<>();
     private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
     private ArrayList<Packet> listOfPackets = new ArrayList<>();
 

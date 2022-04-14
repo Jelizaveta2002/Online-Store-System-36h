@@ -2,13 +2,14 @@ package ee.taltech.iti0202.delivery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Optional;
 
 public class Courier {
     private Location location;
     private Integer timeToGo;
     private Integer amountOfPackets;
-    private HashMap<String, Packet> mapOfPackets = new HashMap<>();
+    private LinkedHashMap<String, Packet> mapOfPackets = new LinkedHashMap<>();
     private String name;
     private Strategy strategy;
     private Action currentAction;
@@ -85,7 +86,7 @@ public class Courier {
 
     public void setTarget(Location target) {
         this.target = target;
-        this.distanceToTarget = target.getDistanceTo(this.location.getName());
+        this.distanceToTarget = target.getDistanceTo(this.location.getName()) - 1;
     }
 
     public Location getTarget() {
@@ -105,7 +106,7 @@ public class Courier {
         if (this.distanceToTarget != 0) {
             distanceToTarget -= 1;
         }
-        else {
+        if (this.distanceToTarget == 0){
             this.location = this.target;
         }
     }

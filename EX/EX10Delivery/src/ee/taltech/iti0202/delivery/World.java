@@ -1,16 +1,23 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.HashSet;
 
 public class World {
-    private HashMap<ee.taltech.iti0202.delivery.Location, ArrayList<ee.taltech.iti0202.delivery.Courier>> couriersOfLocations = new HashMap<>();
-    private HashMap<String, ee.taltech.iti0202.delivery.Location> mapOfLocationName = new HashMap<>();
-    private HashMap<String, ee.taltech.iti0202.delivery.Courier> mapOfCourierName = new HashMap<>();
+    private HashMap<Location, ArrayList<Courier>> couriersOfLocations = new HashMap<>();
+    private HashMap<String,Location> mapOfLocationName = new HashMap<>();
+    private HashMap<String,Courier> mapOfCourierName = new HashMap<>();
 
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         Set<String> otherLocationSet = new HashSet<>(otherLocations);
-        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size() || !otherLocationSet.containsAll(mapOfLocationName.keySet())) {
+        if (mapOfLocationName.containsKey(name) || otherLocations.size() != distances.size()
+                || !otherLocationSet.containsAll(mapOfLocationName.keySet())) {
             return Optional.empty();
         }
         int counter = otherLocations.size();

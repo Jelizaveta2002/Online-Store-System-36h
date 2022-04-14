@@ -13,7 +13,7 @@ public class Location {
     private HashMap<String, Location> destinationDistancesNames = new HashMap<>();
     private ArrayList<Packet> listOfPackets = new ArrayList<>();
 
-    public Location (String name) {
+    public Location(String name) {
         this.name = name;
     }
 

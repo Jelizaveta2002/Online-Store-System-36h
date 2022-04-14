@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Optional;
@@ -16,7 +15,7 @@ public class Courier {
     private Integer distanceToTarget = 0;
     private Location target;
 
-    public Courier (String name, Location location) {
+    public Courier(String name, Location location) {
         this.name = name;
         this.location = location;
     }
@@ -106,7 +105,7 @@ public class Courier {
         if (this.distanceToTarget != 0) {
             distanceToTarget -= 1;
         }
-        if (this.distanceToTarget == 0){
+        if (this.distanceToTarget == 0) {
             this.location = this.target;
         }
     }

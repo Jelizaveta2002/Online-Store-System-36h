@@ -45,7 +45,7 @@ public final class Database {
                 throw new IllegalArgumentException();
             }
             else {
-                component.increase(amount);
+                component.setAmount(amount);
             }
         }
         else {

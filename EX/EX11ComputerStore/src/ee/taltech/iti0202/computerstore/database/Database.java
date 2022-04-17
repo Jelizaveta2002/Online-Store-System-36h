@@ -85,17 +85,17 @@ public final class Database {
     }
 
     public void saveToFile(String location) {
-        Gson gson = new Gson();
-
-        String json = gson.toJson(components);
-        try {
-            FileWriter fWriter = new FileWriter(location);
-            fWriter.write(json);
-            fWriter.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Gson gson = new Gson();
+//
+//        String json = gson.toJson(components);
+//        try {
+//            FileWriter fWriter = new FileWriter(location);
+//            fWriter.write(json);
+//            fWriter.close();
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void loadFromFile(String location) {

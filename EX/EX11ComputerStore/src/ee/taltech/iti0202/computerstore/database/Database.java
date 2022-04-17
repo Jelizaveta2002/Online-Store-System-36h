@@ -86,6 +86,9 @@ public final class Database {
     }
 
     public void resetEntireDatabase() {
+        for(Component component : components.values()) {
+            component.setId(0);
+        }
         this.components.clear();
     }
 

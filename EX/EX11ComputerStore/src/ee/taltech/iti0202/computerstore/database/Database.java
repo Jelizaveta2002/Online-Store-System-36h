@@ -21,12 +21,11 @@ public final class Database {
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
-        Integer componentId = component.getId();
-        if (components.containsKey(componentId)) {
+        if (components.containsKey(component.getId())) {
             throw new ProductAlreadyExistsException();
         }
         else {
-            components.put(componentId, component);
+            components.put(component.getId(), component);
         }
     }
 

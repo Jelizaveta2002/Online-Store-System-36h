@@ -9,8 +9,12 @@ import java.util.*;
 public class Database {
     private final Map<Integer, Component> components = new HashMap<>();
 
-    public static Database getInstance() {
-        return null;
+    private Database() {
+
+    }
+
+    public Database getInstance() {
+        return this;
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {

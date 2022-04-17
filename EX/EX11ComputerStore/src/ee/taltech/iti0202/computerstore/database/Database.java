@@ -21,6 +21,11 @@ final class Database {
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
+        Integer componentId = component.getId();
+        if (components.containsKey(componentId)) {
+            throw new ProductAlreadyExistsException();
+        }
+        components.put(componentId, component);
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {

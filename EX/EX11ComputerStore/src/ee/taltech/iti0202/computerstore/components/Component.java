@@ -2,7 +2,7 @@ package ee.taltech.iti0202.computerstore.components;
 import java.math.BigDecimal;
 
 public class Component {
-    static int helper;
+    private static int helper = 0;
     private int id;
     private String name;
     private Type type;
@@ -17,21 +17,18 @@ public class Component {
     }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints, int powerConsumption) {
-        this.id = getAndIncrementNextId();
+        this.id = helper;
         this.name = name;
         this.type = type;
         this.price = price;
         this.manufacturer = manufacturer;
         this.performancePoints = performancePoints;
         this.powerConsumption = powerConsumption;
-    }
-
-    public static int getAndIncrementNextId() {
-        return helper++;
+        helper++;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {

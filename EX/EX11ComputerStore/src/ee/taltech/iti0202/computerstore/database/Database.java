@@ -29,6 +29,10 @@ public final class Database {
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
+        if (components.containsKey(id)) {
+            components.keySet().remove(id);
+        }
+        throw new ProductNotFoundException();
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {

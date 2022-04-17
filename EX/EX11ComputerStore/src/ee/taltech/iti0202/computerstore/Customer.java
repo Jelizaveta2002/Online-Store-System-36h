@@ -34,4 +34,16 @@ public class Customer {
     public List<Component> getComponents() {
         return components;
     }
+
+    public void addComponent(Component component) {
+        components.add(component);
+    }
+
+    public void decreaseBalance(BigDecimal minus) {
+        balance = balance.subtract(minus);
+    }
+
+    public void increaseBalance(BigDecimal plus) {
+        balance = balance.add(plus);
+    }
 }

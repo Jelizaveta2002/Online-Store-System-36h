@@ -25,6 +25,7 @@ public final class Database {
             throw new ProductAlreadyExistsException();
         }
         else {
+            component.setDatabase(this);
             components.put(component.getId(), component);
         }
     }

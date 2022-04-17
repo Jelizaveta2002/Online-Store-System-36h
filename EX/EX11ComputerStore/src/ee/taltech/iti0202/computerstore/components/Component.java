@@ -1,4 +1,6 @@
 package ee.taltech.iti0202.computerstore.components;
+import ee.taltech.iti0202.computerstore.database.Database;
+
 import java.math.BigDecimal;
 
 public class Component {
@@ -11,6 +13,7 @@ public class Component {
     private String manufacturer;
     private int performancePoints;
     private int powerConsumption;
+    private Database database;
 
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
@@ -33,6 +36,14 @@ public class Component {
 
     public void decrease(int amountToAdd) {
         amount -= amountToAdd;
+    }
+
+    public void setDatabase(Database newDataBase) {
+        database = newDataBase;
+    }
+
+    public Database getDatabase() {
+        return database;
     }
 
     public int getId() {

@@ -13,8 +13,8 @@ public class Database {
 
     }
 
-    public Database getInstance() {
-        return this;
+    public static Database getInstance() {
+        return null;
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {

@@ -10,6 +10,9 @@ import java.math.BigDecimal;
 
 public class Store {
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
+        if (Math.rint(profitMargin.doubleValue()) < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,

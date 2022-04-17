@@ -42,7 +42,7 @@ public final class Database {
     }
 
     public Map<Integer, Component> getComponents() {
-        return null;
+        return this.components;
     }
 
     public void resetEntireDatabase() {

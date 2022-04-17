@@ -31,6 +31,10 @@ public class Component {
         amount += amountToAdd;
     }
 
+    public void decrease(int amountToAdd) {
+        amount -= amountToAdd;
+    }
+
     public int getId() {
         return id;
     }

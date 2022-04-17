@@ -55,6 +55,21 @@ public final class Database {
     }
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
+        if (components.containsKey(id)) {
+            Component component = components.get(id);
+            if (amount <= 0) {
+                throw new IllegalArgumentException();
+            }
+            if (amount > component.getAmount()) {
+                throw new OutOfStockException();
+            }
+            else {
+                component.decrease(amount); //setAmount
+            }
+        }
+        else {
+            throw new ProductNotFoundException();
+        }
     }
 
     public Map<Integer, Component> getComponents() {
@@ -62,6 +77,7 @@ public final class Database {
     }
 
     public void resetEntireDatabase() {
+        this.components.clear();
     }
 
     public void saveToFile(String location) {

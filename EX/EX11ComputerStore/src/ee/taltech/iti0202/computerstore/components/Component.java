@@ -27,6 +27,10 @@ public class Component {
         helper++;
     }
 
+    public void increase(int amountToAdd) {
+        amount += amountToAdd;
+    }
+
     public int getId() {
         return id;
     }

@@ -31,7 +31,7 @@ public final class Database {
 
     public void deleteComponent(int id) throws ProductNotFoundException {
         if (components.containsKey(id)) {
-            components.keySet().remove(id);
+            components.remove(id);
         }
         else {
             throw new ProductNotFoundException();
@@ -39,6 +39,19 @@ public final class Database {
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
+        if (components.containsKey(id)) {
+            Component component = components.get(id);
+            if (amount <= 0) {
+                throw new IllegalArgumentException();
+            }
+            else {
+                component.increase(amount);
+            }
+        }
+        else {
+            throw new ProductNotFoundException();
+        }
+
     }
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {

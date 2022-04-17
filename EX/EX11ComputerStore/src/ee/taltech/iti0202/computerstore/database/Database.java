@@ -1,12 +1,17 @@
 package ee.taltech.iti0202.computerstore.database;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ee.taltech.iti0202.computerstore.components.Component;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public final class Database {
@@ -85,17 +90,14 @@ public final class Database {
     }
 
     public void saveToFile(String location) {
-//        Gson gson = new Gson();
-//
-//        String json = gson.toJson(components);
-//        try {
-//            FileWriter fWriter = new FileWriter(location);
-//            fWriter.write(json);
-//            fWriter.close();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Path path = Paths.get(location);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            System.out.println("IOException:" + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void loadFromFile(String location) {

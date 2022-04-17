@@ -6,7 +6,7 @@ import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 import java.util.*;
 
-final class Database {
+public final class Database {
     private final Map<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 

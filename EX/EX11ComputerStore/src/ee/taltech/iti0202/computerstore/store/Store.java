@@ -9,10 +9,17 @@ import java.util.List;
 import java.math.BigDecimal;
 
 public class Store {
+    private  String name;
+    private BigDecimal balance;
+    private BigDecimal profitMargin;
+
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
         if (Math.rint(profitMargin.doubleValue()) < 1) {
             throw new IllegalArgumentException();
         }
+        this.name = name;
+        this.balance = balance;
+        this.profitMargin = profitMargin;
     }
 
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,

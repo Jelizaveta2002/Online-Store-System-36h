@@ -22,7 +22,7 @@ public final class Database {
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
         Integer componentId = component.getId();
-        if (components.containsKey(componentId)) {
+        if (components.containsKey(componentId) || components.containsValue(component)) {
             throw new ProductAlreadyExistsException();
         }
         components.put(componentId, component);

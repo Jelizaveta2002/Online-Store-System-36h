@@ -25,14 +25,18 @@ public final class Database {
         if (components.containsKey(componentId)) {
             throw new ProductAlreadyExistsException();
         }
-        components.put(componentId, component);
+        else {
+            components.put(componentId, component);
+        }
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
         if (components.containsKey(id)) {
             components.keySet().remove(id);
         }
-        throw new ProductNotFoundException();
+        else {
+            throw new ProductNotFoundException();
+        }
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {

@@ -19,6 +19,14 @@ public class Customer {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
     public BigDecimal getBalance() {
         return balance;
     }

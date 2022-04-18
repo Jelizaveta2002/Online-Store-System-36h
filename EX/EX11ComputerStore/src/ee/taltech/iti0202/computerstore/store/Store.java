@@ -82,7 +82,11 @@ public class Store {
     }
 
     public List<Component> filterByType(Component.Type type) {
-        return null;
+        Database database = Database.getInstance();
+        return new ArrayList<>(database.getComponents().values())
+                .stream()
+                .sorted(Comparator.comparing(Component::getType))
+                .collect(Collectors.toList());
     }
 
     public BigDecimal getInventoryValue() {

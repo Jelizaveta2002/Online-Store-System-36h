@@ -92,7 +92,7 @@ public final class Database {
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             gson.toJson(this, writer);
         } catch (IOException e) {
-            System.out.println("IOException:" + e.getMessage());
+            //System.out.println("IOException:" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -106,7 +106,7 @@ public final class Database {
                 instance = gson.fromJson(line, Database.class);
             }
         } catch (IOException e) {
-            System.out.println("IOException:" + e.getMessage());
+            //System.out.println("IOException:" + e.getMessage());
             e.printStackTrace();
         }
     }

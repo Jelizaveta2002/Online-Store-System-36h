@@ -8,13 +8,14 @@ import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 import java.math.MathContext;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 public class Store {
+    public static final int SIX = 6;
+    public static final int ZERO = 0;
     private  String name;
     private BigDecimal balance;
     private BigDecimal profitMargin;
@@ -36,7 +37,7 @@ public class Store {
         }
         Component component = Database.getInstance().getComponents().get(id);
         BigDecimal finalPrice = component.getPrice().multiply(profitMargin);
-        if (customer.getBalance().compareTo(finalPrice) < 0) {
+        if (customer.getBalance().compareTo(finalPrice) < ZERO) {
             throw new NotEnoughMoneyException();
         } else {
             customer.addComponent(component);
@@ -51,7 +52,7 @@ public class Store {
         List<Component> listOfAvailableComps = new ArrayList<>();
         for (Integer id : Database.getInstance().getComponents().keySet()) {
             Component component = Database.getInstance().getComponents().get(id);
-            if (component.getAmount() > 0) {
+            if (component.getAmount() > ZERO) {
                 listOfAvailableComps.add(component);
             }
         }
@@ -94,8 +95,8 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        BigDecimal finalNumber = new BigDecimal(0);
-        MathContext m = new MathContext(6);
+        BigDecimal finalNumber = new BigDecimal(ZERO);
+        MathContext m = new MathContext(SIX);
         Database database = Database.getInstance();
         for (Component component : database.getComponents().values()) {
             int amount = component.getAmount();

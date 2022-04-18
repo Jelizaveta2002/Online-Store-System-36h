@@ -6,6 +6,7 @@ import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -94,6 +95,7 @@ public class Store {
 
     public BigDecimal getInventoryValue() {
         BigDecimal finalNumber = new BigDecimal(0);
+        MathContext m = new MathContext(6);
         Database database = Database.getInstance();
         for (Component component : database.getComponents().values()) {
             int amount = component.getAmount();
@@ -101,7 +103,7 @@ public class Store {
             BigDecimal finalPrice = price.multiply(new BigDecimal(amount));
             finalNumber = finalNumber.add(finalPrice);
         }
-        return finalNumber;
+        return finalNumber.round(m);
     }
 
     public String getName() {

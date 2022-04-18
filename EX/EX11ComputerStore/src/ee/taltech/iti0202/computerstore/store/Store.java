@@ -67,23 +67,26 @@ public class Store {
     }
 
     public String getName() {
-        return null;
+        return this.name;
     }
 
     public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getBalance() {
-        return null;
+        return this.balance;
     }
 
     public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public BigDecimal getProfitMargin() {
-        return null;
+        return this.profitMargin;
     }
 
     public void setProfitMargin(BigDecimal profitMargin) {
+        this.profitMargin = profitMargin;
     }
 }

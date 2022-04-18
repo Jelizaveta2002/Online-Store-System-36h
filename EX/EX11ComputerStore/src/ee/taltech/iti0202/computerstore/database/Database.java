@@ -87,14 +87,14 @@ public final class Database {
     }
 
     public void saveToFile(String location) {
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        Path path = Paths.get(location);
-//        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-//            gson.toJson(this, writer);
-//        } catch (IOException e) {
-//            //System.out.println("IOException:" + e.getMessage());
-//            e.printStackTrace();
-//        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Path path = Paths.get(location);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            System.out.println("IOException:" + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void loadFromFile(String location) {

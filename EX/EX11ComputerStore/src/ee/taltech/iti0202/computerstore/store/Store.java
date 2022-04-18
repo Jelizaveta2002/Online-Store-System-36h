@@ -93,7 +93,15 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        return BigDecimal.ZERO;
+        BigDecimal finalNumber = new BigDecimal(0);
+        Database database = Database.getInstance();
+        for (Component component : database.getComponents().values()) {
+            int amount = component.getAmount();
+            BigDecimal price = component.getPrice().multiply(profitMargin);
+            BigDecimal finalPrice = price.multiply(new BigDecimal(amount));
+            finalNumber = finalNumber.add(finalPrice);
+        }
+        return finalNumber;
     }
 
     public String getName() {

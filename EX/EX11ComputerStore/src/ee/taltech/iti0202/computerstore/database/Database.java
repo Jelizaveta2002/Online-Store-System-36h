@@ -98,16 +98,16 @@ public final class Database {
     }
 
     public void loadFromFile(String location) {
-//        Gson gson = new Gson();
-//        Path path = Paths.get(location);
-//        try (Scanner scanner = new Scanner(path)) {
-//            while (scanner.hasNext()) {
-//                String line = scanner.nextLine();
-//                instance = gson.fromJson(line, Database.class);
-//            }
-//        } catch (IOException e) {
-//            //System.out.println("IOException:" + e.getMessage());
-//            e.printStackTrace();
-//        }
+        Gson gson = new Gson();
+        Path path = Paths.get(location);
+        try (Scanner scanner = new Scanner(path)) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                instance = gson.fromJson(line, Database.class);
+            }
+        } catch (IOException e) {
+            //System.out.println("IOException:" + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

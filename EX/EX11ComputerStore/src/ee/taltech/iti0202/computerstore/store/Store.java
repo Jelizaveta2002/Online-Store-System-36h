@@ -6,6 +6,7 @@ import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
 
@@ -43,7 +44,14 @@ public class Store {
     }
 
     public List<Component> getAvailableComponents() {
-        return null;
+        List<Component> listOfAvailableComps = new ArrayList<>();
+        for (Integer id : Database.getInstance().getComponents().keySet()) {
+            Component component = Database.getInstance().getComponents().get(id);
+            if (component.getAmount() > 0) {
+                listOfAvailableComps.add(component);
+            }
+        }
+        return listOfAvailableComps;
     }
 
     public List<Component> getComponentsSortedByAmount() {

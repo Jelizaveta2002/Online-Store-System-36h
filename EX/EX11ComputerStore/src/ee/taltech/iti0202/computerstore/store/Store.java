@@ -74,7 +74,11 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByPrice() {
-        return null;
+        Database database = Database.getInstance();
+        return new ArrayList<>(database.getComponents().values())
+                .stream()
+                .sorted(Comparator.comparing(Component::getPrice))
+                .collect(Collectors.toList());
     }
 
     public List<Component> filterByType(Component.Type type) {

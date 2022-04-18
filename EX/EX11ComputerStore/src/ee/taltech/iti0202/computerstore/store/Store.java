@@ -7,8 +7,11 @@ import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.stream.Collectors;
 
 public class Store {
     private  String name;
@@ -55,7 +58,11 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByAmount() {
-        return null;
+        Database database = Database.getInstance();
+        return new ArrayList<>(database.getComponents().values())
+                .stream()
+                .sorted(Comparator.comparingInt(Component::getAmount))
+                .collect(Collectors.toList());
     }
 
     public List<Component> getComponentsSortedByName() {

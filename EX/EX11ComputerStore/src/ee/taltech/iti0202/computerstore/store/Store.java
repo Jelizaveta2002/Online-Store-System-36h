@@ -127,6 +127,10 @@ public class Store {
     }
 
     public void setProfitMargin(BigDecimal profitMargin) {
-        this.profitMargin = profitMargin;
+        if (Math.rint(profitMargin.doubleValue()) < 1) {
+            throw new IllegalArgumentException();
+        } else {
+            this.profitMargin = profitMargin;
+        }
     }
 }

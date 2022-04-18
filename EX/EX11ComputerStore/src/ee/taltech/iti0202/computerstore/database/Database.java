@@ -86,10 +86,8 @@ public final class Database {
     }
 
     public void resetEntireDatabase() {
-        for(Component component : components.values()) {
-            component.setId(0);
-        }
-        this.components.clear();
+        Component.setHelper(0);
+        components.clear();
     }
 
     public void saveToFile(String location) {

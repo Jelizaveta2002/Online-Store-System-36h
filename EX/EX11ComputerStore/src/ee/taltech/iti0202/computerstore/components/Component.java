@@ -86,6 +86,10 @@ public class Component {
         this.price = price;
     }
 
+    public static void setHelper(int help) {
+        Component.helper = help;
+    }
+
     public void setAmount(int amount) {
         this.amount = amount;
     }

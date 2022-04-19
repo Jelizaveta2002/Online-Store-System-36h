@@ -88,9 +88,8 @@ public final class Database {
 
     public void saveToFile(String location) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Path path = Paths.get(location);
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-            gson.toJson(this);
+        try {
+            Files.writeString(Paths.get(location), gson.toJson(this));
         } catch (IOException e) {
             System.out.println("IOException:" + e.getMessage());
             e.printStackTrace();

@@ -87,11 +87,7 @@ public final class Database {
     }
 
     public void saveToFile(String location) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try {
-            Files.writeString(Paths.get(location), gson.toJson(this));
-        } catch (IOException ignored) {
-        }
+
     }
 
     public void loadFromFile(String location) {

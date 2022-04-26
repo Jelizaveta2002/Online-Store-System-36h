@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.exam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
@@ -17,7 +18,32 @@ public class Exam {
      * tenRun([10, 1, 9, 20]) => [10, 10, 10, 20]
      */
     public static List<Integer> tenRun(List<Integer> nums) {
-        return null;
+        ArrayList<Integer> newList = new ArrayList<>(nums);
+        ArrayList<Integer> listToReturn = new ArrayList<>();
+        Integer toPut = null;
+        boolean check = false;
+        for (Integer number : newList) {
+            if (!check) {
+                if (number % 10 != 0) {
+                    listToReturn.add(number);
+                }
+                else {
+                    listToReturn.add(number);
+                    check = true;
+                    toPut = number;
+                }
+            }
+            else {
+                if (number % 10 != 0) {
+                    listToReturn.add(toPut);
+                }
+                else {
+                    listToReturn.add(number);
+                    toPut = number;
+                }
+            }
+        }
+        return listToReturn;
     }
 
 

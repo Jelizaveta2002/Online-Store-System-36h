@@ -1,7 +1,9 @@
 package ee.taltech.iti0202.exam;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class Exam {
 
@@ -61,7 +63,32 @@ public class Exam {
      * @return
      */
     public static String mixedPairs(String input) {
-        return "wrong";
+        StringBuilder newBuilder = new StringBuilder(input);
+        ArrayList<String> listWithCapLetters = new ArrayList<>();
+        ArrayList<String> listWithSmallLetters = new ArrayList<>();
+        ArrayList<String> finalList = new ArrayList<>();
+        StringBuilder finalBuilder = new StringBuilder();
+        for (int i=0; i< newBuilder.length(); i++) {
+            char ch = newBuilder.charAt(i);
+            String letter = Character.toString(ch);
+            if (Character.isUpperCase(ch)) {
+                listWithCapLetters.add(letter);
+            } else {
+                listWithSmallLetters.add(letter);
+            }
+        }
+        Collections.sort(listWithCapLetters);
+        Collections.sort(listWithSmallLetters);
+        for (String letter : listWithCapLetters) {
+            if (listWithSmallLetters.contains(letter.toLowerCase(Locale.ROOT)) && !finalList.contains(letter)) {
+                finalList.add(letter);
+                finalList.add(letter.toLowerCase(Locale.ROOT));
+            }
+        }
+        for (String letter : finalList) {
+            finalBuilder.append(letter);
+        }
+        return finalBuilder.toString();
     }
 
 

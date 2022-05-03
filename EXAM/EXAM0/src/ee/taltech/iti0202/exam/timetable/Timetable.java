@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Timetable {
-    public HashMap<Integer, Integer> dayCapacity = new HashMap<>();
+    private HashMap<Integer, Integer> dayCapacity = new HashMap<>();
     public HashMap<Integer, ArrayList<Task>> dayMap = new HashMap<>();
     public ArrayList<Task> taskHolder = new ArrayList<>();
 

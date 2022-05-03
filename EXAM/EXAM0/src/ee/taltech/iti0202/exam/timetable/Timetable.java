@@ -26,7 +26,7 @@ public class Timetable {
                     int  toPlus = capacityMap.get(oneDay);
                     capacityMap.replace(oneDay, toPlus + duration);
                     nameMap.get(oneDay).add(name);
-                    taskDone.put(taskCode, priority);
+                    taskDone.put(taskCode, false);
                     return Optional.of(taskCode);
                 }
             }
@@ -36,7 +36,7 @@ public class Timetable {
             names.add(name);
             capacityMap.put(day, duration);
             nameMap.put(day, names);
-            taskDone.put(taskCode, priority);
+            taskDone.put(taskCode, false);
             return Optional.of(taskCode);
         }
         return Optional.empty();

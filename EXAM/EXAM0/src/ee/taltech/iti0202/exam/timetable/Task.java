@@ -15,6 +15,9 @@ public class Task {
         this.day = day;
         this.duration = duration;
         this.priority = priority;
+        if (helper == 9) {
+            helper = 0;
+        }
         helper += 1;
         this.taskCode = "T" + helper;
     }

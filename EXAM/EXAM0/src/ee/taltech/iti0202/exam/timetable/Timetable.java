@@ -73,7 +73,13 @@ public class Timetable {
     }
 
     public List<String> getTasksForDay(int day) {
-        return null;
+        ArrayList<String> tasks = new ArrayList<>();
+        ArrayList<Task> toIterate = dayMap.get(day);
+        for (Task task : toIterate) {
+            String taskName = task.getTaskCode() + " " + task.getName();
+            tasks.add(taskName);
+        }
+        return tasks;
     }
 
     public static void main(String[] args) {

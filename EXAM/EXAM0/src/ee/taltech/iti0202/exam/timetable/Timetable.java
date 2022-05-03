@@ -16,7 +16,7 @@ public class Timetable {
     }
     public Optional<String> addTask(String name, int day, int duration, boolean priority) {
         Task newTask = new Task(name, day, duration, priority);
-        if (helper == 5) {
+        if (helper == 4) {
             helper = 0;
         }
         helper += 1;

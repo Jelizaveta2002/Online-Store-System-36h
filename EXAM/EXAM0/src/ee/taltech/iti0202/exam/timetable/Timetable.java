@@ -15,7 +15,7 @@ public class Timetable {
         String taskCode = "T" + helper;
         for (Integer oneDay : capacityMap.keySet()) {
             if (oneDay.equals(day)) {
-                if (capacityMap.get(oneDay) + duration > 5) {
+                if (capacityMap.get(oneDay) + duration > 5 || duration < 1) {
                     return Optional.empty();
                 }
                 if (nameMap.get(oneDay).contains(name)) {

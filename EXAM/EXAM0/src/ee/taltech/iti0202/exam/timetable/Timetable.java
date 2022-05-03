@@ -72,7 +72,8 @@ public class Timetable {
 
     public ArrayList<Task> sort(ArrayList<Task> listToSort) {
         ArrayList<Task> finalList = new ArrayList<>();
-        for (Task task : listToSort) {
+        List<Task> iterLit = new ArrayList<>(listToSort);
+        for (Task task : iterLit) {
             if (task.isPriority()) {
                 finalList.add(task);
                 listToSort.remove(task);

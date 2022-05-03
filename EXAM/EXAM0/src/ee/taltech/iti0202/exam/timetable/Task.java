@@ -45,6 +45,6 @@ public class Task {
     }
 
     public void markAsDone() {
-        isDone = false;
+        isDone = true;
     }
 }

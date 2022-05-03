@@ -16,6 +16,9 @@ public class Timetable {
     }
     public Optional<String> addTask(String name, int day, int duration, boolean priority) {
         Task newTask = new Task(name, day, duration, priority);
+        if (helper == 5) {
+            helper = 0;
+        }
         helper += 1;
         String taskCode = "T" + helper;
         newTask.setTaskCode(taskCode);

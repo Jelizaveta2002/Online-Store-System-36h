@@ -48,6 +48,7 @@ public class Timetable {
                 taskDone.replace(taskNumber, true);
                 return true;
             }
+            return false;
         }
         return false;
     }
@@ -70,5 +71,7 @@ public class Timetable {
         timetable.addTask("swim", 4, 3, true).get();
 // cannot have the same task name on the same day (swim), whatever the other parameters are
         System.out.println(timetable.addTask("swim", 4, 1, false)); // Optional.empty
+        System.out.println(timetable.markTaskDone(task3)); // true
+        System.out.println(timetable.markTaskDone(task3)); // false, cannot mark task done twice
     }
 }

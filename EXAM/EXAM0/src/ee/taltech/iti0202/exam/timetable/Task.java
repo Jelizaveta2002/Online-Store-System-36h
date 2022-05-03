@@ -16,7 +16,7 @@ public class Task {
         this.duration = duration;
         this.priority = priority;
         helper += 1;
-        this.taskCode = "T" + " " + helper;
+        this.taskCode = "T" + helper;
     }
 
     public String getName() {

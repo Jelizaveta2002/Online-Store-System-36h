@@ -24,10 +24,6 @@ public class Timetable {
     }
 
     public Optional<String> addTask(String name, int day, int duration, boolean priority) {
-        Task newTask = new Task(name, day, duration, priority);
-        helper += 1;
-        String taskCode = "T" + helper;
-        newTask.setTaskCode(taskCode);
         if (dayMap.containsKey(day)) {
             ArrayList<Task> toIterate = dayMap.get(day);
             for (Task task : toIterate) {
@@ -38,6 +34,10 @@ public class Timetable {
             if (duration + dayCapacity.get(day) > 5 || duration > 5 || duration < 1) {
                 return Optional.empty();
             }
+            Task newTask = new Task(name, day, duration, priority);
+            helper += 1;
+            String taskCode = "T" + helper;
+            newTask.setTaskCode(taskCode);
             dayMap.get(day).add(newTask);
             int toPut = dayCapacity.get(day) + duration;
             dayCapacity.replace(day, toPut);
@@ -45,6 +45,10 @@ public class Timetable {
             return Optional.of(taskCode);
         }
         if (day >= 1 && duration >= 1 && duration <= 5) {
+            Task newTask = new Task(name, day, duration, priority);
+            helper += 1;
+            String taskCode = "T" + helper;
+            newTask.setTaskCode(taskCode);
             ArrayList<Task> tasks = new ArrayList<>();
             tasks.add(newTask);
             dayMap.put(day, tasks);
@@ -96,4 +100,42 @@ public class Timetable {
         return tasks;
     }
 
+    public static void main(String[] args) {
+
+        Timetable timetable = new Timetable();
+        String task1 = timetable.addTask("wake up1", 1, 1, false).get();
+        String task2 = timetable.addTask("wake up2", 1, 1, false).get();
+        String task3 = timetable.addTask("wake up3", 1, 1, false).get();
+        String task4 = timetable.addTask("wake up4", 1, 1, false).get();
+        String task5 = timetable.addTask("wake up5", 1, 1, false).get();
+        Optional<String> task6 = timetable.addTask("wake up6", 1, 1, false);
+        System.out.println(task6); // Optional.empty(), day already full
+
+        timetable.addTask("swim", 4, 3, true).get();
+// cannot have the same task name on the same day (swim), whatever the other parameters are
+        System.out.println(timetable.addTask("swim", 4, 1, false)); // Optional.empty
+        System.out.println(timetable.getTasksForDay(1));
+// [T1 wake up1, T2 wake up2, T3 wake up3, T4 wake up4, T5 wake up5]
+        System.out.println(timetable.markTaskDone(task3)); // true
+        System.out.println(timetable.markTaskDone(task3)); // false, cannot mark task done twice
+        System.out.println(timetable.getTasksForDay(1));
+// [T1 wake up1, T2 wake up2, T4 wake up4, T5 wake up5]
+// now we can add additional task for day one, priority one!
+        String task7 = timetable.addTask("sleep", 1, 1, true).get();
+// priority task comes first
+        System.out.println(timetable.getTasksForDay(1));
+// [T7 sleep, T1 wake up1, T2 wake up2, T4 wake up4, T5 wake up5]
+
+        timetable.addTask("eat", 2, 2, false);
+        timetable.addTask("walk", 2, 2, true);
+// priority task comes first
+        System.out.println(timetable.getTasksForDay(2));
+// [T9 walk, T8 eat]
+
+// timetables are independent
+        Timetable tt = new Timetable();
+// we should not get an error here:
+        tt.addTask("wake up1", 1, 1, false).get();
+
+    }
 }

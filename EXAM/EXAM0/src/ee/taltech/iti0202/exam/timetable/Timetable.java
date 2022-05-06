@@ -7,6 +7,7 @@ public class Timetable {
     private HashMap<Integer, Integer> dayCapacity = new HashMap<>();
     private HashMap<Integer, ArrayList<Task>> dayMap = new HashMap<>();
     private ArrayList<Task> taskHolder = new ArrayList<>();
+    private static int helper = 0;
 
     public Timetable() {
 
@@ -34,7 +35,8 @@ public class Timetable {
                 return Optional.empty();
             }
             Task newTask = new Task(name, day, duration, priority);
-            String taskCode = newTask.getTaskCode();
+            helper += 1;
+            String taskCode = "T" + helper;
             newTask.setTaskCode(taskCode);
             dayMap.get(day).add(newTask);
             int toPut = dayCapacity.get(day) + duration;
@@ -44,7 +46,8 @@ public class Timetable {
         }
         if (day >= 1 && duration >= 1 && duration <= 5) {
             Task newTask = new Task(name, day, duration, priority);
-            String taskCode = newTask.getTaskCode();
+            helper += 1;
+            String taskCode = "T" + helper;
             newTask.setTaskCode(taskCode);
             ArrayList<Task> tasks = new ArrayList<>();
             tasks.add(newTask);

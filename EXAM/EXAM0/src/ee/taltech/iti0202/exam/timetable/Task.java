@@ -8,18 +8,12 @@ public class Task {
     private boolean priority;
     private String taskCode;
     private boolean isDone = false;
-    private static int helper = 0;
 
     public Task(String name, int day, int duration, boolean priority) {
         this.name = name;
         this.day = day;
         this.duration = duration;
         this.priority = priority;
-        if (helper == 9) {
-            helper = 0;
-        }
-        helper += 1;
-        this.taskCode = "T" + helper;
     }
 
     public String getName() {

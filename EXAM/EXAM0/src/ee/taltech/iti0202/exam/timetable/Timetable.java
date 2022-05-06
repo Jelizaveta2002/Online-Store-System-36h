@@ -76,14 +76,16 @@ public class Timetable {
 
     public ArrayList<Task> sort(ArrayList<Task> listToSort) {
         ArrayList<Task> finalList = new ArrayList<>();
-        List<Task> iterLit = new ArrayList<>(listToSort);
-        for (Task task : iterLit) {
-            if (task.isPriority()) {
-                finalList.add(task);
-                listToSort.remove(task);
+        if (!listToSort.isEmpty()) {
+            List<Task> iterLit = new ArrayList<>(listToSort);
+            for (Task task : iterLit) {
+                if (task.isPriority()) {
+                    finalList.add(task);
+                    listToSort.remove(task);
+                }
             }
+            finalList.addAll(listToSort);
         }
-        finalList.addAll(listToSort);
         return finalList;
     }
 

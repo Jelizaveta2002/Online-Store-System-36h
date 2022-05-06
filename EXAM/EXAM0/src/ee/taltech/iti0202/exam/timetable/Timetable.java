@@ -7,7 +7,7 @@ public class Timetable {
     private HashMap<Integer, Integer> dayCapacity = new HashMap<>();
     private HashMap<Integer, ArrayList<Task>> dayMap = new HashMap<>();
     private ArrayList<Task> taskHolder = new ArrayList<>();
-    private static int helper = 0;
+    private int helper = 0;
 
     public Timetable() {
 

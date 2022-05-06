@@ -89,7 +89,7 @@ public class Timetable {
 
     public List<String> getTasksForDay(int day) {
         ArrayList<String> tasks = new ArrayList<>();
-        if (day >= 1) {
+        if (day >= 1 && dayMap.containsKey(day)) {
             ArrayList<Task> toSort = dayMap.get(day);
             ArrayList<Task> taskToIterate = sort(toSort);
             for (Task task : taskToIterate) {

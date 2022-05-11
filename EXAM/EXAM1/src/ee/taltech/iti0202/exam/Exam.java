@@ -26,7 +26,7 @@ public class Exam {
             }
             else {
                 if (number == 2) {
-                    if (listToIterate.get(countIndex + 1) != 2 && listToIterate.get(countIndex - 1) != 2) {
+                    if (listToIterate.get(countIndex - 1) != 2 && listToIterate.get(countIndex) != 2) {
                         counter += 1;
                     }
                 }
@@ -74,7 +74,7 @@ public class Exam {
 //        for (String element : messageList) {
 //            if (Integer.parseInt(element))
 //        }
-        return null;
+         return null;
     }
 
     public static void main(String[] args) {

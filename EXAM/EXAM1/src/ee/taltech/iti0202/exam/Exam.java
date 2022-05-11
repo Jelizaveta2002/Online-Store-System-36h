@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.exam;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Exam {
@@ -17,19 +18,23 @@ public class Exam {
         int counter = 0;
         int countIndex = 0;
         for (Integer number : listToIterate) {
-            if (listToIterate.indexOf(number) == 0 && number == 2 && listToIterate.get(1) != 2) {
+            if (countIndex == 0 && number == 2 && listToIterate.get(1) != 2) {
                 counter += 1;
+                countIndex += 1;
                 continue;
             }
-            if (listToIterate.indexOf(number) == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
+            if (countIndex == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
                 counter += 1;
+                countIndex += 1;
                 continue;
             }
-            if (number == 2) {
-                int check = listToIterate.indexOf(number);
-                if (listToIterate.get(check + 1) != 2 && listToIterate.get(check - 1) != 2) {
-                    counter += 1;
+            else {
+                if (number == 2) {
+                    if (listToIterate.get(countIndex + 1) != 2 && listToIterate.get(countIndex - 1) != 2) {
+                        counter += 1;
+                    }
                 }
+                countIndex += 1;
             }
         }
         return counter;
@@ -55,7 +60,25 @@ public class Exam {
      * @return decoded message
      */
     public static String decodeMessage(String message) {
-        return "";
+//        ArrayList<String> messageList = new ArrayList<>();
+//        ArrayList<String> alphaList = new ArrayList<>();
+//        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+//        StringBuilder messageBuilder = new StringBuilder(message);
+//        StringBuilder alphaBuilder = new StringBuilder(alphabet);
+//        for (int i=0; i< messageBuilder.length(); i++) {
+//            char ch = messageBuilder.charAt(i);
+//            String letter = Character.toString(ch);
+//            messageList.add(letter);
+//        }
+//        for (int i=0; i< alphaBuilder.length(); i++) {
+//            char ch = alphaBuilder.charAt(i);
+//            String letter = Character.toString(ch);
+//            alphaList.add(letter);
+//        }
+//        for (String element : messageList) {
+//            if (Integer.parseInt(element))
+//        }
+        return null;
     }
 
     public static void main(String[] args) {

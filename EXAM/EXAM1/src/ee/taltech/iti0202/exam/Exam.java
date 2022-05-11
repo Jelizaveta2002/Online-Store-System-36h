@@ -26,7 +26,7 @@ public class Exam {
             }
             else {
                 if (number == 2) {
-                    if (listToIterate.get(countIndex) != 2 && listToIterate.get(countIndex - 1) != 2) {
+                    if (listToIterate.get(countIndex + 1) != 2 && listToIterate.get(countIndex - 1) != 2) {
                         counter += 1;
                     }
                 }

@@ -23,7 +23,7 @@ public class Exam {
                 countIndex += 1;
                 continue;
             }
-            if (countIndex == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
+            if (countIndex == listToIterate.size() - 1 && number == 2 && listToIterate.get(countIndex - 2) != 2) {
                 counter += 1;
                 countIndex += 1;
                 continue;

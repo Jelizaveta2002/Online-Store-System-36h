@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.exam;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
@@ -12,7 +13,30 @@ public class Exam {
      * countSingleTwos([2, 2, 2, 1, 3, 2, 1, 2]) => 2
      */
     public static int countSingleTwos(List<Integer> numbers) {
-        return -2;
+        ArrayList<Integer> listToIterate = new ArrayList<>(numbers);
+        int counter = 0;
+        int countIndex = 0;
+        for (Integer number : listToIterate) {
+            if (listToIterate.indexOf(number) == 0 && number == 2) {
+                if (listToIterate.get(1) != 2) {
+                    counter += 1;
+                }
+            }
+            if (listToIterate.indexOf(number) == listToIterate.size() - 1 && number == 2) {
+                if (listToIterate.get(listToIterate.size() - 2) != 2) {
+                    counter += 1;
+                }
+            }
+            else {
+                if (number == 2) {
+                    int check = listToIterate.indexOf(number);
+                    if (listToIterate.get(check + 1) != 2 && listToIterate.get(check - 1) != 2) {
+                        counter += 1;
+                    }
+                }
+            }
+        }
+        return counter;
     }
 
     /**
@@ -36,5 +60,14 @@ public class Exam {
      */
     public static String decodeMessage(String message) {
         return "";
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(2);
+        list.add(1);
+        list.add(2);
+        System.out.println(countSingleTwos(list));
     }
 }

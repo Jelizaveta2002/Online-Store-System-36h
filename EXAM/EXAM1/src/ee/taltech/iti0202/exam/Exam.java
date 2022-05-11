@@ -20,22 +20,18 @@ public class Exam {
         for (Integer number : listToIterate) {
             if (countIndex == 0 && number == 2 && listToIterate.get(1) != 2) {
                 counter += 1;
-                countIndex += 1;
-                continue;
             }
-            if (countIndex == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
+            else if (countIndex == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
                 counter += 1;
-                countIndex += 1;
-                continue;
             }
             else {
                 if (number == 2) {
-                    if (listToIterate.get(countIndex + 1) != 2 && listToIterate.get(countIndex - 1) != 2) {
+                    if (listToIterate.get(countIndex) != 2 && listToIterate.get(countIndex - 1) != 2) {
                         counter += 1;
                     }
                 }
-                countIndex += 1;
             }
+            countIndex += 1;
         }
         return counter;
     }
@@ -83,9 +79,9 @@ public class Exam {
 
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
+        list.add(4);
         list.add(2);
         list.add(2);
-        list.add(1);
         list.add(2);
         System.out.println(countSingleTwos(list));
     }

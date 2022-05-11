@@ -91,6 +91,7 @@ public class Exam {
 
 
 
+
     /**
      * 03
      *
@@ -106,28 +107,31 @@ public class Exam {
      * @param text
      * @return
      */
-    public static String recSeparate(String text) {
-        ArrayList<String> listWhere = new ArrayList<>();
-        StringBuilder result = new StringBuilder();
-        for (int i=0; i< text.length(); i++) {
-            char ch = text.charAt(i);
-            String letter = Character.toString(ch);
-            listWhere.add(letter);
-        }
-        String toRemember = "";
-        for (String letter : listWhere) {
-            if (letter.equals(toRemember)) {
-                result.append(letter);
-            }
-            else {
-                toRemember = letter;
-                if (!result.toString().isEmpty()) {
-                    result.append(" ");
-                }
-                result.append(letter);
-            }
-        }
-        return result.toString();
+    public static Integer recSeparate(int text) {
+        System.out.println(text / 3);
+        return 60 % text;
+
+//        ArrayList<String> listWhere = new ArrayList<>();
+//        StringBuilder result = new StringBuilder();
+//        for (int i=0; i< text.length(); i++) {
+//            char ch = text.charAt(i);
+//            String letter = Character.toString(ch);
+//            listWhere.add(letter);
+//        }
+//        String toRemember = "";
+//        for (String letter : listWhere) {
+//            if (letter.equals(toRemember)) {
+//                result.append(letter);
+//            }
+//            else {
+//                toRemember = letter;
+//                if (!result.toString().isEmpty()) {
+//                    result.append(" ");
+//                }
+//                result.append(letter);
+//            }
+//        }
+//        return result.toString();
     }
 
     /**
@@ -144,6 +148,7 @@ public class Exam {
      * findWordBothSide("babananana", "banana", true) -> 1
      */
     public static int findWordBothSides(String where, String search, boolean ordered) {
+        int counter = 0;
         ArrayList<String> arrayResult = new ArrayList<>();
         StringBuilder result = new StringBuilder();
         ArrayList<String> listWhere = new ArrayList<>();
@@ -163,26 +168,23 @@ public class Exam {
         if (!ordered) {
             Collections.reverse(listWhere);
         }
-        int counter = -1;
-        while (!listWhere.isEmpty()) {
-            counter += 1;
-            String str = listSearch.get(counter);
-            if (!listWhere.contains(str)) {
-                return arrayResult.size();
-            }
-            else {
-                result.append(str);
-                listWhere.remove(str);
-            }
-            if (result.toString().equals(search)) {
-                arrayResult.add(search);
-                result = new StringBuilder();
-            }
-            if (counter == search.length() - 1) {
-                counter = -1;
+        StringBuilder word = new StringBuilder();
+        boolean toCheck = true;
+        while (toCheck) {
+            for (String letter : listSearch) {
+                if (listWhere.contains(letter)) {
+                    word.append(letter);
+                    listWhere.remove(letter);
+                }
+                else {
+                    toCheck = false;
+                }
+                if (word.toString().equals(search)) {
+                    counter += 1;
+                }
             }
         }
-        return arrayResult.size();
+        return counter;
     }
 
     /**
@@ -406,6 +408,8 @@ public class Exam {
         return toReturn.toString();
     }
 
+    
+
     public static void main(String[] args) {
         int[] myNum = {10, 15, 6, 7, 98, 67896};
         ArrayList<String> list = new ArrayList<>();
@@ -415,6 +419,7 @@ public class Exam {
         System.out.println(findScore(list));
         System.out.println(differenTime("10:30", "10:09"));
         System.out.println(coding("TalTech"));
-        System.out.println(recSeparate("mmmk"));
+        System.out.println(recSeparate(13));
+        System.out.println(findWordBothSides("kferfoesvsvfbr", "koer", true));
     }
 }

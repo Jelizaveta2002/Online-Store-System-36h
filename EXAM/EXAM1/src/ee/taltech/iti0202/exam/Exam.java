@@ -17,22 +17,18 @@ public class Exam {
         int counter = 0;
         int countIndex = 0;
         for (Integer number : listToIterate) {
-            if (listToIterate.indexOf(number) == 0 && number == 2) {
-                if (listToIterate.get(1) != 2) {
-                    counter += 1;
-                }
+            if (listToIterate.indexOf(number) == 0 && number == 2 && listToIterate.get(1) != 2) {
+                counter += 1;
+                continue;
             }
-            if (listToIterate.indexOf(number) == listToIterate.size() - 1 && number == 2) {
-                if (listToIterate.get(listToIterate.size() - 2) != 2) {
-                    counter += 1;
-                }
+            if (listToIterate.indexOf(number) == listToIterate.size() - 1 && number == 2 && listToIterate.get(listToIterate.size() - 2) != 2) {
+                counter += 1;
+                continue;
             }
-            else {
-                if (number == 2) {
-                    int check = listToIterate.indexOf(number);
-                    if (listToIterate.get(check + 1) != 2 && listToIterate.get(check - 1) != 2) {
-                        counter += 1;
-                    }
+            if (number == 2) {
+                int check = listToIterate.indexOf(number);
+                if (listToIterate.get(check + 1) != 2 && listToIterate.get(check - 1) != 2) {
+                    counter += 1;
                 }
             }
         }

@@ -107,7 +107,27 @@ public class Exam {
      * @return
      */
     public static String recSeparate(String text) {
-        return "wrong again";
+        ArrayList<String> listWhere = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
+        for (int i=0; i< text.length(); i++) {
+            char ch = text.charAt(i);
+            String letter = Character.toString(ch);
+            listWhere.add(letter);
+        }
+        String toRemember = "";
+        for (String letter : listWhere) {
+            if (letter.equals(toRemember)) {
+                result.append(letter);
+            }
+            else {
+                toRemember = letter;
+                if (!result.toString().isEmpty()) {
+                    result.append(" ");
+                }
+                result.append(letter);
+            }
+        }
+        return result.toString();
     }
 
     /**
@@ -395,5 +415,6 @@ public class Exam {
         System.out.println(findScore(list));
         System.out.println(differenTime("10:30", "10:09"));
         System.out.println(coding("TalTech"));
+        System.out.println(recSeparate("mmmk"));
     }
 }

@@ -304,47 +304,36 @@ public class Exam {
      * @return time difference as HH:MM
      */
     public static String differenTime(String time1, String time2) {
-        String hour = "";
-        String minute = "";
-        int finalHour;
-        int finalMinute;
-        String [] arrayTime1 = time1.split(":");
-        String [] arrayTime2 = time2.split(":");
-        String hour1 = (String) Array.get(arrayTime1, 0);
-        String minute1 = (String) Array.get(arrayTime1, 1);
-        String hour2 = (String) Array.get(arrayTime2, 0);
-        String minute2 = (String) Array.get(arrayTime2, 1);
-        int hour11 = Integer.parseInt(hour1);
-        int minute11 = Integer.parseInt(minute1);
-        int hour22 = Integer.parseInt(hour2);
-        int minute22 = Integer.parseInt(minute2);
-        if (hour11 < hour22) {
-            finalHour = hour22 - hour11;
+        String result = "";
+        int h1 = Integer.parseInt(time1.substring(0, 2));
+        int m1 = Integer.parseInt(time1.substring(3));
+        int h2 = Integer.parseInt(time2.substring(0, 2));
+        int m2 = Integer.parseInt(time2.substring(3));
+        int h3;
+        int m3;
+        int minLoan = 0;
+        if (m1 > m2) {
+            m2 += 60;
+            minLoan = 1;
         }
-        if (hour11 == hour22) {
-            finalHour = 0;
+        m3 = m2 - m1;
+        if (h1 > (h2 - minLoan)) {
+            h2 += 24;
         }
-        else {
-            finalHour = 24 - hour11 + hour22;
+        h3 = h2 - h1 - minLoan;
+        String hours = "";
+        String minutes = "";
+        if (m3 < 10) {
+            minutes += "0";
         }
-        finalMinute = minute22 - minute11;
-        if (finalMinute < 0) {
-            finalHour -= 1;
-            finalMinute = 60 - finalMinute;
+        minutes += m3;
+        if (h3 < 10) {
+            hours += "0";
         }
-        if (finalHour < 10) {
-            hour = "0" + String.valueOf(finalHour);
-        }
-        else {
-            hour = String.valueOf(finalHour);
-        }
-        if (finalMinute < 10) {
-            minute = "0" + String.valueOf(finalMinute);
-        }
-        else {
-            minute = String.valueOf(finalMinute);
-        }
-        return hour + ":" + minute;
+        hours += h3;
+        result = hours + ":" + minutes;
+
+        return result;
     }
 
             /* Given a string, encode the string using Run-length encoding.

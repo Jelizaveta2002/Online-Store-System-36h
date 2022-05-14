@@ -8,11 +8,11 @@ import java.util.*;
 
 public class FoodStore {
 
-    private String name;
-    private double profit;
-    private ArrayList<Product> listOfProducts = new ArrayList<>();
-    private ArrayList<Client> listOfClients = new ArrayList<>();
-    private HashMap<Client, ArrayList<Product>> dataBase = new HashMap<>();
+    protected String name;
+    protected double profit;
+    protected ArrayList<Product> listOfProducts = new ArrayList<>();
+    protected ArrayList<Client> listOfClients = new ArrayList<>();
+    protected HashMap<Client, ArrayList<Product>> dataBase = new HashMap<>();
 
     public FoodStore(String name, Integer profit) {
         this.name = name;
@@ -35,9 +35,13 @@ public class FoodStore {
         return listOfClients;
     }
 
+    public HashMap<Client, ArrayList<Product>> getDataBase() {
+        return dataBase;
+    }
+
     public Optional<Product> addSingleProduct(Product product) {
         ArrayList<Product> listOfProductsInStorage = Storage.getInstance().getListOfProducts();
-        if (listOfProductsInStorage.contains(product) && !listOfProducts.contains(product) && (product.getType().equals(Product.Type.FOOD) || product.getType().equals(Product.Type.ALCOHOL))) {
+        if (listOfProductsInStorage.contains(product) && !listOfProducts.contains(product) && product.getType().equals(Product.Type.FOOD)) {
             listOfProducts.add(product);
             Storage.getInstance().removeSingleProduct(product);
             return Optional.of(product);
@@ -113,6 +117,10 @@ public class FoodStore {
         }
     }
 
+    /**
+     * This method is needed in order to remember what kind of orders was done by a specific client.
+     *
+     */
     public void fillDataBase(Client client, ArrayList<Product> listOfProducts) {
         if (dataBase.containsKey(client)) {
             ArrayList<Product> newListOfProducts = dataBase.get(client);

@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.store.shoppingbag;
+package ee.taltech.iti0202.store.client;
 
 import ee.taltech.iti0202.store.client.Client;
 import ee.taltech.iti0202.store.product.Product;
@@ -31,7 +31,13 @@ public class ShoppingBag {
         return listOfProductsToBy;
     }
 
-    public Optional<ArrayList<Product>> addProductsToBag() {
+    /**
+     * The aim of this method is to fill bag of products according to the strategy tht client has.
+     * This method works automatically when client creates a new shopping bag.
+     *
+     * @return Optional of ArrayList filled with Products.
+     */
+    protected Optional<ArrayList<Product>> addProductsToBag() {
         ArrayList<Product> productsInStore = store.getListOfProducts();
         double money = client.getMoney();
         Strategy strategyToUse = client.getStrategy();

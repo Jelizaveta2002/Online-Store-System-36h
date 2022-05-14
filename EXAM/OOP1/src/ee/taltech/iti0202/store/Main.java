@@ -9,12 +9,13 @@ import ee.taltech.iti0202.store.storage.Storage;
 
 public class Main {
     public static void main(String[] args) {
-        Client client1 = new Client("anna", 19, 35);
+        Client client1 = new Client("anna", 19, 200567);
         Strategy strat1 = new CheapestProduct();
         client1.setStrategy(strat1);
         FoodStore st1 = new FoodStore("store", 234);
-        Product pr1 = new Product("pr1", 18, Product.Type.FOOD);
-        Product pr2 = new Product("pr2", 6.987, Product.Type.ALCOHOL);
+        Product pr1 = new Product("pr1", 5789, Product.Type.FOOD);
+        Product pr2 = new Product("pr1", 78890, Product.Type.FOOD);
+        Product pr3 = new Product("pr3", 8, Product.Type.FOOD);
         Storage.getInstance().addProduct(pr1);
         Storage.getInstance().addProduct(pr2);
         //Storage.getInstance().addProduct(pr3);
@@ -27,10 +28,19 @@ public class Main {
         System.out.println(client1.createNewShoppingBag(st1));
         System.out.println(client1.getListOfShoppingBags());
         System.out.println(st1.getListOfProducts());
-        client1.buyProductsFromBag(st1);
+        client1.buyProductsFromBag(st1, false);
         System.out.println(client1.getMoney());
         System.out.println(client1.getListOfShoppingBags());
         System.out.println(st1.getProfit());
         System.out.println(client1.getProductsAndStores());
+        System.out.println(st1.getDataBase());
+        System.out.println(st1.getListOfProducts());
+        System.out.println(client1.getStoreAndBonus());
+        st1.addSingleProduct(pr2);
+        System.out.println(client1.createNewShoppingBag(st1));
+        client1.buyProductsFromBag(st1, true);
+        System.out.println(client1.getMoney());
+        System.out.println(client1.getStoreAndBonus());
+
     }
 }

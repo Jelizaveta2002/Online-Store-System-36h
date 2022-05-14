@@ -15,7 +15,7 @@ public class Product {
     boolean isBought = false;
     boolean inBasket = false;
     public enum Type {
-        FOOD, COSMETICS, FORHOME, ELECTRONICS, ALCOHOL, BABYGOODS
+        FOOD, COSMETICS, FORHOME, ELECTRONICS, GARDENGOODS, BABYGOODS
     }
 
     public Product(String name, double price, Type type) {

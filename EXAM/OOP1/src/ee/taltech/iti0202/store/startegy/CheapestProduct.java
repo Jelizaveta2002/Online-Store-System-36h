@@ -13,19 +13,24 @@ public class CheapestProduct implements Strategy {
     public ArrayList<Product> addProductToBag(ArrayList<Product> productsInStore, double money, FoodStore store) {
         double totalPriceCounter = 0;
         ArrayList<Product> listToReturn = new ArrayList<>();
-        ArrayList<Product.Type> listOfTypes = new ArrayList<>();
-        ArrayList<String> listOfNames = new ArrayList<>();
         List<Product> newList = new ArrayList<>(productsInStore)
                 .stream()
                 .sorted(Comparator.comparingDouble(Product::getPrice)).toList();
         for (Product product : newList) {
-            if ((!listOfTypes.contains(product.getType()) && !listOfNames.contains(product.getName())) && (totalPriceCounter + product.getPrice()) < money) {
+            if (findTheSameProductInList(listToReturn, product) && (totalPriceCounter + product.getPrice()) < money) {
                 listToReturn.add(product);
                 store.removeSingleProduct(product);
-                listOfNames.add(product.getName());
-                listOfTypes.add(product.getType());
             }
         }
         return listToReturn;
+    }
+
+    public boolean findTheSameProductInList(ArrayList<Product> listToReturn, Product product) {
+        for (Product prod : listToReturn) {
+            if (prod.getName().equals(product.getName()) && prod.getType().equals(product.getType())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

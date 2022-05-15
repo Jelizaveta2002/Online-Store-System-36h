@@ -18,6 +18,9 @@ public class Product {
         this.name = name;
         this.price = price;
         this.type = type;
+        if (name == null || name.trim().isEmpty() || type == null || price < 0) {
+            throw new IllegalArgumentException("PRODUCT CAN NOT BE CREATED, PARAMETERS ARE INCORRECT");
+        }
         this.id = idCounter;
         idCounter ++;
     }

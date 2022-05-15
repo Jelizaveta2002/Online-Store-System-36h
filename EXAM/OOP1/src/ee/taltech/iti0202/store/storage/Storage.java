@@ -24,8 +24,11 @@ public final class Storage {
     }
 
     public void addProduct(Product product) {
-        if (product.getPrice() > 0 && product.getName() != null && !product.getName().trim().isEmpty() && !listOfProducts.contains(product)) {
+        if (!listOfProducts.contains(product)) {
             listOfProducts.add(product);
+        }
+        else {
+            throw new IllegalArgumentException("PRODUCT IS ALREADY IN STORAGE");
         }
     }
 
@@ -36,7 +39,12 @@ public final class Storage {
     }
 
     public void removeSingleProduct(Product product) {
-        listOfProducts.remove(product);
+        if (listOfProducts.contains(product)) {
+            listOfProducts.remove(product);
+        }
+        else {
+            throw new IllegalArgumentException("PRODUCT IS NOT IN THE STORAGE");
+        }
     }
 
     public void removeSeveralProducts(ArrayList<Product> listWithProductsToDelete) {

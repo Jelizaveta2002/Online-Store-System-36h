@@ -40,8 +40,7 @@ public class FoodStore {
     }
 
     public Optional<Product> addProductFromStorage(Product product) {
-        ArrayList<Product> listOfProductsInStorage = Storage.getInstance().getListOfProducts();
-        if (!listOfProducts.contains(product) && product.getType().equals(Product.Type.FOOD)) {
+        if (!listOfProducts.contains(product) && product.getType().equals(Product.Type.FOOD) && Storage.getInstance().getListOfProducts().contains(product)) {
             listOfProducts.add(product);
             Storage.getInstance().removeSingleProduct(product);
             return Optional.of(product);

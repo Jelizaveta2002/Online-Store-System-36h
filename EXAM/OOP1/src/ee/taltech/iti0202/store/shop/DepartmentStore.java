@@ -39,6 +39,7 @@ public class DepartmentStore extends FoodStore{
             profit -= product.getPrice();
             client.addMoney(product.getPrice());
             client.getProductsAndStores().get(this).remove(product);
+            dataBase.get(client).remove(product);
             this.listOfProducts.add(product);
         }
     }

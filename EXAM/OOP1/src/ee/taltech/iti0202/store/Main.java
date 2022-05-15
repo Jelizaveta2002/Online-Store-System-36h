@@ -18,6 +18,13 @@ public class Main {
         Product pr1 = new Product("pr1", 800, Product.Type.FOOD);
         Product pr2 = new Product("pr1", 500, Product.Type.FOOD);
         Product pr3 = new Product("pr3", 200, Product.Type.COSMETICS);
+        try {
+            Product pr4 = new Product("  ", 800, Product.Type.FOOD); //incorrect product, name contains of
+            //whitespaces
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         //create list of products to add to bag
         ArrayList<Product> listToAddToStore = new ArrayList<>();
@@ -99,5 +106,7 @@ public class Main {
         System.out.println(st2.showClients());
         System.out.println(client1.showProducts()); //2 product from 2 different stores
         System.out.println(client3.showProducts()); // no products from store2
+        System.out.println(st2.getListOfClients()); //2 clients
+        System.out.println(st2.getDataBase()); //no products client3 and 1 product was bought for client1
     }
 }

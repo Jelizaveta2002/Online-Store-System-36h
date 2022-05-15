@@ -49,6 +49,14 @@ public class ShoppingBag {
         return Optional.empty();
     }
 
+    public int countTotalSum() {
+        int counter = 0;
+        for (Product product : listOfProductsToBy) {
+            counter += product.getPrice();
+        }
+        return counter;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

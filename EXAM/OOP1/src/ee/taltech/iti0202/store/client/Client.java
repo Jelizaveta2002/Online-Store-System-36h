@@ -64,6 +64,9 @@ public class Client {
             if (this.strategy == null) {
                 throw new IllegalArgumentException("STRATEGY SHOULD EXIST");
             }
+            if (this.money < 0) {
+                throw new IllegalArgumentException("MONEY CAN NOT BE NEGATIVE");
+            }
             return new Client(this);
         }
     }
@@ -184,7 +187,7 @@ public class Client {
     public void buyProductsFromBag(FoodStore store, boolean useBonusPoints) {
         int bonus = 0;
         for (ShoppingBag bag : listOfShoppingBags) {
-            if (bag.getStore().equals(store)) {
+            if (bag.getStore().equals(store) && bag.countTotalSum() <= money) {
                 if (!bag.getListOfProductsToBuy().isEmpty()) {
                     if (useBonusPoints && storeAndBonus.containsKey(store)) {
                         bonus = storeAndBonus.get(store);
@@ -198,14 +201,14 @@ public class Client {
                 }
             }
         }
-        throw new RuntimeException("CLIENT DOES NOT HAVE BAG IN THIS STORE");
+        throw new RuntimeException("CLIENT DOES NOT HAVE BAG IN THIS STORE OR MONEY IS NOT ENOUGH");
     }
 
     public void deleteShoppingBag(FoodStore store) {
         ArrayList<ShoppingBag> toIterate = new ArrayList<>(listOfShoppingBags);
         for (ShoppingBag bag : toIterate) {
             if (bag.getStore().equals(store)) {
-                store.addProductsFromStorage(bag.getListOfProductsToBuy());
+                store.getListOfProducts().addAll(bag.getListOfProductsToBuy()); //return products back to shop from bag
                 listOfShoppingBags.remove(bag);
                 return;
             }

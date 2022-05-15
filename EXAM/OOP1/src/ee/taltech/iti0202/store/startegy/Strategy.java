@@ -9,6 +9,8 @@ public interface Strategy {
 
     /**
      *
+     * Fill the bag with products considering the algorithm of a specific strategy.
+     *
      * @param productsInStore
      * @param money
      * @param store

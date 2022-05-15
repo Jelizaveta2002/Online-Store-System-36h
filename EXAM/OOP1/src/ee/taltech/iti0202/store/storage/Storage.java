@@ -8,6 +8,14 @@ public final class Storage {
     private final ArrayList<Product> listOfProducts = new ArrayList<>();
     private static Storage instance = null;
 
+    /**
+     *
+     * Storage is made for holding all the new products.
+     * Product can be added to store only if it located in storage.
+     * After appearing in shop product disappears from storage.
+     * The aim of the storage is to make sure that the same product can not exist in several stores.
+     *
+     */
     private Storage() {
     }
 
@@ -24,6 +32,8 @@ public final class Storage {
 
     /**
      *
+     * Add single product.
+     *
      * @param product
      */
     public void addProduct(Product product) {
@@ -36,6 +46,8 @@ public final class Storage {
 
     /**
      *
+     * Add several products.
+     *
      * @param listWithProductsToAdd
      */
     public void addSeveralProducts(ArrayList<Product> listWithProductsToAdd) {
@@ -45,6 +57,8 @@ public final class Storage {
     }
 
     /**
+     *
+     * Remove single products.
      *
      * @param product
      */
@@ -57,6 +71,8 @@ public final class Storage {
     }
 
     /**
+     *
+     * Remove several products.
      *
      * @param listWithProductsToDelete
      */

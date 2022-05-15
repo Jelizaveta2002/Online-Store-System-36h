@@ -106,7 +106,7 @@ public class Client {
     }
 
     /**
-     *
+     * Increase money of client.
      * @param summa
      */
     public void addMoney(double summa) {
@@ -122,23 +122,25 @@ public class Client {
     }
 
     /**
-     *
+     * Client create new shopping bag in a specific store.
      * @param store
      * @return
      */
     public Optional<ShoppingBag> createNewShoppingBag(FoodStore store) {
         for (ShoppingBag bag : listOfShoppingBags) {
-            if (bag.getStore().equals(store)) {
+            if (bag.getStore().equals(store)) { // check if client does not have bag in the same store yet
                 return Optional.empty();
             }
         }
         ShoppingBag newBag = new ShoppingBag(this, store);
-        newBag.addProductsToBag();
+        newBag.addProductsToBag(); //add products considering the strategy of client
         listOfShoppingBags.add(newBag);
         return Optional.of(newBag);
     }
 
     /**
+     * Inner method that works only when method buyProductsFromBag is called.
+     * All the operations with bonus points are here.
      *
      * @param shoppingBag
      * @param bonusToPay
@@ -153,7 +155,7 @@ public class Client {
         store.getMoneyFromClient(counter); //add money to store
         store.fillDataBase(this, shoppingBag.getListOfProductsToBuy()); // add client and order to database
         if (bonusToPay > 0) {
-            if (convertPointsToMoney(bonusToPay) >= counter) {
+            if (convertPointsToMoney(bonusToPay) >= counter) { //check the sum in money of bonus points
                 storeAndBonus.put(store, storeAndBonus.get(store) - convertMoneyToPoints((int) counter));
                 counter = 0;
             } else {
@@ -162,7 +164,7 @@ public class Client {
             }
         }
         money -= counter; // get money from client
-        bonus = (int) counter / CONVERT_TO_BONUS;
+        bonus = (int) counter / CONVERT_TO_BONUS; //count the bonus points that client get after order
         if (bonus == 0) {
             bonus = 1;
         }
@@ -172,7 +174,7 @@ public class Client {
             productsAndStores.put(store, shoppingBag.getListOfProductsToBuy()); //if a new shop for this client
         }
         if (storeAndBonus.containsKey(store)) {
-            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // add bonus points
+            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // increase bonus points
                                                                             // if store already was used
         } else {
             storeAndBonus.put(store, bonus); // add points if a new store
@@ -199,6 +201,11 @@ public class Client {
 
     /**
      *
+     * When bag is created we can pay for it using this method.
+     * Client can choose if he/she wants to pay with bonus points or without.
+     * Client can use bonus points in a shop that he/she got exactly from that shop (map storeAndBonus is made for it).
+     * Client get error if he/she does not have a bag in a specific shop or bag is empty.
+     *
      * @param store
      * @param useBonusPoints
      */
@@ -223,6 +230,9 @@ public class Client {
 
     /**
      *
+     * Bag can be deleted by client.
+     * All the products in this bag are back in the shop and are available.
+     *
      * @param store
      */
     public void deleteShoppingBag(FoodStore store) {
@@ -238,6 +248,8 @@ public class Client {
     }
 
     /**
+     *
+     * Show all the products that client has.
      *
      * @return
      */

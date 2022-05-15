@@ -45,6 +45,9 @@ public class FoodStore {
 
     /**
      *
+     * Add products to the store from the storage.
+     * If product is not in storage, it can not be added.
+     *
      * @param product
      * @return
      */
@@ -60,6 +63,8 @@ public class FoodStore {
 
     /**
      *
+     * Add several projects from storage.
+     *
      * @param listWithProductsToAdd
      */
     public void addProductsFromStorage(ArrayList<Product> listWithProductsToAdd) {
@@ -74,6 +79,8 @@ public class FoodStore {
 
     /**
      *
+     * Remove single product from store.
+     *
      * @param product
      */
     public void removeSingleProduct(Product product) {
@@ -85,6 +92,8 @@ public class FoodStore {
     }
 
     /**
+     *
+     * Remove several projects from store.
      *
      * @param listWithProductsToRemove
      */
@@ -98,6 +107,8 @@ public class FoodStore {
     }
 
     /**
+     *
+     * Find list of products with a specific name.
      *
      * @param name
      * @return
@@ -119,6 +130,8 @@ public class FoodStore {
 
     /**
      *
+     * Find list of products with a specific price.
+     *
      * @param price
      * @return
      */
@@ -139,6 +152,8 @@ public class FoodStore {
 
     /**
      *
+     * Find product in list of products by id.
+     *
      * @param id
      * @return
      */
@@ -155,6 +170,8 @@ public class FoodStore {
 
     /**
      *
+     * Get money from client after the order.
+     *
      * @param money
      */
     public void getMoneyFromClient(double money) {
@@ -167,6 +184,8 @@ public class FoodStore {
 
     /**
      *
+     * Add new client if it is possible.
+     *
      * @param client
      */
     public void addClient(Client client) {
@@ -178,6 +197,9 @@ public class FoodStore {
     }
 
     /**
+     *
+     * Fill map where client is a key and list with all the products, that he/she bought is a value.
+     * After refund product is taken away from database.
      *
      * @param client
      * @param listOfProducts
@@ -195,6 +217,8 @@ public class FoodStore {
 
     /**
      *
+     * Return the product if it is possible.
+     *
      * @param client
      * @param product
      */
@@ -203,6 +227,8 @@ public class FoodStore {
     }
 
     /**
+     *
+     * Show all the current clients.
      *
      * @return
      */
@@ -220,6 +246,8 @@ public class FoodStore {
     }
 
     /**
+     *
+     * Show all the current products.
      *
      * @return
      */
@@ -249,4 +277,3 @@ public class FoodStore {
         return Objects.hash(name);
     }
 }
-

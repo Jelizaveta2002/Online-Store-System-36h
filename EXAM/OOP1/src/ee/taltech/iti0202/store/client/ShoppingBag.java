@@ -48,6 +48,10 @@ public class ShoppingBag {
         return Optional.empty();
     }
 
+    /**
+     * Get the total sum of the whole bag.
+     * @return
+     */
     public int countTotalSum() {
         int counter = 0;
         for (Product product : listOfProductsToBy) {

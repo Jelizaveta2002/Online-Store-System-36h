@@ -16,10 +16,10 @@ class StrategyTest {
 
     @Test
     void testCheapestProductStrategy() {
-        Product pr1 = new Product("pr1", 400, Product.Type.FOOD);
-        Product pr2 = new Product("pr2", 500, Product.Type.FOOD);
-        Product pr3 = new Product("pr1", 300, Product.Type.FOOD);
-        Product pr4 = new Product("pr5", 900, Product.Type.FOOD);
+        Product pr1 = new Product("pr1", 400, Product.Type.FOOD); //already in bag
+        Product pr2 = new Product("pr2", 500, Product.Type.FOOD); //2
+        Product pr3 = new Product("pr1", 300, Product.Type.FOOD); //1
+        Product pr4 = new Product("pr5", 900, Product.Type.FOOD); //3
         ArrayList<Product> toCompare = new ArrayList<>();
         toCompare.add(pr3);
         toCompare.add(pr2);
@@ -44,10 +44,10 @@ class StrategyTest {
     @Test
     void testDifferentTypes() {
         Product pr1 = new Product("pr1", 400, Product.Type.COSMETICS);
-        Product pr2 = new Product("pr2", 500, Product.Type.COSMETICS);
+        Product pr2 = new Product("pr2", 500, Product.Type.COSMETICS); //can not be added
         Product pr3 = new Product("pr1", 300, Product.Type.FOOD);
         Product pr4 = new Product("pr5", 900, Product.Type.GARDENGOODS);
-        Product pr5 = new Product("pr5", 900, Product.Type.COSMETICS);
+        Product pr5 = new Product("pr5", 900, Product.Type.COSMETICS); //can not be added
         ArrayList<Product> toCompare = new ArrayList<>();
         toCompare.add(pr1);
         toCompare.add(pr3);

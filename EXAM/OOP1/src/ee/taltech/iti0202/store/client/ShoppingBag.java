@@ -50,6 +50,7 @@ public class ShoppingBag {
 
     /**
      * Get the total sum of the whole bag.
+     * Use to be sure that client is able to pay for bag
      * @return
      */
     public int countTotalSum() {

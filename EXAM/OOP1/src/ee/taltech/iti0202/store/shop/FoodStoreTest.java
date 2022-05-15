@@ -35,6 +35,21 @@ class FoodStoreTest {
     }
 
     @Test
+    void testAddTheSameProductToAnotherStore() {
+        Product pr1 = new Product("pr1", 400, Product.Type.FOOD);
+        Product pr2 = new Product("pr2", 500, Product.Type.FOOD);
+        Product pr3 = new Product("pr3", 600, Product.Type.FOOD);
+        Storage.getInstance().addProduct(pr1);
+        Storage.getInstance().addProduct(pr2);
+        FoodStore st1 = new FoodStore("store", 200);
+        FoodStore st2 = new FoodStore("store2", 300);
+        st1.addProductFromStorage(pr1);
+        st2.addProductFromStorage(pr1);
+        assertTrue(st2.listOfProducts.isEmpty()); //list is empty because product is in another store
+    }
+
+
+    @Test
     void testAddListOfProductsFromStorage() {
         Product pr1 = new Product("pr1", 400, Product.Type.FOOD);
         Product pr2 = new Product("pr2", 500, Product.Type.FOOD);

@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class StrategyTest {
 
@@ -32,9 +33,11 @@ class StrategyTest {
         st1.addProductFromStorage(pr2);
         st1.addProductFromStorage(pr3);
         st1.addProductFromStorage(pr4);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(3000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(3000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
-        assertEquals(client1.getListOfShoppingBags().get(0).getListOfProductsToBuy(), toCompare); //{pr3, pr2, pr4} because firstly
+        assertEquals(client1.getListOfShoppingBags().get(0).getListOfProductsToBuy(), toCompare);
+        //{pr3, pr2, pr4} because firstly
         //goes cheapest product but if product with the same type already exists, so goes next
     }
 
@@ -60,7 +63,8 @@ class StrategyTest {
         st1.addProductFromStorage(pr3);
         st1.addProductFromStorage(pr4);
         st1.addProductFromStorage(pr5);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(3000).strategy(new DifferentTypes()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(3000)
+                .strategy(new DifferentTypes()).build());
         client1.createNewShoppingBag(st1);
         assertEquals(client1.getListOfShoppingBags().get(0).getListOfProductsToBuy(), toCompare); //{pr1, pr3, pr4}
         // because others products

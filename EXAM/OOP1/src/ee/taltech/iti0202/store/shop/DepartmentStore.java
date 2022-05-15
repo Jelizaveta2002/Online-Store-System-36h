@@ -7,7 +7,7 @@ import ee.taltech.iti0202.store.storage.Storage;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class DepartmentStore extends FoodStore{
+public class DepartmentStore extends FoodStore {
 
     public DepartmentStore(String name, Integer profit) {
         super(name, profit);

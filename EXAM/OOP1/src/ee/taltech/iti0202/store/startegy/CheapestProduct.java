@@ -6,7 +6,6 @@ import ee.taltech.iti0202.store.shop.FoodStore;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CheapestProduct implements Strategy {
     @Override

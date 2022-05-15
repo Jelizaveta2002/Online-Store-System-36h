@@ -9,7 +9,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
 
 class ClientTest {
 
@@ -47,7 +51,8 @@ class ClientTest {
 
     @Test
     void testClientAddMoney() {
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000)
+                .strategy(new CheapestProduct()).build());
         client1.addMoney(56);
         assertEquals(client1.getMoney(), 1056);
         assertThrows(RuntimeException.class, () -> {
@@ -65,7 +70,8 @@ class ClientTest {
         FoodStore st2 = new FoodStore("store3", 400);
         st1.addProductFromStorage(pr1);
         st2.addProductFromStorage(pr2);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.createNewShoppingBag(st2);
         assertEquals(2, client1.getListOfShoppingBags().size()); //2 bags from different shops are created
@@ -84,7 +90,8 @@ class ClientTest {
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(1000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
         assertEquals(client1.getProductsAndStores().get(st1), toCompare); // client has list of products as expected
@@ -102,7 +109,8 @@ class ClientTest {
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(100).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(100)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         assertThrows(RuntimeException.class, () -> {
             client1.buyProductsFromBag(st1, false);
@@ -117,7 +125,8 @@ class ClientTest {
         Storage.getInstance().addProduct(pr2);
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false); // make first order
         assertEquals(40, client1.getStoreAndBonus().get(st1)); //bonus after first order (1000 / 20 == 40)
@@ -140,9 +149,11 @@ class ClientTest {
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
-        assertEquals(toCompare, client1.getListOfShoppingBags().get(0).getListOfProductsToBuy()); //one bag is shoppingbag list
+        assertEquals(toCompare, client1.getListOfShoppingBags().get(0).getListOfProductsToBuy());
+                                                                        //one bag is shoppingbag list
         client1.deleteShoppingBag(st1); // delete bag from list of bags
         assertTrue(client1.getListOfShoppingBags().isEmpty()); //list with bags is empty
         assertThrows(RuntimeException.class, () -> { // try to delete bag that does not exist, get error
@@ -159,10 +170,12 @@ class ClientTest {
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
-        String toCompare = "store: [Product{name='pr1', price=1000.0, type=FOOD, id=0}, Product{name='pr2', price=2000.0, type=FOOD, id=1}]";
+        String toCompare = "store: [Product{name='pr1', price=1000.0, type=FOOD, id=0}, Product{name='pr2',"
+                + " price=2000.0, type=FOOD, id=1}]";
         assertEquals(toCompare, client1.showProducts());
     }
 }

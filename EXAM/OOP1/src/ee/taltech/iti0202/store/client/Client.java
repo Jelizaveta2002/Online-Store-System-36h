@@ -169,7 +169,8 @@ public class Client {
             productsAndStores.put(store, shoppingBag.getListOfProductsToBuy()); //if a new shop for this client
         }
         if (storeAndBonus.containsKey(store)) {
-            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // add bonus points if store already was used
+            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // add bonus points
+                                                                            // if store already was used
         } else {
             storeAndBonus.put(store, bonus); // add points if a new store
         }

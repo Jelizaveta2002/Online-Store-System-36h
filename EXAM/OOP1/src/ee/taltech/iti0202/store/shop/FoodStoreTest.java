@@ -25,7 +25,8 @@ class FoodStoreTest {
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        assertEquals(Optional.empty(), st1.addProductFromStorage(pr3)); //product is not in storage, it can not be added
+        assertEquals(Optional.empty(), st1.addProductFromStorage(pr3));
+                                                        //product is not in storage, it can not be added
         assertEquals(2, st1.listOfProducts.size()); //only 2 products can be added from storage
         assertTrue(Storage.getInstance().getListOfProducts().isEmpty()); //now storage is empty
     }
@@ -43,7 +44,8 @@ class FoodStoreTest {
         toAdd.add(pr3);
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductsFromStorage(toAdd);
-        assertEquals(st1.listOfProducts.size(), 2); //length is , because only 2 products are added (pr3 is not in Storage)
+        assertEquals(st1.listOfProducts.size(), 2);
+                        //length is , because only 2 products are added (pr3 is not in Storage)
         toAdd.clear();
         assertThrows(RuntimeException.class, () -> {
             st1.addProductsFromStorage(toAdd); //list is empty, so we get error
@@ -85,7 +87,7 @@ class FoodStoreTest {
         toAdd.add(pr2);
         toAdd.add(pr3);
         st1.addProductsFromStorage(toAdd);
-        List <Product> toCompare = List.of(pr1, pr2);
+        List<Product> toCompare = List.of(pr1, pr2);
         assertEquals(st1.findProductByName("pr1"), Optional.of(toCompare));
     }
 
@@ -139,7 +141,8 @@ class FoodStoreTest {
         toAdd.add(pr2);
         toAdd.add(pr3);
         st1.addProductsFromStorage(toAdd);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
         HashMap<Client, ArrayList<Product>> mapToPut = new HashMap<>();
@@ -153,7 +156,8 @@ class FoodStoreTest {
         Storage.getInstance().addProduct(pr1);
         FoodStore st1 = new FoodStore("store", 200);
         st1.addProductFromStorage(pr1);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
         assertThrows(RuntimeException.class, () -> {
@@ -167,7 +171,8 @@ class FoodStoreTest {
         Storage.getInstance().addProduct(pr1);
         DepartmentStore st1 = new DepartmentStore("store", 200);
         st1.addProductFromStorage(pr1);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(4000)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
         assertEquals(client1.getMoney(), 3500); //amount of money after order
@@ -183,7 +188,8 @@ class FoodStoreTest {
         Storage.getInstance().addProduct(pr2);
         DepartmentStore st1 = new DepartmentStore("store", 200);
         st1.addProductFromStorage(pr1);
-        Client client1 = (new Client.ClientBuilder("anna").age(19).money(600).strategy(new CheapestProduct()).build());
+        Client client1 = (new Client.ClientBuilder("anna").age(19).money(600)
+                .strategy(new CheapestProduct()).build());
         client1.createNewShoppingBag(st1);
         client1.buyProductsFromBag(st1, false);
         assertEquals(st1.showClients(), "Client{name='anna', age=19}\n");
@@ -201,7 +207,7 @@ class FoodStoreTest {
         DepartmentStore st1 = new DepartmentStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        assertEquals(st1.showProducts(), "Product{name='pr1', price=500.0, type=COSMETICS, id=0}\n" +
-                "Product{name='pr2', price=400.0, type=FOOD, id=1}\n");
+        assertEquals(st1.showProducts(), "Product{name='pr1', price=500.0, type=COSMETICS, id=0}\n"
+                + "Product{name='pr2', price=400.0, type=FOOD, id=1}\n");
     }
 }

@@ -108,5 +108,6 @@ public class Main {
         System.out.println(client3.showProducts()); // no products from store2
         System.out.println(st2.getListOfClients()); //2 clients
         System.out.println(st2.getDataBase()); //no products client3 and 1 product was bought for client1
+        System.out.println(st1.showProducts());
     }
 }

@@ -193,16 +193,5 @@ public class FoodStore {
     public int hashCode() {
         return Objects.hash(name);
     }
-
-    public static void main(String[] args) {
-        FoodStore st1 = new FoodStore("store", 234);
-        Product pr1 = new Product("pr1", 12, Product.Type.FOOD);
-        Product pr2 = new Product("pr1", 12, Product.Type.FOOD);
-        Product pr3 = new Product("  ", 12, Product.Type.COSMETICS);
-        Storage.getInstance().addProduct(pr1);
-        Storage.getInstance().addProduct(pr2);
-        st1.addProductFromStorage(pr1);
-        st1.addProductFromStorage(pr2);
-        System.out.println(st1.getListOfProducts().get(1).getId());
-    }
 }
+

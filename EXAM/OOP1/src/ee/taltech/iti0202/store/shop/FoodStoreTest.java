@@ -210,7 +210,7 @@ class FoodStoreTest {
         DepartmentStore st1 = new DepartmentStore("store", 200);
         st1.addProductFromStorage(pr1);
         st1.addProductFromStorage(pr2);
-        assertEquals(st1.showProducts(), "Product{name='pr1', price=500.0, type=COSMETICS, id=0}\n"
-                + "Product{name='pr2', price=400.0, type=FOOD, id=1}\n");
+        assertEquals(st1.showProducts(), "Product{name='pr1', price=500.0, type=COSMETICS, id=6}\n" +
+                "Product{name='pr2', price=400.0, type=FOOD, id=7}\n");
     }
 }

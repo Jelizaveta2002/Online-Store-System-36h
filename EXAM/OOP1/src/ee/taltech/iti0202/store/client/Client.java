@@ -12,6 +12,9 @@ import java.util.Optional;
 
 public class Client {
 
+    public static final int ADULT_AGE = 18;
+    public static final int CONVERT_TO_BONUS = 25;
+    public static final int CONVERT_TO_MONEY = 20;
     private String name;
     private Integer age;
     private Strategy strategy;
@@ -62,7 +65,7 @@ public class Client {
             if (this.name == null || this.name.trim().isEmpty()) {
                 throw new IllegalArgumentException("NAME SHOULD EXIST");
             }
-            if (this.age == null || this.age < 18) {
+            if (this.age == null || this.age < ADULT_AGE) {
                 throw new IllegalArgumentException("AGE IS INCORRECT OR LESS THAN 18");
             }
             if (this.strategy == null) {
@@ -159,7 +162,7 @@ public class Client {
             }
         }
         money -= counter; // get money from client
-        bonus = (int) counter / 25;
+        bonus = (int) counter / CONVERT_TO_BONUS;
         if (bonus == 0) {
             bonus = 1;
         }
@@ -182,7 +185,7 @@ public class Client {
      * @return
      */
     private int convertPointsToMoney(int bonusPoints) {
-        return bonusPoints / 20;
+        return bonusPoints / CONVERT_TO_MONEY;
     }
 
     /**
@@ -191,7 +194,7 @@ public class Client {
      * @return
      */
     private int convertMoneyToPoints(int moneyBonus) {
-        return moneyBonus * 20;
+        return moneyBonus * CONVERT_TO_MONEY;
     }
 
     /**

@@ -9,6 +9,17 @@ public class DifferentTypes implements Strategy {
 
     @Override
     public ArrayList<Product> addProductToBag(ArrayList<Product> productsInStore, double money, FoodStore store) {
-        return null;
+        double totalPriceCounter = 0;
+        ArrayList<Product> listToIterate = new ArrayList<>(productsInStore);
+        ArrayList<Product> listToReturn = new ArrayList<>();
+        ArrayList<Product.Type> listOfAllTypes = new ArrayList<>();
+        for (Product product : listToIterate) {
+            if (!listOfAllTypes.contains(product.getType()) && (totalPriceCounter + product.getPrice()) < money) {
+                listToReturn.add(product);
+                store.removeSingleProduct(product);
+                listOfAllTypes.add(product.getType());
+            }
+        }
+        return listToReturn;
     }
 }

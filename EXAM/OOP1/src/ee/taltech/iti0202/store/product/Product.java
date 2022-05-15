@@ -10,10 +10,6 @@ public class Product {
     private double price;
     private Type type;
     private Integer id;
-    private Integer bonusAmount;
-    private Integer bonusPrice;
-    boolean isBought = false;
-    boolean inBasket = false;
     public enum Type {
         FOOD, COSMETICS, FORHOME, ELECTRONICS, GARDENGOODS, BABYGOODS
     }
@@ -23,11 +19,6 @@ public class Product {
         this.price = price;
         this.type = type;
         this.id = idCounter;
-        this.bonusAmount = Math.toIntExact(Math.round(price) / 25);
-        if (bonusAmount == 0) {
-            bonusAmount = 1;
-        }
-        this.bonusPrice = Math.toIntExact(20 * Math.round(price));
         idCounter ++;
     }
 
@@ -43,16 +34,18 @@ public class Product {
         return id;
     }
 
-    public Integer getBonusAmount() {
-        return bonusAmount;
-    }
-
-    public Integer getBonusPrice() {
-        return bonusPrice;
-    }
-
     public Type getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", type=" + type +
+                ", id=" + id +
+                '}';
     }
 
     @Override

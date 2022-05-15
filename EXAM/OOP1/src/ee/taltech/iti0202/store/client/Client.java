@@ -1,14 +1,10 @@
 package ee.taltech.iti0202.store.client;
 
 import ee.taltech.iti0202.store.product.Product;
-import ee.taltech.iti0202.store.shop.DepartmentStore;
 import ee.taltech.iti0202.store.shop.FoodStore;
 import ee.taltech.iti0202.store.startegy.Strategy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class Client {
 
@@ -16,19 +12,61 @@ public class Client {
     private Integer age;
     private Strategy strategy;
     private double money;
-    private boolean isAdult;
-    private HashMap<FoodStore, Long> storeAndBonus = new HashMap<>();
+    private HashMap<FoodStore, Integer> storeAndBonus = new HashMap<>(); //just bonus points in shop
     private HashMap<FoodStore, ArrayList<Product>> productsAndStores = new HashMap<>();
     private ArrayList<Product> listOfAllProducts = new ArrayList<>();
     private ArrayList<ShoppingBag> listOfShoppingBags = new ArrayList<>();
 
-    public Client(String name, Integer age, double money) {
-        this.name = name;
-        this.age = age;
-        this.money = money;
-        isAdult = age >= 18;
+    public Client(ClientBuilder builder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.money = builder.money;
+        this.strategy = builder.strategy;
     }
 
+    public static class ClientBuilder {
+        private String name;
+        private Integer age;
+        private double money;
+        private Strategy strategy;
+
+        public ClientBuilder(String name) {
+            this.name = name;
+        }
+
+        public ClientBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ClientBuilder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public ClientBuilder money(double money) {
+            this.money = money;
+            return this;
+        }
+
+        public ClientBuilder strategy(Strategy strategy) {
+            this.strategy = strategy;
+            return this;
+        }
+
+        public Client build() {
+            if (this.name == null || this.name.trim().isEmpty()) {
+                throw new IllegalArgumentException("NAME SHOULD EXIST");
+            }
+            if (this.age == null || this.age < 18) {
+                throw new IllegalArgumentException("AGE IS INCORRECT OR LESS THAN 18");
+            }
+            if (this.strategy == null) {
+                throw new IllegalArgumentException("STRATEGY SHOULD EXIST");
+            }
+            return new Client(this);
+        }
+    }
     public String getName() {
         return name;
     }
@@ -39,10 +77,6 @@ public class Client {
 
     public double getMoney() {
         return money;
-    }
-
-    public boolean isAdult() {
-        return isAdult;
     }
 
     public Strategy getStrategy() {
@@ -57,8 +91,17 @@ public class Client {
         return productsAndStores;
     }
 
-    public HashMap<FoodStore, Long> getStoreAndBonus() {
+    public HashMap<FoodStore, Integer> getStoreAndBonus() {
         return storeAndBonus;
+    }
+
+    public void addMoney(double summa) {
+        if (summa <= 0) {
+            throw new RuntimeException("AMOUNT OF MONEY CAN NOT BE CHANGED, AMOUNT IS NEGATIVE OR 0");
+        }
+        else  {
+            money += summa;
+        }
     }
 
     public void setStrategy(Strategy strategy) {
@@ -87,31 +130,50 @@ public class Client {
      * price.)
      *
      */
-    private void payForBag(ShoppingBag shoppingBag, long bonusToPay) {
+    private void payForBag(ShoppingBag shoppingBag, int bonusToPay) {
         FoodStore store = shoppingBag.getStore();
         double counter = 0;
-        long bonus = 0;
-        for (Product product : shoppingBag.getListOfProductsToBuy()) {
+        int bonus = 0;
+        for (Product product : shoppingBag.getListOfProductsToBuy()) { //count total sum of all products in bag
             counter += product.getPrice();
         }
-        store.getMoneyFromClient(counter);
-        store.fillDataBase(this, shoppingBag.getListOfProductsToBuy());
-        if (counter >= bonusToPay) {
-            counter = counter - bonusToPay;
-            storeAndBonus.replace(store, 0L);
+        store.getMoneyFromClient(counter); //add money to store
+        store.fillDataBase(this, shoppingBag.getListOfProductsToBuy()); // add client and order to database
+        if (bonusToPay > 0) {
+            if (convertPointsToMoney(bonusToPay) >= counter) {
+                storeAndBonus.put(store, storeAndBonus.get(store) - convertMoneyToPoints((int) counter));
+                counter = 0;
+            }
+            else {
+                counter = counter - convertPointsToMoney(bonusToPay);
+                storeAndBonus.put(store, 0);
+            }
         }
-        bonus = Math.round(counter / 25.0);
+        money -= counter; // get money from client
+        bonus = (int) counter / 25;
         if (bonus == 0) {
             bonus = 1;
         }
-        productsAndStores.put(store, shoppingBag.getListOfProductsToBuy());
-        if (storeAndBonus.containsKey(store)) {
-            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus);
+        if (productsAndStores.containsKey(store)) { // if client already bought in this shop
+            productsAndStores.get(store).addAll(shoppingBag.getListOfProductsToBuy());
         }
         else {
-            storeAndBonus.put(store, bonus);
+            productsAndStores.put(store, shoppingBag.getListOfProductsToBuy()); //if a new shop for this client
         }
-        money -= counter;
+        if (storeAndBonus.containsKey(store)) {
+            storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // add bonus points if store already was used
+        }
+        else {
+            storeAndBonus.put(store, bonus); // add points if a new store
+        }
+    }
+
+    private int convertPointsToMoney(int bonusPoints) {
+        return bonusPoints / 20;
+    }
+
+    private int convertMoneyToPoints(int moneyBonus) {
+        return moneyBonus * 20;
     }
 
     /**
@@ -120,17 +182,58 @@ public class Client {
      *
      */
     public void buyProductsFromBag(FoodStore store, boolean useBonusPoints) {
-        long bonus = 0;
+        int bonus = 0;
         for (ShoppingBag bag : listOfShoppingBags) {
             if (bag.getStore().equals(store)) {
-                if (useBonusPoints) {
-                    bonus = storeAndBonus.get(store) / 20;
+                if (!bag.getListOfProductsToBuy().isEmpty()) {
+                    if (useBonusPoints && storeAndBonus.containsKey(store)) {
+                        bonus = storeAndBonus.get(store);
+                    }
+                    payForBag(bag, bonus);
+                    listOfShoppingBags.remove(bag);
+                    return;
                 }
-                payForBag(bag, bonus);
+                else {
+                    throw new RuntimeException("BAG IS EMPTY !");
+                }
+            }
+        }
+        throw new RuntimeException("CLIENT DOES NOT HAVE BAG IN THIS STORE");
+    }
+
+    public void deleteShoppingBag(FoodStore store) {
+        ArrayList<ShoppingBag> toIterate = new ArrayList<>(listOfShoppingBags);
+        for (ShoppingBag bag : toIterate) {
+            if (bag.getStore().equals(store)) {
+                store.addProductsFromStorage(bag.getListOfProductsToBuy());
                 listOfShoppingBags.remove(bag);
                 return;
             }
         }
+        throw new RuntimeException("NO BAG IN THIS STORE");
+    }
+
+    public String showProducts() {
+        StringBuilder toReturn = new StringBuilder();
+        int counter = 0;
+        for (FoodStore store : productsAndStores.keySet()) {
+            counter += 1;
+            toReturn.append(store.getName());
+            toReturn.append(": ");
+            toReturn.append(productsAndStores.get(store).toString());
+            if (productsAndStores.size() != counter) {
+                toReturn.append("\n");
+            }
+        }
+        return toReturn.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 
     @Override

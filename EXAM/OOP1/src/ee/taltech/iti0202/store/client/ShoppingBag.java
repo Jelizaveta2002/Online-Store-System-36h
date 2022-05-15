@@ -6,6 +6,7 @@ import ee.taltech.iti0202.store.shop.FoodStore;
 import ee.taltech.iti0202.store.startegy.Strategy;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ShoppingBag {
@@ -48,5 +49,16 @@ public class ShoppingBag {
         return Optional.empty();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShoppingBag that = (ShoppingBag) o;
+        return Objects.equals(client, that.client) && Objects.equals(store, that.store);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(client, store);
+    }
 }

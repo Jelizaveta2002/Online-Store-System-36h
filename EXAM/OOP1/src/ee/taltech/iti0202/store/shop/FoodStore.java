@@ -39,9 +39,9 @@ public class FoodStore {
         return dataBase;
     }
 
-    public Optional<Product> addSingleProduct(Product product) {
+    public Optional<Product> addProductFromStorage(Product product) {
         ArrayList<Product> listOfProductsInStorage = Storage.getInstance().getListOfProducts();
-        if (listOfProductsInStorage.contains(product) && !listOfProducts.contains(product) && product.getType().equals(Product.Type.FOOD)) {
+        if (!listOfProducts.contains(product) && product.getType().equals(Product.Type.FOOD)) {
             listOfProducts.add(product);
             Storage.getInstance().removeSingleProduct(product);
             return Optional.of(product);
@@ -49,20 +49,31 @@ public class FoodStore {
         return Optional.empty();
     }
 
-    public void addSeveralProducts(ArrayList<Product> listWithProductsToAdd) {
+    public void addProductsFromStorage(ArrayList<Product> listWithProductsToAdd) {
         ArrayList<Product> listOfProductsInStorage = Storage.getInstance().getListOfProducts();
+        if (listWithProductsToAdd.isEmpty()) {
+            throw new RuntimeException("LIST OF PRODUCTS IS EMPTY");
+        }
         for (Product product : listWithProductsToAdd) {
-            addSingleProduct(product);
+            addProductFromStorage(product);
         }
     }
 
     public void removeSingleProduct(Product product) {
-        listOfProducts.remove(product);
+        if (listOfProducts.contains(product)) {
+            listOfProducts.remove(product);
+        }
+        else {
+            throw new RuntimeException("NO SUCH PRODUCT");
+        }
     }
 
     public void removeSeveralProducts(ArrayList<Product> listWithProductsToRemove) {
+        if (listWithProductsToRemove.isEmpty()) {
+            throw new RuntimeException("LIST OF PRODUCTS IS EMPTY");
+        }
         for (Product product : listWithProductsToRemove) {
-            listOfProducts.remove(product);
+            removeSingleProduct(product);
         }
     }
 
@@ -108,12 +119,20 @@ public class FoodStore {
     }
 
     public void getMoneyFromClient(double money) {
-        profit += money;
+        if (money <= 0) {
+            throw new RuntimeException("AMOUNT OF MONEY CAN NOT BE CHANGED, AMOUNT IS NEGATIVE OR 0");
+        }
+        else {
+            profit += money;
+        }
     }
 
     public void addClient(Client client) {
         if (!listOfClients.contains(client)) {
             listOfClients.add(client);
+        }
+        else {
+            throw new RuntimeException("CLIENT IS ALREADY ADDED");
         }
     }
 
@@ -131,6 +150,36 @@ public class FoodStore {
             dataBase.put(client, listOfProducts);
             listOfClients.add(client);
         }
+    }
+
+    public void returnProductBack(Client client, Product product) {
+        throw new RuntimeException("CAN NOT RETURN FOOD!");
+    }
+
+    public String showClients() {
+        StringBuilder toReturn = new StringBuilder();
+        int counter = -1;
+        for (Client client : listOfClients) {
+            counter += 1;
+            toReturn.append(client.toString());
+            if (listOfClients.size() != counter) {
+                toReturn.append("\n");
+            }
+        }
+        return toReturn.toString();
+    }
+
+    public String showProducts() {
+        StringBuilder toReturn = new StringBuilder();
+        int counter = -1;
+        for (Product product : listOfProducts) {
+            counter += 1;
+            toReturn.append(product.toString());
+            if (listOfProducts.size() != counter) {
+                toReturn.append("\n");
+            }
+        }
+        return toReturn.toString();
     }
 
     @Override
@@ -153,8 +202,8 @@ public class FoodStore {
         Product pr3 = new Product("  ", 12, Product.Type.COSMETICS);
         Storage.getInstance().addProduct(pr1);
         Storage.getInstance().addProduct(pr2);
-        st1.addSingleProduct(pr1);
-        st1.addSingleProduct(pr2);
+        st1.addProductFromStorage(pr1);
+        st1.addProductFromStorage(pr2);
         System.out.println(st1.getListOfProducts().get(1).getId());
     }
 }

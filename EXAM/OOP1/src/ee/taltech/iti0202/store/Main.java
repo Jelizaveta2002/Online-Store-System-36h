@@ -6,7 +6,6 @@ import ee.taltech.iti0202.store.shop.DepartmentStore;
 import ee.taltech.iti0202.store.shop.FoodStore;
 import ee.taltech.iti0202.store.startegy.CheapestProduct;
 import ee.taltech.iti0202.store.startegy.DifferentTypes;
-import ee.taltech.iti0202.store.startegy.Strategy;
 import ee.taltech.iti0202.store.storage.Storage;
 
 import java.util.ArrayList;
@@ -21,8 +20,7 @@ public class Main {
         try {
             Product pr4 = new Product("  ", 800, Product.Type.FOOD); //incorrect product, name contains of
             //whitespaces
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
@@ -55,8 +53,7 @@ public class Main {
         Client client3 = (new Client.ClientBuilder("lora").age(39).money(700).strategy(strategy2).build());
         try {
             Client client2 = (new Client.ClientBuilder("bob").age(10).money(500).strategy(strategy1).build());
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage()); //age is under 18, so error
         }
 
@@ -76,8 +73,7 @@ public class Main {
         System.out.println(st1.getProfit()); // 700 (200 + 500)
         try {
             client3.buyProductsFromBag(st1, true); //no bag in this store, so error
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
         client3.buyProductsFromBag(st2, true);
@@ -94,8 +90,7 @@ public class Main {
         System.out.println(client3.showProducts()); //no products after refund
         try {
             st2.returnProductBack(client1, pr1); // no such client in database of the store
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
         client1.createNewShoppingBag(st2); //create bag from another shop

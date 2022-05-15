@@ -7,5 +7,12 @@ import java.util.ArrayList;
 
 public interface Strategy {
 
+    /**
+     *
+     * @param productsInStore
+     * @param money
+     * @param store
+     * @return
+     */
     ArrayList<Product> addProductToBag(ArrayList<Product> productsInStore, double money, FoodStore store);
 }

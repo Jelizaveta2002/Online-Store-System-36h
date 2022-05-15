@@ -3,7 +3,9 @@ package ee.taltech.iti0202.store.storage;
 import ee.taltech.iti0202.store.product.Product;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 class StorageTest {
 

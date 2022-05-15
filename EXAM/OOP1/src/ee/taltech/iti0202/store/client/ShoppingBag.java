@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.store.client;
 
-import ee.taltech.iti0202.store.client.Client;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.shop.FoodStore;
 import ee.taltech.iti0202.store.startegy.Strategy;

@@ -1,8 +1,8 @@
 package ee.taltech.iti0202.store.product;
 
-import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ProductTest {
 
@@ -28,12 +28,12 @@ class ProductTest {
     @org.junit.jupiter.api.Test
     void productToString() {
         Product pr3 = new Product("pr3", 200, Product.Type.COSMETICS);
-        String toCompare = "Product{" +
-                "name='" + "pr3" + '\'' +
-                ", price=" + 200.0 +
-                ", type=" + Product.Type.COSMETICS +
-                ", id=" + 0 +
-                '}';
+        String toCompare = "Product{"
+                + "name='" + "pr3" + '\''
+                + ", price=" + 200.0
+                + ", type=" + Product.Type.COSMETICS
+                + ", id=" + 0
+                + '}';
         assertEquals(pr3.toString(), toCompare);
     }
 }

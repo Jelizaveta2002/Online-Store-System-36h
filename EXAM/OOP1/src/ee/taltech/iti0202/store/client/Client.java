@@ -4,7 +4,11 @@ import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.shop.FoodStore;
 import ee.taltech.iti0202.store.startegy.Strategy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Optional;
+
 
 public class Client {
 
@@ -98,11 +102,14 @@ public class Client {
         return storeAndBonus;
     }
 
+    /**
+     *
+     * @param summa
+     */
     public void addMoney(double summa) {
         if (summa <= 0) {
             throw new RuntimeException("AMOUNT OF MONEY CAN NOT BE CHANGED, AMOUNT IS NEGATIVE OR 0");
-        }
-        else  {
+        } else  {
             money += summa;
         }
     }
@@ -112,9 +119,9 @@ public class Client {
     }
 
     /**
-     * Create new shopping bag in a specific shop (this bag is filled according to the strategy that client has).
      *
-     * @return Optional of bag.
+     * @param store
+     * @return
      */
     public Optional<ShoppingBag> createNewShoppingBag(FoodStore store) {
         for (ShoppingBag bag : listOfShoppingBags) {
@@ -129,9 +136,9 @@ public class Client {
     }
 
     /**
-     * When bag is ready we use this function to pay for it (method buyProductFromBag uses it to calculate the whole-
-     * price.)
      *
+     * @param shoppingBag
+     * @param bonusToPay
      */
     private void payForBag(ShoppingBag shoppingBag, int bonusToPay) {
         FoodStore store = shoppingBag.getStore();
@@ -146,8 +153,7 @@ public class Client {
             if (convertPointsToMoney(bonusToPay) >= counter) {
                 storeAndBonus.put(store, storeAndBonus.get(store) - convertMoneyToPoints((int) counter));
                 counter = 0;
-            }
-            else {
+            } else {
                 counter = counter - convertPointsToMoney(bonusToPay);
                 storeAndBonus.put(store, 0);
             }
@@ -159,30 +165,38 @@ public class Client {
         }
         if (productsAndStores.containsKey(store)) { // if client already bought in this shop
             productsAndStores.get(store).addAll(shoppingBag.getListOfProductsToBuy());
-        }
-        else {
+        } else {
             productsAndStores.put(store, shoppingBag.getListOfProductsToBuy()); //if a new shop for this client
         }
         if (storeAndBonus.containsKey(store)) {
             storeAndBonus.replace(store, storeAndBonus.get(store) + bonus); // add bonus points if store already was used
-        }
-        else {
+        } else {
             storeAndBonus.put(store, bonus); // add points if a new store
         }
     }
 
+    /**
+     *
+     * @param bonusPoints
+     * @return
+     */
     private int convertPointsToMoney(int bonusPoints) {
         return bonusPoints / 20;
     }
 
+    /**
+     *
+     * @param moneyBonus
+     * @return
+     */
     private int convertMoneyToPoints(int moneyBonus) {
         return moneyBonus * 20;
     }
 
     /**
-     * When customer is ready to pay for order in a specific shop he/she uses this function.
-     * If customer does not have a bag in this shop, throws exception error !!!!!!!!!!!
      *
+     * @param store
+     * @param useBonusPoints
      */
     public void buyProductsFromBag(FoodStore store, boolean useBonusPoints) {
         int bonus = 0;
@@ -195,8 +209,7 @@ public class Client {
                     payForBag(bag, bonus);
                     listOfShoppingBags.remove(bag);
                     return;
-                }
-                else {
+                } else {
                     throw new RuntimeException("BAG IS EMPTY !");
                 }
             }
@@ -204,6 +217,10 @@ public class Client {
         throw new RuntimeException("CLIENT DOES NOT HAVE BAG IN THIS STORE OR MONEY IS NOT ENOUGH");
     }
 
+    /**
+     *
+     * @param store
+     */
     public void deleteShoppingBag(FoodStore store) {
         ArrayList<ShoppingBag> toIterate = new ArrayList<>(listOfShoppingBags);
         for (ShoppingBag bag : toIterate) {
@@ -216,6 +233,10 @@ public class Client {
         throw new RuntimeException("NO BAG IN THIS STORE");
     }
 
+    /**
+     *
+     * @return
+     */
     public String showProducts() {
         StringBuilder toReturn = new StringBuilder();
         int counter = 0;
@@ -231,12 +252,13 @@ public class Client {
         return toReturn.toString();
     }
 
+
     @Override
     public String toString() {
-        return "Client{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "Client{"
+                + "name='" + name + '\''
+                + ", age=" + age
+                + '}';
     }
 
     @Override

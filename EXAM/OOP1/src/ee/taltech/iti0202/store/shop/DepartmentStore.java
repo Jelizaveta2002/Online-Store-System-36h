@@ -34,8 +34,7 @@ public class DepartmentStore extends FoodStore{
         }
         if (product.getType() == Product.Type.FOOD) {
             throw new RuntimeException("FOOD CAN NOT BE RETURN");
-        }
-        else {
+        } else {
             profit -= product.getPrice();
             client.addMoney(product.getPrice());
             client.getProductsAndStores().get(this).remove(product);

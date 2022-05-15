@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.store.product;
 
-import java.util.Collections;
 import java.util.Objects;
 
 public class Product {
@@ -22,7 +21,7 @@ public class Product {
             throw new IllegalArgumentException("PRODUCT CAN NOT BE CREATED, PARAMETERS ARE INCORRECT");
         }
         this.id = idCounter;
-        idCounter ++;
+        idCounter++;
     }
 
     public String getName() {
@@ -43,12 +42,12 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", type=" + type +
-                ", id=" + id +
-                '}';
+        return "Product{"
+                + "name='" + name + '\''
+                + ", price=" + price
+                + ", type=" + type
+                + ", id=" + id
+                + '}';
     }
 
     @Override

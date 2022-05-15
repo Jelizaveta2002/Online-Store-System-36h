@@ -104,7 +104,7 @@ class FoodStoreTest {
         toAdd.add(pr2);
         toAdd.add(pr3);
         st1.addProductsFromStorage(toAdd);
-        List <Product> toCompare = List.of(pr2, pr3);
+        List<Product> toCompare = List.of(pr2, pr3);
         assertEquals(st1.findProductByPrice(500), Optional.of(toCompare));
     }
 
@@ -122,7 +122,7 @@ class FoodStoreTest {
         toAdd.add(pr2);
         toAdd.add(pr3);
         st1.addProductsFromStorage(toAdd);
-        assertEquals(st1.findProductById(10), Optional.of(pr2));
+        assertEquals(st1.findProductById(12), Optional.of(pr2));
     }
 
     @Test

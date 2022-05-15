@@ -14,6 +14,13 @@ public class ShoppingBag {
     private Client client;
     private FoodStore store;
 
+    /**
+     *
+     * This class is covered by tests in another test classes by using different tests (such as createShoppingBag).
+     *
+     * @param client
+     * @param store
+     */
     public ShoppingBag(Client client, FoodStore store) {
         this.client = client;
         this.store = store;

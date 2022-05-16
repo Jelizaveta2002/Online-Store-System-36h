@@ -73,7 +73,7 @@ public class Exam {
      */
     public static String decodeMessage(String message) {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        ArrayList<String > lestOfNums = new ArrayList<>();
+        StringBuilder lestOfNums = new StringBuilder();
         String helper = "";
         for (int i = 0; i < message.length(); i++) {
             if (i <= message.length()) {
@@ -84,20 +84,31 @@ public class Exam {
                         Integer num = Integer.parseInt(helper);
                         if (num < alphabet.length()) {
                             String toAdd = String.valueOf(alphabet.charAt(num));
-                            lestOfNums.add(toAdd);
+                            lestOfNums.append(toAdd);
                         } else {
                             num = num % (alphabet.length());
                             String toAdd = String.valueOf(alphabet.charAt(num));
-                            lestOfNums.add(toAdd);
+                            lestOfNums.append(toAdd);
                         }
                         helper = "";
 
                     }
-                    lestOfNums.add(toPrint);
+                    lestOfNums.append(toPrint);
                 } else {
                     helper += toPrint;
                 }
             }
+        }
+            if (!helper.isEmpty()) {
+                Integer num = Integer.parseInt(helper);
+                if (num < alphabet.length()) {
+                    String toAdd = String.valueOf(alphabet.charAt(num));
+                    lestOfNums.append(toAdd);
+                } else {
+                    num = num % (alphabet.length());
+                    String toAdd = String.valueOf(alphabet.charAt(num));
+                    lestOfNums.append(toAdd);
+                }
         }
         return lestOfNums.toString();
 //        ArrayList<String> messageList = new ArrayList<>();
@@ -128,6 +139,6 @@ public class Exam {
         list.add(2);
         list.add(2);
         //System.out.println(countSingleTwos(list));
-        System.out.println(decodeMessage("str52ing"));
+        System.out.println(decodeMessage(":14 19h8s 8s 84e45t34n58 54oo37e523423"));
     }
 }

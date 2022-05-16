@@ -14,7 +14,23 @@ public class Exam {
      * countSingleTwos([2, 2, 2, 1, 3, 2, 1, 2]) => 2
      */
     public static int countSingleTwos(List<Integer> numbers) {
+
         ArrayList<Integer> listToIterate = new ArrayList<>(numbers);
+        for (int i = 0; i < listToIterate.size(); i++) {
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         int counter = 0;
         int countIndex = 0;
         for (Integer number : listToIterate) {
@@ -56,6 +72,34 @@ public class Exam {
      * @return decoded message
      */
     public static String decodeMessage(String message) {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        ArrayList<String > lestOfNums = new ArrayList<>();
+        String helper = "";
+        for (int i = 0; i < message.length(); i++) {
+            if (i <= message.length()) {
+                String toPrint = message.substring(i, i+1);
+                //System.out.println(toPrint);
+                if (!Character.isDigit(toPrint.charAt(0))) {
+                    if (!helper.isEmpty()) {
+                        Integer num = Integer.parseInt(helper);
+                        if (num < alphabet.length()) {
+                            String toAdd = String.valueOf(alphabet.charAt(num));
+                            lestOfNums.add(toAdd);
+                        } else {
+                            num = num % (alphabet.length());
+                            String toAdd = String.valueOf(alphabet.charAt(num));
+                            lestOfNums.add(toAdd);
+                        }
+                        helper = "";
+
+                    }
+                    lestOfNums.add(toPrint);
+                } else {
+                    helper += toPrint;
+                }
+            }
+        }
+        return lestOfNums.toString();
 //        ArrayList<String> messageList = new ArrayList<>();
 //        ArrayList<String> alphaList = new ArrayList<>();
 //        String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -74,7 +118,7 @@ public class Exam {
 //        for (String element : messageList) {
 //            if (Integer.parseInt(element))
 //        }
-        return null;
+
     }
 
     public static void main(String[] args) {
@@ -83,6 +127,7 @@ public class Exam {
         list.add(2);
         list.add(2);
         list.add(2);
-        System.out.println(countSingleTwos(list));
+        //System.out.println(countSingleTwos(list));
+        System.out.println(decodeMessage("str52ing"));
     }
 }
